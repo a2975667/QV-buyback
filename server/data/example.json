@@ -1,0 +1,38 @@
+{
+	"setting": {
+		"style": "binary"
+	},
+	"question_list": [{
+		"qid": 0,
+		"question": "QV Dry Run: Understanding what is Quadratic Voting",
+		"description": "<p>This is a playground designed to help you understand how to use <b>Quadratic Voting</b> after going through the instruction above. <br><br> Your friend is asking for your preference of the type of food to get for the dinner party tonight. Please cast up and down votes for each of the cuisine listed. In this example, you will be given a total of <b>20 voice credits</b>. <br><br> Please play around with the votes. When you are ready, submit your results and move on. We will be testing your understanding of Quadratic Voting on the next page so make sure you understand how to use QV.</p>",
+		"options": [{
+				"o_id": 1,
+				"option": "American",
+				"description": "Burgers, fries and ribs"
+			},
+			{
+				"o_id": 2,
+				"option": "Italian",
+				"description": "Pasta and bread"
+			},
+			{
+				"o_id": 3,
+				"option": "Chinese",
+				"description": "Orange chicken and rice"
+			},
+			{
+				"o_id": 4,
+				"option": "Japanese",
+				"description": "Sushi and udon"
+			},
+			{
+				"o_id": 5,
+				"option": "Mexican",
+				"description": "Tacos and burrito"
+			}
+		],
+		"totalCredits": 20,
+		"reset": true
+	}]
+}

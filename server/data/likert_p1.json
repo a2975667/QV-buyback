@@ -1,0 +1,58 @@
+{
+	"title": "What societal causes do you think need the most support?",
+	"pages": [{
+		"title": "What societal causes do you think need the most support?",
+		"questions": [{
+			"type": "matrix",
+			"name": "allocate_likert_p1",
+			"isAllRowRequired": true,
+			"title": "People have different preferences in how resources should be allocated for different societal causes. For each of the causes listed below, how important do you think the cause is to you and that more effort and resources should be contributed toward the cause?",
+			"columns": [{
+				"value": 1,
+				"text": "Very Unimportant"
+			}, {
+				"value": 2,
+				"text": "Unimportant"
+			}, {
+				"value": 3,
+				"text": "Neutral"
+			}, {
+				"value": 4,
+				"text": "Important"
+			}, {
+				"value": 5,
+				"text": "Very important"
+			}],
+			"rows": [{
+				"value": "a",
+				"isRequired": true,
+				"text": "Pets and Animals   >>   (Animal Rights, Welfare, and Services; Wildlife Conservation; Zoos and Aquariums)"
+			}, {
+				"value": "b",
+				"isRequired": true,
+				"text": "Arts, Culture, Humanities   >>   (Libraries, Historical Societies and Landmark Preservation; Museums; Performing Arts; Public Broadcasting and Media)"
+			}, {
+				"value": "c",
+				"text": "Education   >>   (Early Childhood Programs and Services; Youth Education Programs and Services; Adult Education Programs and Services; Special Education; Education Policy and Reform; Scholarship and Financial Support)"
+			}, {
+				"value": "d",
+				"text": "Environment   >>   (Environmental Protection and Conservation; Botanical Gardens, Parks and Nature Centers)"
+			}, {
+				"value": "e",
+				"text": "Health   >>   (Diseases, Disorders, and Disciplines; Patient and Family Support; Treatment and Prevention Services; Medical Research)"
+			}, {
+				"value": "f",
+				"text": "Human Services   >>   (Children’s and Family Services; Youth Development, Shelter, and Crisis Services; Food Banks, Food Pantries, and Food Distribution; Multipurpose Human Service Organizations; Homeless Services; Social Services)"
+			}, {
+				"value": "g",
+				"text": "International   >>   (Development and Relief Services; International Peace, Security, and Affairs; Humanitarian Relief Supplies)"
+			}, {
+				"value": "h",
+				"text": "Faith and Spiritual   >>   (Religious Activities; Religious Media and Broadcasting)"
+			}, {
+				"value": "i",
+				"text": "Veteran   >>   (Wounded Troops Services, Military Social Services, Military Family Support)"
+			}]
+		}]
+	}]
+}

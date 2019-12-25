@@ -1,0 +1,34 @@
+<swal
+  #confirmSubmit
+  title="Submit with 0 vote?"
+  text="This cannot be undone"
+  icon="question"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="this.submitSuccessSwal.fire()">
+</swal>
+<swal
+  #submitSuccess
+  title="Submitted!"
+  [showCancelButton]="false"
+  text="You will be presented a similar task on the next page. The total number of votes may change."
+  (afterClose)="this.gService.submit()"
+>
+</swal>
+<div class="container sticky">
+    <div class="card">
+        <h5 class="card-header">Summary</h5>
+            <div class="card-body">
+                <h5 class="card-title">Used {{usedCredits}} out of {{totalCredits}} credits</h5>
+                <div class="card-text">
+                    <div>
+                        <small style="float: left; margin: 0">0</small>
+                        <small style="float: right; margin: 0">{{totalCredits}}</small>
+                        <progressbar style="width: 100%; margin-bottom: 10px;" [animate]="false" [value]="percentage" [type]="type"></progressbar>
+                    </div>
+                </div>
+                <button (click)="submit()" type="button" class="btn btn-outline-primary">Submit</button>
+            </div>
+    </div>
+</div>
+

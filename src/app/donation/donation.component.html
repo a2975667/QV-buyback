@@ -1,0 +1,81 @@
+<nav class="navbar navbar-light bg-light">
+	<div class="col-sm-1">
+		<br>
+	</div>
+	<div class="col-sm">
+	</div>
+	<div class="col-sm">
+	</div>
+</nav>
+<div class="container">
+	<div class="container">
+		<h1>Lottery & Donation</h1>
+		<p>
+			You have entered a lottery where one person will win $35. You will win $35 with a chance of 1 out of 70.
+			If you win the lottery, you can choose to donate part of or all of the winning amount to <b>one or more
+				organizations</b> listed below. The research team will <b>match $1 to each $1 you donate</b> on your
+			behalf. The amount you choose to keep will be paid through a MTurk bonus. Please specify the donation
+			dollar amount to your organization of interest. To learn more about each organization, you can click on
+			the hyperlink of the organization name and visit its website and a new tab or new window would open.
+			<br><br>
+			If you are the winner of the lottery, the research team will donate the specified amount plus the
+			matched amount to the chosen organizations on your behalf, and the amount you choose to keep will be
+			paid through bonus on MTurk.
+			<br><br>
+			Please allocate the desired dollar amount for donation to the organizations of your interest.
+		</p>
+	</div>
+	<div class="container">
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item" *ngFor="let org of this.organizations; let i = index">
+				<div class="row">
+					<div class="col-1" style="color: white;">
+						{{org.orgId}}
+					</div>
+					<div class="col-8">
+						<div [innerHTML]="org.org"></div>
+						<!--{{org.org}}-->
+					</div>
+					<div class="col-3">
+						$ <input min="0" max="35" [(ngModel)]="donations[org.orgId]" (keyup)="caculate(org.orgId)"
+							style="display: inline; width: 80%" type="number" min="0" class="form-control"
+							oninput="validity.valid||(value='');" onkeyup="validity.valid||(value='');"
+							onkeydown="validity.valid||(value='');" onchange="validity.valid||(value='');"
+							onclick="validity.valid||(value='');" id="org.orgId">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col-8">{{org.description}}</div>
+					<div class="col-3"> </div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col-1">
+						Subtotal:
+					</div>
+					<div class="col-8">
+					</div>
+					<div class="col-3">
+						$ {{sum}}
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col-2">
+						Summary:
+					</div>
+					<div class="col-8">
+						If you win the lottery, you will donate ${{sum}} and receive ${{MAX-sum}}. The research team
+						will match ${{sum}} for your donation.
+					</div>
+					<div class="col-2">
+						<button (click)="submit()" type="button" class="btn btn-outline-primary">Submit</button>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
