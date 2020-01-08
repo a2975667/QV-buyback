@@ -7,7 +7,7 @@ from pprint import pprint
 from sys import exit
 
 import requests
-from flask import Flask, abort, jsonify, request, current_app, send_from_directory
+from flask import Flask, abort, jsonify, request, current_app, send_from_directory, Response, stream_with_context
 from flask_cors import CORS
 from datetime import datetime
 from server import app, db
@@ -200,6 +200,11 @@ def download(filename='debrief.pdf'):
 	return send_from_directory('data', filename)
 	#return app.send_static_file('debreif.pdf')
 
+@app.route('/video/<filename>', methods=['GET'])
+def play(filename):
+	#filename=filename+'.mp4'
+	print(filename)
+	return send_from_directory("video", filename)
 
 @app.route('/admin/setup_db')
 def setup_route_db():
