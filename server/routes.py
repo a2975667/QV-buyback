@@ -206,7 +206,7 @@ def play(filename):
 	print(filename)
 	return send_from_directory("video", filename)
 
-@app.route('/admin/setup_db')
+@app.route('/admin/setup_buyback_db')
 def setup_route_db():
 	"""comment out for production"""
 	db["gp_status"].drop()
