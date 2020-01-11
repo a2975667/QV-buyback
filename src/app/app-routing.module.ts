@@ -6,6 +6,7 @@ import { DonationComponent } from './donation/donation.component';
 import { LikertComponent } from './likert/likert.component';
 import { DemographicComponent } from './demographic/demographic.component';
 import { CompleteComponent } from './complete/complete.component';
+import { VideoComponent } from './video/video.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'qv', component: QuestionnaireComponent},
   { path: 'donation', component: DonationComponent},
   { path: 'likert', component: LikertComponent},
+  { path: 'video', component: VideoComponent},
   { path: 'complete', component: CompleteComponent},
 ]
 

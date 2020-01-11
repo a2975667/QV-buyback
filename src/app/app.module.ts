@@ -18,6 +18,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { DemographicComponent } from './demographic/demographic.component';
 import { CompleteComponent } from './complete/complete.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     LikertComponent,
     SurveyComponent,
     DemographicComponent,
-    CompleteComponent
+    CompleteComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
