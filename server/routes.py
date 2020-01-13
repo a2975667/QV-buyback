@@ -23,6 +23,7 @@ def root(gp):
 @app.route('/donation')
 @app.route('/complete')
 @app.route('/demographic')
+@app.route('/video')
 def root1():
 	return app.send_static_file('index.html')
 
@@ -200,7 +201,7 @@ def download(filename='debrief.pdf'):
 	return send_from_directory('data', filename)
 	#return app.send_static_file('debreif.pdf')
 
-@app.route('/video/<filename>', methods=['GET'])
+@app.route('/api/video/<filename>', methods=['GET'])
 def play(filename):
 	#filename=filename+'.mp4'
 	print(filename)

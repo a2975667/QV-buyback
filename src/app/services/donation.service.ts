@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DonationService {
-  requestUrl = '';
+  requestUrl = 'https://localhost:5000';
   organizations: BehaviorSubject<Array<Object>> = new BehaviorSubject([]);
   constructor(
     private http: HttpClient,

@@ -127,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        VIDEO\n    </h1>\n    <p align=\"center\">\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n    </p>\n    <div align=\"center\">\n        <video (click)=\"playPause($event)\"src=\"http://techslides.com/demos/sample-videos/small.webm\" width=\"70%\" ></video>\n    </div>\n    \n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        VIDEO\n    </h1>\n    <p align=\"center\">\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n    </p>\n    <div align=\"center\">\n        <video \n            (click)=\"playPause($event)\"\n            src=\"api/video/sample.mp4\" \n            (mouseenter) =\"mouseVideoEvent($event, 'enter') \"  \n            (mouseleave) =\"mouseVideoEvent($event, 'leave')\"\n            width=\"70%\" ></video>\n    </div>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/welcome/welcome.component.html": 
@@ -1614,7 +1614,6 @@
                     this.videoIsPlaying = false;
                 }
                 VideoComponent.prototype.playPause = function (e) {
-                    console.log(e);
                     if (this.videoIsPlaying) {
                         e.toElement.pause();
                         this.videoIsPlaying = false;
@@ -1622,6 +1621,13 @@
                     else {
                         e.toElement.play();
                         this.videoIsPlaying = true;
+                    }
+                };
+                VideoComponent.prototype.mouseEnterVideo = function (e, code) {
+                    if (code == 'enter') {
+                        console.log(e.toElement);
+                    }
+                    else {
                     }
                 };
                 VideoComponent.prototype.ngOnInit = function () {

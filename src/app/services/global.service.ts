@@ -20,7 +20,7 @@ function calTotalCredits(votesArray) {
   providedIn: 'root'
 })
 export class GlobalService {
-  requestUrl = '';
+  requestUrl = 'https://localhost:5000';
   @Output() questionSet: EventEmitter<object> = new EventEmitter();
   @Output() votes: EventEmitter<Array<Array<number>>> = new EventEmitter();
   @Output() usedCredits: EventEmitter<Array<number>> = new EventEmitter();
