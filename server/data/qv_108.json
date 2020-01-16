@@ -1,0 +1,37 @@
+{
+	"setting":{
+	  "style":"binary"
+	},
+	"question_list":[
+	  {
+		"qid":1.108,
+		"question":"How important are the different features?",
+		"description":"<p>How important are the different features?</p>",
+		"options":[
+		  {
+			  "o_id": "a",
+			  "option": "Feature 1",
+			  "description": "Feature 1"
+		  }, {
+			  "o_id": "b",
+			  "option": "Feature 2",
+			  "description": "Feature 2"
+		  }, {
+			  "o_id": "c",
+			  "option": "Feature 3",
+			  "description": "Feature 3"
+		  }, {
+			  "o_id": "d",
+			  "option": "Feature 4",
+			  "description": "Feature 4"
+		  }, {
+			  "o_id": "e",
+			  "option": "Feature 5",
+			  "description": "Feature 5"
+		  }
+		],
+		"totalCredits":108,
+		"reset": true
+	  }
+	]
+  }

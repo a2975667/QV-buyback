@@ -47,7 +47,6 @@ export class GlobalService {
   getCurrentPath() :string {
     let pathIndex = Number(this.getCookieById('user_current_path_index'));
     let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
-    
     return pathArray[pathIndex]['file'];
   }
   generateSubmitPost(completeFlag: boolean) {
@@ -95,7 +94,7 @@ export class GlobalService {
     let submitData: submitPostSchema = this.generateSubmitPost(false);
     let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
     let pathIndex = Number(this.getCookieById('user_current_path_index'));
- 
+
     if (nextQuestionIndex >= this.questionnaire.question_list.length) {
       nextQuestionIndex = 0;
       this.setCookieById('user_current_path_index', String(pathIndex+1));
@@ -108,7 +107,7 @@ export class GlobalService {
         });
       }
     }
-    
+
     if(pathArray[pathIndex+1]['type']=='normal'){
       nextQuestionIndex = 0;
       this.setCookieById('user_current_question_index', String(nextQuestionIndex));

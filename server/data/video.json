@@ -1,0 +1,9 @@
+{
+
+	"filename":"sample.mp4",
+	"settings":{
+		"control_panel_can_change": true,
+		"control_panel_has_price":false,
+		"control_panel_freeze":false
+	}
+  }

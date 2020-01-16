@@ -1,0 +1,46 @@
+{
+	"title": "How important are the different features?",
+	"pages": [{
+		"title": "How important are the different features?",
+		"questions": [{
+			"type": "matrix",
+			"name": "video_likert",
+			"isAllRowRequired": true,
+			"title": "Features",
+			"columns": [{
+				"value": 1,
+				"text": "Very Unimportant"
+			}, {
+				"value": 2,
+				"text": "Unimportant"
+			}, {
+				"value": 3,
+				"text": "Neutral"
+			}, {
+				"value": 4,
+				"text": "Important"
+			}, {
+				"value": 5,
+				"text": "Very important"
+			}],
+			"rows": [{
+				"value": "a",
+				"isRequired": true,
+				"text": "Feature 1"
+			}, {
+				"value": "b",
+				"isRequired": true,
+				"text": "Feature 2"
+			}, {
+				"value": "c",
+				"text": "Feature 3"
+			}, {
+				"value": "d",
+				"text": "Feature 4"
+			}, {
+				"value": "e",
+				"text": "Feature 5"
+			}]
+		}]
+	}]
+}

@@ -127,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        VIDEO\n    </h1>\n    <p align=\"center\">\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n        appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n    </p>\n    <div align=\"center\">\n        <video \n            (click)=\"playPause($event)\"\n            src=\"api/video/sample.mp4\" \n            (mouseenter) =\"mouseVideoEvent($event, 'enter') \"  \n            (mouseleave) =\"mouseVideoEvent($event, 'leave')\"\n            width=\"70%\" ></video>\n    </div>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        VIDEO\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <p>\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vmsappabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n            </p>\n                \n        </div>\n    </div>\n    <h2>\n        Video\n    </h2>\n    \n    <div class=\"row justify-content-center\">\n        <div class=\"col-sm-8 wrap-content\">\n       <video \n            class=\"embed-responsive embed-responsive-21by9\"\n            (click)=\"playPause($event)\"\n            src=\"http://localhost:5000/api/video/sample.mp4\" \n            ></video>\n        </div>\n    </div>\n    <p></p>\n    <h2>\n        Configuration\n    </h2>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <table class=\"table\">\n                <thead>\n                  <tr>\n                    <th scope=\"col\">Configuration Name</th>\n                    <th scope=\"col\" colspan=5>Score ( 0 ~ 4 )</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let k of objectKeys(configurations)\">\n                    <th scope=\"row\">{{k}}</th>\n                    <td *ngFor=\"let i of video_config\">\n                        <div class=\"form-check\">\n                            <input \n                                class=\"form-check-input\" \n                                type=\"radio\" \n                                name=\"{{k}}\" \n                                id=\"{{k}}-{{i}}\" \n                                value=\"{{i}}\" \n                                [(ngModel)]=\"configurations[k]\"\n                                (change)=\"onRadioCheck()\">\n                            <label class=\"form-check-label\" for=\"{{k}}-{{i}}\">{{i}}</label>\n                          </div>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n          </div>\n    </div>\n    \n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/welcome/welcome.component.html": 
@@ -490,7 +490,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".header {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  background-color: aqua;\n  z-index: 1090;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQUE7RUFDQSxXQUFBO0VBQ0EsTUFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHRvcDogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XHJcbiAgICB6LWluZGV4OiAxMDkwO1xyXG59XHJcbiIsIi5oZWFkZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHdpZHRoOiAxMDAlO1xuICB0b3A6IDA7XG4gIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XG4gIHotaW5kZXg6IDEwOTA7XG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = (".header {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  background-color: aqua;\n  z-index: 1090;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQUE7RUFDQSxXQUFBO0VBQ0EsTUFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHRvcDogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XHJcbiAgICB6LWluZGV4OiAxMDkwO1xyXG59XHJcbiIsIi5oZWFkZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHdpZHRoOiAxMDAlO1xuICB0b3A6IDA7XG4gIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XG4gIHotaW5kZXg6IDEwOTA7XG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/app.component.ts": 
@@ -715,7 +715,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("/* Chrome, Safari, Edge, Opera */\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n/* Firefox */\ninput[type=number] {\n  -moz-appearance: textfield;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9kb25hdGlvbi9kb25hdGlvbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvZG9uYXRpb24vZG9uYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsZ0NBQUE7QUFDQTs7RUFFRSx3QkFBQTtFQUNBLFNBQUE7QUNDRjtBREVBLFlBQUE7QUFDQTtFQUNFLDBCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9kb25hdGlvbi9kb25hdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIENocm9tZSwgU2FmYXJpLCBFZGdlLCBPcGVyYSAqL1xuaW5wdXQ6Oi13ZWJraXQtb3V0ZXItc3Bpbi1idXR0b24sXG5pbnB1dDo6LXdlYmtpdC1pbm5lci1zcGluLWJ1dHRvbiB7XG4gIC13ZWJraXQtYXBwZWFyYW5jZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xufVxuXG4vKiBGaXJlZm94ICovXG5pbnB1dFt0eXBlPW51bWJlcl0ge1xuICAtbW96LWFwcGVhcmFuY2U6dGV4dGZpZWxkO1xufVxuIiwiLyogQ2hyb21lLCBTYWZhcmksIEVkZ2UsIE9wZXJhICovXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbixcbmlucHV0Ojotd2Via2l0LWlubmVyLXNwaW4tYnV0dG9uIHtcbiAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xuICBtYXJnaW46IDA7XG59XG5cbi8qIEZpcmVmb3ggKi9cbmlucHV0W3R5cGU9bnVtYmVyXSB7XG4gIC1tb3otYXBwZWFyYW5jZTogdGV4dGZpZWxkO1xufSJdfQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = ("/* Chrome, Safari, Edge, Opera */\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n/* Firefox */\ninput[type=number] {\n  -moz-appearance: textfield;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9kb25hdGlvbi9kb25hdGlvbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvZG9uYXRpb24vZG9uYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsZ0NBQUE7QUFDQTs7RUFFRSx3QkFBQTtFQUNBLFNBQUE7QUNDRjtBREVBLFlBQUE7QUFDQTtFQUNFLDBCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9kb25hdGlvbi9kb25hdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIENocm9tZSwgU2FmYXJpLCBFZGdlLCBPcGVyYSAqL1xuaW5wdXQ6Oi13ZWJraXQtb3V0ZXItc3Bpbi1idXR0b24sXG5pbnB1dDo6LXdlYmtpdC1pbm5lci1zcGluLWJ1dHRvbiB7XG4gIC13ZWJraXQtYXBwZWFyYW5jZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xufVxuXG4vKiBGaXJlZm94ICovXG5pbnB1dFt0eXBlPW51bWJlcl0ge1xuICAtbW96LWFwcGVhcmFuY2U6dGV4dGZpZWxkO1xufVxuIiwiLyogQ2hyb21lLCBTYWZhcmksIEVkZ2UsIE9wZXJhICovXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbixcbmlucHV0Ojotd2Via2l0LWlubmVyLXNwaW4tYnV0dG9uIHtcbiAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xuICBtYXJnaW46IDA7XG59XG5cbi8qIEZpcmVmb3ggKi9cbmlucHV0W3R5cGU9bnVtYmVyXSB7XG4gIC1tb3otYXBwZWFyYW5jZTogdGV4dGZpZWxkO1xufSJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/donation/donation.component.ts": 
@@ -887,7 +887,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".tick {\n  color: #007bff;\n}\n\n.cross {\n  color: orange;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9vcHRpb24vb3B0aW9uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9vcHRpb24vb3B0aW9uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksY0FBQTtBQ0NKOztBRENBO0VBQ0ksYUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvb3B0aW9uL29wdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aWNrIHtcclxuICAgIGNvbG9yOiAjMDA3YmZmO1xyXG59XHJcbi5jcm9zcyB7XHJcbiAgICBjb2xvcjogb3JhbmdlO1xyXG59IiwiLnRpY2sge1xuICBjb2xvcjogIzAwN2JmZjtcbn1cblxuLmNyb3NzIHtcbiAgY29sb3I6IG9yYW5nZTtcbn0iXX0= */");
+            /* harmony default export */ __webpack_exports__["default"] = (".tick {\n  color: #007bff;\n}\n\n.cross {\n  color: orange;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9vcHRpb24vb3B0aW9uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9vcHRpb24vb3B0aW9uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksY0FBQTtBQ0NKOztBRENBO0VBQ0ksYUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvb3B0aW9uL29wdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aWNrIHtcclxuICAgIGNvbG9yOiAjMDA3YmZmO1xyXG59XHJcbi5jcm9zcyB7XHJcbiAgICBjb2xvcjogb3JhbmdlO1xyXG59IiwiLnRpY2sge1xuICBjb2xvcjogIzAwN2JmZjtcbn1cblxuLmNyb3NzIHtcbiAgY29sb3I6IG9yYW5nZTtcbn0iXX0= */");
             /***/ 
         }),
         /***/ "./src/app/option/option.component.ts": 
@@ -959,7 +959,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("td {\n  padding-left: 0.5em;\n  padding-right: 0.5em;\n  width: 2em;\n  border: 1px solid grey;\n}\n\nth, tr {\n  padding-left: 1em;\n  padding-right: 1em;\n  border: 1px solid grey;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9xdWVzdGlvbm5haXJlL3F1ZXN0aW9ubmFpcmUuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3F1ZXN0aW9ubmFpcmUvcXVlc3Rpb25uYWlyZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLG1CQUFBO0VBQ0Esb0JBQUE7RUFDQSxVQUFBO0VBQ0Esc0JBQUE7QUNDRDs7QURHQTtFQUNDLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxzQkFBQTtBQ0FEIiwiZmlsZSI6InNyYy9hcHAvcXVlc3Rpb25uYWlyZS9xdWVzdGlvbm5haXJlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGQge1xuXHRwYWRkaW5nLWxlZnQ6IDAuNWVtO1xuXHRwYWRkaW5nLXJpZ2h0OiAwLjVlbTtcblx0d2lkdGg6IDJlbTtcblx0Ym9yZGVyOiAxcHggc29saWQgZ3JleTtcbn1cblxuXG50aCwgdHIge1xuXHRwYWRkaW5nLWxlZnQ6IDFlbTtcblx0cGFkZGluZy1yaWdodDogMWVtO1xuXHRib3JkZXI6IDFweCBzb2xpZCBncmV5O1xufVxuIiwidGQge1xuICBwYWRkaW5nLWxlZnQ6IDAuNWVtO1xuICBwYWRkaW5nLXJpZ2h0OiAwLjVlbTtcbiAgd2lkdGg6IDJlbTtcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbn1cblxudGgsIHRyIHtcbiAgcGFkZGluZy1sZWZ0OiAxZW07XG4gIHBhZGRpbmctcmlnaHQ6IDFlbTtcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbn0iXX0= */");
+            /* harmony default export */ __webpack_exports__["default"] = ("td {\n  padding-left: 0.5em;\n  padding-right: 0.5em;\n  width: 2em;\n  border: 1px solid grey;\n}\n\nth, tr {\n  padding-left: 1em;\n  padding-right: 1em;\n  border: 1px solid grey;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9xdWVzdGlvbm5haXJlL3F1ZXN0aW9ubmFpcmUuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3F1ZXN0aW9ubmFpcmUvcXVlc3Rpb25uYWlyZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLG1CQUFBO0VBQ0Esb0JBQUE7RUFDQSxVQUFBO0VBQ0Esc0JBQUE7QUNDRDs7QURHQTtFQUNDLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxzQkFBQTtBQ0FEIiwiZmlsZSI6InNyYy9hcHAvcXVlc3Rpb25uYWlyZS9xdWVzdGlvbm5haXJlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGQge1xuXHRwYWRkaW5nLWxlZnQ6IDAuNWVtO1xuXHRwYWRkaW5nLXJpZ2h0OiAwLjVlbTtcblx0d2lkdGg6IDJlbTtcblx0Ym9yZGVyOiAxcHggc29saWQgZ3JleTtcbn1cblxuXG50aCwgdHIge1xuXHRwYWRkaW5nLWxlZnQ6IDFlbTtcblx0cGFkZGluZy1yaWdodDogMWVtO1xuXHRib3JkZXI6IDFweCBzb2xpZCBncmV5O1xufVxuIiwidGQge1xuICBwYWRkaW5nLWxlZnQ6IDAuNWVtO1xuICBwYWRkaW5nLXJpZ2h0OiAwLjVlbTtcbiAgd2lkdGg6IDJlbTtcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbn1cblxudGgsIHRyIHtcbiAgcGFkZGluZy1sZWZ0OiAxZW07XG4gIHBhZGRpbmctcmlnaHQ6IDFlbTtcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbn0iXX0= */");
             /***/ 
         }),
         /***/ "./src/app/questionnaire/questionnaire.component.ts": 
@@ -1051,7 +1051,7 @@
                 function DemographicService(cookieService, http) {
                     this.cookieService = cookieService;
                     this.http = http;
-                    this.requestUrl = '';
+                    this.requestUrl = 'https://localhost:5000';
                     this.demoForm = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]({});
                 }
                 DemographicService.prototype.requestForm = function () {
@@ -1118,7 +1118,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.route = route;
-                    this.requestUrl = '';
+                    this.requestUrl = 'https://localhost:5000';
                     this.organizations = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
                 }
                 DonationService.prototype.requestOrganizations = function () {
@@ -1201,7 +1201,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.router = router;
-                    this.requestUrl = '';
+                    this.requestUrl = 'https://localhost:5000';
                     this.questionSet = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
                     this.votes = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
                     this.usedCredits = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
@@ -1346,7 +1346,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.router = router;
-                    this.requestUrl = '';
+                    this.requestUrl = 'https://localhost:5000';
                     this.likertForm = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
                 }
                 LikertService.prototype.getCookieById = function (id) {
@@ -1462,7 +1462,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".sticky {\n  position: -webkit-sticky;\n  /* Safari */\n  position: sticky;\n  bottom: 15px;\n  z-index: 3;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9zdW1tYXJ5L3N1bW1hcnkuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHdCQUFBO0VBQTBCLFdBQUE7RUFDMUIsZ0JBQUE7RUFDSCxZQUFBO0VBQ0csVUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvc3VtbWFyeS9zdW1tYXJ5LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0aWNreSB7XHJcbiAgICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7IC8qIFNhZmFyaSAqL1xyXG4gICAgcG9zaXRpb246IHN0aWNreTtcclxuXHRib3R0b206IDE1cHg7XHJcbiAgICB6LWluZGV4OiAzO1xyXG59XHJcbiIsIi5zdGlja3kge1xuICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7XG4gIC8qIFNhZmFyaSAqL1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDE1cHg7XG4gIHotaW5kZXg6IDM7XG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = (".sticky {\n  position: -webkit-sticky;\n  /* Safari */\n  position: sticky;\n  bottom: 15px;\n  z-index: 3;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9zdW1tYXJ5L3N1bW1hcnkuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHdCQUFBO0VBQTBCLFdBQUE7RUFDMUIsZ0JBQUE7RUFDSCxZQUFBO0VBQ0csVUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvc3VtbWFyeS9zdW1tYXJ5LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0aWNreSB7XHJcbiAgICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7IC8qIFNhZmFyaSAqL1xyXG4gICAgcG9zaXRpb246IHN0aWNreTtcclxuXHRib3R0b206IDE1cHg7XHJcbiAgICB6LWluZGV4OiAzO1xyXG59XHJcbiIsIi5zdGlja3kge1xuICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7XG4gIC8qIFNhZmFyaSAqL1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDE1cHg7XG4gIHotaW5kZXg6IDM7XG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/summary/summary.component.ts": 
@@ -1595,7 +1595,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZpZGVvL3ZpZGVvLmNvbXBvbmVudC5zY3NzIn0= */");
+            /* harmony default export */ __webpack_exports__["default"] = (".video {\n  width: 70%;\n  border: 1px solid black;\n}\n\n.wrap-content {\n  word-wrap: break-word;\n}\n\n.wrapper {\n  display: table;\n  width: auto;\n  position: relative;\n  width: 70;\n  align-items: center;\n}\n\n.playpause {\n  background-image: url(http://png-4.findicons.com/files/icons/2315/default_icon/256/media_play_pause_resume.png);\n  background-repeat: no-repeat;\n  width: 50%;\n  height: 50%;\n  position: absolute;\n  left: 0%;\n  right: 0%;\n  top: 0%;\n  bottom: 0%;\n  margin: auto;\n  background-size: contain;\n  background-position: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC92aWRlby92aWRlby5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxVQUFBO0VBQ0EsdUJBQUE7QUNDSjs7QURDQTtFQUNJLHFCQUFBO0FDRUo7O0FEQUE7RUFDSSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLG1CQUFBO0FDR0o7O0FEREE7RUFDSSwrR0FBQTtFQUNBLDRCQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsT0FBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBQ0Esd0JBQUE7RUFDQSwyQkFBQTtBQ0lKIiwiZmlsZSI6InNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudmlkZW8ge1xuICAgIHdpZHRoOiA3MCU7XG4gICAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG59XG4ud3JhcC1jb250ZW50IHtcbiAgICB3b3JkLXdyYXA6IGJyZWFrLXdvcmQ7XG59XG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OnRhYmxlO1xuICAgIHdpZHRoOmF1dG87XG4gICAgcG9zaXRpb246cmVsYXRpdmU7XG4gICAgd2lkdGg6NzA7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5wbGF5cGF1c2Uge1xuICAgIGJhY2tncm91bmQtaW1hZ2U6dXJsKGh0dHA6Ly9wbmctNC5maW5kaWNvbnMuY29tL2ZpbGVzL2ljb25zLzIzMTUvZGVmYXVsdF9pY29uLzI1Ni9tZWRpYV9wbGF5X3BhdXNlX3Jlc3VtZS5wbmcpO1xuICAgIGJhY2tncm91bmQtcmVwZWF0Om5vLXJlcGVhdDtcbiAgICB3aWR0aDo1MCU7XG4gICAgaGVpZ2h0OjUwJTtcbiAgICBwb3NpdGlvbjphYnNvbHV0ZTtcbiAgICBsZWZ0OjAlO1xuICAgIHJpZ2h0OjAlO1xuICAgIHRvcDowJTtcbiAgICBib3R0b206MCU7XG4gICAgbWFyZ2luOmF1dG87XG4gICAgYmFja2dyb3VuZC1zaXplOmNvbnRhaW47XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xufSIsIi52aWRlbyB7XG4gIHdpZHRoOiA3MCU7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xufVxuXG4ud3JhcC1jb250ZW50IHtcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xufVxuXG4ud3JhcHBlciB7XG4gIGRpc3BsYXk6IHRhYmxlO1xuICB3aWR0aDogYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogNzA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5wbGF5cGF1c2Uge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cDovL3BuZy00LmZpbmRpY29ucy5jb20vZmlsZXMvaWNvbnMvMjMxNS9kZWZhdWx0X2ljb24vMjU2L21lZGlhX3BsYXlfcGF1c2VfcmVzdW1lLnBuZyk7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIHdpZHRoOiA1MCU7XG4gIGhlaWdodDogNTAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDAlO1xuICByaWdodDogMCU7XG4gIHRvcDogMCU7XG4gIGJvdHRvbTogMCU7XG4gIG1hcmdpbjogYXV0bztcbiAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/video/video.component.ts": 
@@ -1611,8 +1611,28 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             var VideoComponent = /** @class */ (function () {
                 function VideoComponent() {
+                    this.configurations = {
+                        "Audio Quality": 0,
+                        "Video Quality": 0,
+                        "Audio Loss": 0,
+                        "Video Loss": 0,
+                        "Audio-Video Synchronization": 0,
+                    };
                     this.videoIsPlaying = false;
+                    this.objectKeys = Object.keys;
+                    this.video_config = Array(5).keys().slice();
                 }
+                VideoComponent.prototype.calIdOfVideo = function () {
+                    var _this = this;
+                    var id = 0;
+                    this.objectKeys(this.configurations).forEach(function (item, index) {
+                        id = id + Number(_this.configurations[item]) * Math.pow(_this.video_config.length, index);
+                    });
+                    return id;
+                };
+                VideoComponent.prototype.onRadioCheck = function () {
+                    var idOfVideo = this.calIdOfVideo();
+                };
                 VideoComponent.prototype.playPause = function (e) {
                     if (this.videoIsPlaying) {
                         e.toElement.pause();
@@ -1623,14 +1643,17 @@
                         this.videoIsPlaying = true;
                     }
                 };
-                VideoComponent.prototype.mouseEnterVideo = function (e, code) {
+                VideoComponent.prototype.mouseVideoEvent = function (e, code) {
+                    var darken_style = "-webkit-filter: grayscale(100%); -moz-filter: grayscale(100%); -o-filter: grayscale(100%); -ms-filter: grayscale(100%); filter: grayscale(100%);";
                     if (code == 'enter') {
-                        console.log(e.toElement);
+                        e.toElement.style = darken_style;
                     }
                     else {
+                        e.toElement.style = "all: unset ";
                     }
                 };
                 VideoComponent.prototype.ngOnInit = function () {
+                    this.objectKeys(this.configurations).forEach;
                 };
                 return VideoComponent;
             }());
@@ -1800,7 +1823,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! /Users/hank/Desktop/workplace/QV-buyback/src/main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! /mnt/d/13_Bash/QV-buyback/src/main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);

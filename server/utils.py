@@ -10,63 +10,54 @@ def decide_path(gp):
 	# possible ways of implementing includes using another db to store the JSON
 	# MDB returns the least used json files.
 	""
-	# QV description
+
+	# video
+	video_demo = {
+		"type":"video",
+		"file":"video_demo"
+	}
+
+
+	# Liket Group: Group 1
+	likert = {
+		"type":"normal",
+		"file":"likert"
+	}
+
+	# QV group: Group 2
 	qv_example = {
 		"type":"qv",
 		"file":"example"
 	}
+
 	qv_test = {
 		"type":"normal",
 		"file":"test_qv"
 	}
 
-	# Phase 1 on charity
-	likert_p1 = {
-		"type":"normal",
-		"file":"likert_p1"
-	}
-	qv_p1_036 = {
+	qv_108 = {
 		"type":"qv",
-		"file":"qv_p1_36"
-	}
-	qv_p1_108 = {
-		"type":"qv",
-		"file":"qv_p1_108"
-	}
-	qv_p1_324 = {
-		"type":"qv",
-		"file":"qv_p1_324"
+		"file":"qv_108"
 	}
 
-	# Phase 2 on political issue
-	likert_p2 = {
+
+	# Buyback Group: group 3
+	video_sample_test = {
 		"type":"normal",
-		"file":"likert_p2"
-	}
-	qv_p2_036 = {
-		"type":"qv",
-		"file":"qv_p2_36"
-	}
-	qv_p2_108 = {
-		"type":"qv",
-		"file":"qv_p2_108"
-	}
-	qv_p2_324 = {
-		"type":"qv",
-		"file":"qv_p2_324"
+		"file":"video_sample_test"
 	}
 
-	# donation
-	donation = {
-		"type":"donation",
-		"file":"donation"
+	video_actual = {
+		"type":"video",
+		"file":"video"
+	}
+
+	video_test = {
+		"type":"normal",
+		"file":"video_test"
 	}
 
 	# thank you
-	thank_full = {
-		"type":"complete",
-		"file":"thank_full"
-	}
 
 	thank_short = {
 		"type":"complete",
@@ -83,30 +74,24 @@ def decide_path(gp):
 		"file":"thank_attention"
 	}
 
+	thank_you = {
+		"type":"complete",
+		"file":"thank_full"
+	}
+
 	# 8 path
-	p1 = [likert_p1, likert_p2, donation, thank_short]
-	p2 = [qv_example, qv_test, qv_p1_036, qv_p1_108, qv_p2_036, qv_p2_108, donation, thank_complete]
-	p3 = [qv_example, qv_test, qv_p1_036, qv_p1_324, qv_p2_036, qv_p2_324, donation, thank_complete]
-	p4 = [qv_example, qv_test, qv_p1_108, qv_p1_324, qv_p2_108, qv_p2_324, donation, thank_complete]
-	p5 = [qv_example, qv_test, qv_p1_108, qv_p1_036, qv_p2_108, qv_p2_036, donation, thank_complete]
-	p6 = [qv_example, qv_test, qv_p1_324, qv_p1_036, qv_p2_324, qv_p2_036, donation, thank_complete]
-	p7 = [qv_example, qv_test, qv_p1_324, qv_p1_108, qv_p2_324, qv_p2_108, donation, thank_complete]
-	p8 = [likert_p1, likert_p2, donation, thank_short]
-	thank_you = [thank_full]
+	p1 = [video_demo, likert, thank_short]
+	p2 = [video_demo, qv_example, qv_test, qv_108, thank_complete]
+	p3 = [video_demo, video_sample_test, video_actual, video_test, thank_complete]
+	full_test = [video_demo, likert, qv_example, qv_test, qv_108, video_sample_test, video_actual, video_test, thank_complete]
 
 	# objectify paths to variable names
 	collection = {
 		"p1": p1,
 		"p2": p2,
 		"p3": p3,
-		"p4": p4,
-		"p5": p5,
-		"p6": p6,
-		"p7": p7,
-		"p8": p8
+		"test": full_test
 	}
-
-	g_test = [likert_p1, likert_p2, qv_example, qv_test, qv_p1_036, qv_p1_108, qv_p2_324, qv_p2_036, qv_p2_108, qv_p2_324, donation]
 
 	random_ms = randint(1,30)*0.1
 	sleep(random_ms)
