@@ -33,7 +33,7 @@ export class DemographicService {
     }
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
   getCookieById(id: string){
     return this.cookieService.get(id);
   }

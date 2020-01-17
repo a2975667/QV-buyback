@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'likert', component: LikertComponent},
   { path: 'video', component: VideoComponent},
   { path: 'complete', component: CompleteComponent},
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
