@@ -1099,7 +1099,7 @@ let DemographicService = class DemographicService {
     constructor(cookieService, http) {
         this.cookieService = cookieService;
         this.http = http;
-        this.requestUrl = 'https://localhost:5000';
+        this.requestUrl = 'http://localhost:5000';
         this.demoForm = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]({});
     }
     requestForm() {
@@ -1176,7 +1176,7 @@ let DonationService = class DonationService {
         this.http = http;
         this.cookieService = cookieService;
         this.route = route;
-        this.requestUrl = 'https://localhost:5000';
+        this.requestUrl = 'http://localhost:5000';
         this.organizations = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
     }
     requestOrganizations() {
@@ -1267,7 +1267,7 @@ let GlobalService = class GlobalService {
         this.http = http;
         this.cookieService = cookieService;
         this.router = router;
-        this.requestUrl = 'https://localhost:5000';
+        this.requestUrl = 'http://localhost:5000';
         this.questionSet = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.votes = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.usedCredits = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
@@ -1360,6 +1360,7 @@ let GlobalService = class GlobalService {
             console.error('An error occurred:', error.error.message);
         }
         else {
+            console.log(error);
             console.error(`Backend returned code ${error.status}, ` +
                 `body was: ${error.error}`);
         }
@@ -1420,7 +1421,7 @@ let LikertService = class LikertService {
         this.http = http;
         this.cookieService = cookieService;
         this.router = router;
-        this.requestUrl = 'https://localhost:5000';
+        this.requestUrl = 'http://localhost:5000';
         this.likertForm = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
     }
     getCookieById(id) {
@@ -1833,7 +1834,6 @@ let WelcomeComponent = class WelcomeComponent {
                 let userGP = this.route.snapshot.paramMap.get('id');
                 this.gService.getUserID(userGP).subscribe((user) => {
                     this.initCookie(user);
-                    console.log(user);
                     if (user.path_id == "thank_you") {
                         this.cookieService.deleteAll('/');
                         this.router.navigate(['complete']);

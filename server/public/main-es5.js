@@ -1051,7 +1051,7 @@
                 function DemographicService(cookieService, http) {
                     this.cookieService = cookieService;
                     this.http = http;
-                    this.requestUrl = 'https://localhost:5000';
+                    this.requestUrl = 'http://localhost:5000';
                     this.demoForm = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]({});
                 }
                 DemographicService.prototype.requestForm = function () {
@@ -1118,7 +1118,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.route = route;
-                    this.requestUrl = 'https://localhost:5000';
+                    this.requestUrl = 'http://localhost:5000';
                     this.organizations = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
                 }
                 DonationService.prototype.requestOrganizations = function () {
@@ -1201,7 +1201,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.router = router;
-                    this.requestUrl = 'https://localhost:5000';
+                    this.requestUrl = 'http://localhost:5000';
                     this.questionSet = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
                     this.votes = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
                     this.usedCredits = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
@@ -1296,6 +1296,7 @@
                         console.error('An error occurred:', error.error.message);
                     }
                     else {
+                        console.log(error);
                         console.error("Backend returned code " + error.status + ", " +
                             ("body was: " + error.error));
                     }
@@ -1346,7 +1347,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.router = router;
-                    this.requestUrl = 'https://localhost:5000';
+                    this.requestUrl = 'http://localhost:5000';
                     this.likertForm = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
                 }
                 LikertService.prototype.getCookieById = function (id) {
@@ -1734,7 +1735,6 @@
                             var userGP = this.route.snapshot.paramMap.get('id');
                             this.gService.getUserID(userGP).subscribe(function (user) {
                                 _this.initCookie(user);
-                                console.log(user);
                                 if (user.path_id == "thank_you") {
                                     _this.cookieService.deleteAll('/');
                                     _this.router.navigate(['complete']);

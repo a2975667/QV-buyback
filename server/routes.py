@@ -207,6 +207,12 @@ def play(filename):
 	print(filename)
 	return send_from_directory("video", filename)
 
+@app.route('/api/audio/<filename>', methods=['GET'])
+def play_audio(filename):
+	#filename=filename+'.mp4'
+	print(filename)
+	return send_from_directory("audio", filename)
+
 @app.route('/admin/setup_buyback_db')
 def setup_route_db():
 	"""comment out for production"""

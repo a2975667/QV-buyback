@@ -139,5 +139,5 @@ export class GlobalService {
     }
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
 }
