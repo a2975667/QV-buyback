@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class DemographicService {
-  requestUrl = 'https://localhost:5000';
+  requestUrl = 'http://localhost:5000';
   demoForm: BehaviorSubject<Object> = new BehaviorSubject({});
   constructor(
     private cookieService: CookieService,

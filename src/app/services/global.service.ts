@@ -20,7 +20,7 @@ function calTotalCredits(votesArray) {
   providedIn: 'root'
 })
 export class GlobalService {
-  requestUrl = 'https://localhost:5000';
+  requestUrl = 'http://localhost:5000';
   @Output() questionSet: EventEmitter<object> = new EventEmitter();
   @Output() votes: EventEmitter<Array<Array<number>>> = new EventEmitter();
   @Output() usedCredits: EventEmitter<Array<number>> = new EventEmitter();
@@ -32,12 +32,14 @@ export class GlobalService {
     private cookieService: CookieService,
     private router: Router,
   ) { }
+
   getUserID(userGP: string) {
     return this.http.post<User>(`${this.requestUrl}/createUser`, {gp: userGP})
     .pipe(
       catchError(this.handleError)
     );
   }
+
   getCookieById(id: string) {
     return this.cookieService.get(id);
   }
@@ -130,6 +132,7 @@ export class GlobalService {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
+      console.log(error)
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
