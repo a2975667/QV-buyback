@@ -16,6 +16,7 @@ export class DonationService {
     private cookieService: CookieService,
     private route: Router,
   ) { }
+  
   requestOrganizations(){
     let donationAPI = `${this.requestUrl}/api/donation`;
     this.http.get(donationAPI).pipe(
@@ -24,6 +25,7 @@ export class DonationService {
       this.organizations.next(data['donation']);
     });
   }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
@@ -35,6 +37,7 @@ export class DonationService {
     return throwError(
       'Something bad happened; please try again later.');
   };
+
   getCookieById(id: string){
     return this.cookieService.get(id);
   }

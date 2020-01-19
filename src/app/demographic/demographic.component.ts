@@ -35,6 +35,8 @@ export class DemographicComponent implements OnInit {
         let type: string = pathArray[pathIndex]['type'];       
         if(type == 'normal'){
           this.route.navigate(['likert']);
+        } else if (type == 'video') {
+          this.route.navigate(['video']);
         } else {
           this.route.navigate(['qv']);
         }

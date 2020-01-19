@@ -20,14 +20,13 @@ export class LikertComponent implements OnInit {
     let pathIndex = Number(this.cookieService.get('user_current_path_index'));
     let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
     let type: string = pathArray[pathIndex]['type'];    
-    console.log(pathArray[pathIndex])   
     if(type == 'normal'){
       this.route.navigate(['likert']);
       this.liService.requestForm();
     } else if(type == 'qv'){
       this.route.navigate(['qv']);
-    } else if(type == 'donation'){
-      this.route.navigate(['donation']);
+    } else if(type == 'video'){
+      this.route.navigate(['video']);
     } else if(type == 'complete'){
       this.route.navigate(['complete']);
     }

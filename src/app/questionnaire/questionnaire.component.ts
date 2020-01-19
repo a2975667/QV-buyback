@@ -44,8 +44,8 @@ export class QuestionnaireComponent implements OnInit {
         this.currentFile = pathIndex + 1;
       })
       this.gService.getQuestionnaire();
-    } else if(type == 'donation') {
-      this.route.navigate(['donation']);
+    } else if(type == 'video') {
+      this.route.navigate(['video']);
     } else if(type == 'complete') {
       this.route.navigate(['complete']);
     }

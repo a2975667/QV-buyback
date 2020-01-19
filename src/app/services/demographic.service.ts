@@ -19,7 +19,6 @@ export class DemographicService {
     this.http.get(donationAPI).pipe(
       catchError(this.handleError)
     ).subscribe(data => {
-      console.log(data);
       this.demoForm.next(data);
     });
   }

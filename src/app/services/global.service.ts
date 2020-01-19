@@ -43,14 +43,17 @@ export class GlobalService {
   getCookieById(id: string) {
     return this.cookieService.get(id);
   }
+  
   setCookieById(id: string, val: string) {
     this.cookieService.set(id, val, undefined, '/');
   }
+
   getCurrentPath() :string {
     let pathIndex = Number(this.getCookieById('user_current_path_index'));
     let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
     return pathArray[pathIndex]['file'];
   }
+
   generateSubmitPost(completeFlag: boolean) {
     let submitPost: submitPostSchema = {} as submitPostSchema;
     submitPost.complete_flag = completeFlag;
@@ -61,15 +64,18 @@ export class GlobalService {
     submitPost.user_id = this.getCookieById('user_id');
     return submitPost;
   }
+
   update() :void {
     this.usedCredits.emit(this.usedCreditsArray);
     this.votes.emit(this.votesContent);
   }
+
   modifyVotesByID(q_id, o_id, value) {
     this.votesContent[q_id-1][o_id-1] = value;
     this.usedCreditsArray[q_id-1] = calTotalCredits(this.votesContent[q_id-1]);    ;
     this.update();
   }
+
   getQuestionnaire() {
     let path = this.getCurrentPath();
     const result = this.http.get(`${this.requestUrl}/api/qv/${path}`)
@@ -91,6 +97,7 @@ export class GlobalService {
     });
     return;
   }
+
   submit() {
     let nextQuestionIndex: number = Number(this.getCookieById('user_current_question_index')) + 1;
     let submitData: submitPostSchema = this.generateSubmitPost(false);
@@ -128,6 +135,7 @@ export class GlobalService {
       });
     }
   }
+  
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
