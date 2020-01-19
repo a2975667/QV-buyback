@@ -1,16 +1,11 @@
 <div class="container">
     <h1>
-        VIDEO
+        {{title}}
     </h1>
     <div class="row">
         <div class="col-sm wrap-content">
             <p>
-                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vmsappabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms
-                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms
-                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms
-                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms
-                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms
-                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms
+                {{description}}
             </p>
                 
         </div>
@@ -21,13 +16,22 @@
     
     <div class="row justify-content-center">
         <div class="col-sm-8 wrap-content">
-       <video 
-            class="embed-responsive embed-responsive-21by9"
-            (click)="playPause($event)"
-            src="http://localhost:5000/api/video/sample.mp4" 
-            ></video>
+        <div #videoOverlay class="original">
+            <video 
+                (click)="playPause($event)"
+                #videoPlayer
+                src="" 
+                ></video>
         </div>
+        <audio
+        #audioPlayer
+        src="http://localhost:5000/api/audio/sample_audio.webm">
+        </audio>
+        </div>
+        
     </div>
+
+        
     <p></p>
     <h2>
         Configuration
@@ -39,12 +43,13 @@
                   <tr>
                     <th scope="col">Configuration Name</th>
                     <th scope="col" colspan=5>Score ( 0 ~ 4 )</th>
+                    <th scope="col" colspan=3>Cost</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let k of objectKeys(configurations)">
                     <th scope="row">{{k}}</th>
-                    <td *ngFor="let i of video_config">
+                    <td *ngFor="let i of objectKeys(videoConfig)">
                         <div class="form-check">
                             <input 
                                 class="form-check-input" 
@@ -57,9 +62,32 @@
                             <label class="form-check-label" for="{{k}}-{{i}}">{{i}}</label>
                           </div>
                     </td>
+                    <td>
+                        ${{configurations[k]*5}}
+                    </td>
                   </tr>
+                  <tr>
+                    <tr >
+                        <th scope="row"></th>
+                        <td *ngFor="let i of objectKeys(videoConfig)">
+                        </td>
+                        <td>
+                            Total: ${{sumUpCost(videoConfig)*5}}
+                        </td>
+                    </tr>
+                    <tr >
+                        <th scope="row"></th>
+                        <td *ngFor="let i of objectKeys(videoConfig)">
+                        </td>
+                        <td>
+                            <button type="submit" class="mr-2 btn btn-success">
+                                Submit
+                            </button>                        
+                        </td>
+                    </tr>
                 </tbody>
               </table>
+              
           </div>
     </div>
     

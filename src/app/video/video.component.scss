@@ -1,9 +1,41 @@
 .video {
-    width: 70%;
-    border: 1px solid black;
+    width: 100%;
 }
 .wrap-content {
     word-wrap: break-word;
+}
+.content {
+    position: relative;
+    width: 100%;
+}
+.content video {
+    width: 100%;
+    display: block;
+}
+.content:before {
+    content: '';
+    background: black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.original {
+    position: relative;
+    width: 100%;
+}
+.original video {
+    width: 100%;
+    display: block;
+}
+.original:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 .wrapper{
     display:table;
