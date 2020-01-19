@@ -178,6 +178,16 @@ def submit_demographic():
 	db.demographic.insert_one(insert_data)
 	return jsonify({'ok': True}), 200
 
+@app.route('/submit-video-setting', methods=['POST'])
+def submit_video_setting():
+	"""submit video setting to db"""
+
+	print(request.json)
+	insert_data = request.json
+	insert_data['video_setting'] = datetime.utcnow()
+	db.videoSetting.insert_one(insert_data)
+	return jsonify({'ok': True}), 200
+
 # qv
 @app.route('/api/qv/<string:file_name>')
 def show_subpath(file_name):
