@@ -1,0 +1,8 @@
+ffmpeg -i sample.mp4 -f mp4 -vcodec mpeg4 -b:v 10 -s 75x50 -ac 2 -threads 13 vq0.webm &&
+ffmpeg -i sample.mp4 -f mp4 -vcodec mpeg4 -b:v 10 -s 150x100 -ac 2 -threads 13 vq1.webm &&
+ffmpeg -i sample.mp4 -f mp4 -vcodec mpeg4 -b:v 10 -s 300x200 -ac 2 -threads 13 vq2.webm &&
+ffmpeg -i sample.mp4 -f mp4 -vcodec mpeg4 -b:v 10 -s 600x400 -ac 2 -threads 13 vq3.webm &&
+ffmpeg -i sample.mp4 -f mp4 -vcodec mpeg4 -b:v 10 -s 1200x800 -ac 2 -threads 13 vq4.webm
+
+
+ffmpeg -y -i sample_audio.mp3 -c:a aac -b:a 120k -vn out5.m4a
