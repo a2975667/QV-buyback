@@ -18,7 +18,7 @@ export class DonationService {
     private cookieService: CookieService,
     private route: Router,
   ) { }
-  
+
   requestOrganizations(){
     let donationAPI = `${this.requestUrl}/api/donation`;
     this.http.get(donationAPI).pipe(

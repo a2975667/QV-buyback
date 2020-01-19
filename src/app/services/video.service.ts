@@ -59,9 +59,9 @@ export class VideoService {
   submit(data){
     let pathIndex = Number(this.getCookieById('user_current_path_index'));
     let userId = this.cookieService.get('user_id');
-   
+
     this.cookieService.set('user_current_path_index', String(pathIndex+1),undefined,'/');
-    return this.http.post(`${this.requestUrl}/submit-video-setting`, 
+    return this.http.post(`${this.requestUrl}/submit-video-setting`,
       {
         data: data,
         userId: userId,

@@ -108,7 +108,7 @@ export class LikertService {
     };
 
     this.cookieService.set('user_current_path_index', String(pathIndex+1),undefined,'/');
-    return this.http.post(`${this.requestUrl}/submit`, 
+    return this.http.post(`${this.requestUrl}/submit`,
       {
         data: data,
         userId: userId,
