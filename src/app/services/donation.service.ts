@@ -5,11 +5,13 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DonationService {
-  requestUrl = 'http://localhost:5000';
+  requestUrl = environment.apiUrl;
   organizations: BehaviorSubject<Array<Object>> = new BehaviorSubject([]);
   constructor(
     private http: HttpClient,

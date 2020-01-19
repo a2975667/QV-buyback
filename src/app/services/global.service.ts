@@ -7,6 +7,7 @@ import { Questionnaire } from '../schema/questionnaire';
 import { CookieService } from 'ngx-cookie-service';
 import { submitPostSchema } from '../schema/submitPostSchema';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 function calTotalCredits(votesArray) {
   let q_totalUsedCredits = 0;
@@ -20,7 +21,7 @@ function calTotalCredits(votesArray) {
   providedIn: 'root'
 })
 export class GlobalService {
-  requestUrl = 'http://localhost:5000';
+  requestUrl = environment.apiUrl;
   @Output() questionSet: EventEmitter<object> = new EventEmitter();
   @Output() votes: EventEmitter<Array<Array<number>>> = new EventEmitter();
   @Output() usedCredits: EventEmitter<Array<number>> = new EventEmitter();
