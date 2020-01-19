@@ -4,11 +4,12 @@ import { BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class DemographicService {
-  requestUrl = 'http://localhost:5000';
+  requestUrl = environment.apiUrl;
   demoForm: BehaviorSubject<Object> = new BehaviorSubject({});
   constructor(
     private cookieService: CookieService,

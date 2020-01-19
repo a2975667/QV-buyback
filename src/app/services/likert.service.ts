@@ -4,12 +4,13 @@ import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LikertService {
-  requestUrl = 'http://localhost:5000';
+  requestUrl = environment.apiUrl;
   likertForm: BehaviorSubject<Object> = new BehaviorSubject({});
   constructor(
     private http: HttpClient,

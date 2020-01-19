@@ -3,7 +3,7 @@ import { VideoService } from '../services/video.service';
 import { timer, Observable, Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-video',
@@ -20,18 +20,18 @@ export class VideoComponent implements OnInit {
   videoElement: HTMLVideoElement;
   audioElement: HTMLAudioElement;
 
-  videoFilePrefix = "http://localhost:5000/api/video/";
+  videoFilePrefix = environment.apiUrl+"/api/video/";
   videoSrc = "";
 
-  audioFilePrefix = "http://localhost:5000/api/audio/";
+  audioFilePrefix = environment.apiUrl+"/api/audio/";
   audioSrc = "";
 
   configurations = {
-    "Audio Quality": 0,
-    "Video Quality": 0,
-    "Audio Loss": 0,
-    "Video Loss": 0,
-    "Audio-Video Synchronization": 0,
+    "Audio Quality": '0',
+    "Video Quality": '0',
+    "Audio Loss": '0',
+    "Video Loss": '0',
+    "Audio-Video Synchronization": '0',
   }
   
   videoIsPlaying=false;
@@ -107,8 +107,14 @@ export class VideoComponent implements OnInit {
     this.videoElement.currentTime = videoTempTime;
     this.audioElement.currentTime = audioTempTime;
     this.syncAudioWithVideo();
-    this.videoElement.play();
-    this.audioElement.play();
+    let ve = this.videoElement;
+    this.videoElement.addEventListener('loadeddata', function() {
+      ve.play();
+    }, false);    
+    let ae = this.audioElement;
+    this.videoElement.addEventListener('loadeddata', function() {
+      ae.play();
+    }, false);
     this.jitterAudio(Number(this.configurations['Audio Loss']));
     this.jitterVideo(Number(this.configurations['Video Loss']));
   }
@@ -117,7 +123,7 @@ export class VideoComponent implements OnInit {
     this.videoConfig = Object.values(this.configurations).map(a => Number(a));
     this.refreshPlayback();
   }
-
+  
   playPause(e) {
     if(this.videoIsPlaying){
       this.audioElement.pause()
@@ -162,10 +168,10 @@ export class VideoComponent implements OnInit {
       this.audioSrc = this.audioFilePrefix+"aq"+this.configurations['Audio Quality']+".m4a?t="+time;
       this.videoElement.src = this.videoSrc;
       this.audioElement.src = this.audioSrc;
-      this.refreshPlayback();
+      // this.refreshPlayback();
     })
   }
-  
+
   submit(){
     this.vService.submit(this.videoConfig).subscribe(
       result => {
