@@ -20,7 +20,7 @@ function calTotalCredits(votesArray) {
   providedIn: 'root'
 })
 export class GlobalService {
-  requestUrl = 'http://localhost:5000';
+  requestUrl = '';
   @Output() questionSet: EventEmitter<object> = new EventEmitter();
   @Output() votes: EventEmitter<Array<Array<number>>> = new EventEmitter();
   @Output() usedCredits: EventEmitter<Array<number>> = new EventEmitter();
@@ -43,7 +43,7 @@ export class GlobalService {
   getCookieById(id: string) {
     return this.cookieService.get(id);
   }
-  
+
   setCookieById(id: string, val: string) {
     this.cookieService.set(id, val, undefined, '/');
   }
@@ -135,7 +135,7 @@ export class GlobalService {
       });
     }
   }
-  
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
