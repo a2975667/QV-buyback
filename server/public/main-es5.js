@@ -127,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        VIDEO\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <p>\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vmsappabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n                appabasefsdfsefsdkvm;cvml;zsdkfnglzxcmvlkdsnrgpksmnf;sldfm;seotjspeoms;d,vmsd;fms;dov;xlvms;elfm;dlvmxc,vmspefmc,vms\n            </p>\n                \n        </div>\n    </div>\n    <h2>\n        Video\n    </h2>\n    \n    <div class=\"row justify-content-center\">\n        <div class=\"col-sm-8 wrap-content\">\n       <video \n            class=\"embed-responsive embed-responsive-21by9\"\n            (click)=\"playPause($event)\"\n            src=\"http://localhost:5000/api/video/sample.mp4\" \n            ></video>\n        </div>\n    </div>\n    <p></p>\n    <h2>\n        Configuration\n    </h2>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <table class=\"table\">\n                <thead>\n                  <tr>\n                    <th scope=\"col\">Configuration Name</th>\n                    <th scope=\"col\" colspan=5>Score ( 0 ~ 4 )</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let k of objectKeys(configurations)\">\n                    <th scope=\"row\">{{k}}</th>\n                    <td *ngFor=\"let i of video_config\">\n                        <div class=\"form-check\">\n                            <input \n                                class=\"form-check-input\" \n                                type=\"radio\" \n                                name=\"{{k}}\" \n                                id=\"{{k}}-{{i}}\" \n                                value=\"{{i}}\" \n                                [(ngModel)]=\"configurations[k]\"\n                                (change)=\"onRadioCheck()\">\n                            <label class=\"form-check-label\" for=\"{{k}}-{{i}}\">{{i}}</label>\n                          </div>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n          </div>\n    </div>\n    \n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <p>\n                {{description}}\n            </p>\n\n        </div>\n    </div>\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-sm-8 wrap-content\">\n        <div #videoOverlay class=\"original\">\n            <video\n                (click)=\"playPause($event)\"\n                #videoPlayer\n                src=\"\"\n                ></video>\n        </div>\n        <audio\n        #audioPlayer\n        src=\"/api/audio/sample_audio.webm\">\n        </audio>\n        </div>\n\n    </div>\n\n\n    <p></p>\n    <h2>\n        Configuration\n    </h2>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <table class=\"table\">\n                <thead>\n                  <tr>\n                    <th scope=\"col\">Configuration Name</th>\n                    <th scope=\"col\" colspan=5>Score ( 0 ~ 4 )</th>\n                    <th scope=\"col\" colspan=3>Cost</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let k of objectKeys(configurations)\">\n                    <th scope=\"row\">{{k}}</th>\n                    <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                        <div class=\"form-check\">\n                            <input\n                                class=\"form-check-input\"\n                                type=\"radio\"\n                                name=\"{{k}}\"\n                                id=\"{{k}}-{{i}}\"\n                                value=\"{{i}}\"\n                                [(ngModel)]=\"configurations[k]\"\n                                (change)=\"onRadioCheck()\">\n                            <label class=\"form-check-label\" for=\"{{k}}-{{i}}\">{{i}}</label>\n                          </div>\n                    </td>\n                    <td>\n                        ${{configurations[k]*5}}\n                    </td>\n                  </tr>\n                  <tr>\n                    <tr >\n                        <th scope=\"row\"></th>\n                        <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                        </td>\n                        <td>\n                            Total: ${{sumUpCost(videoConfig)*5}}\n                        </td>\n                    </tr>\n                    <tr >\n                        <th scope=\"row\"></th>\n                        <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                        </td>\n                        <td>\n                            <button type=\"submit\" class=\"mr-2 btn btn-success\">\n                                Submit\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n              </table>\n\n          </div>\n    </div>\n\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/welcome/welcome.component.html": 
@@ -686,6 +686,9 @@
                         if (type == 'normal') {
                             _this.route.navigate(['likert']);
                         }
+                        else if (type == 'video') {
+                            _this.route.navigate(['video']);
+                        }
                         else {
                             _this.route.navigate(['qv']);
                         }
@@ -835,7 +838,6 @@
                     var pathIndex = Number(this.cookieService.get('user_current_path_index'));
                     var pathArray = JSON.parse(this.cookieService.get('user_path'));
                     var type = pathArray[pathIndex]['type'];
-                    console.log(pathArray[pathIndex]);
                     if (type == 'normal') {
                         this.route.navigate(['likert']);
                         this.liService.requestForm();
@@ -843,8 +845,8 @@
                     else if (type == 'qv') {
                         this.route.navigate(['qv']);
                     }
-                    else if (type == 'donation') {
-                        this.route.navigate(['donation']);
+                    else if (type == 'video') {
+                        this.route.navigate(['video']);
                     }
                     else if (type == 'complete') {
                         this.route.navigate(['complete']);
@@ -1009,8 +1011,8 @@
                         });
                         this.gService.getQuestionnaire();
                     }
-                    else if (type == 'donation') {
-                        this.route.navigate(['donation']);
+                    else if (type == 'video') {
+                        this.route.navigate(['video']);
                     }
                     else if (type == 'complete') {
                         this.route.navigate(['complete']);
@@ -1051,14 +1053,13 @@
                 function DemographicService(cookieService, http) {
                     this.cookieService = cookieService;
                     this.http = http;
-                    this.requestUrl = 'http://localhost:5000';
+                    this.requestUrl = '';
                     this.demoForm = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]({});
                 }
                 DemographicService.prototype.requestForm = function () {
                     var _this = this;
                     var donationAPI = this.requestUrl + "/api/demographic";
                     this.http.get(donationAPI).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError)).subscribe(function (data) {
-                        console.log(data);
                         _this.demoForm.next(data);
                     });
                 };
@@ -1072,7 +1073,6 @@
                     }
                     return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])('Something bad happened; please try again later.');
                 };
-                ;
                 DemographicService.prototype.getCookieById = function (id) {
                     return this.cookieService.get(id);
                 };
@@ -1118,7 +1118,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.route = route;
-                    this.requestUrl = 'http://localhost:5000';
+                    this.requestUrl = '';
                     this.organizations = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
                 }
                 DonationService.prototype.requestOrganizations = function () {
@@ -1201,7 +1201,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.router = router;
-                    this.requestUrl = 'http://localhost:5000';
+                    this.requestUrl = '';
                     this.questionSet = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
                     this.votes = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
                     this.usedCredits = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
@@ -1302,7 +1302,6 @@
                     }
                     return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])('Something bad happened; please try again later.');
                 };
-                ;
                 return GlobalService;
             }());
             GlobalService.ctorParameters = function () { return [
@@ -1347,7 +1346,7 @@
                     this.http = http;
                     this.cookieService = cookieService;
                     this.router = router;
-                    this.requestUrl = 'http://localhost:5000';
+                    this.requestUrl = '';
                     this.likertForm = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
                 }
                 LikertService.prototype.getCookieById = function (id) {
@@ -1453,6 +1452,87 @@
                     providedIn: 'root'
                 })
             ], LikertService);
+            /***/ 
+        }),
+        /***/ "./src/app/services/video.service.ts": 
+        /*!*******************************************!*\
+          !*** ./src/app/services/video.service.ts ***!
+          \*******************************************/
+        /*! exports provided: VideoService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoService", function () { return VideoService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/ngx-cookie-service.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            var VideoService = /** @class */ (function () {
+                function VideoService(http, cookieService, router) {
+                    this.http = http;
+                    this.cookieService = cookieService;
+                    this.router = router;
+                    this.requestUrl = '';
+                    this.videoForm = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
+                }
+                VideoService.prototype.getCookieById = function (id) {
+                    return this.cookieService.get(id);
+                };
+                VideoService.prototype.getCurrentPath = function () {
+                    if (!this.cookieService.check('user_id')) {
+                        this.router.navigate(['/']);
+                        return null;
+                    }
+                    else {
+                        var pathIndex = Number(this.getCookieById('user_current_path_index'));
+                        var pathArray = JSON.parse(this.getCookieById('user_path'));
+                        return pathArray[pathIndex]['file'];
+                    }
+                };
+                VideoService.prototype.requestForm = function () {
+                    var _this = this;
+                    var fileName = this.getCurrentPath();
+                    var fileAPI = this.requestUrl + "/api/qv/" + fileName;
+                    this.http.get(fileAPI).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError)).subscribe(function (data) {
+                        console.log(data);
+                        _this.videoForm.next(data);
+                    });
+                };
+                VideoService.prototype.handleError = function (error) {
+                    if (error.error instanceof ErrorEvent) {
+                        console.error('An error occurred:', error.error.message);
+                    }
+                    else {
+                        console.error("Backend returned code " + error.status + ", " +
+                            ("body was: " + error.error));
+                    }
+                    return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])('Something bad happened; please try again later.');
+                };
+                ;
+                VideoService.prototype.submit = function (data) {
+                    var pathIndex = Number(this.getCookieById('user_current_path_index'));
+                    var userId = this.cookieService.get('user_id');
+                    this.cookieService.set('user_current_path_index', String(pathIndex + 1), undefined, '/');
+                    return this.http.post(this.requestUrl + "/submit-video-setting", {
+                        data: data,
+                        userId: userId,
+                    }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+                };
+                return VideoService;
+            }());
+            VideoService.ctorParameters = function () { return [
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
+                { type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_5__["CookieService"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
+            ]; };
+            VideoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], VideoService);
             /***/ 
         }),
         /***/ "./src/app/summary/summary.component.scss": 
@@ -1596,7 +1676,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".video {\n  width: 70%;\n  border: 1px solid black;\n}\n\n.wrap-content {\n  word-wrap: break-word;\n}\n\n.wrapper {\n  display: table;\n  width: auto;\n  position: relative;\n  width: 70;\n  align-items: center;\n}\n\n.playpause {\n  background-image: url(http://png-4.findicons.com/files/icons/2315/default_icon/256/media_play_pause_resume.png);\n  background-repeat: no-repeat;\n  width: 50%;\n  height: 50%;\n  position: absolute;\n  left: 0%;\n  right: 0%;\n  top: 0%;\n  bottom: 0%;\n  margin: auto;\n  background-size: contain;\n  background-position: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC92aWRlby92aWRlby5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxVQUFBO0VBQ0EsdUJBQUE7QUNDSjs7QURDQTtFQUNJLHFCQUFBO0FDRUo7O0FEQUE7RUFDSSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLG1CQUFBO0FDR0o7O0FEREE7RUFDSSwrR0FBQTtFQUNBLDRCQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsT0FBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBQ0Esd0JBQUE7RUFDQSwyQkFBQTtBQ0lKIiwiZmlsZSI6InNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudmlkZW8ge1xuICAgIHdpZHRoOiA3MCU7XG4gICAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG59XG4ud3JhcC1jb250ZW50IHtcbiAgICB3b3JkLXdyYXA6IGJyZWFrLXdvcmQ7XG59XG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OnRhYmxlO1xuICAgIHdpZHRoOmF1dG87XG4gICAgcG9zaXRpb246cmVsYXRpdmU7XG4gICAgd2lkdGg6NzA7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5wbGF5cGF1c2Uge1xuICAgIGJhY2tncm91bmQtaW1hZ2U6dXJsKGh0dHA6Ly9wbmctNC5maW5kaWNvbnMuY29tL2ZpbGVzL2ljb25zLzIzMTUvZGVmYXVsdF9pY29uLzI1Ni9tZWRpYV9wbGF5X3BhdXNlX3Jlc3VtZS5wbmcpO1xuICAgIGJhY2tncm91bmQtcmVwZWF0Om5vLXJlcGVhdDtcbiAgICB3aWR0aDo1MCU7XG4gICAgaGVpZ2h0OjUwJTtcbiAgICBwb3NpdGlvbjphYnNvbHV0ZTtcbiAgICBsZWZ0OjAlO1xuICAgIHJpZ2h0OjAlO1xuICAgIHRvcDowJTtcbiAgICBib3R0b206MCU7XG4gICAgbWFyZ2luOmF1dG87XG4gICAgYmFja2dyb3VuZC1zaXplOmNvbnRhaW47XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xufSIsIi52aWRlbyB7XG4gIHdpZHRoOiA3MCU7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xufVxuXG4ud3JhcC1jb250ZW50IHtcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xufVxuXG4ud3JhcHBlciB7XG4gIGRpc3BsYXk6IHRhYmxlO1xuICB3aWR0aDogYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogNzA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5wbGF5cGF1c2Uge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cDovL3BuZy00LmZpbmRpY29ucy5jb20vZmlsZXMvaWNvbnMvMjMxNS9kZWZhdWx0X2ljb24vMjU2L21lZGlhX3BsYXlfcGF1c2VfcmVzdW1lLnBuZyk7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIHdpZHRoOiA1MCU7XG4gIGhlaWdodDogNTAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDAlO1xuICByaWdodDogMCU7XG4gIHRvcDogMCU7XG4gIGJvdHRvbTogMCU7XG4gIG1hcmdpbjogYXV0bztcbiAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = (".video {\n  width: 100%;\n}\n\n.wrap-content {\n  word-wrap: break-word;\n}\n\n.content {\n  position: relative;\n  width: 100%;\n}\n\n.content video {\n  width: 100%;\n  display: block;\n}\n\n.content:before {\n  content: \"\";\n  background: black;\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}\n\n.original {\n  position: relative;\n  width: 100%;\n}\n\n.original video {\n  width: 100%;\n  display: block;\n}\n\n.original:before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}\n\n.wrapper {\n  display: table;\n  width: auto;\n  position: relative;\n  width: 70;\n  align-items: center;\n}\n\n.playpause {\n  background-image: url(http://png-4.findicons.com/files/icons/2315/default_icon/256/media_play_pause_resume.png);\n  background-repeat: no-repeat;\n  width: 50%;\n  height: 50%;\n  position: absolute;\n  left: 0%;\n  right: 0%;\n  top: 0%;\n  bottom: 0%;\n  margin: auto;\n  background-size: contain;\n  background-position: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC92aWRlby92aWRlby5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0FDQ0o7O0FEQ0E7RUFDSSxxQkFBQTtBQ0VKOztBREFBO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0FDR0o7O0FEREE7RUFDSSxXQUFBO0VBQ0EsY0FBQTtBQ0lKOztBREZBO0VBQ0ksV0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0FDS0o7O0FESEE7RUFDSSxrQkFBQTtFQUNBLFdBQUE7QUNNSjs7QURKQTtFQUNJLFdBQUE7RUFDQSxjQUFBO0FDT0o7O0FETEE7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0FDUUo7O0FETkE7RUFDSSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLG1CQUFBO0FDU0o7O0FEUEE7RUFDSSwrR0FBQTtFQUNBLDRCQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsT0FBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBQ0Esd0JBQUE7RUFDQSwyQkFBQTtBQ1VKIiwiZmlsZSI6InNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudmlkZW8ge1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLndyYXAtY29udGVudCB7XG4gICAgd29yZC13cmFwOiBicmVhay13b3JkO1xufVxuLmNvbnRlbnQge1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICB3aWR0aDogMTAwJTtcbn1cbi5jb250ZW50IHZpZGVvIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbi5jb250ZW50OmJlZm9yZSB7XG4gICAgY29udGVudDogJyc7XG4gICAgYmFja2dyb3VuZDogYmxhY2s7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMDtcbiAgICByaWdodDogMDtcbiAgICBib3R0b206IDA7XG4gICAgbGVmdDogMDtcbn1cbi5vcmlnaW5hbCB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLm9yaWdpbmFsIHZpZGVvIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbi5vcmlnaW5hbDpiZWZvcmUge1xuICAgIGNvbnRlbnQ6ICcnO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgcmlnaHQ6IDA7XG4gICAgYm90dG9tOiAwO1xuICAgIGxlZnQ6IDA7XG59XG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OnRhYmxlO1xuICAgIHdpZHRoOmF1dG87XG4gICAgcG9zaXRpb246cmVsYXRpdmU7XG4gICAgd2lkdGg6NzA7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5wbGF5cGF1c2Uge1xuICAgIGJhY2tncm91bmQtaW1hZ2U6dXJsKGh0dHA6Ly9wbmctNC5maW5kaWNvbnMuY29tL2ZpbGVzL2ljb25zLzIzMTUvZGVmYXVsdF9pY29uLzI1Ni9tZWRpYV9wbGF5X3BhdXNlX3Jlc3VtZS5wbmcpO1xuICAgIGJhY2tncm91bmQtcmVwZWF0Om5vLXJlcGVhdDtcbiAgICB3aWR0aDo1MCU7XG4gICAgaGVpZ2h0OjUwJTtcbiAgICBwb3NpdGlvbjphYnNvbHV0ZTtcbiAgICBsZWZ0OjAlO1xuICAgIHJpZ2h0OjAlO1xuICAgIHRvcDowJTtcbiAgICBib3R0b206MCU7XG4gICAgbWFyZ2luOmF1dG87XG4gICAgYmFja2dyb3VuZC1zaXplOmNvbnRhaW47XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xufSIsIi52aWRlbyB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4ud3JhcC1jb250ZW50IHtcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xufVxuXG4uY29udGVudCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5jb250ZW50IHZpZGVvIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGJsb2NrO1xufVxuXG4uY29udGVudDpiZWZvcmUge1xuICBjb250ZW50OiBcIlwiO1xuICBiYWNrZ3JvdW5kOiBibGFjaztcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG4gIGxlZnQ6IDA7XG59XG5cbi5vcmlnaW5hbCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5vcmlnaW5hbCB2aWRlbyB7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLm9yaWdpbmFsOmJlZm9yZSB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICByaWdodDogMDtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xufVxuXG4ud3JhcHBlciB7XG4gIGRpc3BsYXk6IHRhYmxlO1xuICB3aWR0aDogYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogNzA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5wbGF5cGF1c2Uge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cDovL3BuZy00LmZpbmRpY29ucy5jb20vZmlsZXMvaWNvbnMvMjMxNS9kZWZhdWx0X2ljb24vMjU2L21lZGlhX3BsYXlfcGF1c2VfcmVzdW1lLnBuZyk7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIHdpZHRoOiA1MCU7XG4gIGhlaWdodDogNTAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDAlO1xuICByaWdodDogMCU7XG4gIHRvcDogMCU7XG4gIGJvdHRvbTogMCU7XG4gIG1hcmdpbjogYXV0bztcbiAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/video/video.component.ts": 
@@ -1610,8 +1690,19 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoComponent", function () { return VideoComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _services_video_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/video.service */ "./src/app/services/video.service.ts");
+            /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+            /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/ngx-cookie-service.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var VideoComponent = /** @class */ (function () {
-                function VideoComponent() {
+                function VideoComponent(vService, cookieService, route) {
+                    this.vService = vService;
+                    this.cookieService = cookieService;
+                    this.route = route;
+                    this.videoFilePrefix = "/api/video/";
+                    this.videoSrc = "";
+                    this.audioFilePrefix = "/api/audio/";
+                    this.audioSrc = "";
                     this.configurations = {
                         "Audio Quality": 0,
                         "Video Quality": 0,
@@ -1621,43 +1712,137 @@
                     };
                     this.videoIsPlaying = false;
                     this.objectKeys = Object.keys;
-                    this.video_config = Array(5).keys().slice();
+                    this.videoConfig = new Array(5).fill(0);
+                    this.sumUpCost = function (arr) { return arr.reduce(function (a, b) { return a + b; }); };
                 }
-                VideoComponent.prototype.calIdOfVideo = function () {
+                ;
+                VideoComponent.prototype.jitterVideo = function (jitterVal) {
                     var _this = this;
-                    var id = 0;
-                    this.objectKeys(this.configurations).forEach(function (item, index) {
-                        id = id + Number(_this.configurations[item]) * Math.pow(_this.video_config.length, index);
+                    this.blackTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, (jitterVal + 1) * 1000);
+                    this.videoTimerSubscription = this.blackTimer.subscribe(function (val) {
+                        if (_this.videoIsPlaying)
+                            _this.videoOverlayElement.className = "content";
+                        var freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(100);
+                        freshback.subscribe(function (d) {
+                            if (_this.videoIsPlaying)
+                                _this.videoOverlayElement.className = "original";
+                        });
                     });
-                    return id;
+                };
+                VideoComponent.prototype.jitterAudio = function (jitterVal) {
+                    var _this = this;
+                    this.muteTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, (jitterVal + 1) * 2000);
+                    this.audioTimerSubscription = this.muteTimer.subscribe(function (val) {
+                        if (_this.videoIsPlaying)
+                            _this.audioElement.volume = 0;
+                        var freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(1500);
+                        freshback.subscribe(function (d) {
+                            if (_this.videoIsPlaying)
+                                _this.audioElement.volume = 1;
+                        });
+                    });
+                };
+                VideoComponent.prototype.syncAudioWithVideo = function () {
+                    this.audioElement.currentTime =
+                        this.videoElement.currentTime - 0.1 * (5 - Number(this.configurations['Audio-Video Synchronization']));
+                };
+                VideoComponent.prototype.refreshPlayback = function () {
+                    this.videoIsPlaying = true;
+                    if (this.audioTimerSubscription) {
+                        this.audioTimerSubscription.unsubscribe();
+                    }
+                    if (this.videoTimerSubscription) {
+                        this.videoTimerSubscription.unsubscribe();
+                    }
+                    var time = Date.now();
+                    this.videoSrc = this.videoFilePrefix + "vq" + this.configurations['Video Quality'] + ".webm?t=" + time;
+                    this.audioSrc = this.audioFilePrefix + "aq" + this.configurations['Audio Quality'] + ".m4a?t=" + time;
+                    var videoTempTime = this.videoElement.currentTime;
+                    var audioTempTime = this.audioElement.currentTime;
+                    this.videoElement.src = this.videoSrc;
+                    this.audioElement.src = this.audioSrc;
+                    this.videoElement.currentTime = videoTempTime;
+                    this.audioElement.currentTime = audioTempTime;
+                    this.syncAudioWithVideo();
+                    this.videoElement.play();
+                    this.audioElement.play();
+                    this.jitterAudio(Number(this.configurations['Audio Loss']));
+                    this.jitterVideo(Number(this.configurations['Video Loss']));
                 };
                 VideoComponent.prototype.onRadioCheck = function () {
-                    var idOfVideo = this.calIdOfVideo();
+                    this.videoConfig = Object.values(this.configurations).map(function (a) { return Number(a); });
+                    this.refreshPlayback();
                 };
                 VideoComponent.prototype.playPause = function (e) {
                     if (this.videoIsPlaying) {
-                        e.toElement.pause();
+                        this.audioElement.pause();
+                        this.videoElement.pause();
                         this.videoIsPlaying = false;
                     }
                     else {
-                        e.toElement.play();
+                        this.refreshPlayback();
                         this.videoIsPlaying = true;
                     }
                 };
-                VideoComponent.prototype.mouseVideoEvent = function (e, code) {
-                    var darken_style = "-webkit-filter: grayscale(100%); -moz-filter: grayscale(100%); -o-filter: grayscale(100%); -ms-filter: grayscale(100%); filter: grayscale(100%);";
-                    if (code == 'enter') {
-                        e.toElement.style = darken_style;
+                VideoComponent.prototype.ngOnInit = function () {
+                };
+                VideoComponent.prototype.decidePath = function () {
+                    var pathIndex = Number(this.cookieService.get('user_current_path_index'));
+                    var pathArray = JSON.parse(this.cookieService.get('user_path'));
+                    var type = pathArray[pathIndex]['type'];
+                    if (type == 'normal') {
+                        this.route.navigate(['likert']);
                     }
-                    else {
-                        e.toElement.style = "all: unset ";
+                    else if (type == 'qv') {
+                        this.route.navigate(['qv']);
+                    }
+                    else if (type == 'video') {
+                        this.route.navigate(['video']);
+                    }
+                    else if (type == 'complete') {
+                        this.route.navigate(['complete']);
                     }
                 };
-                VideoComponent.prototype.ngOnInit = function () {
-                    this.objectKeys(this.configurations).forEach;
+                VideoComponent.prototype.ngAfterViewInit = function () {
+                    var _this = this;
+                    this.videoElement = this.videoPlayer.nativeElement;
+                    this.audioElement = this.audioPlayer.nativeElement;
+                    this.videoOverlayElement = this.videoOverlay.nativeElement;
+                    this.vService.requestForm();
+                    this.vService.videoForm.subscribe(function (data) {
+                        _this.formJson = data;
+                        _this.description = data['Description'];
+                        _this.title = data['Title'];
+                        var time = Date.now().toString();
+                        _this.videoSrc = _this.videoFilePrefix + "vq" + _this.configurations['Video Quality'] + ".webm?t=" + time;
+                        _this.audioSrc = _this.audioFilePrefix + "aq" + _this.configurations['Audio Quality'] + ".m4a?t=" + time;
+                        _this.videoElement.src = _this.videoSrc;
+                        _this.audioElement.src = _this.audioSrc;
+                        _this.refreshPlayback();
+                    });
+                };
+                VideoComponent.prototype.submit = function () {
+                    var _this = this;
+                    this.vService.submit(this.videoConfig).subscribe(function (result) {
+                        _this.decidePath();
+                    });
                 };
                 return VideoComponent;
             }());
+            VideoComponent.ctorParameters = function () { return [
+                { type: _services_video_service__WEBPACK_IMPORTED_MODULE_2__["VideoService"] },
+                { type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__["CookieService"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+            ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('videoPlayer', { static: false })
+            ], VideoComponent.prototype, "videoPlayer", void 0);
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('videoOverlay', { static: false })
+            ], VideoComponent.prototype, "videoOverlay", void 0);
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('audioPlayer', { static: false })
+            ], VideoComponent.prototype, "audioPlayer", void 0);
             VideoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-video',
@@ -1712,6 +1897,9 @@
                         }
                         else if (type == 'qv') {
                             this.router.navigate(['qv']);
+                        }
+                        else if (type == 'video') {
+                            this.router.navigate(['video']);
                         }
                         else {
                             this.router.navigate(['welcome']);
