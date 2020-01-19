@@ -5,14 +5,14 @@
   icon="question"
   [showCancelButton]="true"
   [focusCancel]="true"
-  (confirm)="this.submitSuccessSwal.fire()">
+  (confirm)="submitSuccessSwal.fire()">
 </swal>
 <swal
   #submitSuccess
   title="Submitted!"
   [showCancelButton]="false"
   text="You will be presented a similar task on the next page. The total number of votes may change."
-  (afterClose)="this.gService.submit()"
+  (afterClose)="gServiceSubmit()"
 >
 </swal>
 <div class="container sticky">
