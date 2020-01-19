@@ -7,31 +7,31 @@
             <p>
                 {{description}}
             </p>
-                
+
         </div>
     </div>
     <h2>
         Video
     </h2>
-    
+
     <div class="row justify-content-center">
         <div class="col-sm-8 wrap-content">
         <div #videoOverlay class="original">
-            <video 
+            <video
                 (click)="playPause($event)"
                 #videoPlayer
-                src="" 
+                src=""
                 ></video>
         </div>
         <audio
         #audioPlayer
-        src="http://localhost:5000/api/audio/sample_audio.webm">
+        src="/api/audio/sample_audio.webm">
         </audio>
         </div>
-        
+
     </div>
 
-        
+
     <p></p>
     <h2>
         Configuration
@@ -51,12 +51,12 @@
                     <th scope="row">{{k}}</th>
                     <td *ngFor="let i of objectKeys(videoConfig)">
                         <div class="form-check">
-                            <input 
-                                class="form-check-input" 
-                                type="radio" 
-                                name="{{k}}" 
-                                id="{{k}}-{{i}}" 
-                                value="{{i}}" 
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="{{k}}"
+                                id="{{k}}-{{i}}"
+                                value="{{i}}"
                                 [(ngModel)]="configurations[k]"
                                 (change)="onRadioCheck()">
                             <label class="form-check-label" for="{{k}}-{{i}}">{{i}}</label>
@@ -82,13 +82,13 @@
                         <td>
                             <button type="submit" class="mr-2 btn btn-success">
                                 Submit
-                            </button>                        
+                            </button>
                         </td>
                     </tr>
                 </tbody>
               </table>
-              
+
           </div>
     </div>
-    
+
 </div>

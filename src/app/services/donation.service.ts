@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DonationService {
-  requestUrl = 'http://localhost:5000';
+  requestUrl = '';
   organizations: BehaviorSubject<Array<Object>> = new BehaviorSubject([]);
   constructor(
     private http: HttpClient,
     private cookieService: CookieService,
     private route: Router,
   ) { }
-  
+
   requestOrganizations(){
     let donationAPI = `${this.requestUrl}/api/donation`;
     this.http.get(donationAPI).pipe(

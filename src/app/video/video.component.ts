@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./video.component.scss']
 })
 export class VideoComponent implements OnInit {
-  
+
   @ViewChild('videoPlayer', {static: false}) videoPlayer: ElementRef;
   @ViewChild('videoOverlay', {static: false}) videoOverlay: ElementRef;
   @ViewChild('audioPlayer', {static: false}) audioPlayer: ElementRef;
@@ -20,10 +20,10 @@ export class VideoComponent implements OnInit {
   videoElement: HTMLVideoElement;
   audioElement: HTMLAudioElement;
 
-  videoFilePrefix = "http://localhost:5000/api/video/";
+  videoFilePrefix = "/api/video/";
   videoSrc = "";
 
-  audioFilePrefix = "http://localhost:5000/api/audio/";
+  audioFilePrefix = "/api/audio/";
   audioSrc = "";
 
   configurations = {
@@ -33,13 +33,13 @@ export class VideoComponent implements OnInit {
     "Video Loss": 0,
     "Audio-Video Synchronization": 0,
   }
-  
+
   videoIsPlaying=false;
-  
+
   objectKeys = Object.keys;
-  
+
   videoConfig = new Array(5).fill(0);;
-  
+
   sumUpCost = (arr) => {return arr.reduce((a, b) => a + b)}
   formJson: Object;
 
@@ -52,7 +52,7 @@ export class VideoComponent implements OnInit {
   description: String;
   title: String;
 
-  constructor(    
+  constructor(
     private vService: VideoService,
     private cookieService: CookieService,
     private route: Router,
@@ -63,10 +63,10 @@ export class VideoComponent implements OnInit {
     this.videoTimerSubscription= this.blackTimer.subscribe(val => {
       if(this.videoIsPlaying)
         this.videoOverlayElement.className = "content"
-      let freshback = timer(100); 
+      let freshback = timer(100);
       freshback.subscribe(d => {
         if(this.videoIsPlaying)
-          this.videoOverlayElement.className = "original"      
+          this.videoOverlayElement.className = "original"
         })
     });
   }
@@ -76,16 +76,16 @@ export class VideoComponent implements OnInit {
     this.audioTimerSubscription= this.muteTimer.subscribe(val => {
       if(this.videoIsPlaying)
         this.audioElement.volume = 0;
-      let freshback = timer(1500); 
+      let freshback = timer(1500);
       freshback.subscribe(d => {
         if(this.videoIsPlaying)
           this.audioElement.volume = 1;
         })
-    });  
+    });
   }
 
   syncAudioWithVideo() {
-    this.audioElement.currentTime = 
+    this.audioElement.currentTime =
       this.videoElement.currentTime - 0.1*(5-Number(this.configurations['Audio-Video Synchronization']));
   }
 
@@ -130,13 +130,13 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   decidePath() {
     let pathIndex = Number(this.cookieService.get('user_current_path_index'));
     let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
-    let type: string = pathArray[pathIndex]['type'];    
+    let type: string = pathArray[pathIndex]['type'];
     if(type == 'normal'){
       this.route.navigate(['likert']);
     } else if(type == 'qv'){
@@ -147,7 +147,7 @@ export class VideoComponent implements OnInit {
       this.route.navigate(['complete']);
     }
   }
-  
+
   ngAfterViewInit()	 {
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
@@ -165,7 +165,7 @@ export class VideoComponent implements OnInit {
       this.refreshPlayback();
     })
   }
-  
+
   submit(){
     this.vService.submit(this.videoConfig).subscribe(
       result => {
@@ -173,5 +173,5 @@ export class VideoComponent implements OnInit {
       }
     );
   }
-  
+
 }

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class VideoService {
-  requestUrl = 'http://localhost:5000';
+  requestUrl = '';
   videoForm: BehaviorSubject<Object> = new BehaviorSubject({});
   constructor(
     private http: HttpClient,
@@ -58,9 +58,9 @@ export class VideoService {
   submit(data){
     let pathIndex = Number(this.getCookieById('user_current_path_index'));
     let userId = this.cookieService.get('user_id');
-   
+
     this.cookieService.set('user_current_path_index', String(pathIndex+1),undefined,'/');
-    return this.http.post(`${this.requestUrl}/submit-video-setting`, 
+    return this.http.post(`${this.requestUrl}/submit-video-setting`,
       {
         data: data,
         userId: userId,
