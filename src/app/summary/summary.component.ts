@@ -13,11 +13,16 @@ export class SummaryComponent implements OnInit {
   totalCredits: number;
   percentage: number = 0;
   type: string;
-  @ViewChild('confirmSubmit',{static: true}) private confirmSubmitSwal: SwalComponent;
-  @ViewChild('submitSuccess', {static: true}) private submitSuccessSwal: SwalComponent;
+  @ViewChild('confirmSubmit',{static: true}) confirmSubmitSwal: SwalComponent;
+  @ViewChild('submitSuccess', {static: true}) submitSuccessSwal: SwalComponent;
   constructor(
-    private gService: GlobalService,
+    protected gService: GlobalService,
   ) { }
+
+  gServiceSubmit() {
+    this.gService.submit();
+  }
+  
   submit() {
     if(this.usedCredits == 0) {
       this.confirmSubmitSwal.fire();
