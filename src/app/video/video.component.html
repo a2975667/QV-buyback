@@ -16,13 +16,15 @@
 
     <div class="row justify-content-center">
         <div class="col-sm-8 wrap-content">
-        <div #videoOverlay class="original">
+        <div #videoOverlay class="original" (click)="playPause($event)">
             <video
-                (click)="playPause($event)"
                 #videoPlayer
+                style="display: none;"
                 src=""
                 ></video>
-        </div>
+            <canvas #canvas 
+            width="100vw" height="30vh"></canvas>
+            </div>
         <audio
         #audioPlayer
         src="/api/audio/sample_audio.webm">

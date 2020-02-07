@@ -4,6 +4,7 @@ import { timer, Observable, Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { splitClasses } from '@angular/compiler';
 
 @Component({
   selector: 'app-video',
@@ -15,11 +16,17 @@ export class VideoComponent implements OnInit {
   @ViewChild('videoPlayer', {static: false}) videoPlayer: ElementRef;
   @ViewChild('videoOverlay', {static: false}) videoOverlay: ElementRef;
   @ViewChild('audioPlayer', {static: false}) audioPlayer: ElementRef;
+  @ViewChild('canvas', {static: false}) canvas: ElementRef;
 
+  canvasElement: HTMLCanvasElement;
   videoOverlayElement: HTMLDivElement;
   videoElement: HTMLVideoElement;
   audioElement: HTMLAudioElement;
-
+  videoContainer = {  // we will add properties as needed
+    video : this.videoElement,
+    ready : false,
+    scale: null,
+  };
   videoFilePrefix = environment.apiUrl+"/api/video/";
   videoSrc = "";
 
@@ -52,6 +59,9 @@ export class VideoComponent implements OnInit {
   description: String;
   title: String;
 
+  videoIsJittering = false;
+  jitterTempData = null;
+
   constructor(
     private vService: VideoService,
     private cookieService: CookieService,
@@ -59,15 +69,13 @@ export class VideoComponent implements OnInit {
     ) { }
 
   jitterVideo(jitterVal: number) {
-    this.blackTimer = timer(0, (jitterVal+1) * 1000);
+    this.blackTimer = timer(0, (jitterVal+1) * 3000);
     this.videoTimerSubscription= this.blackTimer.subscribe(val => {
-      if(this.videoIsPlaying)
-        this.videoOverlayElement.className = "content"
-      let freshback = timer(100);
+      this.videoIsJittering = true;
+      let freshback = timer(1000);
       freshback.subscribe(d => {
-        if(this.videoIsPlaying)
-          this.videoOverlayElement.className = "original"
-        })
+          this.videoIsJittering = false;
+      });
     });
   }
 
@@ -98,6 +106,7 @@ export class VideoComponent implements OnInit {
       this.videoTimerSubscription.unsubscribe();
     }
     let time = Date.now();
+    let that = this;
     this.videoSrc = this.videoFilePrefix+"vq"+this.configurations['Video Quality']+".webm?t="+time;
     this.audioSrc = this.audioFilePrefix+"aq"+this.configurations['Audio Quality']+".m4a?t="+time;
     let videoTempTime = this.videoElement.currentTime;
@@ -108,16 +117,46 @@ export class VideoComponent implements OnInit {
     this.audioElement.currentTime = audioTempTime;
     this.syncAudioWithVideo();
     let ve = this.videoElement;
-    this.videoElement.addEventListener('loadeddata', function() {
-      ve.play();
-    }, false);    
     let ae = this.audioElement;
     this.videoElement.addEventListener('loadeddata', function() {
+      ve.play();
       ae.play();
-    }, false);
+      let ctx = that.canvasElement.getContext("2d");
+      ctx.canvas.width  = window.innerWidth*0.5;
+      ctx.canvas.height = window.innerHeight*0.4;
+      that.videoContainer.scale = Math.min(
+        ctx.canvas.width / this.videoWidth, 
+        ctx.canvas.height  / this.videoHeight); 
+      that.videoContainer.ready = true;
+      requestAnimationFrame(that.updateCanvas.bind(that));  
+    }, false);    
     this.jitterAudio(Number(this.configurations['Audio Loss']));
     this.jitterVideo(Number(this.configurations['Video Loss']));
   }
+
+  updateCanvas(){
+    this.canvasElement = this.canvas.nativeElement;
+    var ctx = this.canvasElement.getContext("2d");
+
+    if(!this.videoIsJittering){
+      ctx.clearRect(0,0,this.canvasElement.width,this.canvasElement.height); 
+    }
+    if(this.videoContainer !== undefined && this.videoContainer.ready){ 
+        // find the top left of the video on the canvas
+        var scale = this.videoContainer.scale;
+        var vidH = this.videoContainer.video.videoHeight;
+        var vidW = this.videoContainer.video.videoWidth;
+        var top = ctx.canvas.height / 2 - (vidH /2 ) * scale;
+        var left = ctx.canvas.width / 2 - (vidW /2 ) * scale;
+        if(!this.videoIsJittering) {
+          ctx.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
+          if(this.videoContainer.video.paused){ // if not playing show the paused screen 
+              this.drawPayIcon();
+          }
+        }
+    }
+    requestAnimationFrame(this.updateCanvas.bind(this));
+}
 
   onRadioCheck() {
     this.videoConfig = Object.values(this.configurations).map(a => Number(a));
@@ -158,6 +197,8 @@ export class VideoComponent implements OnInit {
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
     this.videoOverlayElement = this.videoOverlay.nativeElement;
+    this.canvasElement = this.canvas.nativeElement;
+    this.videoContainer.video = this.videoElement;
     this.vService.requestForm();
     this.vService.videoForm.subscribe(data => {
       this.formJson = data;
@@ -168,7 +209,7 @@ export class VideoComponent implements OnInit {
       this.audioSrc = this.audioFilePrefix+"aq"+this.configurations['Audio Quality']+".m4a?t="+time;
       this.videoElement.src = this.videoSrc;
       this.audioElement.src = this.audioSrc;
-      // this.refreshPlayback();
+      this.refreshPlayback();
     })
   }
 
@@ -180,4 +221,23 @@ export class VideoComponent implements OnInit {
     );
   }
 
+  // implementation based on https://stackoverflow.com/questions/38710125/how-do-i-display-a-video-using-html5-canvas-tag
+  drawPayIcon(){
+    this.canvasElement = this.canvas.nativeElement;
+    let ctx = this.canvasElement.getContext("2d");
+    let canvas = this.canvasElement;
+    ctx.fillStyle = "black";  // darken display
+    ctx.globalAlpha = 0.5;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "#DDD"; // colour of play icon
+    ctx.globalAlpha = 0.75; // partly transparent
+    ctx.beginPath(); // create the path for the icon
+    var size = (canvas.height / 2) * 0.5;  // the size of the icon
+    ctx.moveTo(canvas.width/2 + size/2, canvas.height / 2); // start at the pointy end
+    ctx.lineTo(canvas.width/2 - size/2, canvas.height / 2 + size);
+    ctx.lineTo(canvas.width/2 - size/2, canvas.height / 2 - size);
+    ctx.closePath();
+    ctx.fill();
+    ctx.globalAlpha = 1; // restore alpha
+}    
 }
