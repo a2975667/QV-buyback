@@ -162,7 +162,7 @@ export class VideoComponent implements OnInit {
     this.videoConfig = Object.values(this.configurations).map(a => Number(a));
     this.refreshPlayback();
   }
-  
+
   playPause(e) {
     if(this.videoIsPlaying){
       this.audioElement.pause()
