@@ -20,7 +20,6 @@ def root(gp):
 
 @app.route('/qv')
 @app.route('/likert')
-@app.route('/donation')
 @app.route('/complete')
 @app.route('/demographic')
 @app.route('/video')
@@ -113,37 +112,6 @@ def submit():
 	return jsonify({'ok': True}), 200
 
 # donation
-@app.route('/api/donation')
-def donation():
-	""" returns the list of donation orgs
-	"""
-
-	filename = '/'.join(['data', 'donation.json'])
-
-	with current_app.open_resource(filename) as f:
-		return json.loads(f.read().decode('utf-8'))
-
-
-@app.route('/submit-donation', methods=['POST'])
-def submit_donation():
-	"""submit donation to db"""
-
-	print(request.json)
-	insert_data = request.json
-	insert_data['time'] = datetime.utcnow()
-	db.donation.insert_one(insert_data)
-
-	db.user.update_one({
-			'_id': ObjectId(insert_data['userId'])
-		}, {
-			'$set': {
-				"complete_flag": True
-			}
-		}, upsert=False)
-
-	return jsonify({'ok': True}), 200
-
-# donation
 @app.route('/api/demographic')
 def demographic():
 	""" returns the list of donation orgs
@@ -182,7 +150,6 @@ def submit_demographic():
 def submit_video_setting():
 	"""submit video setting to db"""
 
-	print(request.json)
 	insert_data = request.json
 	insert_data['video_setting'] = datetime.utcnow()
 	db.videoSetting.insert_one(insert_data)
@@ -229,7 +196,7 @@ def setup_route_db():
 	db["gp_status"].drop()
 	db["user"].drop()
 	db["demographic"].drop()
-	db["donation"].drop()
+	db["videoSetting"].drop()
 	db["data"].drop()
 
 	list_of_path = ["p1", "p2", "p3", "test"]

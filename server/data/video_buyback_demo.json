@@ -1,0 +1,10 @@
+{
+	"filename":"sample.mp4",
+	"Title":"This is a title",
+	"Description":"This is the description of this video and the HTML content.",
+	"settings":{
+		"control_panel_can_change": true,
+		"control_panel_has_price":true,
+		"control_panel_freeze":false
+	}
+  }
