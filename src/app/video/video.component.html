@@ -33,64 +33,71 @@
 
     </div>
 
-
     <p></p>
-    <h2>
-        Configuration
-    </h2>
-    <div class="row">
-        <div class="col-sm wrap-content">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Configuration Name</th>
-                    <th scope="col" colspan=5>Score ( 0 ~ 4 )</th>
-                    <th scope="col" colspan=3>Cost</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let k of objectKeys(configurations)">
-                    <th scope="row">{{k}}</th>
-                    <td *ngFor="let i of objectKeys(videoConfig)">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="{{k}}"
-                                id="{{k}}-{{i}}"
-                                value="{{i}}"
-                                [(ngModel)]="configurations[k]"
-                                (change)="onRadioCheck()">
-                            <label class="form-check-label" for="{{k}}-{{i}}">{{i}}</label>
-                          </div>
-                    </td>
-                    <td>
-                        ${{configurations[k]*5}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <tr >
-                        <th scope="row"></th>
+    <div *ngIf="(showConfig )">
+        <h2>
+            Configuration
+        </h2>
+        <div class="row">
+            <div class="col-sm wrap-content">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Configuration Name</th>
+                        <th scope="col" colspan=5>Score ( 0 ~ 4 )</th>
+                        <th scope="col" colspan=3>Cost</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let k of objectKeys(configurations)">
+                        <th scope="row">{{k}}</th>
                         <td *ngFor="let i of objectKeys(videoConfig)">
+                            <div class="form-check">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="{{k}}"
+                                    id="{{k}}-{{i}}"
+                                    value="{{i}}"
+                                    [(ngModel)]="configurations[k]"
+                                    (change)="onRadioCheck()">
+                                <label class="form-check-label" for="{{k}}-{{i}}">{{i}}</label>
+                              </div>
                         </td>
                         <td>
-                            Total: ${{sumUpCost(videoConfig)*5}}
+                            ${{configurations[k]*5}}
                         </td>
-                    </tr>
-                    <tr >
-                        <th scope="row"></th>
-                        <td *ngFor="let i of objectKeys(videoConfig)">
-                        </td>
-                        <td>
-                            <button type="submit" class="mr-2 btn btn-success">
-                                Submit
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-              </table>
-
-          </div>
+                      </tr>
+                      <tr>
+                        <tr *ngIf="showCost">
+                            <th scope="row"></th>
+                            <td *ngFor="let i of objectKeys(videoConfig)">
+                            </td>
+                            <td>
+                                Total: ${{sumUpCost(videoConfig)*5}}
+                            </td>
+                        </tr>
+                        <tr >
+                            <th scope="row"></th>
+                            <td *ngFor="let i of objectKeys(videoConfig)">
+                            </td>
+                            <td>
+                                <button (click)="submit()" type="submit" class="mr-2 btn btn-success">
+                                    Submit
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+    
+              </div>
+        </div>    
     </div>
-
+    <button 
+        *ngIf="!(showConfig)" 
+        (click)="submit()" 
+        type="submit" 
+        class="mr-2 btn btn-success">
+        Next
+    </button>
 </div>

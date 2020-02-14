@@ -5,13 +5,13 @@ import { catchError } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-
+import { Video } from '../schema/video';
 @Injectable({
   providedIn: 'root'
 })
 export class VideoService {
   requestUrl = environment.apiUrl;
-  videoForm: BehaviorSubject<Object> = new BehaviorSubject({});
+  videoForm: BehaviorSubject<Video> = new BehaviorSubject(null);
   constructor(
     private http: HttpClient,
     private cookieService: CookieService,
@@ -29,6 +29,7 @@ export class VideoService {
     }else{
       let pathIndex = Number(this.getCookieById('user_current_path_index'));
       let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
+      console.log(pathArray);
       return pathArray[pathIndex]['file'];
     }
   }
@@ -38,7 +39,7 @@ export class VideoService {
     let fileAPI = `${this.requestUrl}/api/qv/${fileName}`;
     this.http.get(fileAPI).pipe(
       catchError(this.handleError)
-    ).subscribe(data => {
+    ).subscribe((data: Video) => {
       console.log(data);
       this.videoForm.next(data);
     });
