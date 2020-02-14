@@ -4,8 +4,7 @@ import { timer, Observable, Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { splitClasses } from '@angular/compiler';
-
+import { Video } from '../schema/video';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -61,6 +60,9 @@ export class VideoComponent implements OnInit {
 
   videoIsJittering = false;
   jitterTempData = null;
+
+  showCost = false;
+  showConfig = false;
 
   constructor(
     private vService: VideoService,
@@ -200,16 +202,20 @@ export class VideoComponent implements OnInit {
     this.canvasElement = this.canvas.nativeElement;
     this.videoContainer.video = this.videoElement;
     this.vService.requestForm();
-    this.vService.videoForm.subscribe(data => {
-      this.formJson = data;
-      this.description = data['Description'];
-      this.title = data['Title'];
-      let time: String = Date.now().toString();
-      this.videoSrc = this.videoFilePrefix+"vq"+this.configurations['Video Quality']+".webm?t="+time;
-      this.audioSrc = this.audioFilePrefix+"aq"+this.configurations['Audio Quality']+".m4a?t="+time;
-      this.videoElement.src = this.videoSrc;
-      this.audioElement.src = this.audioSrc;
-      this.refreshPlayback();
+    this.vService.videoForm.subscribe((data: Video) => {
+      if(data){
+        this.formJson = data;
+        this.description = data.Description;
+        this.title = data.Title;
+        this.showCost = data.settings.control_panel_has_price;
+        this.showConfig = data.settings.control_panel_can_change;
+        let time: String = Date.now().toString();
+        this.videoSrc = this.videoFilePrefix+"vq"+this.configurations['Video Quality']+".webm?t="+time;
+        this.audioSrc = this.audioFilePrefix+"aq"+this.configurations['Audio Quality']+".m4a?t="+time;
+        this.videoElement.src = this.videoSrc;
+        this.audioElement.src = this.audioSrc;
+        this.refreshPlayback();
+      }
     })
   }
 

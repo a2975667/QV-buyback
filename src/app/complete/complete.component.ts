@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-complete',
@@ -12,10 +13,12 @@ export class CompleteComponent implements OnInit {
   code: string;
   url: string;
   constructor(
+    private cookieService: CookieService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+    this.cookieService.deleteAll();
     this.title = this.route.snapshot.paramMap.get('title');
     this.code = this.route.snapshot.paramMap.get('userId');
     this.text = this.route.snapshot.paramMap.get('text');
