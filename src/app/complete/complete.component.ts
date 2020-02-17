@@ -18,7 +18,7 @@ export class CompleteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cookieService.deleteAll();
+    this.cookieService.deleteAll('/');
     this.title = this.route.snapshot.paramMap.get('title');
     this.code = this.route.snapshot.paramMap.get('userId');
     this.text = this.route.snapshot.paramMap.get('text');

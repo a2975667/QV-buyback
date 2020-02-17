@@ -45,7 +45,7 @@ export class QuestionnaireComponent implements OnInit {
       })
       this.gService.getQuestionnaire();
     } else if(type == 'video') {
-      this.route.navigate(['video']);
+      this.route.navigate(['video']).then(()=>location.reload());
     } else if(type == 'complete') {
       this.route.navigate(['complete']);
     }

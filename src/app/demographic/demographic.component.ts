@@ -36,7 +36,7 @@ export class DemographicComponent implements OnInit {
         if(type == 'normal'){
           this.route.navigate(['likert']);
         } else if (type == 'video') {
-          this.route.navigate(['video']);
+          this.route.navigate(['video']).then(()=>location.reload());
         } else {
           this.route.navigate(['qv']);
         }

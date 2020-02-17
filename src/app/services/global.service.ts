@@ -32,7 +32,7 @@ export class GlobalService {
     private http: HttpClient,
     private cookieService: CookieService,
     private router: Router,
-  ) { }
+  ) {}
 
   getUserID(userGP: string) {
     return this.http.post<User>(`${this.requestUrl}/createUser`, {gp: userGP})
@@ -109,7 +109,7 @@ export class GlobalService {
       nextQuestionIndex = 0;
       this.setCookieById('user_current_path_index', String(pathIndex+1));
       if(pathArray[pathIndex+1]['type']==="donation"){
-		    submitData.complete_flag = true;
+        submitData.complete_flag = true;
         return this.http.post(`${this.requestUrl}/submit`, submitData).pipe(
           catchError(this.handleError)
         ).subscribe(data => {

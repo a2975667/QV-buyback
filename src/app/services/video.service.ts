@@ -40,7 +40,6 @@ export class VideoService {
     this.http.get(fileAPI).pipe(
       catchError(this.handleError)
     ).subscribe((data: Video) => {
-      console.log(data);
       this.videoForm.next(data);
     });
   }
@@ -60,7 +59,7 @@ export class VideoService {
   submit(data){
     let pathIndex = Number(this.getCookieById('user_current_path_index'));
     let userId = this.cookieService.get('user_id');
-
+    
     this.cookieService.set('user_current_path_index', String(pathIndex+1),undefined,'/');
     return this.http.post(`${this.requestUrl}/submit-video-setting`,
       {

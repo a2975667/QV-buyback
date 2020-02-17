@@ -71,26 +71,35 @@ export class VideoComponent implements OnInit {
     ) { }
 
   jitterVideo(jitterVal: number) {
+    if(this.videoTimerSubscription){
+      this.videoTimerSubscription.unsubscribe();
+    }
     this.blackTimer = timer(0, (jitterVal+1) * 3000);
-    this.videoTimerSubscription= this.blackTimer.subscribe(val => {
-      this.videoIsJittering = true;
-      let freshback = timer(1000);
-      freshback.subscribe(d => {
-          this.videoIsJittering = false;
-      });
+    this.videoTimerSubscription = this.blackTimer.subscribe(val => {
+      if(this.videoIsPlaying){
+        this.videoIsJittering = true;
+        let freshback = timer(1000);
+        freshback.subscribe(d => {
+            this.videoIsJittering = false;
+        });
+      }
     });
   }
 
   jitterAudio(jitterVal: number) {
+    if(this.audioTimerSubscription){
+      this.audioTimerSubscription.unsubscribe();
+    }
     this.muteTimer = timer(0, (jitterVal+1) * 2000);
-    this.audioTimerSubscription= this.muteTimer.subscribe(val => {
-      if(this.videoIsPlaying)
+    this.audioTimerSubscription = this.muteTimer.subscribe(val => {
+      if(this.videoIsPlaying) {
         this.audioElement.volume = 0;
-      let freshback = timer(1500);
-      freshback.subscribe(d => {
-        if(this.videoIsPlaying)
-          this.audioElement.volume = 1;
-        })
+        let freshback = timer(1500);
+        freshback.subscribe(d => {
+          if(this.videoIsPlaying)
+            this.audioElement.volume = 1;
+        });
+      }
     });
   }
 
@@ -139,7 +148,6 @@ export class VideoComponent implements OnInit {
   updateCanvas(){
     this.canvasElement = this.canvas.nativeElement;
     var ctx = this.canvasElement.getContext("2d");
-
     if(!this.videoIsJittering){
       ctx.clearRect(0,0,this.canvasElement.width,this.canvasElement.height); 
     }
@@ -165,19 +173,19 @@ export class VideoComponent implements OnInit {
     this.refreshPlayback();
   }
 
-  playPause(e) {
+  playPause() {
     if(this.videoIsPlaying){
       this.audioElement.pause()
       this.videoElement.pause()
       this.videoIsPlaying = false
     }else{
-      this.refreshPlayback();
+      this.audioElement.play();
+      this.videoElement.play();
       this.videoIsPlaying = true
     }
   }
 
   ngOnInit() {
-
   }
 
   decidePath() {
@@ -189,13 +197,40 @@ export class VideoComponent implements OnInit {
     } else if(type == 'qv'){
       this.route.navigate(['qv']);
     } else if(type == 'video'){
-      this.route.navigate(['video']);
+      this.route.navigate(['video']).then(()=>location.reload());
     } else if(type == 'complete'){
       this.route.navigate(['complete']);
     }
   }
 
+  ngOnDestroy()	{
+    this.videoSrc = "";
+    this.audioSrc = "";
+    this.videoElement.src = this.videoSrc;
+    this.audioElement.src = this.audioSrc;
+    this.audioElement.pause();
+    this.videoElement.pause();
+    if(this.audioTimerSubscription){
+      this.audioTimerSubscription.unsubscribe();
+    }
+    if(this.videoTimerSubscription){
+      this.videoTimerSubscription.unsubscribe();
+    }
+    this.videoElement.remove();
+    this.audioElement.remove();
+    this.videoIsPlaying = false;
+    console.log('hihi')
+  }
+
   ngAfterViewInit()	 {
+    this.configurations = {
+      "Audio Quality": '0',
+      "Video Quality": '0',
+      "Audio Loss": '0',
+      "Video Loss": '0',
+      "Audio-Video Synchronization": '0',
+    }
+    console.log(this.configurations);
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
     this.videoOverlayElement = this.videoOverlay.nativeElement;
@@ -220,6 +255,7 @@ export class VideoComponent implements OnInit {
   }
 
   submit(){
+    this.videoElement.pause();
     this.vService.submit(this.videoConfig).subscribe(
       result => {
         this.decidePath();

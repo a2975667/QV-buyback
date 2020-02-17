@@ -26,7 +26,7 @@ export class LikertComponent implements OnInit {
     } else if(type == 'qv'){
       this.route.navigate(['qv']);
     } else if(type == 'video'){
-      this.route.navigate(['video']);
+      this.route.navigate(['video']).then(()=>location.reload());
     } else if(type == 'complete'){
       this.route.navigate(['complete']);
     }

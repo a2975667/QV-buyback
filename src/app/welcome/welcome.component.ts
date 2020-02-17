@@ -35,7 +35,7 @@ export class WelcomeComponent implements OnInit {
       } else if(type == 'qv'){
         this.router.navigate(['qv']);
       } else if(type == 'video'){
-        this.router.navigate(['video']);
+        this.router.navigate(['video']).then(()=>location.reload());
       } else {
         this.router.navigate(['welcome']);
       }
