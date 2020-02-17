@@ -16,7 +16,7 @@
 
     <div class="row justify-content-center">
         <div class="col-sm-8 wrap-content">
-        <div #videoOverlay class="original" (click)="playPause($event)">
+        <div #videoOverlay class="original" (click)="playPause()">
             <video
                 #videoPlayer
                 style="display: none;"
@@ -34,7 +34,7 @@
     </div>
 
     <p></p>
-    <div *ngIf="(showConfig )">
+    <div *ngIf="showConfig">
         <h2>
             Configuration
         </h2>

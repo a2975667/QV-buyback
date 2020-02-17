@@ -30,6 +30,11 @@ export class SummaryComponent implements OnInit {
       this.submitSuccessSwal.fire();
     }
   }
+
+  ngAfterViewInit() {
+    console.log(this.submitSuccessSwal.html)
+  }
+
   ngOnInit() {
     this.gService.questionSet.subscribe((data: Questionnaire) =>{
       this.totalCredits = data.question_list[data.currentQuestion].totalCredits;
