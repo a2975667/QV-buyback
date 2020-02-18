@@ -9,11 +9,29 @@
 </swal>
 <swal
   #submitSuccess
-  title="Submitted!"
+  icon="question"
   [showCancelButton]="false"
-  text="You will be presented a similar task on the next page. The total number of votes may change."
-  (afterClose)="gServiceSubmit()"
+  [showConfirmButton]="false"
 >
+<form *swalPortal="swalTargets.content" >
+    <p>
+        In 2 to 3 sentences, what is the reason that you make this decision?
+    </p>
+    <input 
+        class="swal2-input" 
+        type="text" 
+        [formControl]="submitForm" 
+        autofocus
+        />
+    <label *ngIf="submitForm.invalid" [ngClass] = "'error'" > Your response required with min 1 character. </label>
+    <br/>
+    <button 
+    (click)="submitFinalForm()"
+    *ngIf="!submitForm.invalid" 
+    class="swal2-styled swal2-confirm"> Submit</button>
+
+</form>
+
 </swal>
 <div class="container sticky">
     <div class="card">

@@ -99,7 +99,7 @@ export class GlobalService {
     return;
   }
 
-  submit() {
+  submit(finalQuestionValue: string) {
     let nextQuestionIndex: number = Number(this.getCookieById('user_current_question_index')) + 1;
     let submitData: submitPostSchema = this.generateSubmitPost(false);
     let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
@@ -110,7 +110,8 @@ export class GlobalService {
       this.setCookieById('user_current_path_index', String(pathIndex+1));
       if(pathArray[pathIndex+1]['type']==="donation"){
         submitData.complete_flag = true;
-        return this.http.post(`${this.requestUrl}/submit`, submitData).pipe(
+        return this.http.post(`${this.requestUrl}/submit`, 
+        {submitData: submitData, finalQuestion: finalQuestionValue}).pipe(
           catchError(this.handleError)
         ).subscribe(data => {
           this.router.navigate(['donation']);
