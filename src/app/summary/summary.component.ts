@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GlobalService } from '../services/global.service';
 import { Questionnaire } from '../schema/questionnaire';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
-
+import { FormControl, Validators } from '@angular/forms';
+import { SwalPortalTargets } from '@sweetalert2/ngx-sweetalert2';
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
@@ -13,16 +15,19 @@ export class SummaryComponent implements OnInit {
   totalCredits: number;
   percentage: number = 0;
   type: string;
+  submitForm = new FormControl('', [Validators.required, Validators.minLength(1)]);
   @ViewChild('confirmSubmit',{static: true}) confirmSubmitSwal: SwalComponent;
   @ViewChild('submitSuccess', {static: true}) submitSuccessSwal: SwalComponent;
   constructor(
+    public readonly swalTargets: SwalPortalTargets,
     protected gService: GlobalService,
-  ) { }
+  ) {}
 
-  gServiceSubmit() {
-    this.gService.submit();
+  submitFinalForm(e) {
+    this.submitSuccessSwal.dismiss().then(
+      ()=>this.gService.submit(this.submitForm.value)
+    )
   }
-  
   submit() {
     if(this.usedCredits == 0) {
       this.confirmSubmitSwal.fire();

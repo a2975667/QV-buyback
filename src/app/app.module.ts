@@ -12,7 +12,7 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { DonationComponent } from './donation/donation.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LikertComponent } from './likert/likert.component';
 import { SurveyComponent } from './survey/survey.component';
 import { DemographicComponent } from './demographic/demographic.component';
@@ -35,6 +35,7 @@ import { VideoComponent } from './video/video.component';
     VideoComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
