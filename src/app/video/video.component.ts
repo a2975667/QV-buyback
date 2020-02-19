@@ -93,7 +93,7 @@ export class VideoComponent implements OnInit {
   jitterAudio(jitterVal: number) {
     if(this.audioTimerSubscription){
       this.audioTimerSubscription.unsubscribe();
-    }
+	}
     this.muteTimer = timer(0, (jitterVal+1) * 2000);
     this.audioTimerSubscription = this.muteTimer.subscribe(val => {
       if(this.videoIsPlaying) {
@@ -140,11 +140,11 @@ export class VideoComponent implements OnInit {
       ctx.canvas.width  = window.innerWidth*0.5;
       ctx.canvas.height = window.innerHeight*0.4;
       that.videoContainer.scale = Math.min(
-        ctx.canvas.width / this.videoWidth, 
-        ctx.canvas.height  / this.videoHeight); 
+        ctx.canvas.width / this.videoWidth,
+        ctx.canvas.height  / this.videoHeight);
       that.videoContainer.ready = true;
-      requestAnimationFrame(that.updateCanvas.bind(that));  
-    }, false);    
+      requestAnimationFrame(that.updateCanvas.bind(that));
+    }, false);
     this.jitterAudio(Number(this.configurations['Audio Loss']));
     this.jitterVideo(Number(this.configurations['Video Loss']));
   }
@@ -153,9 +153,9 @@ export class VideoComponent implements OnInit {
     this.canvasElement = this.canvas.nativeElement;
     var ctx = this.canvasElement.getContext("2d");
     if(!this.videoIsJittering){
-      ctx.clearRect(0,0,this.canvasElement.width,this.canvasElement.height); 
+      ctx.clearRect(0,0,this.canvasElement.width,this.canvasElement.height);
     }
-    if(this.videoContainer !== undefined && this.videoContainer.ready){ 
+    if(this.videoContainer !== undefined && this.videoContainer.ready){
         // find the top left of the video on the canvas
         var scale = this.videoContainer.scale;
         var vidH = this.videoContainer.video.videoHeight;
@@ -164,7 +164,7 @@ export class VideoComponent implements OnInit {
         var left = ctx.canvas.width / 2 - (vidW /2 ) * scale;
         if(!this.videoIsJittering) {
           ctx.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
-          if(this.videoContainer.video.paused){ // if not playing show the paused screen 
+          if(this.videoContainer.video.paused){ // if not playing show the paused screen
               this.drawPayIcon();
           }
         }
@@ -299,5 +299,5 @@ export class VideoComponent implements OnInit {
     ctx.closePath();
     ctx.fill();
     ctx.globalAlpha = 1; // restore alpha
-}    
+}
 }
