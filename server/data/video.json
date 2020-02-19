@@ -4,6 +4,7 @@
 	"settings":{
 		"control_panel_can_change": false,
 		"control_panel_has_price":true,
-		"control_panel_freeze":false
+		"control_panel_freeze":true,
+		"normal":false
 	}
   }
