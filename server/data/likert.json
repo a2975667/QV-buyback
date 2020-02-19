@@ -41,6 +41,11 @@
 				"value": "e",
 				"text": "Feature 5"
 			}]
+		},{
+			"type": "text",
+			"name": "Textbox",
+			"title": "In one to two sentences, why?",
+			"isRequired": true
 		}]
 	}]
 }

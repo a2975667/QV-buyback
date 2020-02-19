@@ -4,7 +4,22 @@
 	"Description":"This is the description of this video and the HTML content.",
 	"settings":{
 		"control_panel_can_change": true,
-		"control_panel_has_price":true,
-		"control_panel_freeze":false
+		"control_panel_has_price":false,
+		"control_panel_freeze":false,
+		"normal":{
+			"title": "Demographic Survey",
+			"pages": [{
+				"title": "Please answer following questions.",
+				"questions": [
+					{
+						"name": "gender_other",
+						"type": "text",
+						"title": "If you prefer to self-describe your gender:",
+						"placeHolder": "",
+						"isRequired": false
+					}
+				]
+			}]
+		}
 	}
   }

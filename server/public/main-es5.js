@@ -105,7 +105,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<swal\n  #confirmSubmit\n  title=\"Submit with 0 vote?\"\n  text=\"This cannot be undone\"\n  icon=\"question\"\n  [showCancelButton]=\"true\"\n  [focusCancel]=\"true\"\n  (confirm)=\"submitSuccessSwal.fire()\">\n</swal>\n<swal\n  #submitSuccess\n  title=\"Submitted!\"\n  [showCancelButton]=\"false\"\n  text=\"You will be presented a similar task on the next page. The total number of votes may change.\"\n  (afterClose)=\"gServiceSubmit()\"\n>\n</swal>\n<div class=\"container sticky\">\n    <div class=\"card\">\n        <h5 class=\"card-header\">Summary</h5>\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Used {{usedCredits}} out of {{totalCredits}} credits</h5>\n                <div class=\"card-text\">\n                    <div>\n                        <small style=\"float: left; margin: 0\">0</small>\n                        <small style=\"float: right; margin: 0\">{{totalCredits}}</small>\n                        <progressbar style=\"width: 100%; margin-bottom: 10px;\" [animate]=\"false\" [value]=\"percentage\" [type]=\"type\"></progressbar>\n                    </div>\n                </div>\n                <button (click)=\"submit()\" type=\"button\" class=\"btn btn-outline-primary\">Submit</button>\n            </div>\n    </div>\n</div>\n\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<swal\n  #confirmSubmit\n  title=\"Submit with 0 vote?\"\n  text=\"This cannot be undone\"\n  icon=\"question\"\n  [showCancelButton]=\"true\"\n  [focusCancel]=\"true\"\n  (confirm)=\"submitSuccessSwal.fire()\">\n</swal>\n<swal\n  #submitSuccess\n  icon=\"question\"\n  [showCancelButton]=\"false\"\n  [showConfirmButton]=\"false\"\n>\n<form *swalPortal=\"swalTargets.content\" >\n    <p>\n        In 2 to 3 sentences, what is the reason that you make this decision?\n    </p>\n    <input \n        class=\"swal2-input\" \n        type=\"text\" \n        [formControl]=\"submitForm\" \n        autofocus\n        />\n    <label *ngIf=\"submitForm.invalid\" [ngClass] = \"'error'\" > Your response required with min 1 character. </label>\n    <br/>\n    <button \n    (click)=\"submitFinalForm()\"\n    *ngIf=\"!submitForm.invalid\" \n    class=\"swal2-styled swal2-confirm\"> Submit</button>\n\n</form>\n\n</swal>\n<div class=\"container sticky\">\n    <div class=\"card\">\n        <h5 class=\"card-header\">Summary</h5>\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Used {{usedCredits}} out of {{totalCredits}} credits</h5>\n                <div class=\"card-text\">\n                    <div>\n                        <small style=\"float: left; margin: 0\">0</small>\n                        <small style=\"float: right; margin: 0\">{{totalCredits}}</small>\n                        <progressbar style=\"width: 100%; margin-bottom: 10px;\" [animate]=\"false\" [value]=\"percentage\" [type]=\"type\"></progressbar>\n                    </div>\n                </div>\n                <button (click)=\"submit()\" type=\"button\" class=\"btn btn-outline-primary\">Submit</button>\n            </div>\n    </div>\n</div>\n\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/survey/survey.component.html": 
@@ -127,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <p>\n                {{description}}\n            </p>\n\n        </div>\n    </div>\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-sm-8 wrap-content\">\n        <div #videoOverlay class=\"original\" (click)=\"playPause($event)\">\n            <video\n                #videoPlayer\n                style=\"display: none;\"\n                src=\"\"\n                ></video>\n            <canvas #canvas \n            width=\"100vw\" height=\"30vh\"></canvas>\n            </div>\n        <audio\n        #audioPlayer\n        src=\"/api/audio/sample_audio.webm\">\n        </audio>\n        </div>\n\n    </div>\n\n\n    <p></p>\n    <h2>\n        Configuration\n    </h2>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <table class=\"table\">\n                <thead>\n                  <tr>\n                    <th scope=\"col\">Configuration Name</th>\n                    <th scope=\"col\" colspan=5>Score ( 0 ~ 4 )</th>\n                    <th scope=\"col\" colspan=3>Cost</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let k of objectKeys(configurations)\">\n                    <th scope=\"row\">{{k}}</th>\n                    <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                        <div class=\"form-check\">\n                            <input\n                                class=\"form-check-input\"\n                                type=\"radio\"\n                                name=\"{{k}}\"\n                                id=\"{{k}}-{{i}}\"\n                                value=\"{{i}}\"\n                                [(ngModel)]=\"configurations[k]\"\n                                (change)=\"onRadioCheck()\">\n                            <label class=\"form-check-label\" for=\"{{k}}-{{i}}\">{{i}}</label>\n                          </div>\n                    </td>\n                    <td>\n                        ${{configurations[k]*5}}\n                    </td>\n                  </tr>\n                  <tr>\n                    <tr >\n                        <th scope=\"row\"></th>\n                        <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                        </td>\n                        <td>\n                            Total: ${{sumUpCost(videoConfig)*5}}\n                        </td>\n                    </tr>\n                    <tr >\n                        <th scope=\"row\"></th>\n                        <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                        </td>\n                        <td>\n                            <button type=\"submit\" class=\"mr-2 btn btn-success\">\n                                Submit\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n              </table>\n\n          </div>\n    </div>\n\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <p>\n                {{description}}\n            </p>\n\n        </div>\n    </div>\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-sm-8 wrap-content\">\n        <div #videoOverlay class=\"original\" (click)=\"playPause()\">\n            <video\n                #videoPlayer\n                style=\"display: none;\"\n                src=\"\"\n                ></video>\n            <canvas #canvas \n            width=\"100vw\" height=\"30vh\"></canvas>\n            </div>\n        <audio\n        #audioPlayer\n        src=\"/api/audio/sample_audio.webm\">\n        </audio>\n        </div>\n\n    </div>\n\n    <p></p>\n    <div *ngIf=\"showConfig\">\n        <h2>\n            Configuration\n        </h2>\n        <div class=\"row\">\n            <div class=\"col-sm wrap-content\">\n                <table class=\"table\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col\">Configuration Name</th>\n                        <th scope=\"col\" colspan=5>Score ( 0 ~ 4 )</th>\n                        <th scope=\"col\" colspan=3>Cost</th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                      <tr *ngFor=\"let k of objectKeys(configurations)\">\n                        <th scope=\"row\">{{k}}</th>\n                        <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            <div class=\"form-check\">\n                                <input\n                                    class=\"form-check-input\"\n                                    type=\"radio\"\n                                    name=\"{{k}}\"\n                                    id=\"{{k}}-{{i}}\"\n                                    value=\"{{i}}\"\n                                    [(ngModel)]=\"configurations[k]\"\n                                    (change)=\"onRadioCheck()\">\n                                <label class=\"form-check-label\" for=\"{{k}}-{{i}}\">{{i}}</label>\n                              </div>\n                        </td>\n                        <td>\n                            ${{configurations[k]*5}}\n                        </td>\n                      </tr>\n                      <tr>\n                        <tr *ngIf=\"showCost\">\n                            <th scope=\"row\"></th>\n                            <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            </td>\n                            <td>\n                                Total: ${{sumUpCost(videoConfig)*5}}\n                            </td>\n                        </tr>\n                        <tr >\n                            <th scope=\"row\"></th>\n                            <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            </td>\n                            <td>\n                                <button (click)=\"submit()\" type=\"submit\" class=\"mr-2 btn btn-success\">\n                                    Submit\n                                </button>\n                            </td>\n                        </tr>\n                    </tbody>\n                  </table>\n    \n              </div>\n        </div>    \n    </div>\n    <button \n        *ngIf=\"!(showConfig)\" \n        (click)=\"submit()\" \n        type=\"submit\" \n        class=\"mr-2 btn btn-success\">\n        Next\n    </button>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/welcome/welcome.component.html": 
@@ -138,7 +138,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-light bg-light\">\n\t<div class=\"col-sm-1\">\n\t\t<br>\n\t</div>\n\t<div class=\"col-sm\">\n\t</div>\n\t<div class=\"col-sm\">\n\t</div>\n</nav>\n\n<div class=\"container\">\n\t<form (ngSubmit)=\"createUser()\" class=\"was-validated\" #validForm=\"ngForm\">\n\t\t<div class=\"container\">\n\t\t\t<h1>Welcome to the study</h1>\n\t\t\t<h4>Donation Causes Study Online Consent Form</h4>\n\t\t</div>\n\t\t<div class=\"container\">\n\t\t\t<p>\n\t\t\t\tYou are being asked to participate in a voluntary research study. The purpose of this study is to understand your level of interest and concern on a number of causes in the society. Participating in this study will involve filling out two surveys related to this topic and perform a donation decision task. Your participation will last around 5 - 15 minutes depending on the task you are assigned to randomly. There are no known risks associated with our study.\n\t\t\t\t<br><br>\n\t\t\t\t- Principal Investigator Name and Title: Dr. Hari Sundaram\n\t\t\t\t<br>\n\t\t\t\t- Department and Institution: Department of Computer Science, University of Illinois at Urbana Champaign\n\t\t\t\t<br>\n\t\t\t\t- Contact Information: <a target=\"_blank\" href=\"mailto:hs1@illinois.edu\">Dr. Hari Sundaram</a>\n\n\t\t\t</p>\n\t\t\t<h5>What procedures are involved?</h5>\n\t\t\t<p>\n\t\t\t\t<b></b> You will first be asked to complete surveys related to your degree of interest and concern on a number of causes. Then you will enter a lottery, and will be asked to decide how you would like to allocate the potential bonus from the lottery to a list of organizations and how much you would like to keep to yourself.\n\t\t\t</p>\n\t\t\t<h5>Will my study-related information be kept confidential?</h5>\n\t\t\t<p>\n\t\t\t\tFaculty, students, and staff who may see your information will maintain confidentiality to the extent of laws and university policies. Personal identifiers are neither collected nor will be published or presented.\n\t\t\t</p>\n\t\t\t<h5>Will I be reimbursed for any expenses or paid for my participation in this research?</h5>\n\t\t\t<p>\n\t\t\t\tYou will be paid $0.7 base pay through MTurk when you are done with the study. If you are assigned the longer version of the study, you will be paid $1.3 bonus through MTurk when you complete the study. You may also be paid a bonus from the lottery through MTurk if you win the lottery. Payment is dependent on your quality completion of the task.\n\t\t\t</p>\n\t\t\t<h5>Can I withdraw or be removed from the study?</h5>\n\t\t\t<p>\n\t\t\t\tIf you decide to participate, you are free to withdraw your consent and discontinue participation at any time. The researchers also have the right to stop your participation in this study without your consent if they believe it is in your best interests, and/or you were to object to any future changes that may be made in the study plan. Your participation in this research is voluntary. Your decision whether or not to participate, or to withdraw after beginning participation, will not affect your current or future dealings with the University of Illinois at Urbana-Champaign.\n\t\t\t</p>\n\t\t\t<h5>Will data collected from me be used for any other research?</h5>\n\t\t\t<p>\n\t\t\t\tYour de-identified information could be used for future research without additional informed consent.\n\t\t\t</p>\n\n\t\t\t<h5>Who should I contact if I have questions?</h5>\n\t\t\t<p>\n\t\t\t\tQuestions about this research study should be directed to Dr. Hari Sundaram (hs1@illinois.edu) in the Department of Computer Science at University of Illinois, Urbana-Champaign. If you have any questions about your rights as a participant in this study or any concerns or complaints, please contact the University of Illinois Institutional Review Board at 217-333-2670 or via irb@illinois.edu.\n\t\t\t</p>\n\t\t\t<h5>How will the results be disseminated?</h5>\n\t\t\t<p>\n\t\t\t\tThe results will be disseminated via journal articles, academic paper, conference presentations, PhD theses, and/or Open Science Framework. Please download and print this consent form if you would like to retain a copy for your records.\n\n\t\t\t</p>\n\n\t\t\t<h5> Please use a Laptop, Tablet or PC to complete this survey. </h5>\n\t\t\t<h5>By continuing, I certify that I have read this form and volunteer to participate in this research study.<br></h5>\n\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_one\" class=\"form-check-input\" type=\"checkbox\" name=\"condition1\"\n\t\t\t\t\t\trequired> I have read and understand the above consent form.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_two\" class=\"form-check-input\" type=\"checkbox\" name=\"condition2\"\n\t\t\t\t\t\trequired> I certify that I am 18 years old or older.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_three\" class=\"form-check-input\" type=\"checkbox\" name=\"condition3\"\n\t\t\t\t\t\trequired> I understand that by clicking the continue button to enter the survey, I indicate my willingness to voluntarily take part in this study.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"container\">\n\t\t\t<button type=\"submit\" class=\"mr-2 btn btn-success\" [disabled]=\"!validForm.form.valid || isSubmit\">\n\t\t\t\tStart Questionaire\n\t\t\t</button>\n\t\t\t<button (click)=\"cancel()\"type=\"button\" class=\"mr-2 btn btn-danger\" [disabled]=\"validForm.form.valid\">\n\t\t\t\tCancel\n\t\t\t</button>\n\t\t</div>\n\t</form>\n\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-light bg-light\">\n\t<div class=\"col-sm-1\">\n\t\t<br>\n\t</div>\n\t<div class=\"col-sm\">\n\t</div>\n\t<div class=\"col-sm\">\n\t</div>\n</nav>\n\n<div class=\"container\">\n\t<form (ngSubmit)=\"createUser()\" class=\"was-validated\" #validForm=\"ngForm\">\n\t\t<div class=\"container\">\n\t\t\t<h1>Welcome to the study</h1>\n\t\t\t<h4>Donation Causes Study Online Consent Form</h4>\n\t\t</div>\n\t\t<div class=\"container\">\n\t\t\t<p>\n\t\t\t\tYou are being asked to participate in a voluntary research study. The purpose of this study is to understand your level of interest and concern on a number of causes in the society. Participating in this study will involve filling out two surveys related to this topic and perform a donation decision task. Your participation will last around 5 - 15 minutes depending on the task you are assigned to randomly. There are no known risks associated with our study.\n\t\t\t\t<br><br>\n\t\t\t\t- Principal Investigator Name and Title: Dr. Hari Sundaram\n\t\t\t\t<br>\n\t\t\t\t- Department and Institution: Department of Computer Science, University of Illinois at Urbana Champaign\n\t\t\t\t<br>\n\t\t\t\t- Contact Information: <a target=\"_blank\" href=\"mailto:hs1@illinois.edu\">Dr. Hari Sundaram</a>\n\n\t\t\t</p>\n\t\t\t<h5>What procedures are involved?</h5>\n\t\t\t<p>\n\t\t\t\t<b></b> You will first be asked to complete surveys related to your degree of interest and concern on a number of causes. Then you will enter a lottery, and will be asked to decide how you would like to allocate the potential bonus from the lottery to a list of organizations and how much you would like to keep to yourself.\n\t\t\t</p>\n\t\t\t<h5>Will my study-related information be kept confidential?</h5>\n\t\t\t<p>\n\t\t\t\tFaculty, students, and staff who may see your information will maintain confidentiality to the extent of laws and university policies. Personal identifiers are neither collected nor will be published or presented.\n\t\t\t</p>\n\t\t\t<h5>Will I be reimbursed for any expenses or paid for my participation in this research?</h5>\n\t\t\t<p>\n\t\t\t\tYou will be paid $0.7 base pay through MTurk when you are done with the study. If you are assigned the longer version of the study, you will be paid $1.3 bonus through MTurk when you complete the study. You may also be paid a bonus from the lottery through MTurk if you win the lottery. Payment is dependent on your quality completion of the task.\n\t\t\t</p>\n\t\t\t<h5>Can I withdraw or be removed from the study?</h5>\n\t\t\t<p>\n\t\t\t\tIf you decide to participate, you are free to withdraw your consent and discontinue participation at any time. The researchers also have the right to stop your participation in this study without your consent if they believe it is in your best interests, and/or you were to object to any future changes that may be made in the study plan. Your participation in this research is voluntary. Your decision whether or not to participate, or to withdraw after beginning participation, will not affect your current or future dealings with the University of Illinois at Urbana-Champaign.\n\t\t\t</p>\n\t\t\t<h5>Will data collected from me be used for any other research?</h5>\n\t\t\t<p>\n\t\t\t\tYour de-identified information could be used for future research without additional informed consent.\n\t\t\t</p>\n\n\t\t\t<h5>Who should I contact if I have questions?</h5>\n\t\t\t<p>\n\t\t\t\tQuestions about this research study should be directed to Dr. Hari Sundaram (hs1@illinois.edu) in the Department of Computer Science at University of Illinois, Urbana-Champaign. If you have any questions about your rights as a participant in this study or any concerns or complaints, please contact the University of Illinois Institutional Review Board at 217-333-2670 or via irb@illinois.edu.\n\t\t\t</p>\n\t\t\t<h5\n\t\t\t\t>How will the results be disseminated?\n\t\t\t</h5>\n\t\t\t<p>\n\t\t\t\tThe results will be disseminated via journal articles, academic paper, conference presentations, PhD theses, and/or Open Science Framework. Please download and print this consent form if you would like to retain a copy for your records.\n\t\t\t</p>\n\n\t\t\t<h5>Please use a Laptop, Tablet or PC to complete this survey. </h5>\n\t\t\t<h5>By continuing, I certify that I have read this form and volunteer to participate in this research study.<br></h5>\n\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_one\" class=\"form-check-input\" type=\"checkbox\" name=\"condition1\"\n\t\t\t\t\t\trequired> I have read and understand the above consent form.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_two\" class=\"form-check-input\" type=\"checkbox\" name=\"condition2\"\n\t\t\t\t\t\trequired> I certify that I am 18 years old or older.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_three\" class=\"form-check-input\" type=\"checkbox\" name=\"condition3\"\n\t\t\t\t\t\trequired> I understand that by clicking the continue button to enter the survey, I indicate my willingness to voluntarily take part in this study.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"container\">\n\t\t\t<button type=\"submit\" class=\"mr-2 btn btn-success\" [disabled]=\"!validForm.form.valid || isSubmit\">\n\t\t\t\tStart Questionaire\n\t\t\t</button>\n\t\t\t<button (click)=\"cancel()\"type=\"button\" class=\"mr-2 btn btn-danger\" [disabled]=\"validForm.form.valid\">\n\t\t\t\tCancel\n\t\t\t</button>\n\t\t</div>\n\t</form>\n\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -570,6 +570,7 @@
                         _video_video_component__WEBPACK_IMPORTED_MODULE_20__["VideoComponent"]
                     ],
                     imports: [
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"],
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                         _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
                         _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
@@ -607,11 +608,14 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/ngx-cookie-service.js");
             var CompleteComponent = /** @class */ (function () {
-                function CompleteComponent(route) {
+                function CompleteComponent(cookieService, route) {
+                    this.cookieService = cookieService;
                     this.route = route;
                 }
                 CompleteComponent.prototype.ngOnInit = function () {
+                    this.cookieService.deleteAll('/');
                     this.title = this.route.snapshot.paramMap.get('title');
                     this.code = this.route.snapshot.paramMap.get('userId');
                     this.text = this.route.snapshot.paramMap.get('text');
@@ -625,6 +629,7 @@
                 return CompleteComponent;
             }());
             CompleteComponent.ctorParameters = function () { return [
+                { type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"] },
                 { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
             ]; };
             CompleteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -687,7 +692,7 @@
                             _this.route.navigate(['likert']);
                         }
                         else if (type == 'video') {
-                            _this.route.navigate(['video']);
+                            _this.route.navigate(['video']).then(function () { return location.reload(); });
                         }
                         else {
                             _this.route.navigate(['qv']);
@@ -846,7 +851,7 @@
                         this.route.navigate(['qv']);
                     }
                     else if (type == 'video') {
-                        this.route.navigate(['video']);
+                        this.route.navigate(['video']).then(function () { return location.reload(); });
                     }
                     else if (type == 'complete') {
                         this.route.navigate(['complete']);
@@ -1012,7 +1017,7 @@
                         this.gService.getQuestionnaire();
                     }
                     else if (type == 'video') {
-                        this.route.navigate(['video']);
+                        this.route.navigate(['video']).then(function () { return location.reload(); });
                     }
                     else if (type == 'complete') {
                         this.route.navigate(['complete']);
@@ -1264,7 +1269,7 @@
                     });
                     return;
                 };
-                GlobalService.prototype.submit = function () {
+                GlobalService.prototype.submit = function (finalQuestionValue) {
                     var _this = this;
                     var nextQuestionIndex = Number(this.getCookieById('user_current_question_index')) + 1;
                     var submitData = this.generateSubmitPost(false);
@@ -1275,7 +1280,7 @@
                         this.setCookieById('user_current_path_index', String(pathIndex + 1));
                         if (pathArray[pathIndex + 1]['type'] === "donation") {
                             submitData.complete_flag = true;
-                            return this.http.post(this.requestUrl + "/submit", submitData).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError)).subscribe(function (data) {
+                            return this.http.post(this.requestUrl + "/submit", { submitData: submitData, finalQuestion: finalQuestionValue }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError)).subscribe(function (data) {
                                 _this.router.navigate(['donation']);
                             });
                         }
@@ -1481,7 +1486,7 @@
                     this.cookieService = cookieService;
                     this.router = router;
                     this.requestUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_7__["environment"].apiUrl;
-                    this.videoForm = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
+                    this.videoForm = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](null);
                 }
                 VideoService.prototype.getCookieById = function (id) {
                     return this.cookieService.get(id);
@@ -1494,6 +1499,7 @@
                     else {
                         var pathIndex = Number(this.getCookieById('user_current_path_index'));
                         var pathArray = JSON.parse(this.getCookieById('user_path'));
+                        console.log(pathArray);
                         return pathArray[pathIndex]['file'];
                     }
                 };
@@ -1502,7 +1508,6 @@
                     var fileName = this.getCurrentPath();
                     var fileAPI = this.requestUrl + "/api/qv/" + fileName;
                     this.http.get(fileAPI).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError)).subscribe(function (data) {
-                        console.log(data);
                         _this.videoForm.next(data);
                     });
                 };
@@ -1548,7 +1553,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".sticky {\n  position: -webkit-sticky;\n  /* Safari */\n  position: sticky;\n  bottom: 15px;\n  z-index: 3;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9zdW1tYXJ5L3N1bW1hcnkuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHdCQUFBO0VBQTBCLFdBQUE7RUFDMUIsZ0JBQUE7RUFDSCxZQUFBO0VBQ0csVUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvc3VtbWFyeS9zdW1tYXJ5LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0aWNreSB7XHJcbiAgICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7IC8qIFNhZmFyaSAqL1xyXG4gICAgcG9zaXRpb246IHN0aWNreTtcclxuXHRib3R0b206IDE1cHg7XHJcbiAgICB6LWluZGV4OiAzO1xyXG59XHJcbiIsIi5zdGlja3kge1xuICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7XG4gIC8qIFNhZmFyaSAqL1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDE1cHg7XG4gIHotaW5kZXg6IDM7XG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = (".sticky {\n  position: -webkit-sticky;\n  /* Safari */\n  position: sticky;\n  bottom: 15px;\n  z-index: 3;\n}\n\n.error {\n  color: red;\n  font-size: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9zdW1tYXJ5L3N1bW1hcnkuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHdCQUFBO0VBQTBCLFdBQUE7RUFDMUIsZ0JBQUE7RUFDSCxZQUFBO0VBQ0csVUFBQTtBQ0VKOztBRENBO0VBQ0ksVUFBQTtFQUNBLGVBQUE7QUNFSiIsImZpbGUiOiJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zdGlja3kge1xyXG4gICAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5OyAvKiBTYWZhcmkgKi9cclxuICAgIHBvc2l0aW9uOiBzdGlja3k7XHJcblx0Ym90dG9tOiAxNXB4O1xyXG4gICAgei1pbmRleDogMztcclxufVxyXG5cclxuLmVycm9ye1xyXG4gICAgY29sb3I6IHJlZDtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufSAiLCIuc3RpY2t5IHtcbiAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5O1xuICAvKiBTYWZhcmkgKi9cbiAgcG9zaXRpb246IHN0aWNreTtcbiAgYm90dG9tOiAxNXB4O1xuICB6LWluZGV4OiAzO1xufVxuXG4uZXJyb3Ige1xuICBjb2xvcjogcmVkO1xuICBmb250LXNpemU6IDE1cHg7XG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/summary/summary.component.ts": 
@@ -1563,14 +1568,19 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _services_global_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/global.service */ "./src/app/services/global.service.ts");
+            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sweetalert2/ngx-sweetalert2 */ "./node_modules/@sweetalert2/ngx-sweetalert2/fesm2015/sweetalert2-ngx-sweetalert2.js");
             var SummaryComponent = /** @class */ (function () {
-                function SummaryComponent(gService) {
+                function SummaryComponent(swalTargets, gService) {
+                    this.swalTargets = swalTargets;
                     this.gService = gService;
                     this.usedCredits = 0;
                     this.percentage = 0;
+                    this.submitForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].minLength(1)]);
                 }
-                SummaryComponent.prototype.gServiceSubmit = function () {
-                    this.gService.submit();
+                SummaryComponent.prototype.submitFinalForm = function (e) {
+                    var _this = this;
+                    this.submitSuccessSwal.dismiss().then(function () { return _this.gService.submit(_this.submitForm.value); });
                 };
                 SummaryComponent.prototype.submit = function () {
                     if (this.usedCredits == 0) {
@@ -1579,6 +1589,9 @@
                     else {
                         this.submitSuccessSwal.fire();
                     }
+                };
+                SummaryComponent.prototype.ngAfterViewInit = function () {
+                    console.log(this.submitSuccessSwal.html);
                 };
                 SummaryComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -1595,6 +1608,7 @@
                 return SummaryComponent;
             }());
             SummaryComponent.ctorParameters = function () { return [
+                { type: _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_4__["SwalPortalTargets"] },
                 { type: _services_global_service__WEBPACK_IMPORTED_MODULE_2__["GlobalService"] }
             ]; };
             tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1730,30 +1744,41 @@
                     this.sumUpCost = function (arr) { return arr.reduce(function (a, b) { return a + b; }); };
                     this.videoIsJittering = false;
                     this.jitterTempData = null;
+                    this.showCost = false;
+                    this.showConfig = false;
                 }
                 ;
                 VideoComponent.prototype.jitterVideo = function (jitterVal) {
                     var _this = this;
+                    if (this.videoTimerSubscription) {
+                        this.videoTimerSubscription.unsubscribe();
+                    }
                     this.blackTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, (jitterVal + 1) * 3000);
                     this.videoTimerSubscription = this.blackTimer.subscribe(function (val) {
-                        _this.videoIsJittering = true;
-                        var freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(1000);
-                        freshback.subscribe(function (d) {
-                            _this.videoIsJittering = false;
-                        });
+                        if (_this.videoIsPlaying) {
+                            _this.videoIsJittering = true;
+                            var freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(1000);
+                            freshback.subscribe(function (d) {
+                                _this.videoIsJittering = false;
+                            });
+                        }
                     });
                 };
                 VideoComponent.prototype.jitterAudio = function (jitterVal) {
                     var _this = this;
+                    if (this.audioTimerSubscription) {
+                        this.audioTimerSubscription.unsubscribe();
+                    }
                     this.muteTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, (jitterVal + 1) * 2000);
                     this.audioTimerSubscription = this.muteTimer.subscribe(function (val) {
-                        if (_this.videoIsPlaying)
+                        if (_this.videoIsPlaying) {
                             _this.audioElement.volume = 0;
-                        var freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(1500);
-                        freshback.subscribe(function (d) {
-                            if (_this.videoIsPlaying)
-                                _this.audioElement.volume = 1;
-                        });
+                            var freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(1500);
+                            freshback.subscribe(function (d) {
+                                if (_this.videoIsPlaying)
+                                    _this.audioElement.volume = 1;
+                            });
+                        }
                     });
                 };
                 VideoComponent.prototype.syncAudioWithVideo = function () {
@@ -1820,14 +1845,15 @@
                     this.videoConfig = Object.values(this.configurations).map(function (a) { return Number(a); });
                     this.refreshPlayback();
                 };
-                VideoComponent.prototype.playPause = function (e) {
+                VideoComponent.prototype.playPause = function () {
                     if (this.videoIsPlaying) {
                         this.audioElement.pause();
                         this.videoElement.pause();
                         this.videoIsPlaying = false;
                     }
                     else {
-                        this.refreshPlayback();
+                        this.audioElement.play();
+                        this.videoElement.play();
                         this.videoIsPlaying = true;
                     }
                 };
@@ -1844,14 +1870,40 @@
                         this.route.navigate(['qv']);
                     }
                     else if (type == 'video') {
-                        this.route.navigate(['video']);
+                        this.route.navigate(['video']).then(function () { return location.reload(); });
                     }
                     else if (type == 'complete') {
                         this.route.navigate(['complete']);
                     }
                 };
+                VideoComponent.prototype.ngOnDestroy = function () {
+                    this.videoSrc = "";
+                    this.audioSrc = "";
+                    this.videoElement.src = this.videoSrc;
+                    this.audioElement.src = this.audioSrc;
+                    this.audioElement.pause();
+                    this.videoElement.pause();
+                    if (this.audioTimerSubscription) {
+                        this.audioTimerSubscription.unsubscribe();
+                    }
+                    if (this.videoTimerSubscription) {
+                        this.videoTimerSubscription.unsubscribe();
+                    }
+                    this.videoElement.remove();
+                    this.audioElement.remove();
+                    this.videoIsPlaying = false;
+                    console.log('hihi');
+                };
                 VideoComponent.prototype.ngAfterViewInit = function () {
                     var _this = this;
+                    this.configurations = {
+                        "Audio Quality": '0',
+                        "Video Quality": '0',
+                        "Audio Loss": '0',
+                        "Video Loss": '0',
+                        "Audio-Video Synchronization": '0',
+                    };
+                    console.log(this.configurations);
                     this.videoElement = this.videoPlayer.nativeElement;
                     this.audioElement = this.audioPlayer.nativeElement;
                     this.videoOverlayElement = this.videoOverlay.nativeElement;
@@ -1859,19 +1911,24 @@
                     this.videoContainer.video = this.videoElement;
                     this.vService.requestForm();
                     this.vService.videoForm.subscribe(function (data) {
-                        _this.formJson = data;
-                        _this.description = data['Description'];
-                        _this.title = data['Title'];
-                        var time = Date.now().toString();
-                        _this.videoSrc = _this.videoFilePrefix + "vq" + _this.configurations['Video Quality'] + ".webm?t=" + time;
-                        _this.audioSrc = _this.audioFilePrefix + "aq" + _this.configurations['Audio Quality'] + ".m4a?t=" + time;
-                        _this.videoElement.src = _this.videoSrc;
-                        _this.audioElement.src = _this.audioSrc;
-                        _this.refreshPlayback();
+                        if (data) {
+                            _this.formJson = data;
+                            _this.description = data.Description;
+                            _this.title = data.Title;
+                            _this.showCost = data.settings.control_panel_has_price;
+                            _this.showConfig = data.settings.control_panel_can_change;
+                            var time = Date.now().toString();
+                            _this.videoSrc = _this.videoFilePrefix + "vq" + _this.configurations['Video Quality'] + ".webm?t=" + time;
+                            _this.audioSrc = _this.audioFilePrefix + "aq" + _this.configurations['Audio Quality'] + ".m4a?t=" + time;
+                            _this.videoElement.src = _this.videoSrc;
+                            _this.audioElement.src = _this.audioSrc;
+                            _this.refreshPlayback();
+                        }
                     });
                 };
                 VideoComponent.prototype.submit = function () {
                     var _this = this;
+                    this.videoElement.pause();
                     this.vService.submit(this.videoConfig).subscribe(function (result) {
                         _this.decidePath();
                     });
@@ -1970,7 +2027,7 @@
                             this.router.navigate(['qv']);
                         }
                         else if (type == 'video') {
-                            this.router.navigate(['video']);
+                            this.router.navigate(['video']).then(function () { return location.reload(); });
                         }
                         else {
                             this.router.navigate(['welcome']);
