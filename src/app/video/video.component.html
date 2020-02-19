@@ -32,9 +32,16 @@
         </div>
 
     </div>
-
-    <p></p>
-    <div *ngIf="showConfig">
+    <h2 *ngIf="formJson && formJson.settings.normal">
+        Questionnaire
+    </h2>
+    <app-survey
+        *ngIf="formJson && formJson.settings.normal" 
+        [json]="survey" 
+        (suveyModel)="getSurvey($event)"
+        (resultEmit)="surveySubmit($event)">
+    </app-survey>    <p></p>
+    <div >
         <h2>
             Configuration
         </h2>
@@ -54,6 +61,7 @@
                         <td *ngFor="let i of objectKeys(videoConfig)">
                             <div class="form-check">
                                 <input
+                                    disabled="{{!showConfig}}"
                                     class="form-check-input"
                                     type="radio"
                                     name="{{k}}"
@@ -89,15 +97,7 @@
                         </tr>
                     </tbody>
                   </table>
-    
               </div>
         </div>    
     </div>
-    <button 
-        *ngIf="!(showConfig)" 
-        (click)="submit()" 
-        type="submit" 
-        class="mr-2 btn btn-success">
-        Next
-    </button>
 </div>

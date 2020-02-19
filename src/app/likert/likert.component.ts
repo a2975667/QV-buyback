@@ -35,7 +35,10 @@ export class LikertComponent implements OnInit {
   ngOnInit() {
     this.liService.requestForm();
     this.liService.likertForm.subscribe(data => {
-      this.json = data;
+      this.json = {
+        questions: data,
+        showNav: true,
+      }
     })
   }
   

@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Video } from '../schema/video';
+import * as Survey from "survey-angular";
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -16,7 +17,7 @@ export class VideoComponent implements OnInit {
   @ViewChild('videoOverlay', {static: false}) videoOverlay: ElementRef;
   @ViewChild('audioPlayer', {static: false}) audioPlayer: ElementRef;
   @ViewChild('canvas', {static: false}) canvas: ElementRef;
-
+  survey: object;
   canvasElement: HTMLCanvasElement;
   videoOverlayElement: HTMLDivElement;
   videoElement: HTMLVideoElement;
@@ -69,7 +70,10 @@ export class VideoComponent implements OnInit {
     private cookieService: CookieService,
     private route: Router,
     ) { }
-
+  completeFunc: Function;
+  getSurvey(survey: Survey.Model){
+    this.completeFunc = survey.completeLastPage.bind(survey);
+  }
   jitterVideo(jitterVal: number) {
     if(this.videoTimerSubscription){
       this.videoTimerSubscription.unsubscribe();
@@ -219,7 +223,6 @@ export class VideoComponent implements OnInit {
     this.videoElement.remove();
     this.audioElement.remove();
     this.videoIsPlaying = false;
-    console.log('hihi')
   }
 
   ngAfterViewInit()	 {
@@ -230,7 +233,6 @@ export class VideoComponent implements OnInit {
       "Video Loss": '0',
       "Audio-Video Synchronization": '0',
     }
-    console.log(this.configurations);
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
     this.videoOverlayElement = this.videoOverlay.nativeElement;
@@ -240,6 +242,10 @@ export class VideoComponent implements OnInit {
     this.vService.videoForm.subscribe((data: Video) => {
       if(data){
         this.formJson = data;
+        this.survey = {
+          questions: data.settings.normal,
+          showNav: false,
+        }
         this.description = data.Description;
         this.title = data.Title;
         this.showCost = data.settings.control_panel_has_price;
@@ -255,14 +261,26 @@ export class VideoComponent implements OnInit {
   }
 
   submit(){
+    if(this.completeFunc){
+      this.completeFunc();
+    }else{
+      this.surveySubmit(null);
+    }
+  }
+
+  surveySubmit(data) {
     this.videoElement.pause();
-    this.vService.submit(this.videoConfig).subscribe(
+    this.vService.submit(
+      {
+        videoConfig: this.videoConfig, 
+        survey: data
+      }
+    ).subscribe(
       result => {
         this.decidePath();
       }
     );
   }
-
   // implementation based on https://stackoverflow.com/questions/38710125/how-do-i-display-a-video-using-html5-canvas-tag
   drawPayIcon(){
     this.canvasElement = this.canvas.nativeElement;

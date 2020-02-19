@@ -20,7 +20,10 @@ export class DemographicComponent implements OnInit {
 
   ngOnInit() {
     this.demoFormService.demoForm.subscribe(data => {
-      this.demoForm = data;
+      this.demoForm = {
+        questions: data,
+        showNav: true,
+      }    
     })
     this.demoFormService.requestForm();
   }
