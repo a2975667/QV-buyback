@@ -4,7 +4,6 @@ import { Questionnaire } from '../schema/questionnaire';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { FormControl, Validators } from '@angular/forms';
 import { SwalPortalTargets } from '@sweetalert2/ngx-sweetalert2';
-import swal from 'sweetalert2';
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
@@ -37,7 +36,6 @@ export class SummaryComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.submitSuccessSwal.html)
   }
 
   ngOnInit() {

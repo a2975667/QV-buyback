@@ -85,6 +85,7 @@ export class GlobalService {
     )
     let currentQuestion = this.getCookieById('user_current_question_index');
     result.subscribe((data: Questionnaire) => {
+      console.log(data);
       let height = data.question_list.length;
       let votesArray = [];
       for(let i = 0; i < height; i++){

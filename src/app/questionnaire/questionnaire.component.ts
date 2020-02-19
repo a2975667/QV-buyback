@@ -27,7 +27,9 @@ export class QuestionnaireComponent implements OnInit {
   ngOnInit() {
     let pathIndex = Number(this.cookieService.get('user_current_path_index'));
     let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
+    console.log(pathArray[pathIndex]);
     let type: string = pathArray[pathIndex]['type'];
+    
     if(type == 'normal'){
       this.route.navigate(['likert']);
     } else if(type == 'qv'){
