@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Video } from '../schema/video';
 import * as Survey from "survey-angular";
+import { Options } from 'ng5-slider';
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -65,7 +67,10 @@ export class VideoComponent implements OnInit {
 
   showCost = false;
   showConfig = false;
-
+  sliderOptions: Options = {
+    floor: 0,
+    ceil: 250
+  };
   constructor(
     private vService: VideoService,
     private cookieService: CookieService,
