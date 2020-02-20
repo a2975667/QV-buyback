@@ -5,6 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Video } from '../schema/video';
+import * as Survey from "survey-angular";
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -72,6 +74,11 @@ export class VideoComponent implements OnInit {
     private cookieService: CookieService,
     private route: Router,
     ) { }
+
+  completeFunc: Function;
+  getSurvey(survey: Survey.Model){
+    this.completeFunc = survey.completeLastPage.bind(survey);
+  }
 
   jitterVideo(jitterVal: number) {
     if(this.videoTimerSubscription){
