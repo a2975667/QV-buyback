@@ -3,12 +3,7 @@
         {{title}}
     </h1>
     <div class="row">
-        <div class="col-sm wrap-content">
-            <p>
-                {{description}}
-            </p>
-
-        </div>
+        <div class="col-sm wrap-content" [innerHTML]="description"></div>
     </div>
     <h2>
         Video
@@ -22,7 +17,7 @@
                 style="display: none;"
                 src=""
                 ></video>
-            <canvas #canvas 
+            <canvas #canvas
             width="100vw" height="30vh"></canvas>
             </div>
         <audio
@@ -32,8 +27,10 @@
         </div>
 
     </div>
+
    <p></p>
     <div >
+
         <h2>
             Configuration
         </h2>
@@ -43,8 +40,10 @@
                     <thead>
                       <tr>
                         <th scope="col">Configuration Name</th>
+
                         <th scope="col" colspan=5>Score ( 0 ~ 4 )</th>
                         <th *ngIf="showCost" scope="col" colspan=3>Cost</th>
+
                       </tr>
                     </thead>
                     <tbody>
@@ -58,10 +57,10 @@
                                     type="radio"
                                     name="{{k}}"
                                     id="{{k}}-{{i}}"
-                                    value="{{i}}"
+									value="{{i}}"
                                     [(ngModel)]="configurations[k]"
                                     (change)="onRadioCheck()">
-                                <label class="form-check-label" for="{{k}}-{{i}}">{{i}}</label>
+                                <label class="form-check-label" for="{{k}}-{{i}}">{{videoConfigText[i]}}</label>
                               </div>
                         </td>
                         <td *ngIf="showCost">
