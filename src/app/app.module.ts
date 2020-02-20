@@ -19,6 +19,7 @@ import { DemographicComponent } from './demographic/demographic.component';
 import { CompleteComponent } from './complete/complete.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { VideoComponent } from './video/video.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { VideoComponent } from './video/video.component';
   ],
   imports: [
     ReactiveFormsModule,
+    Ng5SliderModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
