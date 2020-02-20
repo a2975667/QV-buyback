@@ -1,11 +1,25 @@
 {
 	"filename":"sample.mp4",
-	"Title":"This is a title",
-	"Description":"This is the description of this video and the HTML content.",
+	"Title":"Elements of a Video",
+	"Description":"<p> Have you ever had an unpleasant experience when watching a low-quality video due to network bandwidth issues? Usually, five factors are impacted in a video when there is limited bandwidth: video loss, audio loss, video quality, audio quality, and video-audio synchronization. <b>Developers of the video platform would like to hear your voices about how much you care about each factor and try to prioritize which factors to fix.</b> <br> You are presented with a weather forecast video below. There are a few questions at the bottom of the page that you need to answer related to the video to test your understanding of the video content. However, due to network bandwidth issues, the current video has a bad quality. <b>Please use the control panel below to test out how the different factors impact your understanding with the video.</b> <br> In the control panel, there are four radio buttons representing four levels of each factor. Level 0 on the left is the default level with the worst quality. Level 3 on the right is the ideal level with the best quality. Level 1 and 2 are intermediate levels. Overall, quality improves steadily as we move through level 0 to level 3. <br> <strong> After experiencing the different video qualities and completing the questions, continue to the next page. You will then be asked to express your opinion on how much you care about each factor in a survey. </strong><br>",
 	"settings":{
 		"control_panel_can_change": true,
 		"control_panel_has_price":false,
 		"control_panel_freeze":false,
-		"normal":false
+		"normal":{
+			"title": "Demographic Survey",
+			"pages": [{
+				"title": "Please answer following questions.",
+				"questions": [
+					{
+						"name": "gender_other",
+						"type": "text",
+						"title": "If you prefer to self-describe your gender:",
+						"placeHolder": "",
+						"isRequired": false
+					}
+				]
+			}]
+		}
 	}
   }

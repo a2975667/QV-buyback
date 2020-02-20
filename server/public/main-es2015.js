@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<swal\n  #confirmSubmit\n  title=\"Submit with 0 vote?\"\n  text=\"This cannot be undone\"\n  icon=\"question\"\n  [showCancelButton]=\"true\"\n  [focusCancel]=\"true\"\n  (confirm)=\"submitSuccessSwal.fire()\">\n</swal>\n<swal\n  #submitSuccess\n  icon=\"question\"\n  [showCancelButton]=\"false\"\n  [showConfirmButton]=\"false\"\n>\n<form *swalPortal=\"swalTargets.content\" >\n    <p>\n        In 2 to 3 sentences, what is the reason that you make this decision?\n    </p>\n    <input \n        class=\"swal2-input\" \n        type=\"text\" \n        [formControl]=\"submitForm\" \n        autofocus\n        />\n    <label *ngIf=\"submitForm.invalid\" [ngClass] = \"'error'\" > Your response required with min 1 character. </label>\n    <br/>\n    <button \n    (click)=\"submitFinalForm()\"\n    *ngIf=\"!submitForm.invalid\" \n    class=\"swal2-styled swal2-confirm\"> Submit</button>\n\n</form>\n\n</swal>\n<div class=\"container sticky\">\n    <div class=\"card\">\n        <h5 class=\"card-header\">Summary</h5>\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Used {{usedCredits}} out of {{totalCredits}} credits</h5>\n                <div class=\"card-text\">\n                    <div>\n                        <small style=\"float: left; margin: 0\">0</small>\n                        <small style=\"float: right; margin: 0\">{{totalCredits}}</small>\n                        <progressbar style=\"width: 100%; margin-bottom: 10px;\" [animate]=\"false\" [value]=\"percentage\" [type]=\"type\"></progressbar>\n                    </div>\n                </div>\n                <button (click)=\"submit()\" type=\"button\" class=\"btn btn-outline-primary\">Submit</button>\n            </div>\n    </div>\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<swal\n  #confirmSubmit\n  title=\"Submit with 0 vote?\"\n  text=\"This cannot be undone\"\n  icon=\"question\"\n  [showCancelButton]=\"true\"\n  [focusCancel]=\"true\"\n  (confirm)=\"submitSuccessSwal.fire()\">\n</swal>\n<swal\n  #submitSuccess\n  icon=\"question\"\n  [showCancelButton]=\"false\"\n  [showConfirmButton]=\"false\"\n>\n<form *swalPortal=\"swalTargets.content\" >\n    <p>\n        In 2 to 3 sentences, what is the reason that you make this decision?\n    </p>\n    <textarea \n        class=\"swal2-textarea\" \n        type=\"text\" \n        [formControl]=\"submitForm\" \n        autofocus\n    ></textarea>\n    <label *ngIf=\"submitForm.invalid\" [ngClass] = \"'error'\" > Your response required with min 1 character. </label>\n    <br/>\n    <button \n    (click)=\"submitFinalForm()\"\n    *ngIf=\"!submitForm.invalid\" \n    class=\"swal2-styled swal2-confirm\"> Submit</button>\n\n</form>\n\n</swal>\n<div class=\"container sticky\">\n    <div class=\"card\">\n        <h5 class=\"card-header\">Summary</h5>\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Used {{usedCredits}} out of {{totalCredits}} credits</h5>\n                <div class=\"card-text\">\n                    <div>\n                        <small style=\"float: left; margin: 0\">0</small>\n                        <small style=\"float: right; margin: 0\">{{totalCredits}}</small>\n                        <progressbar style=\"width: 100%; margin-bottom: 10px;\" [animate]=\"false\" [value]=\"percentage\" [type]=\"type\"></progressbar>\n                    </div>\n                </div>\n                <button (click)=\"submit()\" type=\"button\" class=\"btn btn-outline-primary\">Submit</button>\n            </div>\n    </div>\n</div>\n\n");
 
 /***/ }),
 
@@ -149,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\">\n            <p>\n                {{description}}\n            </p>\n\n        </div>\n    </div>\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-sm-8 wrap-content\">\n        <div #videoOverlay class=\"original\" (click)=\"playPause()\">\n            <video\n                #videoPlayer\n                style=\"display: none;\"\n                src=\"\"\n                ></video>\n            <canvas #canvas \n            width=\"100vw\" height=\"30vh\"></canvas>\n            </div>\n        <audio\n        #audioPlayer\n        src=\"/api/audio/sample_audio.webm\">\n        </audio>\n        </div>\n\n    </div>\n    <h2 *ngIf=\"formJson && formJson.settings.normal\">\n        Questionnaire\n    </h2>\n    <app-survey\n        *ngIf=\"formJson && formJson.settings.normal\" \n        [json]=\"survey\" \n        (suveyModel)=\"getSurvey($event)\"\n        (resultEmit)=\"surveySubmit($event)\">\n    </app-survey>    <p></p>\n    <div >\n        <h2>\n            Configuration\n        </h2>\n        <div class=\"row\">\n            <div class=\"col-sm wrap-content\">\n                <table class=\"table\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col\">Configuration Name</th>\n                        <th scope=\"col\" colspan=5>Score ( 0 ~ 4 )</th>\n                        <th scope=\"col\" colspan=3>Cost</th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                      <tr *ngFor=\"let k of objectKeys(configurations)\">\n                        <th scope=\"row\">{{k}}</th>\n                        <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            <div class=\"form-check\">\n                                <input\n                                    disabled=\"{{!showConfig}}\"\n                                    class=\"form-check-input\"\n                                    type=\"radio\"\n                                    name=\"{{k}}\"\n                                    id=\"{{k}}-{{i}}\"\n                                    value=\"{{i}}\"\n                                    [(ngModel)]=\"configurations[k]\"\n                                    (change)=\"onRadioCheck()\">\n                                <label class=\"form-check-label\" for=\"{{k}}-{{i}}\">{{i}}</label>\n                              </div>\n                        </td>\n                        <td>\n                            ${{configurations[k]*5}}\n                        </td>\n                      </tr>\n                      <tr>\n                        <tr *ngIf=\"showCost\">\n                            <th scope=\"row\"></th>\n                            <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            </td>\n                            <td>\n                                Total: ${{sumUpCost(videoConfig)*5}}\n                            </td>\n                        </tr>\n                        <tr >\n                            <th scope=\"row\"></th>\n                            <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            </td>\n                            <td>\n                                <button [disabled]=\"clicked\" (click)=\"submit($event); clicked = true;\" type=\"submit\" class=\"mr-2 btn btn-success\">\n                                    Submit\n                                </button>\n                            </td>\n                        </tr>\n                    </tbody>\n                  </table>\n              </div>\n        </div>    \n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\" [innerHTML]=\"description\"></div>\n    </div>\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-sm-8 wrap-content\">\n        <div #videoOverlay class=\"original\" (click)=\"playPause()\">\n            <video\n                #videoPlayer\n                style=\"display: none;\"\n                src=\"\"\n                ></video>\n            <canvas #canvas\n            width=\"100vw\" height=\"30vh\"></canvas>\n            </div>\n        <audio\n        #audioPlayer\n        src=\"/api/audio/sample_audio.webm\">\n        </audio>\n        </div>\n\n    </div>\n\n   <p></p>\n    <div >\n\n        <h2>\n            Configuration\n        </h2>\n        <div class=\"row\">\n            <div class=\"col-sm wrap-content\">\n                <table class=\"table\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col\">Configuration Name</th>\n\n                        <th scope=\"col\" colspan=5>Score ( 0 ~ 4 )</th>\n                        <th *ngIf=\"showCost\" scope=\"col\" colspan=3>Cost</th>\n\n                      </tr>\n                    </thead>\n                    <tbody>\n                      <tr *ngFor=\"let k of objectKeys(configurations)\">\n                        <th scope=\"row\">{{k}}</th>\n                        <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            <div class=\"form-check\">\n                                <input\n                                    disabled=\"{{!showConfig}}\"\n                                    class=\"form-check-input\"\n                                    type=\"radio\"\n                                    name=\"{{k}}\"\n                                    id=\"{{k}}-{{i}}\"\n\t\t\t\t\t\t\t\t\tvalue=\"{{i}}\"\n                                    [(ngModel)]=\"configurations[k]\"\n                                    (change)=\"onRadioCheck()\">\n                                <label class=\"form-check-label\" for=\"{{k}}-{{i}}\">{{videoConfigText[i]}}</label>\n                              </div>\n                        </td>\n                        <td *ngIf=\"showCost\">\n                            ${{configurations[k]*5}}\n                        </td>\n                      </tr>\n                        <tr *ngIf=\"showCost\">\n                            <th *ngIf=\"showCost\" scope=\"row\"></th>\n                            <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            </td>\n                            <td>\n                                Total: ${{sumUpCost(videoConfig)*5}}\n                            </td>\n                        </tr>\n                    </tbody>\n                  </table>\n              </div>\n        </div>    \n    </div>\n    <h2 *ngIf=\"formJson && formJson.settings.normal\">\n        Questionnaire\n    </h2>\n    <app-survey\n        *ngIf=\"formJson && formJson.settings.normal\" \n        [json]=\"survey\" \n        (suveyModel)=\"getSurvey($event)\"\n        (resultEmit)=\"surveySubmit($event)\">\n    </app-survey>    \n    <button style=\"float: right;\" [disabled]=\"clicked\" (click)=\"submit($event); clicked = true;\" type=\"submit\" class=\"mr-2 btn btn-success\">\n        Submit\n    </button>\n</div>\n");
 
 /***/ }),
 
@@ -456,7 +456,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".header {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  background-color: aqua;\n  z-index: 1090;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQUE7RUFDQSxXQUFBO0VBQ0EsTUFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHRvcDogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XHJcbiAgICB6LWluZGV4OiAxMDkwO1xyXG59XHJcbiIsIi5oZWFkZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHdpZHRoOiAxMDAlO1xuICB0b3A6IDA7XG4gIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XG4gIHotaW5kZXg6IDEwOTA7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".header {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  background-color: aqua;\n  z-index: 1090;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQUE7RUFDQSxXQUFBO0VBQ0EsTUFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHRvcDogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XHJcbiAgICB6LWluZGV4OiAxMDkwO1xyXG59XHJcbiIsIi5oZWFkZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHdpZHRoOiAxMDAlO1xuICB0b3A6IDA7XG4gIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XG4gIHotaW5kZXg6IDEwOTA7XG59Il19 */");
 
 /***/ }),
 
@@ -738,7 +738,7 @@ DemographicComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/* Chrome, Safari, Edge, Opera */\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n/* Firefox */\ninput[type=number] {\n  -moz-appearance: textfield;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9kb25hdGlvbi9kb25hdGlvbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvZG9uYXRpb24vZG9uYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsZ0NBQUE7QUFDQTs7RUFFRSx3QkFBQTtFQUNBLFNBQUE7QUNDRjtBREVBLFlBQUE7QUFDQTtFQUNFLDBCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9kb25hdGlvbi9kb25hdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIENocm9tZSwgU2FmYXJpLCBFZGdlLCBPcGVyYSAqL1xuaW5wdXQ6Oi13ZWJraXQtb3V0ZXItc3Bpbi1idXR0b24sXG5pbnB1dDo6LXdlYmtpdC1pbm5lci1zcGluLWJ1dHRvbiB7XG4gIC13ZWJraXQtYXBwZWFyYW5jZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xufVxuXG4vKiBGaXJlZm94ICovXG5pbnB1dFt0eXBlPW51bWJlcl0ge1xuICAtbW96LWFwcGVhcmFuY2U6dGV4dGZpZWxkO1xufVxuIiwiLyogQ2hyb21lLCBTYWZhcmksIEVkZ2UsIE9wZXJhICovXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbixcbmlucHV0Ojotd2Via2l0LWlubmVyLXNwaW4tYnV0dG9uIHtcbiAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xuICBtYXJnaW46IDA7XG59XG5cbi8qIEZpcmVmb3ggKi9cbmlucHV0W3R5cGU9bnVtYmVyXSB7XG4gIC1tb3otYXBwZWFyYW5jZTogdGV4dGZpZWxkO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("/* Chrome, Safari, Edge, Opera */\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n/* Firefox */\ninput[type=number] {\n  -moz-appearance: textfield;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9kb25hdGlvbi9kb25hdGlvbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvZG9uYXRpb24vZG9uYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsZ0NBQUE7QUFDQTs7RUFFRSx3QkFBQTtFQUNBLFNBQUE7QUNDRjtBREVBLFlBQUE7QUFDQTtFQUNFLDBCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9kb25hdGlvbi9kb25hdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIENocm9tZSwgU2FmYXJpLCBFZGdlLCBPcGVyYSAqL1xuaW5wdXQ6Oi13ZWJraXQtb3V0ZXItc3Bpbi1idXR0b24sXG5pbnB1dDo6LXdlYmtpdC1pbm5lci1zcGluLWJ1dHRvbiB7XG4gIC13ZWJraXQtYXBwZWFyYW5jZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xufVxuXG4vKiBGaXJlZm94ICovXG5pbnB1dFt0eXBlPW51bWJlcl0ge1xuICAtbW96LWFwcGVhcmFuY2U6dGV4dGZpZWxkO1xufVxuIiwiLyogQ2hyb21lLCBTYWZhcmksIEVkZ2UsIE9wZXJhICovXG5pbnB1dDo6LXdlYmtpdC1vdXRlci1zcGluLWJ1dHRvbixcbmlucHV0Ojotd2Via2l0LWlubmVyLXNwaW4tYnV0dG9uIHtcbiAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xuICBtYXJnaW46IDA7XG59XG5cbi8qIEZpcmVmb3ggKi9cbmlucHV0W3R5cGU9bnVtYmVyXSB7XG4gIC1tb3otYXBwZWFyYW5jZTogdGV4dGZpZWxkO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -926,7 +926,7 @@ LikertComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".tick {\n  color: #007bff;\n}\n\n.cross {\n  color: orange;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9vcHRpb24vb3B0aW9uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9vcHRpb24vb3B0aW9uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksY0FBQTtBQ0NKOztBRENBO0VBQ0ksYUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvb3B0aW9uL29wdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aWNrIHtcclxuICAgIGNvbG9yOiAjMDA3YmZmO1xyXG59XHJcbi5jcm9zcyB7XHJcbiAgICBjb2xvcjogb3JhbmdlO1xyXG59IiwiLnRpY2sge1xuICBjb2xvcjogIzAwN2JmZjtcbn1cblxuLmNyb3NzIHtcbiAgY29sb3I6IG9yYW5nZTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".tick {\n  color: #007bff;\n}\n\n.cross {\n  color: orange;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9vcHRpb24vb3B0aW9uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9vcHRpb24vb3B0aW9uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksY0FBQTtBQ0NKOztBRENBO0VBQ0ksYUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvb3B0aW9uL29wdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aWNrIHtcclxuICAgIGNvbG9yOiAjMDA3YmZmO1xyXG59XHJcbi5jcm9zcyB7XHJcbiAgICBjb2xvcjogb3JhbmdlO1xyXG59IiwiLnRpY2sge1xuICBjb2xvcjogIzAwN2JmZjtcbn1cblxuLmNyb3NzIHtcbiAgY29sb3I6IG9yYW5nZTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1005,7 +1005,7 @@ OptionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("td {\n  padding-left: 0.5em;\n  padding-right: 0.5em;\n  width: 2em;\n  border: 1px solid grey;\n}\n\nth, tr {\n  padding-left: 1em;\n  padding-right: 1em;\n  border: 1px solid grey;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9xdWVzdGlvbm5haXJlL3F1ZXN0aW9ubmFpcmUuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3F1ZXN0aW9ubmFpcmUvcXVlc3Rpb25uYWlyZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLG1CQUFBO0VBQ0Esb0JBQUE7RUFDQSxVQUFBO0VBQ0Esc0JBQUE7QUNDRDs7QURHQTtFQUNDLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxzQkFBQTtBQ0FEIiwiZmlsZSI6InNyYy9hcHAvcXVlc3Rpb25uYWlyZS9xdWVzdGlvbm5haXJlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGQge1xuXHRwYWRkaW5nLWxlZnQ6IDAuNWVtO1xuXHRwYWRkaW5nLXJpZ2h0OiAwLjVlbTtcblx0d2lkdGg6IDJlbTtcblx0Ym9yZGVyOiAxcHggc29saWQgZ3JleTtcbn1cblxuXG50aCwgdHIge1xuXHRwYWRkaW5nLWxlZnQ6IDFlbTtcblx0cGFkZGluZy1yaWdodDogMWVtO1xuXHRib3JkZXI6IDFweCBzb2xpZCBncmV5O1xufVxuIiwidGQge1xuICBwYWRkaW5nLWxlZnQ6IDAuNWVtO1xuICBwYWRkaW5nLXJpZ2h0OiAwLjVlbTtcbiAgd2lkdGg6IDJlbTtcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbn1cblxudGgsIHRyIHtcbiAgcGFkZGluZy1sZWZ0OiAxZW07XG4gIHBhZGRpbmctcmlnaHQ6IDFlbTtcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("td {\n  padding-left: 0.5em;\n  padding-right: 0.5em;\n  width: 2em;\n  border: 1px solid grey;\n}\n\nth, tr {\n  padding-left: 1em;\n  padding-right: 1em;\n  border: 1px solid grey;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9xdWVzdGlvbm5haXJlL3F1ZXN0aW9ubmFpcmUuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3F1ZXN0aW9ubmFpcmUvcXVlc3Rpb25uYWlyZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLG1CQUFBO0VBQ0Esb0JBQUE7RUFDQSxVQUFBO0VBQ0Esc0JBQUE7QUNDRDs7QURHQTtFQUNDLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxzQkFBQTtBQ0FEIiwiZmlsZSI6InNyYy9hcHAvcXVlc3Rpb25uYWlyZS9xdWVzdGlvbm5haXJlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGQge1xuXHRwYWRkaW5nLWxlZnQ6IDAuNWVtO1xuXHRwYWRkaW5nLXJpZ2h0OiAwLjVlbTtcblx0d2lkdGg6IDJlbTtcblx0Ym9yZGVyOiAxcHggc29saWQgZ3JleTtcbn1cblxuXG50aCwgdHIge1xuXHRwYWRkaW5nLWxlZnQ6IDFlbTtcblx0cGFkZGluZy1yaWdodDogMWVtO1xuXHRib3JkZXI6IDFweCBzb2xpZCBncmV5O1xufVxuIiwidGQge1xuICBwYWRkaW5nLWxlZnQ6IDAuNWVtO1xuICBwYWRkaW5nLXJpZ2h0OiAwLjVlbTtcbiAgd2lkdGg6IDJlbTtcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbn1cblxudGgsIHRyIHtcbiAgcGFkZGluZy1sZWZ0OiAxZW07XG4gIHBhZGRpbmctcmlnaHQ6IDFlbTtcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1651,7 +1651,7 @@ VideoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".sticky {\n  position: -webkit-sticky;\n  /* Safari */\n  position: sticky;\n  bottom: 15px;\n  z-index: 3;\n}\n\n.error {\n  color: red;\n  font-size: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC9zdW1tYXJ5L3N1bW1hcnkuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHdCQUFBO0VBQTBCLFdBQUE7RUFDMUIsZ0JBQUE7RUFDSCxZQUFBO0VBQ0csVUFBQTtBQ0VKOztBRENBO0VBQ0ksVUFBQTtFQUNBLGVBQUE7QUNFSiIsImZpbGUiOiJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zdGlja3kge1xyXG4gICAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5OyAvKiBTYWZhcmkgKi9cclxuICAgIHBvc2l0aW9uOiBzdGlja3k7XHJcblx0Ym90dG9tOiAxNXB4O1xyXG4gICAgei1pbmRleDogMztcclxufVxyXG5cclxuLmVycm9ye1xyXG4gICAgY29sb3I6IHJlZDtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufSAiLCIuc3RpY2t5IHtcbiAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5O1xuICAvKiBTYWZhcmkgKi9cbiAgcG9zaXRpb246IHN0aWNreTtcbiAgYm90dG9tOiAxNXB4O1xuICB6LWluZGV4OiAzO1xufVxuXG4uZXJyb3Ige1xuICBjb2xvcjogcmVkO1xuICBmb250LXNpemU6IDE1cHg7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".sticky {\n  position: -webkit-sticky;\n  /* Safari */\n  position: sticky;\n  bottom: 15px;\n  z-index: 3;\n}\n\n.error {\n  color: red;\n  font-size: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC9zdW1tYXJ5L3N1bW1hcnkuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHdCQUFBO0VBQTBCLFdBQUE7RUFDMUIsZ0JBQUE7RUFDSCxZQUFBO0VBQ0csVUFBQTtBQ0VKOztBRENBO0VBQ0ksVUFBQTtFQUNBLGVBQUE7QUNFSiIsImZpbGUiOiJzcmMvYXBwL3N1bW1hcnkvc3VtbWFyeS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zdGlja3kge1xyXG4gICAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5OyAvKiBTYWZhcmkgKi9cclxuICAgIHBvc2l0aW9uOiBzdGlja3k7XHJcblx0Ym90dG9tOiAxNXB4O1xyXG4gICAgei1pbmRleDogMztcclxufVxyXG5cclxuLmVycm9ye1xyXG4gICAgY29sb3I6IHJlZDtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufSAiLCIuc3RpY2t5IHtcbiAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5O1xuICAvKiBTYWZhcmkgKi9cbiAgcG9zaXRpb246IHN0aWNreTtcbiAgYm90dG9tOiAxNXB4O1xuICB6LWluZGV4OiAzO1xufVxuXG4uZXJyb3Ige1xuICBjb2xvcjogcmVkO1xuICBmb250LXNpemU6IDE1cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -1812,7 +1812,7 @@ SurveyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".video {\n  width: 100%;\n}\n\n.wrap-content {\n  word-wrap: break-word;\n}\n\n.content {\n  position: relative;\n  width: 100%;\n}\n\n.content video {\n  width: 100%;\n  display: block;\n}\n\n.content:before {\n  content: \"\";\n  background: black;\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}\n\n.original {\n  position: relative;\n  width: 100%;\n}\n\n.original video {\n  width: 100%;\n  display: block;\n}\n\n.original:before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}\n\n.wrapper {\n  display: table;\n  width: auto;\n  position: relative;\n  width: 70;\n  align-items: center;\n}\n\n.playpause {\n  background-image: url(http://png-4.findicons.com/files/icons/2315/default_icon/256/media_play_pause_resume.png);\n  background-repeat: no-repeat;\n  width: 50%;\n  height: 50%;\n  position: absolute;\n  left: 0%;\n  right: 0%;\n  top: 0%;\n  bottom: 0%;\n  margin: auto;\n  background-size: contain;\n  background-position: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9oYW5rL0Rlc2t0b3Avd29ya3BsYWNlL1FWLWJ1eWJhY2svc3JjL2FwcC92aWRlby92aWRlby5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0FDQ0o7O0FEQ0E7RUFDSSxxQkFBQTtBQ0VKOztBREFBO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0FDR0o7O0FEREE7RUFDSSxXQUFBO0VBQ0EsY0FBQTtBQ0lKOztBREZBO0VBQ0ksV0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0FDS0o7O0FESEE7RUFDSSxrQkFBQTtFQUNBLFdBQUE7QUNNSjs7QURKQTtFQUNJLFdBQUE7RUFDQSxjQUFBO0FDT0o7O0FETEE7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0FDUUo7O0FETkE7RUFDSSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLG1CQUFBO0FDU0o7O0FEUEE7RUFDSSwrR0FBQTtFQUNBLDRCQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsT0FBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBQ0Esd0JBQUE7RUFDQSwyQkFBQTtBQ1VKIiwiZmlsZSI6InNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudmlkZW8ge1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLndyYXAtY29udGVudCB7XG4gICAgd29yZC13cmFwOiBicmVhay13b3JkO1xufVxuLmNvbnRlbnQge1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICB3aWR0aDogMTAwJTtcbn1cbi5jb250ZW50IHZpZGVvIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbi5jb250ZW50OmJlZm9yZSB7XG4gICAgY29udGVudDogJyc7XG4gICAgYmFja2dyb3VuZDogYmxhY2s7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMDtcbiAgICByaWdodDogMDtcbiAgICBib3R0b206IDA7XG4gICAgbGVmdDogMDtcbn1cbi5vcmlnaW5hbCB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLm9yaWdpbmFsIHZpZGVvIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbi5vcmlnaW5hbDpiZWZvcmUge1xuICAgIGNvbnRlbnQ6ICcnO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgcmlnaHQ6IDA7XG4gICAgYm90dG9tOiAwO1xuICAgIGxlZnQ6IDA7XG59XG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OnRhYmxlO1xuICAgIHdpZHRoOmF1dG87XG4gICAgcG9zaXRpb246cmVsYXRpdmU7XG4gICAgd2lkdGg6NzA7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5wbGF5cGF1c2Uge1xuICAgIGJhY2tncm91bmQtaW1hZ2U6dXJsKGh0dHA6Ly9wbmctNC5maW5kaWNvbnMuY29tL2ZpbGVzL2ljb25zLzIzMTUvZGVmYXVsdF9pY29uLzI1Ni9tZWRpYV9wbGF5X3BhdXNlX3Jlc3VtZS5wbmcpO1xuICAgIGJhY2tncm91bmQtcmVwZWF0Om5vLXJlcGVhdDtcbiAgICB3aWR0aDo1MCU7XG4gICAgaGVpZ2h0OjUwJTtcbiAgICBwb3NpdGlvbjphYnNvbHV0ZTtcbiAgICBsZWZ0OjAlO1xuICAgIHJpZ2h0OjAlO1xuICAgIHRvcDowJTtcbiAgICBib3R0b206MCU7XG4gICAgbWFyZ2luOmF1dG87XG4gICAgYmFja2dyb3VuZC1zaXplOmNvbnRhaW47XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xufSIsIi52aWRlbyB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4ud3JhcC1jb250ZW50IHtcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xufVxuXG4uY29udGVudCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5jb250ZW50IHZpZGVvIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGJsb2NrO1xufVxuXG4uY29udGVudDpiZWZvcmUge1xuICBjb250ZW50OiBcIlwiO1xuICBiYWNrZ3JvdW5kOiBibGFjaztcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG4gIGxlZnQ6IDA7XG59XG5cbi5vcmlnaW5hbCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5vcmlnaW5hbCB2aWRlbyB7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLm9yaWdpbmFsOmJlZm9yZSB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICByaWdodDogMDtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xufVxuXG4ud3JhcHBlciB7XG4gIGRpc3BsYXk6IHRhYmxlO1xuICB3aWR0aDogYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogNzA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5wbGF5cGF1c2Uge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cDovL3BuZy00LmZpbmRpY29ucy5jb20vZmlsZXMvaWNvbnMvMjMxNS9kZWZhdWx0X2ljb24vMjU2L21lZGlhX3BsYXlfcGF1c2VfcmVzdW1lLnBuZyk7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIHdpZHRoOiA1MCU7XG4gIGhlaWdodDogNTAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDAlO1xuICByaWdodDogMCU7XG4gIHRvcDogMCU7XG4gIGJvdHRvbTogMCU7XG4gIG1hcmdpbjogYXV0bztcbiAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".video {\n  width: 100%;\n}\n\n.wrap-content {\n  word-wrap: break-word;\n}\n\n.content {\n  position: relative;\n  width: 100%;\n}\n\n.content video {\n  width: 100%;\n  display: block;\n}\n\n.content:before {\n  content: \"\";\n  background: black;\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}\n\n.original {\n  position: relative;\n  width: 100%;\n}\n\n.original video {\n  width: 100%;\n  display: block;\n}\n\n.original:before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}\n\n.wrapper {\n  display: table;\n  width: auto;\n  position: relative;\n  width: 70;\n  align-items: center;\n}\n\n.playpause {\n  background-image: url(http://png-4.findicons.com/files/icons/2315/default_icon/256/media_play_pause_resume.png);\n  background-repeat: no-repeat;\n  width: 50%;\n  height: 50%;\n  position: absolute;\n  left: 0%;\n  right: 0%;\n  top: 0%;\n  bottom: 0%;\n  margin: auto;\n  background-size: contain;\n  background-position: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZC8xM19CYXNoL1FWLWJ1eWJhY2svc3JjL2FwcC92aWRlby92aWRlby5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0FDQ0o7O0FEQ0E7RUFDSSxxQkFBQTtBQ0VKOztBREFBO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0FDR0o7O0FEREE7RUFDSSxXQUFBO0VBQ0EsY0FBQTtBQ0lKOztBREZBO0VBQ0ksV0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0FDS0o7O0FESEE7RUFDSSxrQkFBQTtFQUNBLFdBQUE7QUNNSjs7QURKQTtFQUNJLFdBQUE7RUFDQSxjQUFBO0FDT0o7O0FETEE7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0FDUUo7O0FETkE7RUFDSSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLG1CQUFBO0FDU0o7O0FEUEE7RUFDSSwrR0FBQTtFQUNBLDRCQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsT0FBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBQ0Esd0JBQUE7RUFDQSwyQkFBQTtBQ1VKIiwiZmlsZSI6InNyYy9hcHAvdmlkZW8vdmlkZW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudmlkZW8ge1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLndyYXAtY29udGVudCB7XG4gICAgd29yZC13cmFwOiBicmVhay13b3JkO1xufVxuLmNvbnRlbnQge1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICB3aWR0aDogMTAwJTtcbn1cbi5jb250ZW50IHZpZGVvIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbi5jb250ZW50OmJlZm9yZSB7XG4gICAgY29udGVudDogJyc7XG4gICAgYmFja2dyb3VuZDogYmxhY2s7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMDtcbiAgICByaWdodDogMDtcbiAgICBib3R0b206IDA7XG4gICAgbGVmdDogMDtcbn1cbi5vcmlnaW5hbCB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLm9yaWdpbmFsIHZpZGVvIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbi5vcmlnaW5hbDpiZWZvcmUge1xuICAgIGNvbnRlbnQ6ICcnO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgcmlnaHQ6IDA7XG4gICAgYm90dG9tOiAwO1xuICAgIGxlZnQ6IDA7XG59XG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OnRhYmxlO1xuICAgIHdpZHRoOmF1dG87XG4gICAgcG9zaXRpb246cmVsYXRpdmU7XG4gICAgd2lkdGg6NzA7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5wbGF5cGF1c2Uge1xuICAgIGJhY2tncm91bmQtaW1hZ2U6dXJsKGh0dHA6Ly9wbmctNC5maW5kaWNvbnMuY29tL2ZpbGVzL2ljb25zLzIzMTUvZGVmYXVsdF9pY29uLzI1Ni9tZWRpYV9wbGF5X3BhdXNlX3Jlc3VtZS5wbmcpO1xuICAgIGJhY2tncm91bmQtcmVwZWF0Om5vLXJlcGVhdDtcbiAgICB3aWR0aDo1MCU7XG4gICAgaGVpZ2h0OjUwJTtcbiAgICBwb3NpdGlvbjphYnNvbHV0ZTtcbiAgICBsZWZ0OjAlO1xuICAgIHJpZ2h0OjAlO1xuICAgIHRvcDowJTtcbiAgICBib3R0b206MCU7XG4gICAgbWFyZ2luOmF1dG87XG4gICAgYmFja2dyb3VuZC1zaXplOmNvbnRhaW47XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xufSIsIi52aWRlbyB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4ud3JhcC1jb250ZW50IHtcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xufVxuXG4uY29udGVudCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5jb250ZW50IHZpZGVvIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGJsb2NrO1xufVxuXG4uY29udGVudDpiZWZvcmUge1xuICBjb250ZW50OiBcIlwiO1xuICBiYWNrZ3JvdW5kOiBibGFjaztcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG4gIGxlZnQ6IDA7XG59XG5cbi5vcmlnaW5hbCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5vcmlnaW5hbCB2aWRlbyB7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLm9yaWdpbmFsOmJlZm9yZSB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICByaWdodDogMDtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xufVxuXG4ud3JhcHBlciB7XG4gIGRpc3BsYXk6IHRhYmxlO1xuICB3aWR0aDogYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogNzA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5wbGF5cGF1c2Uge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cDovL3BuZy00LmZpbmRpY29ucy5jb20vZmlsZXMvaWNvbnMvMjMxNS9kZWZhdWx0X2ljb24vMjU2L21lZGlhX3BsYXlfcGF1c2VfcmVzdW1lLnBuZyk7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIHdpZHRoOiA1MCU7XG4gIGhlaWdodDogNTAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDAlO1xuICByaWdodDogMCU7XG4gIHRvcDogMCU7XG4gIGJvdHRvbTogMCU7XG4gIG1hcmdpbjogYXV0bztcbiAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG59Il19 */");
 
 /***/ }),
 
@@ -1858,18 +1858,19 @@ let VideoComponent = class VideoComponent {
         this.configurations = {
             "Audio Quality": '0',
             "Video Quality": '0',
-            "Audio Loss": '0',
-            "Video Loss": '0',
+            "Audio Packet Loss": '0',
+            "Video Packet Loss": '0',
             "Audio-Video Synchronization": '0',
         };
         this.videoIsPlaying = false;
         this.objectKeys = Object.keys;
-        this.videoConfig = new Array(5).fill(0);
+        this.videoConfig = new Array(4).fill(0);
         this.sumUpCost = (arr) => { return arr.reduce((a, b) => a + b); };
         this.videoIsJittering = false;
         this.jitterTempData = null;
         this.showCost = false;
         this.showConfig = false;
+        this.videoConfigText = ["UnChanged", "Slightly Enhanced", "Enhanced", "Perfected"];
     }
     ;
     getSurvey(survey) {
@@ -1879,11 +1880,27 @@ let VideoComponent = class VideoComponent {
         if (this.videoTimerSubscription) {
             this.videoTimerSubscription.unsubscribe();
         }
-        this.blackTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, (jitterVal + 1) * 3000);
+        switch (jitterVal) {
+            case 0:
+                // play every 6 secs, pause 1.5 secs
+                this.blackTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 6000);
+                break;
+            case 1:
+                // play every 16.5 secs, pause 1.5 secs
+                this.blackTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 16500);
+                break;
+            case 2:
+                // play every 43.5 secs, pause 1.5 secs, stopping twice essentially
+                this.blackTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 43500);
+                break;
+            case 3:
+                this.blackTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 1000000);
+                break;
+        }
         this.videoTimerSubscription = this.blackTimer.subscribe(val => {
             if (this.videoIsPlaying) {
                 this.videoIsJittering = true;
-                let freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(1000);
+                let freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(1500);
                 freshback.subscribe(d => {
                     this.videoIsJittering = false;
                 });
@@ -1894,21 +1911,51 @@ let VideoComponent = class VideoComponent {
         if (this.audioTimerSubscription) {
             this.audioTimerSubscription.unsubscribe();
         }
-        this.muteTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, (jitterVal + 1) * 2000);
+        switch (jitterVal) {
+            case 0:
+                // play every 6 secs, pause 1.5 secs
+                this.muteTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 6000);
+                break;
+            case 1:
+                // play every 13.5 secs, pause 1.5 secs
+                this.muteTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 13500);
+                break;
+            case 2:
+                // play every 28.5 secs, pause 1.5 secs, stopping 3 times essentially
+                this.muteTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 28500);
+                break;
+            case 3:
+                this.muteTimer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, 1000000);
+                break;
+        }
         this.audioTimerSubscription = this.muteTimer.subscribe(val => {
             if (this.videoIsPlaying) {
                 this.audioElement.volume = 0;
                 let freshback = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(1500);
                 freshback.subscribe(d => {
-                    if (this.videoIsPlaying)
+                    if (this.videoIsPlaying) {
                         this.audioElement.volume = 1;
+                    }
                 });
             }
         });
     }
     syncAudioWithVideo() {
-        this.audioElement.currentTime =
-            this.videoElement.currentTime - 0.1 * (5 - Number(this.configurations['Audio-Video Synchronization']));
+        const syncAudioWithVideoValue = Number(this.configurations['Audio-Video Synchronization']);
+        switch (syncAudioWithVideoValue) {
+            case 0:
+                this.audioElement.currentTime = this.videoElement.currentTime - 1.850;
+                break;
+            case 1:
+                this.audioElement.currentTime = this.videoElement.currentTime - 1.615;
+                break;
+            case 2:
+                this.audioElement.currentTime = this.videoElement.currentTime - 1.050;
+                break;
+            case 3:
+                this.audioElement.currentTime = this.videoElement.currentTime;
+                break;
+        }
     }
     refreshPlayback() {
         this.videoIsPlaying = true;
@@ -1920,8 +1967,8 @@ let VideoComponent = class VideoComponent {
         }
         let time = Date.now();
         let that = this;
-        this.videoSrc = this.videoFilePrefix + "vq" + this.configurations['Video Quality'] + ".webm?t=" + time;
-        this.audioSrc = this.audioFilePrefix + "aq" + this.configurations['Audio Quality'] + ".m4a?t=" + time;
+        this.videoSrc = this.videoFilePrefix + "demo-vq" + this.configurations['Video Quality'] + ".webm?t=" + time;
+        this.audioSrc = this.audioFilePrefix + "demo-aq" + this.configurations['Audio Quality'] + ".m4a?t=" + time;
         let videoTempTime = this.videoElement.currentTime;
         let audioTempTime = this.audioElement.currentTime;
         this.videoElement.src = this.videoSrc;
@@ -1941,8 +1988,8 @@ let VideoComponent = class VideoComponent {
             that.videoContainer.ready = true;
             requestAnimationFrame(that.updateCanvas.bind(that));
         }, false);
-        this.jitterAudio(Number(this.configurations['Audio Loss']));
-        this.jitterVideo(Number(this.configurations['Video Loss']));
+        this.jitterAudio(Number(this.configurations['Audio Packet Loss']));
+        this.jitterVideo(Number(this.configurations['Video Packet Loss']));
     }
     updateCanvas() {
         this.canvasElement = this.canvas.nativeElement;
@@ -1959,7 +2006,7 @@ let VideoComponent = class VideoComponent {
             var left = ctx.canvas.width / 2 - (vidW / 2) * scale;
             if (!this.videoIsJittering) {
                 ctx.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
-                if (this.videoContainer.video.paused) { // if not playing show the paused screen 
+                if (this.videoContainer.video.paused) { // if not playing show the paused screen
                     this.drawPayIcon();
                 }
             }
@@ -2022,10 +2069,11 @@ let VideoComponent = class VideoComponent {
         this.configurations = {
             "Audio Quality": '0',
             "Video Quality": '0',
-            "Audio Loss": '0',
-            "Video Loss": '0',
+            "Audio Packet Loss": '0',
+            "Video Packet Loss": '0',
             "Audio-Video Synchronization": '0',
         };
+        console.log(this.configurations);
         this.videoElement = this.videoPlayer.nativeElement;
         this.audioElement = this.audioPlayer.nativeElement;
         this.videoOverlayElement = this.videoOverlay.nativeElement;
@@ -2035,17 +2083,13 @@ let VideoComponent = class VideoComponent {
         this.vService.videoForm.subscribe((data) => {
             if (data) {
                 this.formJson = data;
-                this.survey = {
-                    questions: data.settings.normal,
-                    showNav: false,
-                };
                 this.description = data.Description;
                 this.title = data.Title;
                 this.showCost = data.settings.control_panel_has_price;
                 this.showConfig = data.settings.control_panel_can_change;
                 let time = Date.now().toString();
-                this.videoSrc = this.videoFilePrefix + "vq" + this.configurations['Video Quality'] + ".webm?t=" + time;
-                this.audioSrc = this.audioFilePrefix + "aq" + this.configurations['Audio Quality'] + ".m4a?t=" + time;
+                this.videoSrc = this.videoFilePrefix + "demo-vq" + this.configurations['Video Quality'] + ".webm?t=" + time;
+                this.audioSrc = this.audioFilePrefix + "demo-aq" + this.configurations['Audio Quality'] + ".m4a?t=" + time;
                 this.videoElement.src = this.videoSrc;
                 this.audioElement.src = this.audioSrc;
                 this.refreshPlayback();
@@ -2062,10 +2106,7 @@ let VideoComponent = class VideoComponent {
     }
     surveySubmit(data) {
         this.videoElement.pause();
-        this.vService.submit({
-            videoConfig: this.videoConfig,
-            survey: data
-        }).subscribe(result => {
+        this.vService.submit(this.videoConfig).subscribe(result => {
             this.decidePath();
         });
     }
@@ -2301,7 +2342,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/hank/Desktop/workplace/QV-buyback/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /mnt/d/13_Bash/QV-buyback/src/main.ts */"./src/main.ts");
 
 
 /***/ })
