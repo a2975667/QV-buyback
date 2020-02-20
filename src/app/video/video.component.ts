@@ -114,7 +114,7 @@ export class VideoComponent implements OnInit {
   }
 
   refreshPlayback() {
-    this.videoIsPlaying = true
+    this.videoIsPlaying = true;
     if(this.audioTimerSubscription){
       this.audioTimerSubscription.unsubscribe();
     }
@@ -180,13 +180,13 @@ export class VideoComponent implements OnInit {
 
   playPause() {
     if(this.videoIsPlaying){
-      this.audioElement.pause()
-      this.videoElement.pause()
-      this.videoIsPlaying = false
+      this.audioElement.pause();
+      this.videoElement.pause();
+      this.videoIsPlaying = false;
     }else{
       this.audioElement.play();
       this.videoElement.play();
-      this.videoIsPlaying = true
+      this.videoIsPlaying = true;
     }
   }
 
