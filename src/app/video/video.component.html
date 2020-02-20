@@ -90,7 +90,7 @@
                             <td *ngFor="let i of objectKeys(videoConfig)">
                             </td>
                             <td>
-                                <button (click)="submit()" type="submit" class="mr-2 btn btn-success">
+                                <button [disabled]="clicked" (click)="submit($event); clicked = true;" type="submit" class="mr-2 btn btn-success">
                                     Submit
                                 </button>
                             </td>

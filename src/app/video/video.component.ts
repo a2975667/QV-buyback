@@ -17,6 +17,7 @@ export class VideoComponent implements OnInit {
   @ViewChild('videoOverlay', {static: false}) videoOverlay: ElementRef;
   @ViewChild('audioPlayer', {static: false}) audioPlayer: ElementRef;
   @ViewChild('canvas', {static: false}) canvas: ElementRef;
+  clicked: boolean = false;
   survey: object;
   canvasElement: HTMLCanvasElement;
   videoOverlayElement: HTMLDivElement;
@@ -260,7 +261,8 @@ export class VideoComponent implements OnInit {
     })
   }
 
-  submit(){
+  submit(e: Event){
+  
     if(this.completeFunc){
       this.completeFunc();
     }else{
