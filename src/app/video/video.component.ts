@@ -19,6 +19,7 @@ export class VideoComponent implements OnInit {
   @ViewChild('videoOverlay', {static: false}) videoOverlay: ElementRef;
   @ViewChild('audioPlayer', {static: false}) audioPlayer: ElementRef;
   @ViewChild('canvas', {static: false}) canvas: ElementRef;
+
   clicked: boolean = false;
   survey: object;
   canvasElement: HTMLCanvasElement;
@@ -39,8 +40,8 @@ export class VideoComponent implements OnInit {
   configurations = {
     "Audio Quality": '0',
     "Video Quality": '0',
-    "Audio Loss": '0',
-    "Video Loss": '0',
+    "Audio Packet Loss": '0',
+    "Video Packet Loss": '0',
     "Audio-Video Synchronization": '0',
   }
 
@@ -48,8 +49,8 @@ export class VideoComponent implements OnInit {
 
   objectKeys = Object.keys;
 
-  videoConfig = new Array(5).fill(0);;
-
+  videoConfig = new Array(4).fill(0);
+  videoConfigLength = new Array(4).fill(0);
   sumUpCost = (arr) => {return arr.reduce((a, b) => a + b)}
   formJson: Object;
 
@@ -68,27 +69,53 @@ export class VideoComponent implements OnInit {
   showCost = false;
   showConfig = false;
   sliderOptions: Options = {
-    floor: 0,
-    ceil: 250
+    showTicksValues: true,
+    stepsArray: [
+      {value: 0, legend: 'Poor'},
+      {value: 1},
+      {value: 2, legend: 'Fair'},
+      {value: 3},
+      {value: 4, legend: 'Good'},
+    ]
   };
+  videoConfigText = ["UnChanged","Slightly Enhanced","Enhanced","Perfected"];
+
   constructor(
     private vService: VideoService,
     private cookieService: CookieService,
     private route: Router,
     ) { }
+
   completeFunc: Function;
   getSurvey(survey: Survey.Model){
     this.completeFunc = survey.completeLastPage.bind(survey);
   }
+
   jitterVideo(jitterVal: number) {
     if(this.videoTimerSubscription){
       this.videoTimerSubscription.unsubscribe();
     }
-    this.blackTimer = timer(0, (jitterVal+1) * 3000);
+    switch (jitterVal) {
+      case 0:
+        // play every 6 secs, pause 1.5 secs
+        this.blackTimer = timer(0, 6000);
+        break;
+      case 1:
+        // play every 16.5 secs, pause 1.5 secs
+        this.blackTimer = timer(0, 16500);
+        break;
+      case 2:
+        // play every 43.5 secs, pause 1.5 secs, stopping twice essentially
+        this.blackTimer = timer(0, 43500);
+        break;
+      case 3:
+        this.blackTimer = timer(0, 1000000);
+        break;
+    }
     this.videoTimerSubscription = this.blackTimer.subscribe(val => {
       if(this.videoIsPlaying){
         this.videoIsJittering = true;
-        let freshback = timer(1000);
+        let freshback = timer(1500);
         freshback.subscribe(d => {
             this.videoIsJittering = false;
         });
@@ -97,25 +124,55 @@ export class VideoComponent implements OnInit {
   }
 
   jitterAudio(jitterVal: number) {
-    if(this.audioTimerSubscription){
+    if (this.audioTimerSubscription){
       this.audioTimerSubscription.unsubscribe();
     }
-    this.muteTimer = timer(0, (jitterVal+1) * 2000);
+    switch (jitterVal) {
+      case 0:
+        // play every 6 secs, pause 1.5 secs
+        this.muteTimer = timer(0, 6000);
+        break;
+      case 1:
+        // play every 13.5 secs, pause 1.5 secs
+        this.muteTimer = timer(0, 13500);
+        break;
+      case 2:
+        // play every 28.5 secs, pause 1.5 secs, stopping 3 times essentially
+        this.muteTimer = timer(0, 28500);
+        break;
+      case 3:
+        this.muteTimer = timer(0, 1000000);
+        break;
+      }
     this.audioTimerSubscription = this.muteTimer.subscribe(val => {
       if(this.videoIsPlaying) {
         this.audioElement.volume = 0;
         let freshback = timer(1500);
         freshback.subscribe(d => {
-          if(this.videoIsPlaying)
+          if(this.videoIsPlaying){
             this.audioElement.volume = 1;
+          }
         });
       }
     });
   }
 
   syncAudioWithVideo() {
-    this.audioElement.currentTime =
-      this.videoElement.currentTime - 0.1*(5-Number(this.configurations['Audio-Video Synchronization']));
+    const syncAudioWithVideoValue = Number(this.configurations['Audio-Video Synchronization']);
+    switch (syncAudioWithVideoValue) {
+      case 0:
+        this.audioElement.currentTime = this.videoElement.currentTime - 1.850;
+        break;
+       case 1:
+        this.audioElement.currentTime = this.videoElement.currentTime - 1.615;
+        break;
+      case 2:
+        this.audioElement.currentTime = this.videoElement.currentTime - 1.050;
+        break;
+      case 3:
+        this.audioElement.currentTime = this.videoElement.currentTime;
+        break;
+    }
   }
 
   refreshPlayback() {
@@ -128,8 +185,8 @@ export class VideoComponent implements OnInit {
     }
     let time = Date.now();
     let that = this;
-    this.videoSrc = this.videoFilePrefix+"vq"+this.configurations['Video Quality']+".webm?t="+time;
-    this.audioSrc = this.audioFilePrefix+"aq"+this.configurations['Audio Quality']+".m4a?t="+time;
+    this.videoSrc = this.videoFilePrefix+"demo-vq"+this.configurations['Video Quality']+".webm?t="+time;
+    this.audioSrc = this.audioFilePrefix+"demo-aq"+this.configurations['Audio Quality']+".m4a?t="+time;
     let videoTempTime = this.videoElement.currentTime;
     let audioTempTime = this.audioElement.currentTime;
     this.videoElement.src = this.videoSrc;
@@ -146,22 +203,22 @@ export class VideoComponent implements OnInit {
       ctx.canvas.width  = window.innerWidth*0.5;
       ctx.canvas.height = window.innerHeight*0.4;
       that.videoContainer.scale = Math.min(
-        ctx.canvas.width / this.videoWidth, 
-        ctx.canvas.height  / this.videoHeight); 
+        ctx.canvas.width / this.videoWidth,
+        ctx.canvas.height  / this.videoHeight);
       that.videoContainer.ready = true;
-      requestAnimationFrame(that.updateCanvas.bind(that));  
-    }, false);    
-    this.jitterAudio(Number(this.configurations['Audio Loss']));
-    this.jitterVideo(Number(this.configurations['Video Loss']));
+      requestAnimationFrame(that.updateCanvas.bind(that));
+    }, false);
+    this.jitterAudio(Number(this.configurations['Audio Packet Loss']));
+    this.jitterVideo(Number(this.configurations['Video Packet Loss']));
   }
 
   updateCanvas(){
     this.canvasElement = this.canvas.nativeElement;
     var ctx = this.canvasElement.getContext("2d");
     if(!this.videoIsJittering){
-      ctx.clearRect(0,0,this.canvasElement.width,this.canvasElement.height); 
+      ctx.clearRect(0,0,this.canvasElement.width,this.canvasElement.height);
     }
-    if(this.videoContainer !== undefined && this.videoContainer.ready){ 
+    if(this.videoContainer !== undefined && this.videoContainer.ready){
         // find the top left of the video on the canvas
         var scale = this.videoContainer.scale;
         var vidH = this.videoContainer.video.videoHeight;
@@ -170,7 +227,7 @@ export class VideoComponent implements OnInit {
         var left = ctx.canvas.width / 2 - (vidW /2 ) * scale;
         if(!this.videoIsJittering) {
           ctx.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
-          if(this.videoContainer.video.paused){ // if not playing show the paused screen 
+          if(this.videoContainer.video.paused){ // if not playing show the paused screen
               this.drawPayIcon();
           }
         }
@@ -180,6 +237,7 @@ export class VideoComponent implements OnInit {
 
   onRadioCheck() {
     this.videoConfig = Object.values(this.configurations).map(a => Number(a));
+    console.log(this.videoConfig);
     this.refreshPlayback();
   }
 
@@ -235,10 +293,11 @@ export class VideoComponent implements OnInit {
     this.configurations = {
       "Audio Quality": '0',
       "Video Quality": '0',
-      "Audio Loss": '0',
-      "Video Loss": '0',
+      "Audio Packet Loss": '0',
+      "Video Packet Loss": '0',
       "Audio-Video Synchronization": '0',
     }
+    console.log(this.configurations);
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
     this.videoOverlayElement = this.videoOverlay.nativeElement;
@@ -257,8 +316,8 @@ export class VideoComponent implements OnInit {
         this.showCost = data.settings.control_panel_has_price;
         this.showConfig = data.settings.control_panel_can_change;
         let time: String = Date.now().toString();
-        this.videoSrc = this.videoFilePrefix+"vq"+this.configurations['Video Quality']+".webm?t="+time;
-        this.audioSrc = this.audioFilePrefix+"aq"+this.configurations['Audio Quality']+".m4a?t="+time;
+        this.videoSrc = this.videoFilePrefix+"demo-vq"+this.configurations['Video Quality']+".webm?t="+time;
+        this.audioSrc = this.audioFilePrefix+"demo-aq"+this.configurations['Audio Quality']+".m4a?t="+time;
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
         this.refreshPlayback();
@@ -277,17 +336,13 @@ export class VideoComponent implements OnInit {
 
   surveySubmit(data) {
     this.videoElement.pause();
-    this.vService.submit(
-      {
-        videoConfig: this.videoConfig, 
-        survey: data
-      }
-    ).subscribe(
+    this.vService.submit(this.videoConfig).subscribe(
       result => {
         this.decidePath();
       }
     );
   }
+
   // implementation based on https://stackoverflow.com/questions/38710125/how-do-i-display-a-video-using-html5-canvas-tag
   drawPayIcon(){
     this.canvasElement = this.canvas.nativeElement;
@@ -306,5 +361,5 @@ export class VideoComponent implements OnInit {
     ctx.closePath();
     ctx.fill();
     ctx.globalAlpha = 1; // restore alpha
-}    
+}
 }
