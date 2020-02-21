@@ -17,7 +17,7 @@ export class WelcomeComponent implements OnInit {
   condition_two: boolean = false;
   condition_three: boolean = false;
   isSubmit: boolean;
-
+  blockAccess: boolean;
   constructor(
     private gService: GlobalService, 
     private router: Router,
@@ -26,6 +26,7 @@ export class WelcomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.blockAccess = navigator.userAgent.indexOf("Safari") != -1
     if(this.cookieService.check('user_id')){
       let pathIndex = Number(this.cookieService.get('user_current_path_index'));
       let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));

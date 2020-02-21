@@ -309,6 +309,7 @@ export class VideoComponent implements OnInit {
           questions: data.settings.normal,
           showNav: false,
         }
+        this.sliderOptions.disabled = !data.settings.control_panel_can_change;
         this.description = data.Description;
         this.title = data.Title;
         this.showCost = data.settings.control_panel_has_price;
