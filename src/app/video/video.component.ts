@@ -40,8 +40,8 @@ export class VideoComponent implements OnInit {
   configurations = {
     "Audio Quality": '0',
     "Video Quality": '0',
-    "Audio Packet Loss": '0',
-    "Video Packet Loss": '0',
+    "Audio Stability": '0',
+    "Video Stability": '0',
     "Audio-Video Synchronization": '0',
   }
 
@@ -71,14 +71,13 @@ export class VideoComponent implements OnInit {
   sliderOptions: Options = {
     showTicksValues: true,
     stepsArray: [
-      {value: 0, legend: 'Poor'},
-      {value: 1},
-      {value: 2, legend: 'Fair'},
-      {value: 3},
-      {value: 4, legend: 'Good'},
+      {value: 0, legend: 'As is'},
+      {value: 1, legend: 'Lv. 1'},
+      {value: 2, legend: 'Lv. 2'},
+      {value: 3, legend: 'Lv. 3'}
     ]
   };
-  videoConfigText = ["UnChanged","Slightly Enhanced","Enhanced","Perfected"];
+  //videoConfigText = ["UnChanged","Slightly Enhanced","Enhanced","Perfected"];
 
   constructor(
     private vService: VideoService,
@@ -208,8 +207,8 @@ export class VideoComponent implements OnInit {
       that.videoContainer.ready = true;
       requestAnimationFrame(that.updateCanvas.bind(that));
     }, false);
-    this.jitterAudio(Number(this.configurations['Audio Packet Loss']));
-    this.jitterVideo(Number(this.configurations['Video Packet Loss']));
+    this.jitterAudio(Number(this.configurations['Audio Stability']));
+    this.jitterVideo(Number(this.configurations['Video Stability']));
   }
 
   updateCanvas(){
@@ -246,7 +245,7 @@ export class VideoComponent implements OnInit {
       this.audioElement.pause();
       this.videoElement.pause();
       this.videoIsPlaying = false;
-    }else{
+    } else {
       this.audioElement.play();
       this.videoElement.play();
       this.videoIsPlaying = true;
@@ -291,11 +290,11 @@ export class VideoComponent implements OnInit {
 
   ngAfterViewInit()	 {
     this.configurations = {
-      "Audio Quality": '0',
-      "Video Quality": '0',
-      "Audio Packet Loss": '0',
-      "Video Packet Loss": '0',
-      "Audio-Video Synchronization": '0',
+      'Audio Quality': '0',
+      'Video Quality': '0',
+      'Audio Stability': '0',
+      'Video Stability': '0',
+      'Audio-Video Synchronization': '0',
     }
     console.log(this.configurations);
     this.videoElement = this.videoPlayer.nativeElement;
@@ -316,8 +315,8 @@ export class VideoComponent implements OnInit {
         this.showCost = data.settings.control_panel_has_price;
         this.showConfig = data.settings.control_panel_can_change;
         let time: String = Date.now().toString();
-        this.videoSrc = this.videoFilePrefix+"demo-vq"+this.configurations['Video Quality']+".webm?t="+time;
-        this.audioSrc = this.audioFilePrefix+"demo-aq"+this.configurations['Audio Quality']+".m4a?t="+time;
+        this.videoSrc = this.videoFilePrefix + 'demo-vq' + this.configurations['Video Quality'] + '.webm?t=' + time;
+        this.audioSrc = this.audioFilePrefix + 'demo-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
         this.refreshPlayback();
@@ -326,10 +325,10 @@ export class VideoComponent implements OnInit {
   }
 
   submit(e: Event){
-  
-    if(this.completeFunc){
+
+    if (this.completeFunc){
       this.completeFunc();
-    }else{
+    } else {
       this.surveySubmit(null);
     }
   }

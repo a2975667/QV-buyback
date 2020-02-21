@@ -40,18 +40,18 @@
                     <thead>
                       <tr>
                         <th scope="col">Configuration Name</th>
-                        <th scope="col" colspan=5>Score ( 0 ~ 4 )</th>
+                        <th scope="col" colspan=5>Score ( 0 ~ 3 )</th>
                         <th *ngIf="showCost" scope="col" colspan=3>Cost</th>
                       </tr>
                     </thead>
                     <tbody>
                         <tr style="height: 100px;"*ngFor="let k of objectKeys(configurations)">
-                            <th style="width: 30%;"colspan="1" scope="row">{{k}}</th>
+                            <th style="width: 20%;"colspan="1" scope="row">{{k}}</th>
                             <td colspan="5">
                                 <ng5-slider
-                                    [(value)]="configurations[k]" 
+                                    [(value)]="configurations[k]"
                                     [options]="sliderOptions"
-                                    (userChange)="onRadioCheck()"></ng5-slider>                        
+                                    (userChange)="onRadioCheck()"></ng5-slider>
                             </td>
                             <!-- <td *ngFor="let i of objectKeys(videoConfigLength)">
                                 <div class="form-check">
@@ -68,7 +68,7 @@
                                 </div>
                             </td> -->
                             <td *ngIf="showCost" colspan="3">
-                                ${{configurations[k]*5}}
+                                ${{configurations[k]*4}}
                             </td>
                         </tr>
                         <tr *ngIf="showCost">
@@ -82,17 +82,17 @@
                     </tbody>
                   </table>
               </div>
-        </div>    
+        </div>
     </div>
     <h2 *ngIf="formJson && formJson.settings.normal">
         Questionnaire
     </h2>
     <app-survey
-        *ngIf="formJson && formJson.settings.normal" 
-        [json]="survey" 
+        *ngIf="formJson && formJson.settings.normal"
+        [json]="survey"
         (suveyModel)="getSurvey($event)"
         (resultEmit)="surveySubmit($event)">
-    </app-survey>    
+    </app-survey>
     <button style="float: right;" [disabled]="clicked" (click)="submit($event); clicked = true;" type="submit" class="mr-2 btn btn-success">
         Submit
     </button>

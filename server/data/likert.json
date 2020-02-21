@@ -28,25 +28,25 @@
 				"rows": [{
 					"value": "a",
 					"isRequired": true,
-					"text": "Feature 1"
+					"text": "Audio Quality: The sound of the audio is clear and not muffled"
 				}, {
 					"value": "b",
 					"isRequired": true,
-					"text": "Feature 2"
+					"text": "Video Quality: The image of the video is clear and not pixelated"
 				}, {
 					"value": "c",
-					"text": "Feature 3"
+					"text": "Audio Consistancy: The audio is smooth and and not stuttering"
 				}, {
 					"value": "d",
-					"text": "Feature 4"
+					"text": "Video Consistancy: The video plays smoothly and does not jitter"
 				}, {
 					"value": "e",
-					"text": "Feature 5"
+					"text": "Audio-Video Syncronization: Audio and Video are in sync"
 				}]
 			}, {
 				"type": "text",
 				"name": "Textbox",
-				"title": "In one to two sentences, why?",
+				"title": "In 2-3 sentences, why do you choose this way?",
 				"isRequired": true
 			}]
 		}]
