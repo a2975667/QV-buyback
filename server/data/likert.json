@@ -1,51 +1,54 @@
 {
-	"title": "How important are the different features?",
-	"pages": [{
+	"html": false,
+	"survey": {
 		"title": "How important are the different features?",
-		"questions": [{
-			"type": "matrix",
-			"name": "video_likert",
-			"isAllRowRequired": true,
-			"title": "Features",
-			"columns": [{
-				"value": 1,
-				"text": "Very Unimportant"
+		"pages": [{
+			"title": "How important are the different features?",
+			"questions": [{
+				"type": "matrix",
+				"name": "video_likert",
+				"isAllRowRequired": true,
+				"title": "Features",
+				"columns": [{
+					"value": 1,
+					"text": "Very Unimportant"
+				}, {
+					"value": 2,
+					"text": "Unimportant"
+				}, {
+					"value": 3,
+					"text": "Neutral"
+				}, {
+					"value": 4,
+					"text": "Important"
+				}, {
+					"value": 5,
+					"text": "Very important"
+				}],
+				"rows": [{
+					"value": "a",
+					"isRequired": true,
+					"text": "Feature 1"
+				}, {
+					"value": "b",
+					"isRequired": true,
+					"text": "Feature 2"
+				}, {
+					"value": "c",
+					"text": "Feature 3"
+				}, {
+					"value": "d",
+					"text": "Feature 4"
+				}, {
+					"value": "e",
+					"text": "Feature 5"
+				}]
 			}, {
-				"value": 2,
-				"text": "Unimportant"
-			}, {
-				"value": 3,
-				"text": "Neutral"
-			}, {
-				"value": 4,
-				"text": "Important"
-			}, {
-				"value": 5,
-				"text": "Very important"
-			}],
-			"rows": [{
-				"value": "a",
-				"isRequired": true,
-				"text": "Feature 1"
-			}, {
-				"value": "b",
-				"isRequired": true,
-				"text": "Feature 2"
-			}, {
-				"value": "c",
-				"text": "Feature 3"
-			}, {
-				"value": "d",
-				"text": "Feature 4"
-			}, {
-				"value": "e",
-				"text": "Feature 5"
+				"type": "text",
+				"name": "Textbox",
+				"title": "In one to two sentences, why?",
+				"isRequired": true
 			}]
-		},{
-			"type": "text",
-			"name": "Textbox",
-			"title": "In one to two sentences, why?",
-			"isRequired": true
 		}]
-	}]
+	}
 }
