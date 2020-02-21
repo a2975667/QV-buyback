@@ -10,6 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LikertComponent implements OnInit {
   json: object = {questions: null};
+  html: object = {};
   constructor(
     private liService: LikertService,
     private route: Router,
@@ -40,6 +41,9 @@ export class LikertComponent implements OnInit {
           questions: data['survey'],
           showNav: true,
         }
+      }
+      if(data['html']) {
+        this.html = data['html'];
       }
     })
   }
