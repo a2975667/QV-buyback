@@ -237,7 +237,6 @@ export class VideoComponent implements OnInit {
 
   onRadioCheck() {
     this.videoConfig = Object.values(this.configurations).map(a => Number(a));
-    console.log(this.videoConfig);
     this.refreshPlayback();
   }
 
