@@ -1,15 +1,18 @@
 {
-	"title": "Demographic Survey",
-	"pages": [{
-		"title": "Please answer following questions.",
-		"questions": [
-			{
-				"name": "gender_other",
-				"type": "text",
-				"title": "If you prefer to self-describe your gender:",
-				"placeHolder": "",
-				"isRequired": false
-			}
-		]
-	}]
+	"survey":{
+		"title": "Demographic Survey",
+		"pages": [{
+			"title": "Please answer following questions.",
+			"questions": [
+				{
+					"name": "gender_other",
+					"type": "text",
+					"title": "If you prefer to self-describe your gender:",
+					"placeHolder": "",
+					"isRequired": false
+				}
+			]
+		}]
+	},
+	"html":false
 }

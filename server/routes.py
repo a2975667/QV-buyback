@@ -178,6 +178,11 @@ def download(filename='debrief.pdf'):
 	return send_from_directory('data', filename)
 	#return app.send_static_file('debreif.pdf')
 
+@app.route('/download/consent', methods=['GET'])
+def download2(filename='consent.pdf'):
+	return send_from_directory('data', filename)
+	#return app.send_static_file('debreif.pdf')
+
 @app.route('/api/video/<filename>', methods=['GET'])
 def play(filename):
 	#filename=filename+'.mp4'
