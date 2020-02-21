@@ -95,8 +95,8 @@ def decide_path(gp):
 	}
 
 	## 3 path
-	#p1 = [video_element]
-	p1 = [video_demo, likert, thank_complete]
+	p1 = [video_element]
+	# p1 = [video_demo, likert, thank_complete]
 	p2 = [qv_example, qv_test, video_demo, qv_108, thank_complete]
 	p3 = [video_buyback_demo, video_buyback, video_actual, video_test, thank_complete]
 	full_test = [video_demo, likert, qv_example, qv_test, qv_108, video_actual, video_test, thank_complete]

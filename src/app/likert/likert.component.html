@@ -1,1 +1,3 @@
-<app-survey [json]="json" (resultEmit)="submit($event)"></app-survey>
+<app-survey *ngIf="json.questions" [json]="json" (resultEmit)="submit($event)"></app-survey>
+
+<div *ngIf="html" [innerHTML]="html">
