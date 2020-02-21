@@ -10,24 +10,24 @@
 		"options":[
 		  {
 			  "o_id": "a",
-			  "option": "Feature 1",
-			  "description": "Feature 1"
+			  "option": "Audio Quality",
+			  "description": "The sound of the audio is clear and not muffled"
 		  }, {
 			  "o_id": "b",
-			  "option": "Feature 2",
-			  "description": "Feature 2"
+			  "option": "Video Quality",
+			  "description": "The image of the video is clear and not pixelated"
 		  }, {
 			  "o_id": "c",
-			  "option": "Feature 3",
-			  "description": "Feature 3"
+			  "option": "Audio Consistancy",
+			  "description": "The audio is smooth and and not stuttering"
 		  }, {
 			  "o_id": "d",
-			  "option": "Feature 4",
-			  "description": "Feature 4"
+			  "option": "Video Consistancy",
+			  "description": "The video plays smoothly and does not jitter"
 		  }, {
 			  "o_id": "e",
-			  "option": "Feature 5",
-			  "description": "Feature 5"
+			  "option": "Audio-Video Syncronization",
+			  "description": "Audio and Video are in sync"
 		  }
 		],
 		"totalCredits":108,

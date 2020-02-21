@@ -10,15 +10,58 @@
 			"title": "Demographic Survey",
 			"pages": [{
 				"title": "Please answer following questions.",
-				"questions": [
-					{
-						"name": "gender_other",
-						"type": "text",
-						"title": "If you prefer to self-describe your gender:",
-						"placeHolder": "",
-						"isRequired": false
-					}
-				]
+				"questions": [{
+					"type": "dropdown",
+					"name": "vid_buy_demo1",
+					"title": "What is the weather for?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(T) True",
+						"(F) False"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo2",
+					"title": "What is the weather for?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(T) True",
+						"(F) False"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo3",
+					"title": "What is the weather for?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(T) True",
+						"(F) False"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo4",
+					"title": "What is the weather for?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(T) True",
+						"(F) False"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo5",
+					"title": "What is the weather for?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(T) True",
+						"(F) False"
+					]
+				}
+			]
 			}]
 		}
 	}

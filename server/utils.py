@@ -17,6 +17,11 @@ def decide_path(gp):
 		"file":"video_demo"
 	}
 
+	video_element = {
+		"type":"normal",
+		"file":"video_element"
+	}
+
 
 	# Liket Group: Group 1
 	likert = {
@@ -89,7 +94,8 @@ def decide_path(gp):
 		"file":"thank_full"
 	}
 
-	# 3 path
+	## 3 path
+	#p1 = [video_element]
 	p1 = [video_demo, likert, thank_complete]
 	p2 = [qv_example, qv_test, video_demo, qv_108, thank_complete]
 	p3 = [video_buyback_demo, video_buyback, video_actual, video_test, thank_complete]
