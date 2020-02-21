@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./likert.component.scss']
 })
 export class LikertComponent implements OnInit {
-  json: object;
+  json: object = {questions: null};
   constructor(
     private liService: LikertService,
     private route: Router,
@@ -35,9 +35,11 @@ export class LikertComponent implements OnInit {
   ngOnInit() {
     this.liService.requestForm();
     this.liService.likertForm.subscribe(data => {
-      this.json = {
-        questions: data,
-        showNav: true,
+      if(data['survey']){
+        this.json = {
+          questions: data['survey'],
+          showNav: true,
+        }
       }
     })
   }
