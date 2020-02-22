@@ -10,22 +10,20 @@
     </h2>
 
     <div class="row justify-content-center">
-        <div class="col-sm-8 wrap-content">
-        <div #videoOverlay class="original" (click)="playPause()">
+        <div style="justify-content: center;" #videoOverlay class="original" (click)="playPause()">
             <video
                 #videoPlayer
                 style="display: none;"
                 src=""
                 ></video>
             <canvas #canvas
-            width="100vw" height="30vh"></canvas>
+            style="margin-left:20%"
+            width="700px" height="300px"></canvas>
             </div>
         <audio
         #audioPlayer
         src="/api/audio/sample_audio.webm">
         </audio>
-        </div>
-
     </div>
 
    <p></p>
@@ -40,7 +38,7 @@
                     <thead>
                       <tr>
                         <th scope="col">Configuration Name</th>
-                        <th scope="col" colspan=5>Score ( 0 ~ 3 )</th>
+                        <th scope="col" colspan=5>Level ( 0 ~ 3 )</th>
                         <th *ngIf="showCost" scope="col" colspan=3>Cost</th>
                       </tr>
                     </thead>
