@@ -19,18 +19,18 @@ export class WelcomeComponent implements OnInit {
   isSubmit: boolean;
   blockAccess: boolean;
   constructor(
-    private gService: GlobalService, 
+    private gService: GlobalService,
     private router: Router,
     private cookieService: CookieService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.blockAccess = navigator.userAgent.indexOf("Safari") != -1
+    //this.blockAccess = navigator.userAgent.indexOf("Safari") != -1
     if(this.cookieService.check('user_id')){
       let pathIndex = Number(this.cookieService.get('user_current_path_index'));
       let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
-      let type: string = pathArray[pathIndex]['type'];    
+      let type: string = pathArray[pathIndex]['type'];
       if(type == 'normal'){
         this.router.navigate(['likert']);
       } else if(type == 'qv'){
@@ -70,12 +70,12 @@ export class WelcomeComponent implements OnInit {
       }else{
         this.router.navigate(['demographic']);
       }
-    }    
+    }
   }
 
   cancel() {
     alert("Please close the browser.");
-      //TODO jump to thank you page since closeTab function 
+      //TODO jump to thank you page since closeTab function
       //is not allowed in chrome 41+
   }
 }
