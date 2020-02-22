@@ -1,9 +1,4 @@
-<ng-container *ngIf="blockAccess">
-	<h1>The current browser cannot run this app.
-	
-	<p>Please consider Firefox or Google Chrome</p>
-<ng-container>
-<ng-container *ngIf="!blockAccess">
+
 	<nav class="navbar navbar-light bg-light">
 		<div class="col-sm-1">
 			<br>
@@ -14,7 +9,7 @@
 		</div>
 	</nav>
 	
-	<div class="container">
+	<div *ngIf="!blockAccess" class="container">
 		<form (ngSubmit)="createUser()" class="was-validated" #validForm="ngForm">
 			<div class="container">
 				<h1>Welcome to the study</h1>
@@ -99,6 +94,9 @@
 				</button>
 			</div>
 		</form>
-	
 	</div>	
-<ng-container>
+	<div *ngIf="blockAccess" class="container">
+		<h1>The current browser cannot run this app.
+		
+		<p>Please consider Firefox or Google Chrome</p>
+	<div>
