@@ -1,102 +1,101 @@
+<nav class="navbar navbar-light bg-light">
+	<div class="col-sm-1">
+		<br>
+	</div>
+	<div class="col-sm">
+	</div>
+	<div class="col-sm">
+	</div>
+</nav>
 
-	<nav class="navbar navbar-light bg-light">
-		<div class="col-sm-1">
-			<br>
+<div *ngIf="!blockAccess" class="container">
+	<form (ngSubmit)="createUser()" class="was-validated" #validForm="ngForm">
+		<div class="container">
+			<h1>Welcome to the study</h1>
+			<h4>Video Element Study Consent Form</h4>
 		</div>
-		<div class="col-sm">
+		<div class="container">
+			<p>
+				You are being asked to participate in a voluntary research study. The purpose of this study is to understand how different people weight the importance of different elements that influences video watching. Participating in this study will involve you using an interface that provides a set of slider bars to experience how different combination of video elements impact your watching experience. You will be asked to complete some tasks or surveys regarding the video. The entire survey will last around 8 to 16 minutes. There are no known risks associated with our study.
+				<br><br>
+				- Principal Investigator Name and Title: Dr. Hari Sundaram
+				<br>
+				- Department and Institution: Department of Computer Science, University of Illinois at Urbana Champaign
+				<br>
+				- Contact Information: <a target="_blank" href="mailto:hs1@illinois.edu">Dr. Hari Sundaram</a>
+
+			</p>
+			<h5>What procedures are involved?</h5>
+			<p>
+				<b></b> A video interface will be presented to you. You will be asked to tune the different slider to experience the impact of different video elements on the video. You will be asked to watch the entire video but feel free to spend as much time as you like with the interface. A questionnaire or a task will then be presented to collect some of your experience on watching the video.
+			</p>
+			<h5>Will my study-related information be kept confidential?</h5>
+			<p>
+				Faculty, students, and staff who may see your information will maintain confidentiality to the extent of laws and university policies. Personal identifiers are neither collected nor will be published or presented.
+			</p>
+			<h5>Will I be reimbursed for any expenses or paid for my participation in this research?</h5>
+			<p>
+				You will be paid $1.25 base pay through MTurk when you are done with the study. You may receive an extra $0.75 or $1.25 bonus through MTurk when you complete the study if given one of the two longer version of the survey. There might be additional bonus based on the task you are assigned. Payment is dependent on your quality completion of the task.
+			</p>
+			<h5>Can I withdraw or be removed from the study?</h5>
+			<p>
+				If you decide to participate, you are free to withdraw your consent and discontinue participation at any time. The researchers also have the right to stop your participation in this study without your consent if they believe it is in your best interests, and/or you were to object to any future changes that may be made in the study plan. Your participation in this research is voluntary. Your decision whether or not to participate, or to withdraw after beginning participation, will not affect your current or future dealings with the University of Illinois at Urbana-Champaign.
+			</p>
+			<h5>Will data collected from me be used for any other research?</h5>
+			<p>
+				Your de-identified information could be used for future research without additional informed consent.
+			</p>
+
+			<h5>Who should I contact if I have questions?</h5>
+			<p>
+				Questions about this research study should be directed to Dr. Hari Sundaram (hs1@illinois.edu) in the Department of Computer Science at University of Illinois, Urbana-Champaign. If you have any questions about your rights as a participant in this study or any concerns or complaints, please contact the University of Illinois Institutional Review Board at 217-333-2670 or via irb@illinois.edu.
+			</p>
+			<h5> How will the results be disseminated?
+			</h5>
+			<p>
+				The results will be disseminated via journal articles, academic paper, conference presentations, PhD thesis, and/or Open Science Framework. Please download and print this <a target="_blank" href="/download/consent">consent form </a> if you would like to retain a copy for your records.
+			</p>
+
+			<h5>Please use a Laptop or PC with Chrome, Firefox or Microsoft Edge to complete this survey.</h5>
+			<h5>By continuing, I certify that I have read this form and volunteer to participate in this research study.<br></h5>
+
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input [(ngModel)]="condition_one" class="form-check-input" type="checkbox" name="condition1"
+						required> I have read and understand the above consent form.
+					<div class="valid-feedback">Valid.</div>
+					<div class="invalid-feedback">Check this checkbox to continue.</div>
+				</label>
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input [(ngModel)]="condition_two" class="form-check-input" type="checkbox" name="condition2"
+						required> I certify that I am 18 years old or older.
+					<div class="valid-feedback">Valid.</div>
+					<div class="invalid-feedback">Check this checkbox to continue.</div>
+				</label>
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input [(ngModel)]="condition_three" class="form-check-input" type="checkbox" name="condition3"
+						required> I understand that by clicking the continue button to enter the survey, I indicate my willingness to voluntarily take part in this study.
+					<div class="valid-feedback">Valid.</div>
+					<div class="invalid-feedback">Check this checkbox to continue.</div>
+				</label>
+			</div>
 		</div>
-		<div class="col-sm">
+		<div class="container">
+			<button type="submit" class="mr-2 btn btn-success" [disabled]="!validForm.form.valid || isSubmit">
+				Start Questionaire
+			</button>
+			<button (click)="cancel()"type="button" class="mr-2 btn btn-danger" [disabled]="validForm.form.valid">
+				Cancel
+			</button>
 		</div>
-	</nav>
+	</form>
+</div>	
+<div *ngIf="blockAccess" class="container">
+	<h1>The current browser cannot run this app.
 	
-	<div *ngIf="!blockAccess" class="container">
-		<form (ngSubmit)="createUser()" class="was-validated" #validForm="ngForm">
-			<div class="container">
-				<h1>Welcome to the study</h1>
-				<h4>Video Element Study Consent Form</h4>
-			</div>
-			<div class="container">
-				<p>
-					You are being asked to participate in a voluntary research study. The purpose of this study is to understand how different people weight the importance of different elements that influences video watching. Participating in this study will involve you using an interface that provides a set of slide bars to experience how different combination of video element impacts ones watching experience. You will be asked to complete some tasks or survey regarding the video. The entire survey will last around 5 to 15 minutes. There are no known risks associated with our study.
-					<br><br>
-					- Principal Investigator Name and Title: Dr. Hari Sundaram
-					<br>
-					- Department and Institution: Department of Computer Science, University of Illinois at Urbana Champaign
-					<br>
-					- Contact Information: <a target="_blank" href="mailto:hs1@illinois.edu">Dr. Hari Sundaram</a>
-	
-				</p>
-				<h5>What procedures are involved?</h5>
-				<p>
-					<b></b> A video interface will be presented to you. You will be asked to tune the different scroll bars to experience the impact of your viewing experience. You will be asked to finish watching the video but feel free to spend as much time with the interface. A questionnaire or a task will then be presented to collect some of your experience on watching the video.
-				</p>
-				<h5>Will my study-related information be kept confidential?</h5>
-				<p>
-					Faculty, students, and staff who may see your information will maintain confidentiality to the extent of laws and university policies. Personal identifiers are neither collected nor will be published or presented.
-				</p>
-				<h5>Will I be reimbursed for any expenses or paid for my participation in this research?</h5>
-				<p>
-					You will be paid $1.5 base pay through MTurk when you are done with the study. You may receive an extra $0.5 or $1 bonus through MTurk when you complete the study if given one of the two longer version of the survey. You may also be paid a bonus from the lottery through MTurk if you win the lottery. Payment is dependent on your quality completion of the task.
-				</p>
-				<h5>Can I withdraw or be removed from the study?</h5>
-				<p>
-					If you decide to participate, you are free to withdraw your consent and discontinue participation at any time. The researchers also have the right to stop your participation in this study without your consent if they believe it is in your best interests, and/or you were to object to any future changes that may be made in the study plan. Your participation in this research is voluntary. Your decision whether or not to participate, or to withdraw after beginning participation, will not affect your current or future dealings with the University of Illinois at Urbana-Champaign.
-				</p>
-				<h5>Will data collected from me be used for any other research?</h5>
-				<p>
-					Your de-identified information could be used for future research without additional informed consent.
-				</p>
-	
-				<h5>Who should I contact if I have questions?</h5>
-				<p>
-					Questions about this research study should be directed to Dr. Hari Sundaram (hs1@illinois.edu) in the Department of Computer Science at University of Illinois, Urbana-Champaign. If you have any questions about your rights as a participant in this study or any concerns or complaints, please contact the University of Illinois Institutional Review Board at 217-333-2670 or via irb@illinois.edu.
-				</p>
-				<h5> How will the results be disseminated?
-				</h5>
-				<p>
-					The results will be disseminated via journal articles, academic paper, conference presentations, PhD thesis, and/or Open Science Framework. Please download and print this <a target="_blank" href="/download/consent">consent form </a> if you would like to retain a copy for your records.
-				</p>
-	
-				<h5>Please use a Laptop or PC with Chrome, Firefox or Microsoft Edge to complete this survey.</h5>
-				<h5>By continuing, I certify that I have read this form and volunteer to participate in this research study.<br></h5>
-	
-				<div class="form-group form-check">
-					<label class="form-check-label">
-						<input [(ngModel)]="condition_one" class="form-check-input" type="checkbox" name="condition1"
-							required> I have read and understand the above consent form.
-						<div class="valid-feedback">Valid.</div>
-						<div class="invalid-feedback">Check this checkbox to continue.</div>
-					</label>
-				</div>
-				<div class="form-group form-check">
-					<label class="form-check-label">
-						<input [(ngModel)]="condition_two" class="form-check-input" type="checkbox" name="condition2"
-							required> I certify that I am 18 years old or older.
-						<div class="valid-feedback">Valid.</div>
-						<div class="invalid-feedback">Check this checkbox to continue.</div>
-					</label>
-				</div>
-				<div class="form-group form-check">
-					<label class="form-check-label">
-						<input [(ngModel)]="condition_three" class="form-check-input" type="checkbox" name="condition3"
-							required> I understand that by clicking the continue button to enter the survey, I indicate my willingness to voluntarily take part in this study.
-						<div class="valid-feedback">Valid.</div>
-						<div class="invalid-feedback">Check this checkbox to continue.</div>
-					</label>
-				</div>
-			</div>
-			<div class="container">
-				<button type="submit" class="mr-2 btn btn-success" [disabled]="!validForm.form.valid || isSubmit">
-					Start Questionaire
-				</button>
-				<button (click)="cancel()"type="button" class="mr-2 btn btn-danger" [disabled]="validForm.form.valid">
-					Cancel
-				</button>
-			</div>
-		</form>
-	</div>	
-	<div *ngIf="blockAccess" class="container">
-		<h1>The current browser cannot run this app.
-		
-		<p>Please consider Firefox or Google Chrome</p>
-	<div>
+	<p>Please consider Firefox or Google Chrome</p>
+<div>

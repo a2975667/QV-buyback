@@ -20,9 +20,6 @@ ffmpeg -i demo_video.mpeg -f mp4 -vcodec libx264 -s 420x560 -ac 2 -threads 13 de
 ffmpeg -i demo_video.mpeg -f mp4 -vcodec libx264 -s 520x694 -ac 2 -threads 13 demo-vq2.webm &&
 ffmpeg -i demo_video.mpeg -f mp4 -vcodec libx264 -s 600x800 -ac 2 -threads 13 demo-vq3.webm
 
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 8k -vn demo-aq0.m4a &&
 ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 11k -vn demo-aq1.m4a &&
 ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 16k -vn demo-aq2.m4a &&
@@ -34,11 +31,15 @@ ffmpeg -i demo_video.mpeg -f mp4 -vcodec libx264 -b:v 96K -ac 2 -threads 13 demo
 ffmpeg -i demo_video.mpeg -f mp4 -vcodec libx264 -b:v 160K -ac 2 -threads 13 demo-vq22.webm &&
 ffmpeg -i demo_video.mpeg -f mp4 -vcodec libx264 -b:v 224K -ac 2 -threads 13 demo-vq32.webm
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 240	320
 336	448
 416	555
 480	640
+
+210x280
+294x392
+364x486
+420x560
+
+[final]
+ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 210x280 -ac 2 -threads 13 demo-vq0.webm &&ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 294x392 -ac 2 -threads 13 demo-vq1.webm &&ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 364x486 -ac 2 -threads 13 demo-vq2.webm &ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 420x560 -ac 2 -threads 13 demo-vq3.webm
