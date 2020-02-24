@@ -23,9 +23,8 @@ export class CompleteComponent implements OnInit {
     this.code = this.route.snapshot.paramMap.get('userId');
     this.text = this.route.snapshot.paramMap.get('text');
 
-    if (this.title == null){
+    if (this.title == 'null'){
       this.title = "Thank you"
-      this.code = "N/A"
       this.text = "Unfortunately the survey has collected enough response."
       this.url = "";
     }

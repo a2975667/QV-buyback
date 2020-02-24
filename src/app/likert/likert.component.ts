@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LikertComponent implements OnInit {
   json: object = {questions: null};
-  html: object = {};
+  html: object | boolean = false;
   constructor(
     private liService: LikertService,
     private route: Router,
@@ -29,7 +29,9 @@ export class LikertComponent implements OnInit {
     } else if(type == 'video'){
       this.route.navigate(['video']).then(()=>location.reload());
     } else if(type == 'complete'){
-      this.route.navigate(['complete']);
+      const userID = this.cookieService.get('user_id');
+      this.cookieService.deleteAll('/');
+      this.route.navigate(['complete', {userId: userID, text: null, title: null }]);
     }
   }
 
@@ -42,6 +44,7 @@ export class LikertComponent implements OnInit {
           showNav: true,
         }
       }
+      console.log(this.html)
       if(data['html']) {
         this.html = data['html'];
       }
