@@ -51,20 +51,6 @@
                                     [options]="sliderOptions"
                                     (userChange)="onRadioCheck()"></ng5-slider>
                             </td>
-                            <!-- <td *ngFor="let i of objectKeys(videoConfigLength)">
-                                <div class="form-check">
-                                    <input
-                                        disabled="{{!showConfig}}"
-                                        class="form-check-input"
-                                        type="radio"
-                                        name="{{k}}"
-                                        id="{{k}}-{{i}}"
-                                        value="{{i}}"
-                                        [(ngModel)]="configurations[k]"
-                                        (change)="onRadioCheck()">
-                                    <label class="form-check-label" for="{{k}}-{{i}}">{{videoConfigText[i]}}</label>
-                                </div>
-                            </td> -->
                             <td *ngIf="showCost" colspan="3">
                                 ${{configurations[k]*4}}
                             </td>

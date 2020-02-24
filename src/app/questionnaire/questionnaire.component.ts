@@ -49,7 +49,9 @@ export class QuestionnaireComponent implements OnInit {
     } else if(type == 'video') {
       this.route.navigate(['video']).then(()=>location.reload());
     } else if(type == 'complete') {
-      this.route.navigate(['complete']);
+      const userID = this.cookieService.get('user_id');
+      this.cookieService.deleteAll('/');
+      this.route.navigate(['complete', {userId: userID, text: null, title: null }]);
     }
   }
 }

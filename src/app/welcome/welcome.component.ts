@@ -63,8 +63,9 @@ export class WelcomeComponent implements OnInit {
         this.gService.getUserID(userGP).subscribe((user: User) => {
           this.initCookie(user);
           if(user.path_id == "thank_you"){
+            const userID = this.cookieService.get('user_id');
             this.cookieService.deleteAll('/');
-            this.router.navigate(['complete']);
+            this.router.navigate(['complete', {userId: userID, text: null, title: null }])
           }else{
             this.router.navigate(['demographic']);
           }
