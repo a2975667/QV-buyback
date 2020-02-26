@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./likert.component.scss']
 })
 export class LikertComponent implements OnInit {
-  json: object = {questions: null};
+  json: any = {questions: null};
   html: object | boolean = false;
   constructor(
     private liService: LikertService,
@@ -20,7 +20,7 @@ export class LikertComponent implements OnInit {
   decidePath() {
     let pathIndex = Number(this.cookieService.get('user_current_path_index'));
     let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
-    let type: string = pathArray[pathIndex]['type'];    
+    let type: string = pathArray[pathIndex]['type'];
     if(type == 'normal'){
       this.route.navigate(['likert']);
       this.liService.requestForm();
@@ -50,7 +50,7 @@ export class LikertComponent implements OnInit {
       }
     })
   }
-  
+
   submit(data){
     this.liService.submit(data).subscribe(
       result => {
