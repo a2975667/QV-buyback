@@ -184,8 +184,8 @@ export class VideoComponent implements OnInit {
     }
     let time = Date.now();
     let that = this;
-    this.videoSrc = this.videoFilePrefix+this.formJson['filename']+this.configurations['Video Resolution']+".webm?t="+time;
-    this.audioSrc = this.audioFilePrefix+this.formJson['filename']+this.configurations['Audio Quality']+".m4a?t="+time;
+    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution']+".webm?t="+time;
+    this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality']+".m4a?t="+time;
     let videoTempTime = this.videoElement.currentTime;
     let audioTempTime = this.audioElement.currentTime;
     this.videoElement.src = this.videoSrc;
@@ -318,8 +318,8 @@ export class VideoComponent implements OnInit {
         this.showCost = data.settings.control_panel_has_price;
         this.showConfig = data.settings.control_panel_can_change;
         let time: String = Date.now().toString();
-        this.videoSrc = this.videoFilePrefix + 'demo-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time;
-        this.audioSrc = this.audioFilePrefix + 'demo-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
+        this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time;
+        this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
         this.refreshPlayback();

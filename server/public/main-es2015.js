@@ -149,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\" [innerHTML]=\"description\"></div>\n    </div>\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-sm-8 wrap-content\">\n        <div #videoOverlay class=\"original\" (click)=\"playPause()\">\n            <video\n                #videoPlayer\n                style=\"display: none;\"\n                src=\"\"\n                ></video>\n            <canvas #canvas\n            width=\"100vw\" height=\"30vh\"></canvas>\n            </div>\n        <audio\n        #audioPlayer\n        src=\"/api/audio/sample_audio.webm\">\n        </audio>\n        </div>\n\n    </div>\n\n   <p></p>\n    <div >\n\n        <h2>\n            Configuration\n        </h2>\n        <div class=\"row\">\n            <div class=\"col-sm wrap-content\">\n                <table class=\"table\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col\">Configuration Name</th>\n                        <th scope=\"col\" colspan=5>Level ( 0 ~ 3 )</th>\n                        <th *ngIf=\"showCost\" scope=\"col\" colspan=3>Cost</th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                        <tr style=\"height: 100px;\"*ngFor=\"let k of objectKeys(configurations)\">\n                            <th style=\"width: 20%;\"colspan=\"1\" scope=\"row\">{{k}}</th>\n                            <td colspan=\"5\">\n                                <ng5-slider\n                                    [(value)]=\"configurations[k]\"\n                                    [options]=\"sliderOptions\"\n                                    (userChange)=\"onRadioCheck()\"></ng5-slider>\n                            </td>\n                            <!-- <td *ngFor=\"let i of objectKeys(videoConfigLength)\">\n                                <div class=\"form-check\">\n                                    <input\n                                        disabled=\"{{!showConfig}}\"\n                                        class=\"form-check-input\"\n                                        type=\"radio\"\n                                        name=\"{{k}}\"\n                                        id=\"{{k}}-{{i}}\"\n                                        value=\"{{i}}\"\n                                        [(ngModel)]=\"configurations[k]\"\n                                        (change)=\"onRadioCheck()\">\n                                    <label class=\"form-check-label\" for=\"{{k}}-{{i}}\">{{videoConfigText[i]}}</label>\n                                </div>\n                            </td> -->\n                            <td *ngIf=\"showCost\" colspan=\"3\">\n                                ${{configurations[k]*4}}\n                            </td>\n                        </tr>\n                        <tr *ngIf=\"showCost\">\n                            <th *ngIf=\"showCost\" scope=\"row\"></th>\n                            <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            </td>\n                            <td>\n                                Total: ${{sumUpCost(videoConfig)*5}}\n                            </td>\n                        </tr>\n                    </tbody>\n                  </table>\n              </div>\n        </div>\n    </div>\n    <h2 *ngIf=\"formJson && formJson.settings.normal\">\n        Questionnaire\n    </h2>\n    <app-survey\n        *ngIf=\"formJson && formJson.settings.normal\"\n        [json]=\"survey\"\n        (suveyModel)=\"getSurvey($event)\"\n        (resultEmit)=\"surveySubmit($event)\">\n    </app-survey>\n    <button style=\"float: right;\" [disabled]=\"clicked\" (click)=\"submit($event); clicked = true;\" type=\"submit\" class=\"mr-2 btn btn-success\">\n        Submit\n    </button>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\" [innerHTML]=\"description\"></div>\n    </div>\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div style=\"justify-content: center;\" #videoOverlay class=\"original\" (click)=\"playPause()\">\n            <video\n                #videoPlayer\n                style=\"display: none;\"\n                src=\"\"\n                ></video>\n            <canvas #canvas\n            style=\"margin-left:20%\"\n            width=\"700px\" height=\"300px\"></canvas>\n            </div>\n        <audio\n        #audioPlayer\n        src=\"/api/audio/sample_audio.webm\">\n        </audio>\n    </div>\n\n   <p></p>\n    <div >\n\n        <h2>\n            Configuration\n        </h2>\n        <div class=\"row\">\n            <div class=\"col-sm wrap-content\">\n                <table class=\"table\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col\">Configuration Name</th>\n                        <th scope=\"col\" colspan=5>Level ( 0 ~ 3 )</th>\n                        <th *ngIf=\"showCost\" scope=\"col\" colspan=3>Cost</th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                        <tr style=\"height: 100px;\"*ngFor=\"let k of objectKeys(configurations)\">\n                            <th style=\"width: 20%;\"colspan=\"1\" scope=\"row\">{{k}}</th>\n                            <td colspan=\"5\">\n                                <ng5-slider\n                                    [(value)]=\"configurations[k]\"\n                                    [options]=\"sliderOptions\"\n                                    (userChange)=\"onRadioCheck()\"></ng5-slider>\n                            </td>\n                            <td *ngIf=\"showCost\" colspan=\"3\">\n                                ${{configurations[k]*4}}\n                            </td>\n                        </tr>\n                        <tr *ngIf=\"showCost\">\n                            <th *ngIf=\"showCost\" scope=\"row\"></th>\n                            <td *ngFor=\"let i of objectKeys(videoConfig)\">\n                            </td>\n                            <td>\n                                Total: ${{sumUpCost(videoConfig)*5}}\n                            </td>\n                        </tr>\n                    </tbody>\n                  </table>\n              </div>\n        </div>\n    </div>\n    <h2 *ngIf=\"formJson && formJson.settings.normal\">\n        Questionnaire\n    </h2>\n    <app-survey\n        *ngIf=\"formJson && formJson.settings.normal\"\n        [json]=\"survey\"\n        (suveyModel)=\"getSurvey($event)\"\n        (resultEmit)=\"surveySubmit($event)\">\n    </app-survey>\n    <button style=\"float: right;\" [disabled]=\"clicked\" (click)=\"submit($event); clicked = true;\" type=\"submit\" class=\"mr-2 btn btn-success\">\n        Submit\n    </button>\n</div>\n");
 
 /***/ }),
 
@@ -162,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!--<ng-container *ngIf=\"blockAccess\">\n\t<h1>The current browser cannot run this app.\n\n\t<p>Please consider Firefox or Google Chrome</p>\n<ng-container>!-->\n<ng-container *ngIf=\"!blockAccess\">\n\t<nav class=\"navbar navbar-light bg-light\">\n\t\t<div class=\"col-sm-1\">\n\t\t\t<br>\n\t\t</div>\n\t\t<div class=\"col-sm\">\n\t\t</div>\n\t\t<div class=\"col-sm\">\n\t\t</div>\n\t</nav>\n\n\t<div class=\"container\">\n\t\t<form (ngSubmit)=\"createUser()\" class=\"was-validated\" #validForm=\"ngForm\">\n\t\t\t<div class=\"container\">\n\t\t\t\t<h1>Welcome to the study</h1>\n\t\t\t\t<h4>Video Element Study Consent Form</h4>\n\t\t\t</div>\n\t\t\t<div class=\"container\">\n\t\t\t\t<p>\n\t\t\t\t\tYou are being asked to participate in a voluntary research study. The purpose of this study is to understand how different people weight the importance of different elements that influences video watching. Participating in this study will involve you using an interface that provides a set of slider bars to experience how different combination of video elements impact your watching experience. You will be asked to complete some tasks or surveys regarding the video. The entire survey will last around 8 to 16 minutes. There are no known risks associated with our study.\n\t\t\t\t\t<br><br>\n\t\t\t\t\t- Principal Investigator Name and Title: Dr. Hari Sundaram\n\t\t\t\t\t<br>\n\t\t\t\t\t- Department and Institution: Department of Computer Science, University of Illinois at Urbana Champaign\n\t\t\t\t\t<br>\n\t\t\t\t\t- Contact Information: <a target=\"_blank\" href=\"mailto:hs1@illinois.edu\">Dr. Hari Sundaram</a>\n\n\t\t\t\t</p>\n\t\t\t\t<h5>What procedures are involved?</h5>\n\t\t\t\t<p>\n\t\t\t\t\t<b></b> A video interface will be presented to you. You will be asked to tune the different slider to experience the impact of different video elements on the video. You will be asked to watch the entire video but feel free to spend as much time as you like with the interface. A questionnaire or a task will then be presented to collect some of your experience on watching the video.\n\t\t\t\t</p>\n\t\t\t\t<h5>Will my study-related information be kept confidential?</h5>\n\t\t\t\t<p>\n\t\t\t\t\tFaculty, students, and staff who may see your information will maintain confidentiality to the extent of laws and university policies. Personal identifiers are neither collected nor will be published or presented.\n\t\t\t\t</p>\n\t\t\t\t<h5>Will I be reimbursed for any expenses or paid for my participation in this research?</h5>\n\t\t\t\t<p>\n\t\t\t\t\tYou will be paid $1.25 base pay through MTurk when you are done with the study. You may receive an extra $0.75 or $1.25 bonus through MTurk when you complete the study if given one of the two longer version of the survey. There might be additional bonus based on the task you are assigned. Payment is dependent on your quality completion of the task.\n\t\t\t\t</p>\n\t\t\t\t<h5>Can I withdraw or be removed from the study?</h5>\n\t\t\t\t<p>\n\t\t\t\t\tIf you decide to participate, you are free to withdraw your consent and discontinue participation at any time. The researchers also have the right to stop your participation in this study without your consent if they believe it is in your best interests, and/or you were to object to any future changes that may be made in the study plan. Your participation in this research is voluntary. Your decision whether or not to participate, or to withdraw after beginning participation, will not affect your current or future dealings with the University of Illinois at Urbana-Champaign.\n\t\t\t\t</p>\n\t\t\t\t<h5>Will data collected from me be used for any other research?</h5>\n\t\t\t\t<p>\n\t\t\t\t\tYour de-identified information could be used for future research without additional informed consent.\n\t\t\t\t</p>\n\n\t\t\t\t<h5>Who should I contact if I have questions?</h5>\n\t\t\t\t<p>\n\t\t\t\t\tQuestions about this research study should be directed to Dr. Hari Sundaram (hs1@illinois.edu) in the Department of Computer Science at University of Illinois, Urbana-Champaign. If you have any questions about your rights as a participant in this study or any concerns or complaints, please contact the University of Illinois Institutional Review Board at 217-333-2670 or via irb@illinois.edu.\n\t\t\t\t</p>\n\t\t\t\t<h5> How will the results be disseminated?\n\t\t\t\t</h5>\n\t\t\t\t<p>\n\t\t\t\t\tThe results will be disseminated via journal articles, academic paper, conference presentations, PhD thesis, and/or Open Science Framework. Please download and print this <a target=\"_blank\" href=\"/download/consent\">consent form </a> if you would like to retain a copy for your records.\n\t\t\t\t</p>\n\n\t\t\t\t<h5>Please use a Laptop or PC with Chrome, Firefox or Microsoft Edge to complete this survey.</h5>\n\t\t\t\t<h5>By continuing, I certify that I have read this form and volunteer to participate in this research study.<br></h5>\n\n\t\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t\t<input [(ngModel)]=\"condition_one\" class=\"form-check-input\" type=\"checkbox\" name=\"condition1\"\n\t\t\t\t\t\t\trequired> I have read and understand the above consent form.\n\t\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t\t</label>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t\t<input [(ngModel)]=\"condition_two\" class=\"form-check-input\" type=\"checkbox\" name=\"condition2\"\n\t\t\t\t\t\t\trequired> I certify that I am 18 years old or older.\n\t\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t\t</label>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t\t<input [(ngModel)]=\"condition_three\" class=\"form-check-input\" type=\"checkbox\" name=\"condition3\"\n\t\t\t\t\t\t\trequired> I understand that by clicking the continue button to enter the survey, I indicate my willingness to voluntarily take part in this study.\n\t\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t\t</label>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"container\">\n\t\t\t\t<button type=\"submit\" class=\"mr-2 btn btn-success\" [disabled]=\"!validForm.form.valid || isSubmit\">\n\t\t\t\t\tStart Questionaire\n\t\t\t\t</button>\n\t\t\t\t<button (click)=\"cancel()\"type=\"button\" class=\"mr-2 btn btn-danger\" [disabled]=\"validForm.form.valid\">\n\t\t\t\t\tCancel\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t</form>\n\n\t</div>\n<ng-container>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-light bg-light\">\n\t<div class=\"col-sm-1\">\n\t\t<br>\n\t</div>\n\t<div class=\"col-sm\">\n\t</div>\n\t<div class=\"col-sm\">\n\t</div>\n</nav>\n\n<div *ngIf=\"!blockAccess\" class=\"container\">\n\t<form (ngSubmit)=\"createUser()\" class=\"was-validated\" #validForm=\"ngForm\">\n\t\t<div class=\"container\">\n\t\t\t<h1>Welcome to the study</h1>\n\t\t\t<h4>Video Element Study Consent Form</h4>\n\t\t</div>\n\t\t<div class=\"container\">\n\t\t\t<p>\n\t\t\t\tYou are being asked to participate in a voluntary research study. The purpose of this study is to understand how different people weight the importance of different elements that influences video watching. Participating in this study will involve you using an interface that provides a set of slider bars to experience how different combination of video elements impact your watching experience. You will be asked to complete some tasks or surveys regarding the video. The entire survey will last around 8 to 16 minutes. There are no known risks associated with our study.\n\t\t\t\t<br><br>\n\t\t\t\t- Principal Investigator Name and Title: Dr. Hari Sundaram\n\t\t\t\t<br>\n\t\t\t\t- Department and Institution: Department of Computer Science, University of Illinois at Urbana Champaign\n\t\t\t\t<br>\n\t\t\t\t- Contact Information: <a target=\"_blank\" href=\"mailto:hs1@illinois.edu\">Dr. Hari Sundaram</a>\n\n\t\t\t</p>\n\t\t\t<h5>What procedures are involved?</h5>\n\t\t\t<p>\n\t\t\t\t<b></b> A video interface will be presented to you. You will be asked to tune the different slider to experience the impact of different video elements on the video. You will be asked to watch the entire video but feel free to spend as much time as you like with the interface. A questionnaire or a task will then be presented to collect some of your experience on watching the video.\n\t\t\t</p>\n\t\t\t<h5>Will my study-related information be kept confidential?</h5>\n\t\t\t<p>\n\t\t\t\tFaculty, students, and staff who may see your information will maintain confidentiality to the extent of laws and university policies. Personal identifiers are neither collected nor will be published or presented.\n\t\t\t</p>\n\t\t\t<h5>Will I be reimbursed for any expenses or paid for my participation in this research?</h5>\n\t\t\t<p>\n\t\t\t\tYou will be paid $1.25 base pay through MTurk when you are done with the study. You may receive an extra $0.75 or $1.25 bonus through MTurk when you complete the study if given one of the two longer version of the survey. There might be additional bonus based on the task you are assigned. Payment is dependent on your quality completion of the task.\n\t\t\t</p>\n\t\t\t<h5>Can I withdraw or be removed from the study?</h5>\n\t\t\t<p>\n\t\t\t\tIf you decide to participate, you are free to withdraw your consent and discontinue participation at any time. The researchers also have the right to stop your participation in this study without your consent if they believe it is in your best interests, and/or you were to object to any future changes that may be made in the study plan. Your participation in this research is voluntary. Your decision whether or not to participate, or to withdraw after beginning participation, will not affect your current or future dealings with the University of Illinois at Urbana-Champaign.\n\t\t\t</p>\n\t\t\t<h5>Will data collected from me be used for any other research?</h5>\n\t\t\t<p>\n\t\t\t\tYour de-identified information could be used for future research without additional informed consent.\n\t\t\t</p>\n\n\t\t\t<h5>Who should I contact if I have questions?</h5>\n\t\t\t<p>\n\t\t\t\tQuestions about this research study should be directed to Dr. Hari Sundaram (hs1@illinois.edu) in the Department of Computer Science at University of Illinois, Urbana-Champaign. If you have any questions about your rights as a participant in this study or any concerns or complaints, please contact the University of Illinois Institutional Review Board at 217-333-2670 or via irb@illinois.edu.\n\t\t\t</p>\n\t\t\t<h5> How will the results be disseminated?\n\t\t\t</h5>\n\t\t\t<p>\n\t\t\t\tThe results will be disseminated via journal articles, academic paper, conference presentations, PhD thesis, and/or Open Science Framework. Please download and print this <a target=\"_blank\" href=\"/download/consent\">consent form </a> if you would like to retain a copy for your records.\n\t\t\t</p>\n\n\t\t\t<h5>Please use a Laptop or PC with Chrome, Firefox or Microsoft Edge to complete this survey.</h5>\n\t\t\t<h5>By continuing, I certify that I have read this form and volunteer to participate in this research study.<br></h5>\n\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_one\" class=\"form-check-input\" type=\"checkbox\" name=\"condition1\"\n\t\t\t\t\t\trequired> I have read and understand the above consent form.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_two\" class=\"form-check-input\" type=\"checkbox\" name=\"condition2\"\n\t\t\t\t\t\trequired> I certify that I am 18 years old or older.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t\t<div class=\"form-group form-check\">\n\t\t\t\t<label class=\"form-check-label\">\n\t\t\t\t\t<input [(ngModel)]=\"condition_three\" class=\"form-check-input\" type=\"checkbox\" name=\"condition3\"\n\t\t\t\t\t\trequired> I understand that by clicking the continue button to enter the survey, I indicate my willingness to voluntarily take part in this study.\n\t\t\t\t\t<div class=\"valid-feedback\">Valid.</div>\n\t\t\t\t\t<div class=\"invalid-feedback\">Check this checkbox to continue.</div>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"container\">\n\t\t\t<button type=\"submit\" class=\"mr-2 btn btn-success\" [disabled]=\"!validForm.form.valid || isSubmit\">\n\t\t\t\tStart Questionaire\n\t\t\t</button>\n\t\t\t<button (click)=\"cancel()\"type=\"button\" class=\"mr-2 btn btn-danger\" [disabled]=\"validForm.form.valid\">\n\t\t\t\tCancel\n\t\t\t</button>\n\t\t</div>\n\t</form>\n</div>\t\n<div *ngIf=\"blockAccess\" class=\"container\">\n\t<h1>The current browser cannot run this app.\n\t\n\t<p>Please consider Firefox or Google Chrome</p>\n<div>\n");
 
 /***/ }),
 
@@ -623,9 +623,8 @@ let CompleteComponent = class CompleteComponent {
         this.title = this.route.snapshot.paramMap.get('title');
         this.code = this.route.snapshot.paramMap.get('userId');
         this.text = this.route.snapshot.paramMap.get('text');
-        if (this.title == null) {
+        if (this.title == 'null') {
             this.title = "Thank you";
-            this.code = "N/A";
             this.text = "Unfortunately the survey has collected enough response.";
             this.url = "";
         }
@@ -688,7 +687,6 @@ let DemographicComponent = class DemographicComponent {
     }
     ngOnInit() {
         this.demoFormService.demoForm.subscribe(data => {
-            console.log(data);
             this.demoForm = {
                 questions: data['survey'],
                 showNav: true,
@@ -871,7 +869,7 @@ let LikertComponent = class LikertComponent {
         this.route = route;
         this.cookieService = cookieService;
         this.json = { questions: null };
-        this.html = {};
+        this.html = false;
     }
     decidePath() {
         let pathIndex = Number(this.cookieService.get('user_current_path_index'));
@@ -888,7 +886,9 @@ let LikertComponent = class LikertComponent {
             this.route.navigate(['video']).then(() => location.reload());
         }
         else if (type == 'complete') {
-            this.route.navigate(['complete']);
+            const userID = this.cookieService.get('user_id');
+            this.cookieService.deleteAll('/');
+            this.route.navigate(['complete', { userId: userID, text: null, title: null }]);
         }
     }
     ngOnInit() {
@@ -900,6 +900,7 @@ let LikertComponent = class LikertComponent {
                     showNav: true,
                 };
             }
+            console.log(this.html);
             if (data['html']) {
                 this.html = data['html'];
             }
@@ -1077,7 +1078,9 @@ let QuestionnaireComponent = class QuestionnaireComponent {
             this.route.navigate(['video']).then(() => location.reload());
         }
         else if (type == 'complete') {
-            this.route.navigate(['complete']);
+            const userID = this.cookieService.get('user_id');
+            this.cookieService.deleteAll('/');
+            this.route.navigate(['complete', { userId: userID, text: null, title: null }]);
         }
     }
 };
@@ -1987,8 +1990,8 @@ let VideoComponent = class VideoComponent {
         }
         let time = Date.now();
         let that = this;
-        this.videoSrc = this.videoFilePrefix + "demo-vq" + this.configurations['Video Resolution'] + ".webm?t=" + time;
-        this.audioSrc = this.audioFilePrefix + "demo-aq" + this.configurations['Audio Quality'] + ".m4a?t=" + time;
+        this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + ".webm?t=" + time;
+        this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality'] + ".m4a?t=" + time;
         let videoTempTime = this.videoElement.currentTime;
         let audioTempTime = this.audioElement.currentTime;
         this.videoElement.src = this.videoSrc;
@@ -2002,8 +2005,6 @@ let VideoComponent = class VideoComponent {
             ve.play();
             ae.play();
             let ctx = that.canvasElement.getContext("2d");
-            ctx.canvas.width = window.innerWidth * 0.5;
-            ctx.canvas.height = window.innerHeight * 0.4;
             that.videoContainer.scale = Math.min(ctx.canvas.width / this.videoWidth, ctx.canvas.height / this.videoHeight);
             that.videoContainer.ready = true;
             requestAnimationFrame(that.updateCanvas.bind(that));
@@ -2067,7 +2068,7 @@ let VideoComponent = class VideoComponent {
         else if (type == 'complete') {
             const userID = this.cookieService.get('user_id');
             this.cookieService.deleteAll('/');
-            this.route.navigate(['complete', {userId: userID, text: null, title: null }]);
+            this.route.navigate(['complete', { userId: userID, text: null, title: null }]);
         }
     }
     ngOnDestroy() {
@@ -2109,14 +2110,14 @@ let VideoComponent = class VideoComponent {
                     questions: data.settings.normal,
                     showNav: false,
                 };
-                this.sliderOptions.disabled = !data.settings.control_panel_can_change;
+                this.sliderOptions = Object.assign({}, this.sliderOptions, { disabled: !data.settings.control_panel_can_change });
                 this.description = data.Description;
                 this.title = data.Title;
                 this.showCost = data.settings.control_panel_has_price;
                 this.showConfig = data.settings.control_panel_can_change;
                 let time = Date.now().toString();
-                this.videoSrc = this.videoFilePrefix + 'demo-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time;
-                this.audioSrc = this.audioFilePrefix + 'demo-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
+                this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time;
+                this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
                 this.videoElement.src = this.videoSrc;
                 this.audioElement.src = this.audioSrc;
                 this.refreshPlayback();
@@ -2229,9 +2230,12 @@ let WelcomeComponent = class WelcomeComponent {
         this.condition_one = false;
         this.condition_two = false;
         this.condition_three = false;
+        this.blockAccess = false;
     }
     ngOnInit() {
-        //this.blockAccess = navigator.userAgent.indexOf("Safari") != -1
+        this.blockAccess = navigator.userAgent.indexOf("Safari") != -1 && !(navigator.userAgent.indexOf("Chrome") != -1);
+        console.log(navigator.userAgent);
+        console.log(this.blockAccess);
         if (this.cookieService.check('user_id')) {
             let pathIndex = Number(this.cookieService.get('user_current_path_index'));
             let pathArray = JSON.parse(this.cookieService.get('user_path'));
@@ -2267,8 +2271,9 @@ let WelcomeComponent = class WelcomeComponent {
                 this.gService.getUserID(userGP).subscribe((user) => {
                     this.initCookie(user);
                     if (user.path_id == "thank_you") {
+                        const userID = this.cookieService.get('user_id');
                         this.cookieService.deleteAll('/');
-                        this.router.navigate(['complete']);
+                        this.router.navigate(['complete', { userId: userID, text: null, title: null }]);
                     }
                     else {
                         this.router.navigate(['demographic']);
