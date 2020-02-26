@@ -52,7 +52,7 @@ export class VideoComponent implements OnInit {
   videoConfig = new Array(4).fill(0);
   videoConfigLength = new Array(4).fill(0);
   sumUpCost = (arr) => {return arr.reduce((a, b) => a + b)}
-  formJson: Object;
+  formJson: any;
 
   blackTimer: Observable<number>;
   videoTimerSubscription: Subscription;

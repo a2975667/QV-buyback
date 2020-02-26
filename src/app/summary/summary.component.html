@@ -17,17 +17,17 @@
     <p>
         In 2 to 3 sentences, what is the reason that you make this decision?
     </p>
-    <textarea 
-        class="swal2-textarea" 
-        type="text" 
-        [formControl]="submitForm" 
+    <textarea
+        class="swal2-textarea"
+        type="text"
+        [formControl]="submitForm"
         autofocus
     ></textarea>
     <label *ngIf="submitForm.invalid" [ngClass] = "'error'" > Your response required with min 1 character. </label>
     <br/>
-    <button 
+    <button
     (click)="submitFinalForm()"
-    *ngIf="!submitForm.invalid" 
+    *ngIf="!submitForm.invalid"
     class="swal2-styled swal2-confirm"> Submit</button>
 
 </form>

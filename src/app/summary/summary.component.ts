@@ -22,7 +22,7 @@ export class SummaryComponent implements OnInit {
     protected gService: GlobalService,
   ) {}
 
-  submitFinalForm(e) {
+  submitFinalForm() {
     this.submitSuccessSwal.dismiss().then(
       ()=>this.gService.submit(this.submitForm.value)
     )
@@ -48,7 +48,7 @@ export class SummaryComponent implements OnInit {
         this.percentage = percentage;
       })
     })
-    
+
   }
 
 }
