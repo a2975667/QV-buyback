@@ -4,9 +4,9 @@
 /dist
 /tmp
 /out-tsc
-/server/audio
-/server/video
-#server/public/*
+# /server/audio
+# /server/video
+# server/public/*
 
 # Only exists if Bazel was run
 /bazel-out
