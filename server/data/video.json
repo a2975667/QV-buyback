@@ -1,10 +1,77 @@
 {
 
-	"filename":"demo",
+	"filename":"test",
 	"settings":{
 		"control_panel_can_change": false,
 		"control_panel_has_price":true,
 		"control_panel_freeze":true,
-		"normal":false
+		"normal":{
+			"title": "Demographic Survey",
+			"pages": [{
+				"title": "Please answer following questions.",
+				"questions": [{
+					"type": "dropdown",
+					"name": "vid_buy_demo1",
+					"title": "How is the snow is likely to fall in the northeast area in the finger lake region?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) 6 to 9 inch and up to one-foot in some local areas",
+						"b) 1 to 3 inch and up to 6 inches in some local areas",
+						"c) less than 1 inch and up to 3 inches in some local areas",
+						"d) 9 to 12 inches and up to two-foot in some local areas"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo2",
+					"title": "Where in the states would several feet of snowfall in the next 36 to 48 hours?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) The Sierra",
+						"b) Kansas",
+						"c) The great lakes",
+						"d) Texas"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo3",
+					"title": "What is the temperature in Oklahoma and South Texas?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) 30s-40s",
+						"b) 40s-50s",
+						"c) 50s-60s",
+						"d) 60s-70s"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo4",
+					"title": "What is the weather like in San Francisco, Los Angeles?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) Rain",
+						"b) Sunny",
+						"c) Cloudy",
+						"d) Snowy"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo5",
+					"title": " What is the weather like in Chicago?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) Mostly cloudy",
+						"b) Snowy",
+						"c) Windy",
+						"d) Raining"
+					]
+				}
+			]
+			}]
+		}
 	}
   }
