@@ -77,6 +77,10 @@ export class VideoComponent implements OnInit {
       {value: 3, legend: 'Lv. 3'}
     ]
   };
+  saveApply = {
+    save: false,
+    apply: false,
+  }
   //videoConfigText = ["UnChanged","Slightly Enhanced","Enhanced","Perfected"];
 
   constructor(
@@ -295,7 +299,6 @@ export class VideoComponent implements OnInit {
       'Motion Smoothness': '0',
       'Audio-Video Synchronization': '0',
     }
-    console.log(this.configurations);
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
     this.videoOverlayElement = this.videoOverlay.nativeElement;
@@ -304,10 +307,15 @@ export class VideoComponent implements OnInit {
     this.vService.requestForm();
     this.vService.videoForm.subscribe((data: Video) => {
       if(data){
+        console.log(data) 
         this.formJson = data;
         this.survey = {
           questions: data.settings.normal,
           showNav: false,
+        }
+        this.saveApply = {
+          save: data.settings.save,
+          apply: data.settings.apply,
         }
         this.sliderOptions = Object.assign(
           {}, this.sliderOptions,
@@ -322,6 +330,9 @@ export class VideoComponent implements OnInit {
         this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
+        if(this.saveApply.apply){
+          this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
+        }
         this.refreshPlayback();
       }
     })
@@ -338,6 +349,9 @@ export class VideoComponent implements OnInit {
 
   surveySubmit(data) {
     this.videoElement.pause();
+    if(this.saveApply.save) {
+      this.cookieService.set('video_config', JSON.stringify(this.videoConfig));
+    }
     this.vService.submit(this.videoConfig).subscribe(
       result => {
         this.decidePath();
