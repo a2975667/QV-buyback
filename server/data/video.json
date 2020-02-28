@@ -5,6 +5,7 @@
 		"control_panel_can_change": false,
 		"control_panel_has_price":true,
 		"control_panel_freeze":true,
+		"apply":true,
 		"normal":{
 			"title": "Demographic Survey",
 			"pages": [{

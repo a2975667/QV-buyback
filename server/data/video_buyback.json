@@ -6,6 +6,7 @@
 		"control_panel_can_change": true,
 		"control_panel_has_price":true,
 		"control_panel_freeze":false,
-		"normal":false
+		"normal":false,
+		"save": true
 	}
   }
