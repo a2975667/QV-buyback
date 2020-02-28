@@ -18,11 +18,11 @@
                 ></video>
             <canvas #canvas
             style="margin-left:20%"
-            width="700px" height="300px"></canvas>
+            width="960px" height="540px"></canvas>
             </div>
         <audio
         #audioPlayer
-        src="/api/audio/sample_audio.webm">
+        src="">
         </audio>
     </div>
 
@@ -68,8 +68,9 @@
               </div>
         </div>
     </div>
+	<br>
     <h2 *ngIf="formJson && formJson.settings.normal">
-        Questionnaire
+        Sample Questions
     </h2>
     <app-survey
         *ngIf="formJson && formJson.settings.normal"
