@@ -317,10 +317,7 @@ export class VideoComponent implements OnInit {
           save: data.settings.save,
           apply: data.settings.apply,
         }
-        this.sliderOptions = Object.assign(
-          {}, this.sliderOptions,
-          {disabled: !data.settings.control_panel_can_change}
-        );
+        
         this.description = data.Description;
         this.title = data.Title;
         this.showCost = data.settings.control_panel_has_price;
@@ -332,7 +329,16 @@ export class VideoComponent implements OnInit {
         this.audioElement.src = this.audioSrc;
         if(this.saveApply.apply){
           this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
+          this.configurations["Audio Quality"] = this.videoConfig[0];
+          this.configurations["Video Resolution"] = this.videoConfig[1];
+          this.configurations["Audio Stability"] = this.videoConfig[2];
+          this.configurations["Motion Smoothness"] = this.videoConfig[3];
+          this.configurations["Audio-Video Synchronization"] = this.videoConfig[4];
         }
+        this.sliderOptions = Object.assign(
+          {}, this.sliderOptions,
+          {disabled: !data.settings.control_panel_can_change}
+        );
         this.refreshPlayback();
       }
     })
