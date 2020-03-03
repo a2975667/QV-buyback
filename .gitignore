@@ -4,9 +4,10 @@
 /dist
 /tmp
 /out-tsc
-/server/audio
-/server/video
-server/server.zip
+/server/old_media
+/server/original
+#/server/audio
+#/server/video
 # server/public/*
 
 # Only exists if Bazel was run

@@ -1,12 +1,79 @@
 {
-	"filename":"test",
-	"Title":"This is a title",
-	"Description":"This is the description of this video and the HTML content.",
+	"filename":"demo",
+	"Title":"Task: Buy Back",
+	"Description":"<p> In this task, you are given 35 dollars from the video streaming company to buy different levels of video elements that you experienced on the previous page. You can slide the slider to preview the cost for a set of configurations you prefer having and verify how these effect the video. Once you made the purchased (by clicking submit), this set of configuration will be yours throughout the rest of the experiement. The video streaming company stats that you pay toward that an element will be devoted to that specific element for research and development of the element. <br> In the bottom of this page, there is a set of questions for you to answer. These questions help you verify if you understood the video. <br> <br> In the next page, there will be a different video similiar to this one followed by a set of mutiple choice questions. These mutiple chice questions will be similiar to those listed on this page. The company want you to answer those questions. If you are able to answer four of the five questions correctly in the next page, you will be eligible to enter the lottery.<br><br> The lottery has a probability of 1 in 60 winning whatever is left from your purchase. For instance, if you are able to answer four of the five questions on the next page correctly while spending 21 dollars on the configuration, upon winning the lottery, you will get 35-21=14 dollars. <br> Do note that the new video and the questions will be displayed on the same page and you can watch the video as many times as you like.",
 	"settings":{
 		"control_panel_can_change": true,
 		"control_panel_has_price":true,
 		"control_panel_freeze":false,
-		"normal":false,
+		"normal":{
+			"title": "Demographic Survey",
+			"pages": [{
+				"title": "Please answer following questions.",
+				"questions": [{
+					"type": "dropdown",
+					"name": "vid_buy_demo1",
+					"title": "How is the snow is likely to fall in the northeast area in the finger lake region?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) 6 to 9 inch and up to one-foot in some local areas",
+						"b) 1 to 3 inch and up to 6 inches in some local areas",
+						"c) less than 1 inch and up to 3 inches in some local areas",
+						"d) 9 to 12 inches and up to two-foot in some local areas"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo2",
+					"title": "Where in the states would several feet of snowfall in the next 36 to 48 hours?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) The Sierra",
+						"b) Kansas",
+						"c) The great lakes",
+						"d) Texas"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo3",
+					"title": "What is the temperature in Oklahoma and South Texas?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) 30s-40s",
+						"b) 40s-50s",
+						"c) 50s-60s",
+						"d) 60s-70s"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo4",
+					"title": "What is the weather like in San Francisco, Los Angeles?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) Rain",
+						"b) Sunny",
+						"c) Cloudy",
+						"d) Snowy"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo5",
+					"title": " What is the weather like in Chicago?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) Mostly cloudy",
+						"b) Snowy",
+						"c) Windy",
+						"d) Raining"
+					]
+				}
+			]
+			}]
+		},
 		"save": true
 	}
   }
