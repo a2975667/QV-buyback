@@ -45,19 +45,19 @@
                     <tbody>
                         <tr style="height: 100px;"*ngFor="let k of objectKeys(configurations)">
                             <th style="width: 20%;"colspan="1" scope="row">{{k}}</th>
-                            <td colspan="5">
+                            <td colspan="7">
                                 <ng5-slider
                                     [(value)]="configurations[k]"
                                     [options]="sliderOptions"
                                     (userChange)="onRadioCheck()"></ng5-slider>
                             </td>
-                            <td *ngIf="showCost" colspan="3">
+                            <td *ngIf="showCost" colspan="1">
                                 ${{configurations[k]*4}}
                             </td>
                         </tr>
                         <tr *ngIf="showCost">
                             <th *ngIf="showCost" scope="row"></th>
-                            <td *ngFor="let i of objectKeys(videoConfig)">
+                            <td colspan="7">
                             </td>
                             <td>
                                 Total: ${{sumUpCost(videoConfig)*4}}

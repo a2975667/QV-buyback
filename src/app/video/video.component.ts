@@ -49,8 +49,8 @@ export class VideoComponent implements OnInit {
 
   objectKeys = Object.keys;
 
-  videoConfig = new Array(4).fill(0);
-  videoConfigLength = new Array(4).fill(0);
+  videoConfig = new Array(5).fill(0);
+  videoConfigLength = new Array(5).fill(0);
   sumUpCost = (arr) => {return arr.reduce((a, b) => a + b)}
   formJson: any;
 
@@ -90,6 +90,7 @@ export class VideoComponent implements OnInit {
     ) { }
 
   completeFunc: Function;
+
   getSurvey(survey: Survey.Model){
     this.completeFunc = survey.completeLastPage.bind(survey);
   }
@@ -179,29 +180,14 @@ export class VideoComponent implements OnInit {
   }
 
   refreshPlayback() {
-    this.videoIsPlaying = true;
-    if(this.audioTimerSubscription){
-      this.audioTimerSubscription.unsubscribe();
-    }
-    if(this.videoTimerSubscription){
-      this.videoTimerSubscription.unsubscribe();
-    }
-    let time = Date.now();
     let that = this;
-    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution']+".webm?t="+time;
-    this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality']+".m4a?t="+time;
-    let videoTempTime = this.videoElement.currentTime;
-    let audioTempTime = this.audioElement.currentTime;
-    this.videoElement.src = this.videoSrc;
-    this.audioElement.src = this.audioSrc;
-    this.videoElement.currentTime = videoTempTime;
-    this.audioElement.currentTime = audioTempTime;
+    this.videoIsPlaying = true;
+    this.unsubscribeSurvices();
+    this.reassignVideoSrc(); 
     this.syncAudioWithVideo();
-    let ve = this.videoElement;
-    let ae = this.audioElement;
     this.videoElement.addEventListener('loadeddata', function() {
-      ve.play();
-      ae.play();
+      that.videoElement.play();
+      that.audioElement.play();
       let ctx = that.canvasElement.getContext("2d");
       that.videoContainer.scale = Math.min(
         ctx.canvas.width / this.videoWidth,
@@ -211,6 +197,27 @@ export class VideoComponent implements OnInit {
     }, false);
     this.jitterAudio(Number(this.configurations['Audio Stability']));
     this.jitterVideo(Number(this.configurations['Motion Smoothness']));
+  }
+
+  reassignVideoSrc() {
+    let time = Date.now();
+    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution']+".webm?t="+time;
+    this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality']+".m4a?t="+time;
+    let videoTempTime = this.videoElement.currentTime;
+    let audioTempTime = this.audioElement.currentTime;
+    this.videoElement.src = this.videoSrc;
+    this.audioElement.src = this.audioSrc;
+    this.videoElement.currentTime = videoTempTime;
+    this.audioElement.currentTime = audioTempTime;
+  }
+
+  unsubscribeSurvices() {
+    if(this.audioTimerSubscription){
+      this.audioTimerSubscription.unsubscribe();
+    }
+    if(this.videoTimerSubscription){
+      this.videoTimerSubscription.unsubscribe();
+    }
   }
 
   updateCanvas(){
@@ -234,7 +241,7 @@ export class VideoComponent implements OnInit {
         }
     }
     requestAnimationFrame(this.updateCanvas.bind(this));
-}
+  }
 
   onRadioCheck() {
     this.videoConfig = Object.values(this.configurations).map(a => Number(a));
@@ -257,9 +264,9 @@ export class VideoComponent implements OnInit {
   }
 
   decidePath() {
-    let pathIndex = Number(this.cookieService.get('user_current_path_index'));
-    let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
-    let type: string = pathArray[pathIndex]['type'];
+    const pathIndex = Number(this.cookieService.get('user_current_path_index'));
+    const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
+    const type: string = pathArray[pathIndex]['type'];
     if(type == 'normal'){
       this.route.navigate(['likert']);
     } else if(type == 'qv'){
@@ -280,12 +287,7 @@ export class VideoComponent implements OnInit {
     this.audioElement.src = this.audioSrc;
     this.audioElement.pause();
     this.videoElement.pause();
-    if(this.audioTimerSubscription){
-      this.audioTimerSubscription.unsubscribe();
-    }
-    if(this.videoTimerSubscription){
-      this.videoTimerSubscription.unsubscribe();
-    }
+    this.unsubscribeSurvices();
     this.videoElement.remove();
     this.audioElement.remove();
     this.videoIsPlaying = false;
@@ -317,7 +319,15 @@ export class VideoComponent implements OnInit {
           save: data.settings.save,
           apply: data.settings.apply,
         }
-        
+        if(this.saveApply.apply){
+          this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
+          this.configurations["Audio Quality"] = this.videoConfig[0];
+          this.configurations["Video Resolution"] = this.videoConfig[1];
+          this.configurations["Audio Stability"] = this.videoConfig[2];
+          this.configurations["Motion Smoothness"] = this.videoConfig[3];
+          this.configurations["Audio-Video Synchronization"] = this.videoConfig[4];
+          console.log(this.videoConfig)
+        }
         this.description = data.Description;
         this.title = data.Title;
         this.showCost = data.settings.control_panel_has_price;
@@ -327,14 +337,7 @@ export class VideoComponent implements OnInit {
         this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
-        if(this.saveApply.apply){
-          this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
-          this.configurations["Audio Quality"] = this.videoConfig[0];
-          this.configurations["Video Resolution"] = this.videoConfig[1];
-          this.configurations["Audio Stability"] = this.videoConfig[2];
-          this.configurations["Motion Smoothness"] = this.videoConfig[3];
-          this.configurations["Audio-Video Synchronization"] = this.videoConfig[4];
-        }
+        
         this.sliderOptions = Object.assign(
           {}, this.sliderOptions,
           {disabled: !data.settings.control_panel_can_change}
