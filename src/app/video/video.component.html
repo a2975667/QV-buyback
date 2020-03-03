@@ -52,7 +52,7 @@
                                     (userChange)="onRadioCheck()"></ng5-slider>
                             </td>
                             <td *ngIf="showCost" colspan="1">
-                                ${{configurations[k]*4}}
+                                ${{configurations[k]*3}}
                             </td>
                         </tr>
                         <tr *ngIf="showCost">
@@ -60,7 +60,7 @@
                             <td colspan="7">
                             </td>
                             <td>
-                                Total: ${{sumUpCost(videoConfig)*4}}
+                                Total: ${{sumUpCost(videoConfig)*3}}
                             </td>
                         </tr>
                     </tbody>
