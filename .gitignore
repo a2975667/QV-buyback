@@ -4,6 +4,8 @@
 /dist
 /tmp
 /out-tsc
+/server/old_media
+/server/original
 #/server/audio
 #/server/video
 # server/public/*
