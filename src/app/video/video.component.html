@@ -5,6 +5,17 @@
     <div class="row">
         <div class="col-sm wrap-content" [innerHTML]="description"></div>
     </div>
+
+    <h2 *ngIf="formJson && formJson.settings.normal">
+        Questions
+    </h2>
+    <app-survey
+        *ngIf="formJson && formJson.settings.normal"
+        [json]="survey"
+        (suveyModel)="getSurvey($event)"
+        (resultEmit)="surveySubmit($event)">
+    </app-survey>
+
     <h2>
         Video
     </h2>
@@ -69,15 +80,6 @@
         </div>
     </div>
 	<br>
-    <h2 *ngIf="formJson && formJson.settings.normal">
-        Sample Questions
-    </h2>
-    <app-survey
-        *ngIf="formJson && formJson.settings.normal"
-        [json]="survey"
-        (suveyModel)="getSurvey($event)"
-        (resultEmit)="surveySubmit($event)">
-    </app-survey>
     <button style="float: right;" [disabled]="clicked" (click)="submit($event); clicked = true;" type="submit" class="mr-2 btn btn-success">
         Submit
     </button>

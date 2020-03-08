@@ -1,7 +1,7 @@
 {
 	"filename":"demo",
 	"Title":"Task: Buy Back",
-	"Description":"<p> In this task, you are given 35 dollars from the video streaming company to buy different levels of video elements that you experienced on the previous page. You can slide the slider to preview the cost for a set of configurations you prefer having and verify how these effect the video. Once you made the purchased (by clicking submit), this set of configuration will be yours throughout the rest of the experiement. The video streaming company stats that you pay toward that an element will be devoted to that specific element for research and development of the element. <br> In the bottom of this page, there is a set of questions for you to answer. These questions help you verify if you understood the video. <br> <br> In the next page, there will be a different video similiar to this one followed by a set of mutiple choice questions. These mutiple chice questions will be similiar to those listed on this page. The company want you to answer those questions. If you are able to answer four of the five questions correctly in the next page, you will be eligible to enter the lottery.<br><br> The lottery has a probability of 1 in 60 winning whatever is left from your purchase. For instance, if you are able to answer four of the five questions on the next page correctly while spending 21 dollars on the configuration, upon winning the lottery, you will get 35-21=14 dollars. <br> Do note that the new video and the questions will be displayed on the same page and you can watch the video as many times as you like.",
+	"Description":"<p> <p>Recall your experience on the previous page.</p><p>Now the online video streaming company wants you to complete a task. Please read the following instructions carefully.</p><br><p>1. In this task, you are given 30 dollars from the video streaming company to select and buy the level of the different video elements you experienced on the previous page. <br> Slide the slider to preview effect and the cost. Each level costs $2. A total amount of cost is also listed below. <br>To purchase, click submit. </p><p>2. Once you made the purchased (by clicking submit), this set of configuration will be yours throughout the rest of the experiement. You will not be able to adjust the set of configurations after you leave this page.</p><p>3. On the next page, there will be a new video (similiar to the one on this page) with a set of questions for you to answer. Your goal is to answer the questions on the next page correctly using the set of video element configurations you bought on this page. </p><p>4. The questions on the next page will be of similiar to the five questions listed below. You can use these questions, which is related to the video on this page, to help you make your decision of the purchase.</p><p>5. If you are able to answer four of the five questions correctly listed on the next page, you will be eligible to enter the lottery. The lottery has a probability of 1 in 60, winning whatever is left from your spending. For instance, you selected 3 different elemetns to enhance, which costs 6, since the company is giving you 30 dollars to complete this task, you will win 30-6 = 24 dollar if you are the winner of the lottery.</p><p>Do note that you are able to watch the video as many times as you want and the questions will appear on the same page of the audio.</p>",
 	"settings":{
 		"control_panel_can_change": true,
 		"control_panel_has_price":true,
@@ -61,14 +61,14 @@
 				}, {
 					"type": "dropdown",
 					"name": "vid_buy_demo5",
-					"title": " What is the weather like in Chicago?",
+					"title": " What is the west coast city NOT shown on the map",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"a) Mostly cloudy",
-						"b) Snowy",
-						"c) Windy",
-						"d) Raining"
+						"a) San Diego",
+						"b) Los Angeles",
+						"c) Eureka",
+						"d) Portland"
 					]
 				}
 			]

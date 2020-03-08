@@ -1,7 +1,7 @@
 {
 	"filename": "demo",
 	"Title": "Elements of a Video",
-	"Description": "<p> As introduced earlier, internet service providers may now limit your internet bandwidth under the repeal of the Net Neutrality rule. <b>Researchers of a video streaming company would like to hear customer's opinions about the importance of each of the five video elements.</b> The survey will allow the company to prioritize the different video elements when bandwidth is limited. <br><br> You are presented with a weather forecast video below. A few questions are shown at the bottom of the page to test your understanding of the video content. Due to limited bandwidth, the current video has a lousy quality. <b>Please use the control panel below to expereince how various settings of the video elements impact your understanding of the content. You can combine varying levels of the different video elements using the corresponding sliders.</b> <br><br> Each slider has four levels. Level 0 on the left is the default level with the worst quality; Level 3 on the right is the best avaliable quality; Level 1 and 2 are intermediate levels enhanced from Level 0. Overall, quality steadily improves as a slider move through level 0 to level 3.  <br><br> After experiencing the different video qualities and completing the questions, continue to the next page. You will be asked to express your opinion on the degree to which you care about each element given limited bandwidth in a survey. </p><br>",
+	"Description": "<p> As introduced earlier, there are only limited bandwidth when flying. <b>Researchers of a video streaming company would like to hear customer's opinions about the importance of each of the five video elements.</b> The survey will allow the company to prioritize the different video elements when bandwidth is limited. <br><br> You are presented with a weather forecast video below. A few questions are shown at the bottom of the page to test your understanding of the video content. Due to limited bandwidth, the current video has a lousy quality. <b>Please use the control panel below to expereince how various settings of the video elements impact your understanding of the content. You can combine varying levels of the different video elements using the corresponding sliders.</b> <br><br> Each slider has four levels. Level 0 on the left is the default level with the worst quality; Level 3 on the right is the best avaliable quality; Level 1 and 2 are intermediate levels enhanced from Level 0. Overall, quality steadily improves as a slider move through level 0 to level 3.  <br><br> Keep in mind that your goal is to anwser the list of questions listed with the best combination of the different video elements. Once you are done, continue to the next page. You will be asked to express your opinion on the degree to which you care about each element given limited bandwidth in a survey. </p><br>",
 	"settings": {
 		"control_panel_can_change": true,
 		"control_panel_has_price": false,
@@ -61,14 +61,14 @@
 				}, {
 					"type": "dropdown",
 					"name": "vid_buy_demo5",
-					"title": " What is the weather like in Chicago?",
+					"title": " What is the west coast city NOT shown on the map",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"a) Mostly cloudy",
-						"b) Snowy",
-						"c) Windy",
-						"d) Raining"
+						"a) San Diego",
+						"b) Los Angeles",
+						"c) Eureka",
+						"d) Portland"
 					]
 				}
 			]
