@@ -131,7 +131,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<app-survey *ngIf=\"json.questions\" [json]=\"json\" (resultEmit)=\"submit($event)\"></app-survey>\n<div *ngIf=\"html\" class=\"container\">\n    <div [innerHTML]=\"html\">\n    <button (click)=\"submit(null)\" type=\"submit\" class=\"mr-2 btn btn-success\">\n        Submit\n    </button>\n</div>\n";
+    __webpack_exports__["default"] = "<app-survey *ngIf=\"json.questions\" [json]=\"json\" (resultEmit)=\"submit($event)\"></app-survey>\n<div *ngIf=\"html\" class=\"container\">\n    <div [innerHTML]=\"html\"></div>\n    <button (click)=\"submit(null, $event)\" type=\"submit\" class=\"mr-2 btn btn-success\">\n        Submit\n    </button>\n</div>\n";
     /***/
   },
 
@@ -191,7 +191,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<swal\n  #confirmSubmit\n  title=\"Submit with 0 vote?\"\n  text=\"This cannot be undone\"\n  icon=\"question\"\n  [showCancelButton]=\"true\"\n  [focusCancel]=\"true\"\n  (confirm)=\"submitSuccessSwal.fire()\">\n</swal>\n<swal\n  #submitSuccess\n  icon=\"question\"\n  [showCancelButton]=\"false\"\n  [showConfirmButton]=\"false\"\n>\n<form *swalPortal=\"swalTargets.content\" >\n    <p>\n        In 2 to 3 sentences, what is the reason that you make this decision?\n    </p>\n    <textarea\n        class=\"swal2-textarea\"\n        type=\"text\"\n        [formControl]=\"submitForm\"\n        autofocus\n    ></textarea>\n    <label *ngIf=\"submitForm.invalid\" [ngClass] = \"'error'\" > Your response required with min 1 character. </label>\n    <br/>\n    <button\n    (click)=\"submitFinalForm()\"\n    *ngIf=\"!submitForm.invalid\"\n    class=\"swal2-styled swal2-confirm\"> Submit</button>\n\n</form>\n\n</swal>\n<div class=\"container sticky\">\n    <div class=\"card\">\n        <h5 class=\"card-header\">Summary</h5>\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Used {{usedCredits}} out of {{totalCredits}} credits</h5>\n                <div class=\"card-text\">\n                    <div>\n                        <small style=\"float: left; margin: 0\">0</small>\n                        <small style=\"float: right; margin: 0\">{{totalCredits}}</small>\n                        <progressbar style=\"width: 100%; margin-bottom: 10px;\" [animate]=\"false\" [value]=\"percentage\" [type]=\"type\"></progressbar>\n                    </div>\n                </div>\n                <button (click)=\"submit()\" type=\"button\" class=\"btn btn-outline-primary\">Submit</button>\n            </div>\n    </div>\n</div>\n\n";
+    __webpack_exports__["default"] = "<swal\n  #confirmSubmit\n  title=\"Submit with 0 vote?\"\n  text=\"This cannot be undone\"\n  icon=\"question\"\n  [showCancelButton]=\"true\"\n  [focusCancel]=\"true\"\n  (confirm)=\"submitSuccessSwal.fire()\">\n</swal>\n<swal\n  #submitSuccess\n  icon=\"question\"\n  [showCancelButton]=\"false\"\n  [showConfirmButton]=\"false\"\n>\n<form *swalPortal=\"swalTargets.content\" >\n    <p>\n        In 2 to 3 sentences, what is the reason that you make this decision?\n    </p>\n    <textarea\n        class=\"swal2-textarea\"\n        type=\"text\"\n        [formControl]=\"submitForm\"\n        autofocus\n    ></textarea>\n    <label *ngIf=\"submitForm.invalid\" [ngClass] = \"'error'\" > Your response required with min 1 character. </label>\n    <br/>\n    <button\n    (click)=\"submitFinalForm()\"\n    *ngIf=\"!submitForm.invalid\"\n    class=\"swal2-styled swal2-confirm\"> Submit</button>\n\n</form>\n\n</swal>\n<div class=\"container sticky\">\n    <div class=\"card\">\n        <h5 class=\"card-header\">Summary</h5>\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Used {{usedCredits}} out of {{totalCredits}} credits</h5>\n                <div class=\"card-text\">\n                    <div>\n                        <small style=\"float: left; margin: 0\">0</small>\n                        <small style=\"float: right; margin: 0\">{{totalCredits}}</small>\n                        <progressbar style=\"width: 100%; margin-bottom: 10px;\" [animate]=\"false\" [value]=\"percentage\" [type]=\"type\"></progressbar>\n                    </div>\n                </div>\n                <button (click)=\"submit()\" type=\"button\" class=\"btn btn-outline-primary\">Submit</button>\n            </div>\n    </div>\n</div>\n";
     /***/
   },
 
@@ -231,7 +231,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\" [innerHTML]=\"description\"></div>\n    </div>\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div style=\"justify-content: center;\" #videoOverlay class=\"original\" (click)=\"playPause()\">\n            <video\n                #videoPlayer\n                style=\"display: none;\"\n                src=\"\"\n                ></video>\n            <canvas #canvas\n            style=\"margin-left:20%\"\n            width=\"960px\" height=\"540px\"></canvas>\n            </div>\n        <audio\n        #audioPlayer\n        src=\"\">\n        </audio>\n    </div>\n\n   <p></p>\n    <div >\n\n        <h2>\n            Configuration\n        </h2>\n        <div class=\"row\">\n            <div class=\"col-sm wrap-content\">\n                <table class=\"table\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col\">Configuration Name</th>\n                        <th scope=\"col\" colspan=5>Level ( 0 ~ 3 )</th>\n                        <th *ngIf=\"showCost\" scope=\"col\" colspan=3>Cost</th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                        <tr style=\"height: 100px;\"*ngFor=\"let k of objectKeys(configurations)\">\n                            <th style=\"width: 20%;\"colspan=\"1\" scope=\"row\">{{k}}</th>\n                            <td colspan=\"7\">\n                                <ng5-slider\n                                    [(value)]=\"configurations[k]\"\n                                    [options]=\"sliderOptions\"\n                                    (userChange)=\"onRadioCheck()\"></ng5-slider>\n                            </td>\n                            <td *ngIf=\"showCost\" colspan=\"1\">\n                                ${{configurations[k]*3}}\n                            </td>\n                        </tr>\n                        <tr *ngIf=\"showCost\">\n                            <th *ngIf=\"showCost\" scope=\"row\"></th>\n                            <td colspan=\"7\">\n                            </td>\n                            <td>\n                                Total: ${{sumUpCost(videoConfig)*3}}\n                            </td>\n                        </tr>\n                    </tbody>\n                  </table>\n              </div>\n        </div>\n    </div>\n\t<br>\n    <h2 *ngIf=\"formJson && formJson.settings.normal\">\n        Sample Questions\n    </h2>\n    <app-survey\n        *ngIf=\"formJson && formJson.settings.normal\"\n        [json]=\"survey\"\n        (suveyModel)=\"getSurvey($event)\"\n        (resultEmit)=\"surveySubmit($event)\">\n    </app-survey>\n    <button style=\"float: right;\" [disabled]=\"clicked\" (click)=\"submit($event); clicked = true;\" type=\"submit\" class=\"mr-2 btn btn-success\">\n        Submit\n    </button>\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"container\">\n    <h1>\n        {{title}}\n    </h1>\n    <div class=\"row\">\n        <div class=\"col-sm wrap-content\" [innerHTML]=\"description\"></div>\n    </div>\n\n    <h2 *ngIf=\"formJson && formJson.settings.normal\">\n        Questions\n    </h2>\n    <app-survey\n        *ngIf=\"formJson && formJson.settings.normal\"\n        [json]=\"survey\"\n        (suveyModel)=\"getSurvey($event)\"\n        (resultEmit)=\"surveySubmit($event)\">\n    </app-survey>\n\n    <h2>\n        Video\n    </h2>\n\n    <div class=\"row justify-content-center\">\n        <div style=\"justify-content: center;\" #videoOverlay class=\"original\" (click)=\"playPause()\">\n            <video\n                #videoPlayer\n                style=\"display: none;\"\n                src=\"\"\n                ></video>\n            <canvas #canvas\n            style=\"margin-left:20%\"\n            width=\"960px\" height=\"540px\"></canvas>\n            </div>\n        <audio\n        #audioPlayer\n        src=\"\">\n        </audio>\n    </div>\n\n   <p></p>\n    <div >\n\n        <h2>\n            Configuration\n        </h2>\n        <div class=\"row\">\n            <div class=\"col-sm wrap-content\">\n                <table class=\"table\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col\">Configuration Name</th>\n                        <th scope=\"col\" colspan=5>Level ( 0 ~ 3 )</th>\n                        <th *ngIf=\"showCost\" scope=\"col\" colspan=3>Cost</th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                        <tr style=\"height: 100px;\"*ngFor=\"let k of objectKeys(configurations)\">\n                            <th style=\"width: 20%;\"colspan=\"1\" scope=\"row\">{{k}}</th>\n                            <td colspan=\"7\">\n                                <ng5-slider\n                                    [(value)]=\"configurations[k]\"\n                                    [options]=\"sliderOptions\"\n                                    (userChange)=\"onRadioCheck()\"></ng5-slider>\n                            </td>\n                            <td *ngIf=\"showCost\" colspan=\"1\">\n                                ${{configurations[k]*3}}\n                            </td>\n                        </tr>\n                        <tr *ngIf=\"showCost\">\n                            <th *ngIf=\"showCost\" scope=\"row\"></th>\n                            <td colspan=\"7\">\n                            </td>\n                            <td>\n                                Total: ${{sumUpCost(videoConfig)*3}}\n                            </td>\n                        </tr>\n                    </tbody>\n                  </table>\n              </div>\n        </div>\n    </div>\n\t<br>\n    <button style=\"float: right;\" [disabled]=\"clicked\" (click)=\"submit($event)\" type=\"submit\" class=\"mr-2 btn btn-success\">\n        Submit\n    </button>\n</div>\n";
     /***/
   },
 
@@ -1721,8 +1721,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               };
             }
 
-            console.log(_this6.html);
-
             if (data['html']) {
               _this6.html = data['html'];
             }
@@ -1730,8 +1728,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "submit",
-        value: function submit(data) {
+        value: function submit(data, e) {
           var _this7 = this;
+
+          if (e) {
+            e.target.disabled = true;
+          }
 
           this.liService.submit(data).subscribe(function (result) {
             _this7.decidePath();
@@ -3278,7 +3280,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var VideoComponent =
     /*#__PURE__*/
     function () {
-      //videoConfigText = ["UnChanged","Slightly Enhanced","Enhanced","Perfected"];
       function VideoComponent(vService, cookieService, route) {
         _classCallCheck(this, VideoComponent);
 
@@ -3336,7 +3337,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.saveApply = {
           save: false,
           apply: false
-        };
+        }; //videoConfigText = ["UnChanged","Slightly Enhanced","Enhanced","Perfected"];
+
+        this.counter = 0;
       }
 
       _createClass(VideoComponent, [{
@@ -3458,8 +3461,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.reassignVideoSrc();
           this.syncAudioWithVideo();
           this.videoElement.addEventListener('loadeddata', function () {
-            that.videoElement.play();
-            that.audioElement.play();
+            if (that.counter != 0) {
+              that.videoElement.play();
+              that.audioElement.play();
+            }
+
+            that.counter++;
+            console.log(that.counter);
             var ctx = that.canvasElement.getContext("2d");
             that.videoContainer.scale = Math.min(ctx.canvas.width / this.videoWidth, ctx.canvas.height / this.videoHeight);
             that.videoContainer.ready = true;
@@ -3657,13 +3665,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function surveySubmit(data) {
           var _this23 = this;
 
+          this.clicked = true;
           this.videoElement.pause();
 
           if (this.saveApply.save) {
             this.cookieService.set('video_config', JSON.stringify(this.videoConfig));
           }
 
-          this.vService.submit(this.videoConfig).subscribe(function (result) {
+          this.vService.submit({
+            videoConfig: this.videoConfig,
+            counter: this.counter
+          }).subscribe(function (result) {
             _this23.decidePath();
           });
         } // implementation based on https://stackoverflow.com/questions/38710125/how-do-i-display-a-video-using-html5-canvas-tag
