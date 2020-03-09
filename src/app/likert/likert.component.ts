@@ -44,14 +44,16 @@ export class LikertComponent implements OnInit {
           showNav: true,
         }
       }
-      console.log(this.html)
       if(data['html']) {
         this.html = data['html'];
       }
     })
   }
 
-  submit(data){
+  submit(data, e?){
+    if(e) {
+      e.target.disabled = true;
+    }
     this.liService.submit(data).subscribe(
       result => {
         this.decidePath();
