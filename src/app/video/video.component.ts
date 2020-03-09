@@ -82,7 +82,7 @@ export class VideoComponent implements OnInit {
     apply: false,
   }
   //videoConfigText = ["UnChanged","Slightly Enhanced","Enhanced","Perfected"];
-
+  counter = 0;
   constructor(
     private vService: VideoService,
     private cookieService: CookieService,
@@ -186,8 +186,12 @@ export class VideoComponent implements OnInit {
     this.reassignVideoSrc(); 
     this.syncAudioWithVideo();
     this.videoElement.addEventListener('loadeddata', function() {
-      that.videoElement.play();
-      that.audioElement.play();
+      if(that.counter != 0 ) {
+        that.videoElement.play();
+        that.audioElement.play();
+      }
+      that.counter ++;
+      console.log(that.counter)
       let ctx = that.canvasElement.getContext("2d");
       that.videoContainer.scale = Math.min(
         ctx.canvas.width / this.videoWidth,
@@ -348,7 +352,6 @@ export class VideoComponent implements OnInit {
   }
 
   submit(e: Event){
-
     if (this.completeFunc){
       this.completeFunc();
     } else {
@@ -357,11 +360,12 @@ export class VideoComponent implements OnInit {
   }
 
   surveySubmit(data) {
+    this.clicked = true;
     this.videoElement.pause();
     if(this.saveApply.save) {
       this.cookieService.set('video_config', JSON.stringify(this.videoConfig));
     }
-    this.vService.submit(this.videoConfig).subscribe(
+    this.vService.submit({videoConfig: this.videoConfig, counter: this.counter}).subscribe(
       result => {
         this.decidePath();
       }
