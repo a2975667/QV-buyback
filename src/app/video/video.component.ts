@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit} from '@angular/core';
 import { VideoService } from '../services/video.service';
 import { timer, Observable, Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Video } from '../schema/video';
-import * as Survey from "survey-angular";
+import * as Survey from 'survey-angular';
 import { Options } from 'ng5-slider';
 
 @Component({
@@ -13,14 +13,14 @@ import { Options } from 'ng5-slider';
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.scss']
 })
-export class VideoComponent implements OnInit {
+export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('videoPlayer', {static: false}) videoPlayer: ElementRef;
   @ViewChild('videoOverlay', {static: false}) videoOverlay: ElementRef;
   @ViewChild('audioPlayer', {static: false}) audioPlayer: ElementRef;
   @ViewChild('canvas', {static: false}) canvas: ElementRef;
 
-  clicked: boolean = false;
+  clicked = false;
   survey: object;
   canvasElement: HTMLCanvasElement;
   videoOverlayElement: HTMLDivElement;
@@ -31,27 +31,26 @@ export class VideoComponent implements OnInit {
     ready : false,
     scale: null,
   };
-  videoFilePrefix = environment.apiUrl+"/api/video/";
-  videoSrc = "";
+  videoFilePrefix = environment.apiUrl + '/api/video/';
+  videoSrc = '';
 
-  audioFilePrefix = environment.apiUrl+"/api/audio/";
-  audioSrc = "";
+  audioFilePrefix = environment.apiUrl + '/api/audio/';
+  audioSrc = '';
 
   configurations = {
-    "Audio Quality": '0',
-    "Video Resolution": '0',
-    "Audio Stability": '0',
-    "Motion Smoothness": '0',
-    "Audio-Video Synchronization": '0',
-  }
+    'Audio Quality': '0',
+    'Video Resolution': '0',
+    'Audio Stability': '0',
+    'Motion Smoothness': '0',
+    'Audio-Video Synchronization': '0',
+  };
 
-  videoIsPlaying=false;
+  videoIsPlaying = false;
 
   objectKeys = Object.keys;
 
   videoConfig = new Array(5).fill(0);
   videoConfigLength = new Array(5).fill(0);
-  sumUpCost = (arr) => {return arr.reduce((a, b) => a + b)}
   formJson: any;
 
   blackTimer: Observable<number>;
@@ -60,8 +59,8 @@ export class VideoComponent implements OnInit {
   muteTimer: Observable<number>;
   audioTimerSubscription: Subscription;
 
-  description: String;
-  title: String;
+  description: string;
+  title: string;
 
   videoIsJittering = false;
   jitterTempData = null;
@@ -80,23 +79,25 @@ export class VideoComponent implements OnInit {
   saveApply = {
     save: false,
     apply: false,
-  }
-  //videoConfigText = ["UnChanged","Slightly Enhanced","Enhanced","Perfected"];
+  };
   counter = 0;
+  completeFunc: Function;
+
+
   constructor(
     private vService: VideoService,
     private cookieService: CookieService,
     private route: Router,
     ) { }
 
-  completeFunc: Function;
+  sumUpCost = (arr) => arr.reduce((a, b) => a + b);
 
-  getSurvey(survey: Survey.Model){
+  getSurvey(survey: Survey.Model) {
     this.completeFunc = survey.completeLastPage.bind(survey);
   }
 
   jitterVideo(jitterVal: number) {
-    if(this.videoTimerSubscription){
+    if (this.videoTimerSubscription) {
       this.videoTimerSubscription.unsubscribe();
     }
     switch (jitterVal) {
@@ -117,9 +118,9 @@ export class VideoComponent implements OnInit {
         break;
     }
     this.videoTimerSubscription = this.blackTimer.subscribe(val => {
-      if(this.videoIsPlaying){
+      if (this.videoIsPlaying) {
         this.videoIsJittering = true;
-        let freshback = timer(1500);
+        const freshback = timer(1500);
         freshback.subscribe(d => {
             this.videoIsJittering = false;
         });
@@ -149,11 +150,11 @@ export class VideoComponent implements OnInit {
         break;
       }
     this.audioTimerSubscription = this.muteTimer.subscribe(val => {
-      if(this.videoIsPlaying) {
+      if (this.videoIsPlaying) {
         this.audioElement.volume = 0;
-        let freshback = timer(1500);
+        const freshback = timer(1500);
         freshback.subscribe(d => {
-          if(this.videoIsPlaying){
+          if (this.videoIsPlaying) {
             this.audioElement.volume = 1;
           }
         });
@@ -180,19 +181,18 @@ export class VideoComponent implements OnInit {
   }
 
   refreshPlayback() {
-    let that = this;
+    const that = this;
     this.videoIsPlaying = true;
     this.unsubscribeSurvices();
     this.reassignVideoSrc(); 
     this.syncAudioWithVideo();
     this.videoElement.addEventListener('loadeddata', function() {
-      if(that.counter != 0 ) {
+      if (that.counter !== 0 ) {
         that.videoElement.play();
         that.audioElement.play();
       }
       that.counter ++;
-      console.log(that.counter)
-      let ctx = that.canvasElement.getContext("2d");
+      const ctx = that.canvasElement.getContext('2d');
       that.videoContainer.scale = Math.min(
         ctx.canvas.width / this.videoWidth,
         ctx.canvas.height  / this.videoHeight);
@@ -204,11 +204,11 @@ export class VideoComponent implements OnInit {
   }
 
   reassignVideoSrc() {
-    let time = Date.now();
-    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution']+".webm?t="+time;
-    this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality']+".m4a?t="+time;
-    let videoTempTime = this.videoElement.currentTime;
-    let audioTempTime = this.audioElement.currentTime;
+    const time = Date.now();
+    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time;
+    this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
+    const videoTempTime = this.videoElement.currentTime;
+    const audioTempTime = this.audioElement.currentTime;
     this.videoElement.src = this.videoSrc;
     this.audioElement.src = this.audioSrc;
     this.videoElement.currentTime = videoTempTime;
@@ -216,30 +216,30 @@ export class VideoComponent implements OnInit {
   }
 
   unsubscribeSurvices() {
-    if(this.audioTimerSubscription){
+    if (this.audioTimerSubscription) {
       this.audioTimerSubscription.unsubscribe();
     }
-    if(this.videoTimerSubscription){
+    if (this.videoTimerSubscription) {
       this.videoTimerSubscription.unsubscribe();
     }
   }
 
   updateCanvas(){
     this.canvasElement = this.canvas.nativeElement;
-    var ctx = this.canvasElement.getContext("2d");
-    if(!this.videoIsJittering){
-      ctx.clearRect(0,0,this.canvasElement.width,this.canvasElement.height);
+    const ctx = this.canvasElement.getContext("2d");
+    if (!this.videoIsJittering) {
+      ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
     }
-    if(this.videoContainer !== undefined && this.videoContainer.ready){
+    if (this.videoContainer !== undefined && this.videoContainer.ready) {
         // find the top left of the video on the canvas
-        var scale = this.videoContainer.scale;
-        var vidH = this.videoContainer.video.videoHeight;
-        var vidW = this.videoContainer.video.videoWidth;
-        var top = ctx.canvas.height / 2 - (vidH /2 ) * scale;
-        var left = ctx.canvas.width / 2 - (vidW /2 ) * scale;
-        if(!this.videoIsJittering) {
+        const scale = this.videoContainer.scale;
+        const vidH = this.videoContainer.video.videoHeight;
+        const vidW = this.videoContainer.video.videoWidth;
+        const top = ctx.canvas.height / 2 - (vidH / 2 ) * scale;
+        const left = ctx.canvas.width / 2 - (vidW / 2 ) * scale;
+        if (!this.videoIsJittering) {
           ctx.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
-          if(this.videoContainer.video.paused){ // if not playing show the paused screen
+          if (this.videoContainer.video.paused) { // if not playing show the paused screen
               this.drawPayIcon();
           }
         }
@@ -253,7 +253,7 @@ export class VideoComponent implements OnInit {
   }
 
   playPause() {
-    if(this.videoIsPlaying){
+    if (this.videoIsPlaying) {
       this.audioElement.pause();
       this.videoElement.pause();
       this.videoIsPlaying = false;
@@ -271,13 +271,13 @@ export class VideoComponent implements OnInit {
     const pathIndex = Number(this.cookieService.get('user_current_path_index'));
     const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
     const type: string = pathArray[pathIndex]['type'];
-    if(type == 'normal'){
+    if (type === 'normal') {
       this.route.navigate(['likert']);
-    } else if(type == 'qv'){
+    } else if (type === 'qv') {
       this.route.navigate(['qv']);
-    } else if(type == 'video'){
-      this.route.navigate(['video']).then(()=>location.reload());
-    } else if(type == 'complete'){
+    } else if (type === 'video') {
+      this.route.navigate(['video']).then(() => location.reload());
+    } else if (type === 'complete') {
       const userID = this.cookieService.get('user_id');
       this.cookieService.deleteAll('/');
       this.route.navigate(['complete', {userId: userID, text: null, title: null }]);
@@ -285,8 +285,8 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnDestroy()	{
-    this.videoSrc = "";
-    this.audioSrc = "";
+    this.videoSrc = '';
+    this.audioSrc = '';
     this.videoElement.src = this.videoSrc;
     this.audioElement.src = this.audioSrc;
     this.audioElement.pause();
@@ -304,7 +304,7 @@ export class VideoComponent implements OnInit {
       'Audio Stability': '0',
       'Motion Smoothness': '0',
       'Audio-Video Synchronization': '0',
-    }
+    };
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
     this.videoOverlayElement = this.videoOverlay.nativeElement;
@@ -351,8 +351,8 @@ export class VideoComponent implements OnInit {
     })
   }
 
-  submit(e: Event){
-    if (this.completeFunc){
+  submit(e: Event) {
+    if (this.completeFunc) {
       this.completeFunc();
     } else {
       this.surveySubmit(null);
@@ -362,7 +362,7 @@ export class VideoComponent implements OnInit {
   surveySubmit(data) {
     this.clicked = true;
     this.videoElement.pause();
-    if(this.saveApply.save) {
+    if (this.saveApply.save) {
       this.cookieService.set('video_config', JSON.stringify(this.videoConfig));
     }
     this.vService.submit({videoConfig: this.videoConfig, counter: this.counter}).subscribe(
@@ -373,22 +373,22 @@ export class VideoComponent implements OnInit {
   }
 
   // implementation based on https://stackoverflow.com/questions/38710125/how-do-i-display-a-video-using-html5-canvas-tag
-  drawPayIcon(){
+  drawPayIcon() {
     this.canvasElement = this.canvas.nativeElement;
-    let ctx = this.canvasElement.getContext("2d");
-    let canvas = this.canvasElement;
-    ctx.fillStyle = "black";  // darken display
+    const ctx = this.canvasElement.getContext("2d");
+    const canvas = this.canvasElement;
+    ctx.fillStyle = 'black';  // darken display
     ctx.globalAlpha = 0.5;
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle = "#DDD"; // colour of play icon
+    ctx.fillRect(0, 0, canvas.width,canvas.height);
+    ctx.fillStyle = '#DDD'; // colour of play icon
     ctx.globalAlpha = 0.75; // partly transparent
     ctx.beginPath(); // create the path for the icon
-    var size = (canvas.height / 2) * 0.5;  // the size of the icon
-    ctx.moveTo(canvas.width/2 + size/2, canvas.height / 2); // start at the pointy end
-    ctx.lineTo(canvas.width/2 - size/2, canvas.height / 2 + size);
-    ctx.lineTo(canvas.width/2 - size/2, canvas.height / 2 - size);
+    const size = (canvas.height / 2) * 0.5;  // the size of the icon
+    ctx.moveTo(canvas.width / 2 + size / 2, canvas.height / 2); // start at the pointy end
+    ctx.lineTo(canvas.width / 2 - size / 2, canvas.height / 2 + size);
+    ctx.lineTo(canvas.width / 2 - size / 2, canvas.height / 2 - size);
     ctx.closePath();
     ctx.fill();
     ctx.globalAlpha = 1; // restore alpha
-}
+  }
 }

@@ -15,20 +15,22 @@ export class SurveyComponent implements OnInit {
 
   ngOnInit() {
   }
+
   @Output() resultEmit: EventEmitter<any> = new EventEmitter();
   @Output() suveyModel: EventEmitter<Survey.Model> = new EventEmitter();
+
   @Input()
   set json(value: jsonInput) {
     const that = this;
     const surveyModel = new Survey.Model(value.questions);
     surveyModel.showCompletedPage = false;
-    Survey.SurveyNG.render("surveyElement", {
+    Survey.SurveyNG.render('surveyElement', {
       model: surveyModel,
       isExpanded: true
     });
     surveyModel.showNavigationButtons = value.showNav;
     that.suveyModel.emit(surveyModel);
-    surveyModel.onComplete.add(function (sender, options) {
+    surveyModel.onComplete.add((sender, options) => {
       that.resultEmit.emit(sender.data);
     });
   }

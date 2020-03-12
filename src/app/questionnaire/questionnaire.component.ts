@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 })
 export class QuestionnaireComponent implements OnInit {
   questionnaire: Questionnaire;
-  currentQuestion: number = 0;
-  numQuestion: number = 1;
+  currentQuestionNum = 0;
+  currentFileNum = 1;
+  numQuestion = 1;
+  numFile = 1;
   questionTitle: string;
   questionDes: string;
-  numFile: number = 1;
-  currentFile: number = 1;
   constructor(
     private gService: GlobalService,
     private route: Router,
@@ -25,30 +25,27 @@ export class QuestionnaireComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let pathIndex = Number(this.cookieService.get('user_current_path_index'));
-    let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
+    const pathIndex = Number(this.cookieService.get('user_current_path_index'));
+    const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
     console.log(pathArray[pathIndex]);
-    let type: string = pathArray[pathIndex]['type'];
-    
-    if(type == 'normal'){
+    const type: string = pathArray[pathIndex]['type'];
+    if (type === 'normal') {
       this.route.navigate(['likert']);
-    } else if(type == 'qv'){
-      this.gService.questionSet.subscribe((data: Questionnaire)=>{
+    } else if (type === 'qv') {
+      this.gService.questionSet.subscribe((data: Questionnaire) => {
         this.questionnaire = data;
-        this.currentQuestion = data.currentQuestion;
+        this.currentQuestionNum = data.currentQuestion;
         this.numQuestion = data.question_list.length;
-        let questionContent = data.question_list[this.currentQuestion];
+        const questionContent = data.question_list[this.currentQuestionNum];
         this.questionDes = questionContent.description;
         this.questionTitle = questionContent.question;
-        let pathArray: Array<string> = JSON.parse(this.cookieService.get('user_path'));
         this.numFile = pathArray.length;
-        let pathIndex = Number(this.cookieService.get('user_current_path_index'));
-        this.currentFile = pathIndex + 1;
-      })
+        this.currentFileNum = pathIndex + 1;
+      });
       this.gService.getQuestionnaire();
-    } else if(type == 'video') {
-      this.route.navigate(['video']).then(()=>location.reload());
-    } else if(type == 'complete') {
+    } else if (type === 'video') {
+      this.route.navigate(['video']).then(() => location.reload());
+    } else if (type === 'complete') {
       const userID = this.cookieService.get('user_id');
       this.cookieService.deleteAll('/');
       this.route.navigate(['complete', {userId: userID, text: null, title: null }]);
