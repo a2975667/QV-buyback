@@ -3,7 +3,7 @@
 	"survey": {
 		"title": "How should video elements be prioritized under network constraints?",
 		"pages": [{
-			"title": "Researchers of the video streaming company would like to hear your opinions. To what degree do you care about each video elements for the purpose of understanding the video given limited bandwidth on a flight. Please express your opinion for each of the five elements below.",
+			"title": "Researchers of the video streaming company would like to hear your opinions. To what degree do you care about each video element for the purpose of understanding the video given limited bandwidth on a flight. Please express your opinion for each of the five elements below.",
 			"questions": [{
 				"type": "matrix",
 				"name": "video_likert",
