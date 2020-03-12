@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
 function calTotalCredits(votesArray) {
-  let q_totalUsedCredits = 0;
+  let qTotalUsedCredits = 0;
   votesArray.forEach(vote => {
-    q_totalUsedCredits = q_totalUsedCredits + Math.pow(vote, 2);
+    qTotalUsedCredits = qTotalUsedCredits + Math.pow(vote, 2);
   });
-  return q_totalUsedCredits;
+  return qTotalUsedCredits;
 }
 
 @Injectable({
@@ -34,6 +34,25 @@ export class GlobalService {
     private router: Router,
   ) {}
 
+  checkRoute() {
+    const pathIndex = Number(this.cookieService.get('user_current_path_index'));
+    const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
+    const type: string = pathArray[pathIndex]['type'];
+
+    if (type === 'normal') {
+      this.router.navigate(['likert']);
+    } else if (type === 'video') {
+      this.router.navigate(['video']).then(()=>location.reload());
+    } else if (type === 'complete') {
+      const userID = this.cookieService.get('user_id');
+      this.cookieService.deleteAll('/');
+      this.router.navigate(['complete', {userId: userID, text: null, title: null }]);
+    } else if (type === 'qv') {
+      return true;
+    }
+    return false;
+  }
+
   getUserID(userGP: string) {
     return this.http.post<User>(`${this.requestUrl}/createUser`, {gp: userGP})
     .pipe(
@@ -49,70 +68,72 @@ export class GlobalService {
     this.cookieService.set(id, val, undefined, '/');
   }
 
-  getCurrentPath() :string {
-    let pathIndex = Number(this.getCookieById('user_current_path_index'));
-    let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
+  getCurrentPath(): string {
+    const pathIndex = Number(this.getCookieById('user_current_path_index'));
+    const pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
     return pathArray[pathIndex]['file'];
   }
 
   generateSubmitPost(completeFlag: boolean) {
-    let submitPost: submitPostSchema = {} as submitPostSchema;
+    const submitPost: submitPostSchema = {} as submitPostSchema;
     submitPost.complete_flag = completeFlag;
     submitPost.file_name = this.getCurrentPath();
-    let currentQuestion = this.getCookieById('user_current_question_index');
+    const currentQuestion = this.getCookieById('user_current_question_index');
     submitPost.qid = this.questionnaire.question_list[currentQuestion].qid;
     submitPost.results = this.votesContent[this.getCookieById('user_current_question_index')];
     submitPost.user_id = this.getCookieById('user_id');
     return submitPost;
   }
 
-  update() :void {
+  update(): void {
     this.usedCredits.emit(this.usedCreditsArray);
     this.votes.emit(this.votesContent);
   }
 
-  modifyVotesByID(q_id, o_id, value) {
-    this.votesContent[q_id-1][o_id-1] = value;
-    this.usedCreditsArray[q_id-1] = calTotalCredits(this.votesContent[q_id-1]);    ;
+  modifyVotesByID(qId, oId, value) {
+    this.votesContent[qId - 1][oId - 1] = value;
+    this.usedCreditsArray[qId - 1] = calTotalCredits(this.votesContent[qId - 1]);
     this.update();
   }
 
   getQuestionnaire() {
-    let path = this.getCurrentPath();
-    const result = this.http.get(`${this.requestUrl}/api/qv/${path}`)
-    .pipe(
-      catchError(this.handleError)
-    )
-    let currentQuestion = this.getCookieById('user_current_question_index');
-    result.subscribe((data: Questionnaire) => {
-      console.log(data);
-      let height = data.question_list.length;
-      let votesArray = [];
-      for(let i = 0; i < height; i++){
-        votesArray.push(new Array(data.question_list[i].options.length).fill(0));
-      }
-      this.votesContent = votesArray;
-      this.usedCreditsArray = new Array(height).fill(0);
-      this.update();
-      this.questionSet.emit({currentQuestion: Number(currentQuestion), ...data});
-      this.questionnaire = data;
-    });
+    if (this.checkRoute()) {
+      const path = this.getCurrentPath();
+      const result = this.http.get(`${this.requestUrl}/api/qv/${path}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+      const currentQuestion = this.getCookieById('user_current_question_index');
+      result.subscribe((data: Questionnaire) => {
+        const height = data.question_list.length;
+        const votesArray = [];
+        for(let i = 0; i < height; i++){
+          votesArray.push(new Array(data.question_list[i].options.length).fill(0));
+        }
+        this.votesContent = votesArray;
+        this.usedCreditsArray = new Array(height).fill(0);
+        this.update();
+        this.questionSet.emit({currentQuestion: Number(currentQuestion), ...data});
+        this.questionnaire = data;
+      });
+    }
     return;
   }
 
   submit(finalQuestionValue: string) {
     let nextQuestionIndex: number = Number(this.getCookieById('user_current_question_index')) + 1;
-    let submitData: submitPostSchema = this.generateSubmitPost(false);
-    let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
-    let pathIndex = Number(this.getCookieById('user_current_path_index'));
+    const submitData: submitPostSchema = this.generateSubmitPost(false);
+    const pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
+    const pathIndex = Number(this.getCookieById('user_current_path_index'));
 
     if (nextQuestionIndex >= this.questionnaire.question_list.length) {
       nextQuestionIndex = 0;
-      this.setCookieById('user_current_path_index', String(pathIndex+1));
-      if(pathArray[pathIndex+1]['type']==="donation"){
+      this.setCookieById('user_current_path_index', String(pathIndex + 1));
+      this.router.navigate([this.router.url]);
+      if (pathArray[pathIndex + 1]['type'] === 'donation') {
         submitData.complete_flag = true;
-        return this.http.post(`${this.requestUrl}/submit`, 
-        {submitData: submitData, finalQuestion: finalQuestionValue}).pipe(
+        return this.http.post(`${this.requestUrl}/submit`,
+        {submitData, finalQuestion: finalQuestionValue}).pipe(
           catchError(this.handleError)
         ).subscribe(data => {
           this.router.navigate(['donation']);
@@ -120,7 +141,7 @@ export class GlobalService {
       }
     }
 
-    if(pathArray[pathIndex+1]['type']=='normal'){
+    if (pathArray[pathIndex + 1]['type'] === 'normal') {
       nextQuestionIndex = 0;
       this.setCookieById('user_current_question_index', String(nextQuestionIndex));
       return this.http.post(`${this.requestUrl}/submit`, submitData).pipe(
@@ -128,7 +149,7 @@ export class GlobalService {
       ).subscribe(data => {
         this.router.navigate(['likert']);
       });
-    }else{
+    } else {
       this.setCookieById('user_current_question_index', String(nextQuestionIndex));
       this.getQuestionnaire();
 
@@ -143,7 +164,7 @@ export class GlobalService {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
-      console.log(error)
+      console.log(error);
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);

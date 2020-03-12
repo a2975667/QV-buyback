@@ -13,14 +13,15 @@ import { environment } from '../../environments/environment';
 export class DonationService {
   requestUrl = environment.apiUrl;
   organizations: BehaviorSubject<Array<Object>> = new BehaviorSubject([]);
+  
   constructor(
     private http: HttpClient,
     private cookieService: CookieService,
     private route: Router,
   ) { }
 
-  requestOrganizations(){
-    let donationAPI = `${this.requestUrl}/api/donation`;
+  requestOrganizations() {
+    const donationAPI = `${this.requestUrl}/api/donation`;
     this.http.get(donationAPI).pipe(
       catchError(this.handleError)
     ).subscribe(data => {
@@ -40,26 +41,25 @@ export class DonationService {
       'Something bad happened; please try again later.');
   };
 
-  getCookieById(id: string){
+  getCookieById(id: string) {
     return this.cookieService.get(id);
   }
-  submit(data){
-    let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
-    let pathIndex = Number(this.getCookieById('user_current_path_index'))+1;
-    let completeJsonAPI = `${this.requestUrl}/thank_you/${pathArray[pathIndex]['file']}`;
-    this.http.get(completeJsonAPI).subscribe(completeJSON=>{
-      let userId = this.getCookieById('user_id');
+  submit(data) {
+    const pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
+    const pathIndex = Number(this.getCookieById('user_current_path_index')) + 1;
+    const completeJsonAPI = `${this.requestUrl}/thank_you/${pathArray[pathIndex]['file']}`;
+    this.http.get(completeJsonAPI).subscribe(completeJSON => {
+      const userId = this.getCookieById('user_id');
       this.cookieService.deleteAll('/');
-      let submitAPI = `${this.requestUrl}/submit-donation`;
-      this.http.post(submitAPI,{
+      const submitAPI = `${this.requestUrl}/submit-donation`;
+      this.http.post(submitAPI, {
         donation: data,
-        userId: userId,
+        userId,
       }).pipe(
         catchError(this.handleError)
       ).subscribe(result => {
-        this.route.navigate(['complete',{...completeJSON, userId: userId}])
-      })
-    })
-
+        this.route.navigate(['complete', {...completeJSON, userId}]);
+      });
+    });
   }
 }

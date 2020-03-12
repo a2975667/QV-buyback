@@ -22,21 +22,20 @@ export class VideoService {
     return this.cookieService.get(id);
   }
 
-  getCurrentPath() :string {
-    if(!this.cookieService.check('user_id')){
+  getCurrentPath(): string {
+    if (!this.cookieService.check('user_id')) {
       this.router.navigate(['/']);
       return null;
-    }else{
-      let pathIndex = Number(this.getCookieById('user_current_path_index'));
-      let pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
-      console.log(pathArray);
+    } else {
+      const pathIndex = Number(this.getCookieById('user_current_path_index'));
+      const pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
       return pathArray[pathIndex]['file'];
     }
   }
 
-  requestForm(){
-    let fileName: string = this.getCurrentPath();
-    let fileAPI = `${this.requestUrl}/api/qv/${fileName}`;
+  requestForm() {
+    const fileName: string = this.getCurrentPath();
+    const fileAPI = `${this.requestUrl}/api/qv/${fileName}`;
     this.http.get(fileAPI).pipe(
       catchError(this.handleError)
     ).subscribe((data: Video) => {
@@ -54,21 +53,19 @@ export class VideoService {
     }
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
 
-  submit(data){
-    let pathIndex = Number(this.getCookieById('user_current_path_index'));
-    let userId = this.cookieService.get('user_id');
-    
-    this.cookieService.set('user_current_path_index', String(pathIndex+1),undefined,'/');
+  submit(data) {
+    const pathIndex = Number(this.getCookieById('user_current_path_index'));
+    const userId = this.cookieService.get('user_id');
+    this.cookieService.set('user_current_path_index', String(pathIndex + 1), undefined, '/');
     return this.http.post(`${this.requestUrl}/submit-video-setting`,
       {
-        data: data,
-        userId: userId,
+        data,
+        userId,
       }
     ).pipe(
       catchError(this.handleError)
-    )
+    );
   }
-
 }

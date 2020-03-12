@@ -11,7 +11,7 @@ import { Option } from '../schema/option';
   styleUrls: ['./option.component.scss']
 })
 export class OptionComponent implements OnInit {
-  
+
   votes: Array<number>;
   currentOptions: Array<Option>;
   totalCredits: number;
@@ -21,37 +21,40 @@ export class OptionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gService.questionSet.subscribe((data: Questionnaire)=>{
+    this.gService.questionSet.subscribe((data: Questionnaire) => {
       this.currentQuestionIndex = data.currentQuestion;
-      let currentQuestion = data.question_list[this.currentQuestionIndex];
+      const currentQuestion = data.question_list[this.currentQuestionIndex];
       this.currentOptions = currentQuestion.options;
-      this.votes=new Array(this.currentOptions.length).fill(0);
+      this.votes = new Array(this.currentOptions.length).fill(0);
       this.totalCredits = currentQuestion.totalCredits;
       this.gService.votes.subscribe(votes => {
         this.votes = votes[this.currentQuestionIndex];
-      })
-    })
+      });
+    });
   }
+
   calCurrentTotalCredits() {
     let totalCredit = 0;
     this.votes.forEach(vote => {
-      totalCredit = totalCredit + vote*vote;
+      totalCredit = totalCredit + vote * vote;
     });
     return totalCredit;
   }
+
   isDisabled(index: number, isMinus: boolean) {
-    let currentDirection = isMinus ? this.votes[index] <= 0 : this.votes[index] >= 0;
-    let currentCredits = this.calCurrentTotalCredits();
-    let difference = Math.pow((Math.abs(this.votes[index])+1), 2) - Math.pow(this.votes[index], 2);
-    let isNextPossibleTotalCreditsOK = currentCredits + difference > this.totalCredits;
+    const currentDirection = isMinus ? this.votes[index] <= 0 : this.votes[index] >= 0;
+    const currentCredits = this.calCurrentTotalCredits();
+    const difference = Math.pow((Math.abs(this.votes[index]) + 1), 2) - Math.pow(this.votes[index], 2);
+    const isNextPossibleTotalCreditsOK = currentCredits + difference > this.totalCredits;
     return currentDirection && isNextPossibleTotalCreditsOK;
   }
-  modifyVotesByID(o_index, value){
-    let originalVote = this.gService.votesContent[
+
+  modifyVotesByID(oIndex, value) {
+    const originalVote = this.gService.votesContent[
       this.currentQuestionIndex
     ][
-      o_index
+      oIndex
     ];
-    this.gService.modifyVotesByID(this.currentQuestionIndex+1, o_index+1, originalVote+value);
+    this.gService.modifyVotesByID(this.currentQuestionIndex + 1, oIndex + 1, originalVote + value);
   }
 }

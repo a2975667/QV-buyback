@@ -15,14 +15,16 @@ export class DemographicService {
     private cookieService: CookieService,
     private http: HttpClient,
   ) { }
-  requestForm(){
-    let donationAPI = `${this.requestUrl}/api/demographic`;
+
+  requestForm() {
+    const donationAPI = `${this.requestUrl}/api/demographic`;
     this.http.get(donationAPI).pipe(
       catchError(this.handleError)
     ).subscribe(data => {
       this.demoForm.next(data);
     });
   }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
@@ -34,17 +36,18 @@ export class DemographicService {
     return throwError(
       'Something bad happened; please try again later.');
   }
-  getCookieById(id: string){
+
+  getCookieById(id: string) {
     return this.cookieService.get(id);
   }
-  submit(data){
-    let userId = this.getCookieById('user_id');
 
-    let submitAPI = `${this.requestUrl}/submit-demographic`;
+  submit(data) {
+    const userId = this.getCookieById('user_id');
+    const submitAPI = `${this.requestUrl}/submit-demographic`;
     return this.http.post(submitAPI,
       {
-        userId: userId,
-        data: data
+        userId,
+        data
       }).pipe(
       catchError(this.handleError)
     );

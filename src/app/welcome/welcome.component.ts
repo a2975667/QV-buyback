@@ -13,11 +13,13 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
-  condition_one: boolean = false;
-  condition_two: boolean = false;
-  condition_three: boolean = false;
+
+  conditionOne = false;
+  conditionTwo = false;
+  conditionThree = false;
+  blockAccess = false;
   isSubmit: boolean;
-  blockAccess: boolean = false;
+
   constructor(
     private gService: GlobalService,
     private router: Router,
@@ -26,19 +28,17 @@ export class WelcomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.blockAccess = navigator.userAgent.indexOf("Safari") != -1 && !(navigator.userAgent.indexOf("Chrome") != -1)
-    console.log(navigator.userAgent)
-    console.log(this.blockAccess);
-    if(this.cookieService.check('user_id')){
-      let pathIndex = Number(this.cookieService.get('user_current_path_index'));
-      let pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
-      let type: string = pathArray[pathIndex]['type'];
-      if(type == 'normal'){
+    this.blockAccess = navigator.userAgent.indexOf('Safari') !== -1 && !(navigator.userAgent.indexOf('Chrome') !== -1);
+    if (this.cookieService.check('user_id')) {
+      const pathIndex = Number(this.cookieService.get('user_current_path_index'));
+      const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
+      const type: string = pathArray[pathIndex]['type'];
+      if (type === 'normal') {
         this.router.navigate(['likert']);
-      } else if(type == 'qv'){
+      } else if (type === 'qv') {
         this.router.navigate(['qv']);
-      } else if(type == 'video'){
-        this.router.navigate(['video']).then(()=>location.reload());
+      } else if (type === 'video') {
+        this.router.navigate(['video']).then(() => location.reload());
       } else {
         this.router.navigate(['welcome']);
       }
@@ -48,37 +48,35 @@ export class WelcomeComponent implements OnInit {
   initCookie(user: User){
     this.cookieService.set('user_gp', user.gp, undefined, '/');
     this.cookieService.set('user_path_id', user.path_id, undefined, '/');
-    this.cookieService.set('user_current_question_index', String(0),undefined,'/');
-    this.cookieService.set('user_complete_flag', String(user.complete_flag),undefined,'/');
-    this.cookieService.set('user_path', JSON.stringify(user.path),undefined,'/');
-    this.cookieService.set('user_id', user.userid,undefined,'/');
-    this.cookieService.set('user_current_path_index', String(0),undefined,'/');
+    this.cookieService.set('user_current_question_index', String(0), undefined, '/');
+    this.cookieService.set('user_complete_flag', String(user.complete_flag), undefined, '/');
+    this.cookieService.set('user_path', JSON.stringify(user.path), undefined, '/');
+    this.cookieService.set('user_id', user.userid, undefined, '/');
+    this.cookieService.set('user_current_path_index', String(0), undefined, '/');
   }
 
   createUser() {
     this.isSubmit = true;
-    if(this.condition_one && this.condition_two && this.condition_three){
-      if(!this.cookieService.check('user_id')){
-        let userGP = this.route.snapshot.paramMap.get('id');
+    if (this.conditionOne && this.conditionTwo && this.conditionTwo) {
+      if (!this.cookieService.check('user_id')) {
+        const userGP = this.route.snapshot.paramMap.get('id');
         this.gService.getUserID(userGP).subscribe((user: User) => {
           this.initCookie(user);
-          if(user.path_id == "thank_you"){
+          if (user.path_id === 'thank_you') {
             const userID = this.cookieService.get('user_id');
             this.cookieService.deleteAll('/');
             this.router.navigate(['complete', {userId: userID, text: null, title: null }])
-          }else{
+          } else {
             this.router.navigate(['demographic']);
           }
-        })
-      }else{
+        });
+      } else {
         this.router.navigate(['demographic']);
       }
     }
   }
 
   cancel() {
-    alert("Please close the browser.");
-      //TODO jump to thank you page since closeTab function
-      //is not allowed in chrome 41+
+    alert('Please close the browser.');
   }
 }
