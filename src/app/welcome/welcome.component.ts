@@ -45,7 +45,7 @@ export class WelcomeComponent implements OnInit {
     }
   }
 
-  initCookie(user: User){
+  initCookie(user: User) {
     this.cookieService.set('user_gp', user.gp, undefined, '/');
     this.cookieService.set('user_path_id', user.path_id, undefined, '/');
     this.cookieService.set('user_current_question_index', String(0), undefined, '/');

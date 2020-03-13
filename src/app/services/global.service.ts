@@ -42,7 +42,7 @@ export class GlobalService {
     if (type === 'normal') {
       this.router.navigate(['likert']);
     } else if (type === 'video') {
-      this.router.navigate(['video']).then(()=>location.reload());
+      this.router.navigate(['video']).then(() => location.reload());
     } else if (type === 'complete') {
       const userID = this.cookieService.get('user_id');
       this.cookieService.deleteAll('/');
@@ -107,7 +107,7 @@ export class GlobalService {
       result.subscribe((data: Questionnaire) => {
         const height = data.question_list.length;
         const votesArray = [];
-        for(let i = 0; i < height; i++){
+        for (let i = 0; i < height; i++) {
           votesArray.push(new Array(data.question_list[i].options.length).fill(0));
         }
         this.votesContent = votesArray;
