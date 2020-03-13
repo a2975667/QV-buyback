@@ -17,10 +17,10 @@
 <div class="container">
 	<br>
 	<h1>{{questionTitle}}</h1>
-	<h3 *ngIf="questionTitle=='QV Dry Run: How to work with Quadratic Voting'">Please watch this video</h3>
-	<iframe *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'"
-		style="height: 60vh; width: 100%;" src="https://www.youtube.com/embed/-eTn0UwZGK4" frameborder="0"
-		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<h4 *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'">Please watch this video and play around with the interface below the video. Once you are ready, click submit and answer a few questions to check your understanding of what QV is. <br></h4>
+
+	<video *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'" controls><source src="/api/video/qv.webm"></video>
+	<br>
 	<br>
 
 	<p *ngIf="questionTitle!='QV Dry Run: Understanding what is Quadratic Voting'">People have different preferences in

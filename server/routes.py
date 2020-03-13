@@ -82,9 +82,10 @@ def welcome():
 @app.route('/api/disqualify', methods=['POST'])
 def disqualify():
     user = request.json
+    print(user)
     gp = user['gp']
     user_id = user['userid']
-    user_path_id = user['path_id']
+    user_path_id = user['pathId']
     user["qualify"] = False
     user["complete_flag"] = True
     print(user)

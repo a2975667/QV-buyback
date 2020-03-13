@@ -46,7 +46,7 @@
 			}, {
 				"type": "text",
 				"name": "Textbox",
-				"title": "In 2-3 sentences, why do you choose this way?",
+				"title": "In a few sentences, why did you feel this way?",
 				"isRequired": true
 			}]
 		}]

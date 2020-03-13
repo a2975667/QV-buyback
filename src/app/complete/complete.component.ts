@@ -22,9 +22,11 @@ export class CompleteComponent implements OnInit {
     this.title = this.route.snapshot.paramMap.get('title');
     this.code = this.route.snapshot.paramMap.get('userId');
     this.text = this.route.snapshot.paramMap.get('text');
+
     if (this.title === 'null') {
       this.title = 'Thank you';
-      this.text = 'Unfortunately the survey has collected enough response.';
+      this.code = 'Unfortunately the survey has collected enough response. Do not paste in anything to the original hit page.';
+      this.text = '';
       this.url = '';
     }
   }
