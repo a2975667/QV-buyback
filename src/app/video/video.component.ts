@@ -184,7 +184,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     const that = this;
     this.videoIsPlaying = true;
     this.unsubscribeSurvices();
-    this.reassignVideoSrc(); 
+    this.reassignVideoSrc();
     this.syncAudioWithVideo();
     this.videoElement.addEventListener('loadeddata', function() {
       if (that.counter !== 0 ) {
@@ -205,8 +205,8 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   reassignVideoSrc() {
     const time = Date.now();
-    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time;
-    this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
+    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time  + '&userId=' + userID;
+    this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
     const videoTempTime = this.videoElement.currentTime;
     const audioTempTime = this.audioElement.currentTime;
     this.videoElement.src = this.videoSrc;
@@ -313,7 +313,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.vService.requestForm();
     this.vService.videoForm.subscribe((data: Video) => {
       if(data){
-        console.log(data) 
+        console.log(data)
         this.formJson = data;
         this.survey = {
           questions: data.settings.normal,
@@ -331,17 +331,18 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
           this.configurations["Motion Smoothness"] = this.videoConfig[3];
           this.configurations["Audio-Video Synchronization"] = this.videoConfig[4];
           console.log(this.videoConfig)
-        }
+		}
+        const userID = this.cookieService.get('user_id');
         this.description = data.Description;
         this.title = data.Title;
         this.showCost = data.settings.control_panel_has_price;
         this.showConfig = data.settings.control_panel_can_change;
         let time: String = Date.now().toString();
-        this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time;
-        this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time;
+        this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
+        this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
-        
+
         this.sliderOptions = Object.assign(
           {}, this.sliderOptions,
           {disabled: !data.settings.control_panel_can_change}
