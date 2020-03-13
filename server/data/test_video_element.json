@@ -1,0 +1,90 @@
+{
+	"html": false,
+	"survey": {
+		"title": "Testing your understanding of video elements",
+		"pages": [{
+			"title": "Please answer the following questions",
+			"questions": [{
+					"type": "dropdown",
+					"name": "vet1",
+					"title": "Which of the following is the correct definition for: Quality of the video imagery?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(A) It refers to how smooth the visual the video is.",
+						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(C) It means how fluent the audio sounds.",
+						"(D) This refers to how clear or crisp the visual is in the video.",
+						"(E) This refers to how clear or crisp the audio."
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vet2",
+					"title": "Which of the following is the correct definition for: Quality of the audio?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(A) It refers to how smooth the visual the video is.",
+						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(C) It means how fluent the audio sounds.",
+						"(D) This refers to how clear or crisp the visual is in the video.",
+						"(E) This refers to how clear or crisp the audio."
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vet3",
+					"title": "Which of the following is the correct definition for: Stability of the video imagery?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(A) It refers to how smooth the visual the video is.",
+						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(C) It means how fluent the audio sounds.",
+						"(D) This refers to how clear or crisp the visual is in the video.",
+						"(E) This refers to how clear or crisp the audio."
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vet4",
+					"title": "Which of the following is the correct definition for: Stability of the audio?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(A) It refers to how smooth the visual the video is.",
+						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(C) It means how fluent the audio sounds.",
+						"(D) This refers to how clear or crisp the visual is in the video.",
+						"(E) This refers to how clear or crisp the audio."
+					]
+				},
+				{
+					"type": "dropdown",
+					"name": "vet5",
+					"title": "Which of the following is the correct definition for: Synchronization between the video imagery and the audio?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(A) It refers to how smooth the visual the video is.",
+						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(C) It means how fluent the audio sounds.",
+						"(D) This refers to how clear or crisp the visual is in the video.",
+						"(E) This refers to how clear or crisp the audio."
+					]
+				},
+				{
+					"type": "dropdown",
+					"name": "vet6",
+					"title": "What is the object that fell and hit the butterfly in the video?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(1) banana",
+						"(2) stone",
+						"(3) apple",
+						"(4) flower"
+					]
+				}
+			]
+		}]
+	}
+}
