@@ -71,6 +71,11 @@
 						"c) 35",
 						"d) 45"
 					]
+				}, {
+					"type": "text",
+					"name": "Textbox",
+					"title": "Do you think you bought the right elements? If so, why? If not, what would you have changed?",
+					"isRequired": true
 				}
 			]
 			}]
