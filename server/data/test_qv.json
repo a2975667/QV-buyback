@@ -6,7 +6,7 @@
 			"title": "Please answer the following questions",
 			"questions": [{
 					"type": "dropdown",
-					"name": "ac1",
+					"name": "qvt1",
 					"title": "If you strongly favor an option in a Quadratic Voting survey, you can cast more than one upvote for the option.",
 					"isRequired": true,
 					"colCount": 0,
@@ -16,7 +16,7 @@
 					]
 				}, {
 					"type": "dropdown",
-					"name": "ac2",
+					"name": "qvt2",
 					"title": "In a Quadratic Voting survey, you can cast as many votes on an option as you like even if you have exceeded the maximum voice credits.",
 					"isRequired": true,
 					"colCount": 0,
@@ -26,7 +26,7 @@
 					]
 				}, {
 					"type": "dropdown",
-					"name": "ac3",
+					"name": "qvt3",
 					"title": "In a Quadratic Voting survey, each vote costs one voice credit.",
 					"isRequired": true,
 					"colCount": 0,
@@ -36,7 +36,7 @@
 					]
 				}, {
 					"type": "dropdown",
-					"name": "ac4",
+					"name": "qvt4",
 					"title": "In a Quadratic Voting survey, you must use up all the voice credits available to you in the given budget.",
 					"isRequired": true,
 					"colCount": 0,
@@ -47,7 +47,7 @@
 				},
 				{
 					"type": "dropdown",
-					"name": "ac5",
+					"name": "qvt5",
 					"title": "What is the first attention code in the video?",
 					"isRequired": true,
 					"colCount": 0,
@@ -60,7 +60,7 @@
 				},
 				{
 					"type": "dropdown",
-					"name": "ac6",
+					"name": "qvt6",
 					"title": "What is the second attention code in the video?",
 					"isRequired": true,
 					"colCount": 0,

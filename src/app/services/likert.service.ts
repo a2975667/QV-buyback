@@ -62,22 +62,22 @@ export class LikertService {
     const currentFile = pathArray[pathIndex]['file'];
     if (currentFile === 'test_qv') {
       const conditions = [
-        data['ac1'] === '(T) True',
-        data['ac2'] === '(F) False',
-        data['ac3'] === '(F) False',
-        data['ac4'] === '(F) False',
-        data['ac5'] === '(4) 20993',
-        data['ac6'] === '(4) 12345',
+        data['qvt1'] === '(T) True',
+        data['qvt2'] === '(F) False',
+        data['qvt3'] === '(F) False',
+        data['qvt4'] === '(F) False',
+        data['qvt5'] === '(4) 20993',
+        data['qvt6'] === '(4) 12345',
       ];
       return this.decideWhetherPassTest(conditions, 2);
     } else if (currentFile === 'test_video_element') {
       const conditions = [
-        data['ac1'] === '(T) True',
-        data['ac2'] === '(F) False',
-        data['ac3'] === '(F) False',
-        data['ac4'] === '(F) False',
-        data['ac5'] === '(4) 20993',
-        data['ac6'] === '(4) 12345',
+        data['vet1'] === '(D) This refers to how clear or crisp the visual is in the video.',
+        data['vet2'] === '(E) This refers to how clear or crisp the audio.',
+        data['vet3'] === '(A) It refers to how smooth the visual the video is.',
+        data['vet4'] === '(C) It means how fluent the audio sounds.',
+        data['vet5'] === '(B) It means how perfectly does the visual in the video match with the sound.',
+        data['vet6'] === '(3) apple',
       ];
       return this.decideWhetherPassTest(conditions, 2);
     } else {
