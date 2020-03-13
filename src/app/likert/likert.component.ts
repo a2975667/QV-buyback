@@ -43,6 +43,7 @@ export class LikertComponent implements OnInit {
           questions: data['survey'],
           showNav: true,
         };
+        this.html = null;
       }
       if (data['html']) {
         this.html = data['html'];
