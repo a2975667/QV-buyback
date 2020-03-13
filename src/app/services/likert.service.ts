@@ -110,7 +110,7 @@ export class LikertService {
         this.cookieService.deleteAll('/');
         this.http.get(`${this.requestUrl}/thank_you/thank_attention`).subscribe(
           thankYouData => {
-            this.router.navigate(['complete', {userId, ...thankYouData}]);
+            this.router.navigate(['complete', {userId: 'Do not paste in anything to the original hit page.', ...thankYouData}]);
           }
         );
       });
