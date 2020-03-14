@@ -2,7 +2,8 @@ import { Component, OnInit, Input} from '@angular/core';
 import { LikertService } from '../services/likert.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-likert',
   templateUrl: './likert.component.html',
@@ -11,10 +12,12 @@ import { CookieService } from 'ngx-cookie-service';
 export class LikertComponent implements OnInit {
   json: any = {questions: null};
   html: object | boolean = false;
+  requestUrl: string = environment.apiUrl;
   constructor(
     private liService: LikertService,
     private route: Router,
     private cookieService: CookieService,
+    private http: HttpClient,
   ) { }
 
   decidePath() {
@@ -31,7 +34,12 @@ export class LikertComponent implements OnInit {
     } else if (type === 'complete') {
       const userID = this.cookieService.get('user_id');
       this.cookieService.deleteAll('/');
-      this.route.navigate(['complete', {userId: userID, text: null, title: null }]);
+      const file = pathArray[pathIndex]['file'];
+      this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
+        thankYouData => {
+          this.route.navigate(['complete', {userId: userID, ...thankYouData}]);
+        }
+      );
     }
   }
 

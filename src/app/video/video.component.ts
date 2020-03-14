@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { Video } from '../schema/video';
 import * as Survey from 'survey-angular';
 import { Options } from 'ng5-slider';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-video',
@@ -82,9 +83,10 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   };
   counter = 0;
   completeFunc: Function;
-
+  requestUrl: string = environment.apiUrl;
 
   constructor(
+    private http: HttpClient,
     private vService: VideoService,
     private cookieService: CookieService,
     private route: Router,
@@ -281,7 +283,12 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     } else if (type === 'complete') {
       const userID = this.cookieService.get('user_id');
       this.cookieService.deleteAll('/');
-      this.route.navigate(['complete', {userId: userID, text: null, title: null }]);
+      const file = pathArray[pathIndex]['file'];
+      this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
+        thankYouData => {
+          this.route.navigate(['complete', {userId: userID, ...thankYouData}]);
+        }
+      );
     }
   }
 
