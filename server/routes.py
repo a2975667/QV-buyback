@@ -219,15 +219,15 @@ def download2(filename='consent.pdf'):
 
 @app.route('/api/video/<filename>', methods=['GET'])
 def play(filename):
-    # filename=filename+'.mp4'
-    print(filename)
+    userId = request.args.get('userId')
+    if userId: app.logger.info("[FLAG] " + str(userId) + " " + filename)
     return send_from_directory("video", filename)
 
 
 @app.route('/api/audio/<filename>', methods=['GET'])
 def play_audio(filename):
-    # filename=filename+'.mp4'
-    print(filename)
+    userId = request.args.get('userId')
+    if userId: print("[FLAG] " + str(userId) + " " + filename)
     return send_from_directory("audio", filename)
 
 

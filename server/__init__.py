@@ -7,6 +7,7 @@ from flask import Flask
 import pymongo
 from dotenv import load_dotenv
 from flask_cors import CORS
+from logging.config import dictConfig
 
 
 class JSONEncoder(json.JSONEncoder):
@@ -19,6 +20,22 @@ class JSONEncoder(json.JSONEncoder):
             return str(o)
         return json.JSONEncoder.default(self, o)
 
+
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+    }},
+    'handlers': {'wsgi': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://flask.logging.wsgi_errors_stream',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'INFO',
+        'handlers': ['wsgi']
+    }
+})
 
 # create the flask object
 app = Flask(__name__, template_folder="data", static_folder="public", static_url_path='')

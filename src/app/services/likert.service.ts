@@ -103,14 +103,14 @@ export class LikertService {
     if (this.isQVTestResultFailed(data)) {
       // fail the QVTest and delete all cookies
       this.http.post(`${this.requestUrl}/api/disqualify`, {
-        gp,
-        pathId,
+        gp: gp,
+        pathId: pathId,
         userid: userId,
       }).subscribe(res => {
         this.cookieService.deleteAll('/');
         this.http.get(`${this.requestUrl}/thank_you/thank_attention`).subscribe(
           thankYouData => {
-            this.router.navigate(['complete', {userId: 'Do not paste in anything to the original hit page.', ...thankYouData}]);
+            this.router.navigate(['complete', {userId: userId, ...thankYouData}]);
           }
         );
       });
