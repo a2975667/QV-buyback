@@ -46,7 +46,12 @@ export class GlobalService {
     } else if (type === 'complete') {
       const userID = this.cookieService.get('user_id');
       this.cookieService.deleteAll('/');
-      this.router.navigate(['complete', {userId: userID, text: null, title: null }]);
+      const file = pathArray[pathIndex]['file'];
+      this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
+        thankYouData => {
+          this.router.navigate(['complete', {userId: userID, ...thankYouData}]);
+        }
+      );
     } else if (type === 'qv') {
       return true;
     }
