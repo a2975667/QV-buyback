@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } from '@angular/core';
 import { VideoService } from '../services/video.service';
 import { timer, Observable, Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
@@ -16,10 +16,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  @ViewChild('videoPlayer', {static: false}) videoPlayer: ElementRef;
-  @ViewChild('videoOverlay', {static: false}) videoOverlay: ElementRef;
-  @ViewChild('audioPlayer', {static: false}) audioPlayer: ElementRef;
-  @ViewChild('canvas', {static: false}) canvas: ElementRef;
+  @ViewChild('videoPlayer', { static: false }) videoPlayer: ElementRef;
+  @ViewChild('videoOverlay', { static: false }) videoOverlay: ElementRef;
+  @ViewChild('audioPlayer', { static: false }) audioPlayer: ElementRef;
+  @ViewChild('canvas', { static: false }) canvas: ElementRef;
 
   clicked = false;
   survey: object;
@@ -28,8 +28,8 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   videoElement: HTMLVideoElement;
   audioElement: HTMLAudioElement;
   videoContainer = {  // we will add properties as needed
-    video : this.videoElement,
-    ready : false,
+    video: this.videoElement,
+    ready: false,
     scale: null,
   };
   videoFilePrefix = environment.apiUrl + '/api/video/';
@@ -70,11 +70,12 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   showConfig = false;
   sliderOptions: Options = {
     showTicksValues: true,
+    animate: false,
     stepsArray: [
-      {value: 0, legend: 'As is'},
-      {value: 1, legend: 'Lv. 1'},
-      {value: 2, legend: 'Lv. 2'},
-      {value: 3, legend: 'Lv. 3'}
+      { value: 0, legend: 'As is' },
+      { value: 1, legend: 'Lv. 1' },
+      { value: 2, legend: 'Lv. 2' },
+      { value: 3, legend: 'Lv. 3' }
     ]
   };
   saveApply = {
@@ -90,7 +91,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     private vService: VideoService,
     private cookieService: CookieService,
     private route: Router,
-    ) { }
+  ) { }
 
   sumUpCost = (arr) => arr.reduce((a, b) => a + b);
 
@@ -124,14 +125,14 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         this.videoIsJittering = true;
         const freshback = timer(1500);
         freshback.subscribe(d => {
-            this.videoIsJittering = false;
+          this.videoIsJittering = false;
         });
       }
     });
   }
 
   jitterAudio(jitterVal: number) {
-    if (this.audioTimerSubscription){
+    if (this.audioTimerSubscription) {
       this.audioTimerSubscription.unsubscribe();
     }
     switch (jitterVal) {
@@ -150,7 +151,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
       case 3:
         this.muteTimer = timer(0, 1000000);
         break;
-      }
+    }
     this.audioTimerSubscription = this.muteTimer.subscribe(val => {
       if (this.videoIsPlaying) {
         this.audioElement.volume = 0;
@@ -170,7 +171,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
       case 0:
         this.audioElement.currentTime = this.videoElement.currentTime - 1.850;
         break;
-       case 1:
+      case 1:
         this.audioElement.currentTime = this.videoElement.currentTime - 1.615;
         break;
       case 2:
@@ -188,16 +189,16 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.unsubscribeSurvices();
     this.reassignVideoSrc();
     this.syncAudioWithVideo();
-    this.videoElement.addEventListener('loadeddata', function() {
-      if (that.counter !== 0 ) {
+    this.videoElement.addEventListener('loadeddata', function () {
+      if (that.counter !== 0) {
         that.videoElement.play();
         that.audioElement.play();
       }
-      that.counter ++;
+      that.counter++;
       const ctx = that.canvasElement.getContext('2d');
       that.videoContainer.scale = Math.min(
         ctx.canvas.width / this.videoWidth,
-        ctx.canvas.height  / this.videoHeight);
+        ctx.canvas.height / this.videoHeight);
       that.videoContainer.ready = true;
       requestAnimationFrame(that.updateCanvas.bind(that));
     }, false);
@@ -206,9 +207,9 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   reassignVideoSrc() {
-	const time = Date.now();
-	const userID = this.cookieService.get('user_id');
-    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time  + '&userId=' + userID;
+    const time = Date.now();
+    const userID = this.cookieService.get('user_id');
+    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
     this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
     const videoTempTime = this.videoElement.currentTime;
     const audioTempTime = this.audioElement.currentTime;
@@ -227,25 +228,25 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  updateCanvas(){
+  updateCanvas() {
     this.canvasElement = this.canvas.nativeElement;
     const ctx = this.canvasElement.getContext("2d");
     if (!this.videoIsJittering) {
       ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
     }
     if (this.videoContainer !== undefined && this.videoContainer.ready) {
-        // find the top left of the video on the canvas
-        const scale = this.videoContainer.scale;
-        const vidH = this.videoContainer.video.videoHeight;
-        const vidW = this.videoContainer.video.videoWidth;
-        const top = ctx.canvas.height / 2 - (vidH / 2 ) * scale;
-        const left = ctx.canvas.width / 2 - (vidW / 2 ) * scale;
-        if (!this.videoIsJittering) {
-          ctx.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
-          if (this.videoContainer.video.paused) { // if not playing show the paused screen
-              this.drawPayIcon();
-          }
+      // find the top left of the video on the canvas
+      const scale = this.videoContainer.scale;
+      const vidH = this.videoContainer.video.videoHeight;
+      const vidW = this.videoContainer.video.videoWidth;
+      const top = ctx.canvas.height / 2 - (vidH / 2) * scale;
+      const left = ctx.canvas.width / 2 - (vidW / 2) * scale;
+      if (!this.videoIsJittering) {
+        ctx.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
+        if (this.videoContainer.video.paused) { // if not playing show the paused screen
+          this.drawPayIcon();
         }
+      }
     }
     requestAnimationFrame(this.updateCanvas.bind(this));
   }
@@ -268,6 +269,54 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
+    this.vService.requestForm();
+    this.vService.videoForm.subscribe((data: Video) => {
+      if (data) {
+        console.log(data)
+        this.formJson = data;
+        this.survey = {
+          questions: data.settings.normal,
+          showNav: false,
+        }
+        this.saveApply = {
+          save: data.settings.save,
+          apply: data.settings.apply,
+        }
+        if (this.saveApply.apply) {
+          this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
+          this.configurations = {
+            'Audio Quality': this.videoConfig[0],
+            'Video Resolution': this.videoConfig[1],
+            'Audio Stability': this.videoConfig[2],
+            'Motion Smoothness': this.videoConfig[3],
+            'Audio-Video Synchronization': this.videoConfig[4]
+          };
+          //   this.configurations["Audio Quality"] = this.videoConfig[0];
+          //   this.configurations["Video Resolution"] = this.videoConfig[1];
+          //   this.configurations["Audio Stability"] = this.videoConfig[2];
+          //   this.configurations["Motion Smoothness"] = this.videoConfig[3];
+          //   this.configurations["Audio-Video Synchronization"] = this.videoConfig[4];
+        }
+        const userID = this.cookieService.get('user_id');
+        this.description = data.Description;
+        this.title = data.Title;
+        this.showCost = data.settings.control_panel_has_price;
+        this.showConfig = data.settings.control_panel_can_change;
+        let time: String = Date.now().toString();
+        this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
+        this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
+        this.videoElement.src = this.videoSrc;
+        this.audioElement.src = this.audioSrc;
+        setTimeout(() => {
+          this.sliderOptions = Object.assign(
+            {}, this.sliderOptions,
+            { disabled: !data.settings.control_panel_can_change }
+          );
+        }, 1);
+
+        this.refreshPlayback();
+      }
+    });
   }
 
   decidePath() {
@@ -286,13 +335,13 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
       const file = pathArray[pathIndex]['file'];
       this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
         thankYouData => {
-          this.route.navigate(['complete', {userId: userID, ...thankYouData}]);
+          this.route.navigate(['complete', { userId: userID, ...thankYouData }]);
         }
       );
     }
   }
 
-  ngOnDestroy()	{
+  ngOnDestroy() {
     this.videoSrc = '';
     this.audioSrc = '';
     this.videoElement.src = this.videoSrc;
@@ -305,60 +354,19 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.videoIsPlaying = false;
   }
 
-  ngAfterViewInit()	 {
-    this.configurations = {
-      'Audio Quality': '0',
-      'Video Resolution': '0',
-      'Audio Stability': '0',
-      'Motion Smoothness': '0',
-      'Audio-Video Synchronization': '0',
-    };
+  ngAfterViewInit() {
+    // this.configurations = {
+    //   'Audio Quality': '0',
+    //   'Video Resolution': '0',
+    //   'Audio Stability': '0',
+    //   'Motion Smoothness': '0',
+    //   'Audio-Video Synchronization': '0',
+    // };
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
     this.videoOverlayElement = this.videoOverlay.nativeElement;
     this.canvasElement = this.canvas.nativeElement;
     this.videoContainer.video = this.videoElement;
-    this.vService.requestForm();
-    this.vService.videoForm.subscribe((data: Video) => {
-      if(data){
-        console.log(data)
-        this.formJson = data;
-        this.survey = {
-          questions: data.settings.normal,
-          showNav: false,
-        }
-        this.saveApply = {
-          save: data.settings.save,
-          apply: data.settings.apply,
-        }
-        if(this.saveApply.apply){
-          this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
-          this.configurations["Audio Quality"] = this.videoConfig[0];
-          this.configurations["Video Resolution"] = this.videoConfig[1];
-          this.configurations["Audio Stability"] = this.videoConfig[2];
-          this.configurations["Motion Smoothness"] = this.videoConfig[3];
-          this.configurations["Audio-Video Synchronization"] = this.videoConfig[4];
-        }
-        const userID = this.cookieService.get('user_id');
-        this.description = data.Description;
-        this.title = data.Title;
-        this.showCost = data.settings.control_panel_has_price;
-        this.showConfig = data.settings.control_panel_can_change;
-        let time: String = Date.now().toString();
-        this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
-        this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
-        this.videoElement.src = this.videoSrc;
-        this.audioElement.src = this.audioSrc;
-        setTimeout(() => {
-          this.sliderOptions = Object.assign(
-            {}, this.sliderOptions,
-            {disabled: !data.settings.control_panel_can_change}
-          );
-        }, 1);
-
-        this.refreshPlayback();
-      }
-    })
   }
 
   submit(e: Event) {
@@ -375,7 +383,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.saveApply.save) {
       this.cookieService.set('video_config', JSON.stringify(this.videoConfig));
     }
-    this.vService.submit({videoConfig: this.videoConfig, counter: this.counter}).subscribe(
+    this.vService.submit({ videoConfig: this.videoConfig, counter: this.counter }).subscribe(
       result => {
         this.decidePath();
       }
@@ -389,7 +397,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     const canvas = this.canvasElement;
     ctx.fillStyle = 'black';  // darken display
     ctx.globalAlpha = 0.5;
-    ctx.fillRect(0, 0, canvas.width,canvas.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#DDD'; // colour of play icon
     ctx.globalAlpha = 0.75; // partly transparent
     ctx.beginPath(); // create the path for the icon
