@@ -338,8 +338,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
           this.configurations["Audio Stability"] = this.videoConfig[2];
           this.configurations["Motion Smoothness"] = this.videoConfig[3];
           this.configurations["Audio-Video Synchronization"] = this.videoConfig[4];
-          console.log(this.videoConfig)
-		}
+        }
         const userID = this.cookieService.get('user_id');
         this.description = data.Description;
         this.title = data.Title;
@@ -350,11 +349,13 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-av' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
+        setTimeout(() => {
+          this.sliderOptions = Object.assign(
+            {}, this.sliderOptions,
+            {disabled: !data.settings.control_panel_can_change}
+          );
+        }, 1);
 
-        this.sliderOptions = Object.assign(
-          {}, this.sliderOptions,
-          {disabled: !data.settings.control_panel_can_change}
-        );
         this.refreshPlayback();
       }
     })
