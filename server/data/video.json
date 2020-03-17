@@ -1,7 +1,7 @@
 {
 	"filename": "test",
 	"Title":"Buy Back Quiz",
-	"Description":"<p> Now that you have completed your purchase, while the engineers at the online streaming company get to work, please complete the following questions. Again, if you can answer four of the five questions correctly, you will be able to enter a lottery.<br><br> The lottery has a probability of 1 in 60 winning whatever is left from your purchase. <br> Note that you can watch the video as many times as you wanted.",
+	"Description":"<p>This is the final task.</p> <p> Now that you have completed your purchase, while the engineers at the online streaming company get to work, please complete the following questions. Again, if you can answer four of the five questions correctly, you will be able to enter a lottery.<br><br> The lottery has a probability of 1 in 60 winning whatever is left from your purchase. <br> The greyed out configurations are what you bought from the previous page. Note that you can watch the video as many times as you wanted.",
 	"settings":{
 		"control_panel_can_change": false,
 		"control_panel_has_price":true,

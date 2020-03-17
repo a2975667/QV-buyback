@@ -62,19 +62,9 @@ def decide_path(gp):
 		"file":"video_buyback"
 	}
 
-	# video_demo_test = {
-	# 	"type":"normal",
-	# 	"file":"video_sample_test"
-	# }
-
 	video_actual = {
 		"type":"video",
 		"file":"video"
-	}
-
-	video_test = {
-		"type":"normal",
-		"file":"video_test"
 	}
 
 	# thank you
@@ -103,16 +93,15 @@ def decide_path(gp):
 	# p1 = [video_element]
 	p1 = [video_element, element_test, video_demo, likert, thank_complete]
 	p2 = [qv_example, qv_test, video_element, element_test, video_demo, qv_108, thank_complete]
-	# p3 = [video_buyback_demo, video_buyback, video_actual, video_test, thank_complete] if the test is sperate
-	p3 = [video_element, element_test, video_buyback, video_actual, thank_complete]
-	# full_test = [video_demo, likert, qv_example, qv_test, qv_108, video_actual, video_test, thank_complete]
+	# p3 = [video_buyback_demo, video_buyback, video_actual, video_test, thank_complete]
+	p3 = [video_element, element_test, video_buyback_demo, video_buyback, video_actual, thank_complete]
+
 
 	# objectify paths to variable names
 	collection = {
 		"p1": p1,
 		"p2": p2,
 		"p3": p3
-		#"test": full_test
 	}
 
 	random_ms = randint(1,30)*0.1

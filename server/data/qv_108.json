@@ -19,18 +19,18 @@
 		  }, {
 			  "o_id": "c",
 			  "option": "Audio Stability",
-			  "description": "The audio is smooth and and not stuttering"
+			  "description": "The audio is smooth and and does not stutter"
 		  }, {
 			  "o_id": "d",
 			  "option": "Motion Smoothness",
-			  "description": "The video plays smoothly and does not jitter"
+			  "description": "The video visuals plays smoothly and does not jitter"
 		  }, {
 			  "o_id": "e",
 			  "option": "Audio-Video Syncronization",
 			  "description": "Audio and Video are in sync"
 		  }
 		],
-		"totalCredits":108,
+		"totalCredits":100,
 		"reset": true
 	  }
 	]

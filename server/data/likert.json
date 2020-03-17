@@ -35,10 +35,10 @@
 					"text": "Video Resolution: The image of the video is clear and not pixelated"
 				}, {
 					"value": "c",
-					"text": "Audio Stability: The audio is smooth and and not stuttering"
+					"text": "Audio Stability: The audio is smooth and and does not stutter"
 				}, {
 					"value": "d",
-					"text": "Motion Smoothness: The video plays smoothly and does not jitter"
+					"text": "Motion Smoothness: The video visuals plays smoothly and does not jitter"
 				}, {
 					"value": "e",
 					"text": "Audio-Video Syncronization: Audio and Video are in sync"
