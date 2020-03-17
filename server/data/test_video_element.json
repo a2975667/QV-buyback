@@ -11,9 +11,9 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It refers to how smooth the visual the video is.",
+						"(A) It means how much the visuals in a video stutters.",
 						"(B) It means how perfectly does the visual in the video match with the sound.",
-						"(C) It means how fluent the audio sounds.",
+						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
 						"(E) This refers to how clear or crisp the audio."
 					]
@@ -24,9 +24,9 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It refers to how smooth the visual the video is.",
+						"(A) It means how much the visuals in a video stutters.",
 						"(B) It means how perfectly does the visual in the video match with the sound.",
-						"(C) It means how fluent the audio sounds.",
+						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
 						"(E) This refers to how clear or crisp the audio."
 					]
@@ -37,9 +37,9 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It refers to how smooth the visual the video is.",
+						"(A) It means how much the visuals in a video stutters.",
 						"(B) It means how perfectly does the visual in the video match with the sound.",
-						"(C) It means how fluent the audio sounds.",
+						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
 						"(E) This refers to how clear or crisp the audio."
 					]
@@ -50,9 +50,9 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It refers to how smooth the visual the video is.",
+						"(A) It means how much the visuals in a video stutters.",
 						"(B) It means how perfectly does the visual in the video match with the sound.",
-						"(C) It means how fluent the audio sounds.",
+						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
 						"(E) This refers to how clear or crisp the audio."
 					]
@@ -64,9 +64,9 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It refers to how smooth the visual the video is.",
+						"(A) It means how much the visuals in a video stutters.",
 						"(B) It means how perfectly does the visual in the video match with the sound.",
-						"(C) It means how fluent the audio sounds.",
+						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
 						"(E) This refers to how clear or crisp the audio."
 					]
@@ -78,10 +78,10 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(1) banana",
-						"(2) stone",
-						"(3) apple",
-						"(4) flower"
+						"(1) A Banana",
+						"(2) A Stone",
+						"(3) An Apple",
+						"(4) A Flower"
 					]
 				}
 			]

@@ -74,10 +74,10 @@ export class LikertService {
       const conditions = [
         data['vet1'] === '(D) This refers to how clear or crisp the visual is in the video.',
         data['vet2'] === '(E) This refers to how clear or crisp the audio.',
-        data['vet3'] === '(A) It refers to how smooth the visual the video is.',
-        data['vet4'] === '(C) It means how fluent the audio sounds.',
+        data['vet3'] === '(A) It means how much the visuals in a video stutters.',
+        data['vet4'] === '(C) It means whether the audio sounds choppy or fluent.',
         data['vet5'] === '(B) It means how perfectly does the visual in the video match with the sound.',
-        data['vet6'] === '(3) apple',
+        data['vet6'] === '(3) An Apple',
       ];
       return this.decideWhetherPassTest(conditions, 2);
     } else {

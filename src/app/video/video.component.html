@@ -6,19 +6,11 @@
         <div class="col-sm wrap-content" [innerHTML]="description"></div>
     </div>
 
-    <h2 *ngIf="formJson && formJson.settings.normal"></h2>
-    <app-survey
-        *ngIf="formJson && formJson.settings.normal"
-        [json]="survey"
-        (suveyModel)="getSurvey($event)"
-        (resultEmit)="surveySubmit($event)">
-    </app-survey>
-
 	<br>
     <h2>
         Video
     </h2>
-
+	<hr>
     <div class="row justify-content-center">
         <div style="justify-content: center;" #videoOverlay class="original" (click)="playPause()">
             <video
@@ -38,7 +30,8 @@
 
    <p></p>
     <div >
-
+		<br>
+		<br>
         <h2>
             Configuration
         </h2>
@@ -79,6 +72,17 @@
         </div>
     </div>
 	<br>
+
+	<h2 *ngIf="formJson && formJson.settings.normal">Questions</h2>
+    <h2 *ngIf="formJson && formJson.settings.normal"></h2>
+    <app-survey
+        *ngIf="formJson && formJson.settings.normal"
+        [json]="survey"
+        (suveyModel)="getSurvey($event)"
+        (resultEmit)="surveySubmit($event)">
+    </app-survey>
+
+
     <button style="float: right;" [disabled]="clicked" (click)="submit($event)" type="submit" class="mr-2 btn btn-success">
         Submit
     </button>
