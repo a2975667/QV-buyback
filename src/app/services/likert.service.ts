@@ -116,7 +116,15 @@ export class LikertService {
       });
       return empty();
     }
-    this.cookieService.set('user_current_path_index', String(pathIndex + 1), undefined, '/');
+    this.cookieService.set(
+      'user_current_path_index',
+      String(pathIndex + 1),
+      undefined,
+      '/',
+      undefined,
+      false,
+      'Lax'
+      );
     return this.http.post(`${this.requestUrl}/submit`,
       {
         data,

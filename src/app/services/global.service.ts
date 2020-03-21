@@ -70,7 +70,15 @@ export class GlobalService {
   }
 
   setCookieById(id: string, val: string) {
-    this.cookieService.set(id, val, undefined, '/');
+    this.cookieService.set(
+      id,
+      val,
+      undefined,
+      '/',
+      undefined,
+      false,
+      'Lax'
+      );
   }
 
   getCurrentPath(): string {

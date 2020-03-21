@@ -44,15 +44,25 @@ export class WelcomeComponent implements OnInit {
       }
     }
   }
-
+  setCookie(id, val) {
+    this.cookieService.set(
+      id,
+      val,
+      undefined,
+      '/',
+      undefined,
+      false,
+      'Lax'
+      );
+  }
   initCookie(user: User) {
-    this.cookieService.set('user_gp', user.gp, undefined, '/');
-    this.cookieService.set('user_path_id', user.path_id, undefined, '/');
-    this.cookieService.set('user_current_question_index', String(0), undefined, '/');
-    this.cookieService.set('user_complete_flag', String(user.complete_flag), undefined, '/');
-    this.cookieService.set('user_path', JSON.stringify(user.path), undefined, '/');
-    this.cookieService.set('user_id', user.userid, undefined, '/');
-    this.cookieService.set('user_current_path_index', String(0), undefined, '/');
+    this.setCookie('user_gp', user.gp);
+    this.setCookie('user_path_id', user.path_id);
+    this.setCookie('user_current_question_index', String(0));
+    this.setCookie('user_complete_flag', String(user.complete_flag));
+    this.setCookie('user_path', JSON.stringify(user.path));
+    this.setCookie('user_id', user.userid);
+    this.setCookie('user_current_path_index', String(0));
   }
 
   createUser() {
