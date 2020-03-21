@@ -35,7 +35,7 @@
         <h2>
             Configuration
         </h2>
-        <div class="row">
+        <div class="row" *ngIf="this.showPanel">
             <div class="col-sm wrap-content">
                 <table class="table">
                     <thead>
@@ -69,6 +69,13 @@
                     </tbody>
                   </table>
               </div>
+        </div>
+        <div  *ngIf="!this.showPanel" class="container">
+            <div *ngFor="let item of configurations | keyvalue">
+                <div class="row">
+                    <b>{{item.key}}</b> : <b>{{item.value}}</b>
+                </div>
+            </div>
         </div>
     </div>
 	<br>
