@@ -79,6 +79,12 @@ def decide_path(gp):
 		"file":"thank_complete"
 	}
 
+	thank_complete_buyback = {
+		"type":"complete",
+		"file":"thank_complete_buyback"
+	}
+	
+
 	thank_attention = {
 		"type":"complete",
 		"file":"thank_attention"
@@ -91,10 +97,10 @@ def decide_path(gp):
 
 	## 3 path
 	# p1 = [video_element]
-	p1 = [video_element, element_test, video_demo, likert, thank_complete]
+	p1 = [video_element, element_test, video_demo, likert, thank_short]
 	p2 = [qv_example, qv_test, video_element, element_test, video_demo, qv_108, thank_complete]
 	# p3 = [video_buyback_demo, video_buyback, video_actual, video_test, thank_complete]
-	p3 = [video_element, element_test, video_buyback_demo, video_buyback, video_actual, thank_complete]
+	p3 = [video_element, element_test, video_buyback_demo, video_buyback, video_actual, thank_complete_buyback]
 
 
 	# objectify paths to variable names
