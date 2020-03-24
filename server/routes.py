@@ -240,13 +240,13 @@ def setup_route_db():
     db["videoSetting"].drop()
     db["data"].drop()
 
-    list_of_path = ["p1", "p2", "p3", "test"]
+    list_of_path = ["p1", "p2", "p3"]
 
     gp_max = {
-        "gp1": 1000,
-        "gp2": 1000,
-        "gp3": 1000,
-        "gp4": 1000,
+        "gp1": 1,
+        "gp2": 1,
+        "gp3": 1,
+        "gp4": 1,
         "gp5": 1,
         "gp6": 2,
         "gp7": 2,
@@ -267,7 +267,7 @@ def setup_route_db():
         db["gp_status"].insert_one({
             "gp": gp,
             "max": gp_max[gp],
-            "count": [{'path': x, 'count': 1000} for x in list_of_path]
+            "count": [{'path': x, 'count': 0} for x in list_of_path]
         })
     # "count": [{'path': x, 'count': randint(0, gp_max[gp])} for x in list_of_path],
     return jsonify({"ok": True})
