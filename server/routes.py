@@ -239,6 +239,10 @@ def setup_route_db():
     db["demographic"].drop()
     db["videoSetting"].drop()
     db["data"].drop()
+    db["control"].drop()
+    db["donation"].drop()
+    db["example"].drop()
+    db["pr-freeform"].drop()
 
     list_of_path = ["p1", "p2", "p3"]
 
