@@ -26,25 +26,25 @@
 					"text": "Very important"
 				}],
 				"rows": [{
-					"value": "a",
+					"value": "audio_quality",
 					"isRequired": true,
 					"text": "Audio Quality: The sound of the audio is clear and not muffled"
 				}, {
-					"value": "b",
+					"value": "video_resolution",
 					"isRequired": true,
 					"text": "Video Resolution: The image of the video is clear and not pixelated"
 				}, {
-					"value": "c",
+					"value": "audio_stability",
 					"text": "Audio Stability: The audio is smooth and and does not stutter"
 				}, {
-					"value": "d",
+					"value": "video_smoothness",
 					"text": "Motion Smoothness: The video visuals plays smoothly and does not jitter"
 				}, {
-					"value": "e",
+					"value": "sync",
 					"text": "Audio-Video Syncronization: Audio and Video are in sync"
 				}]
 			}, {
-				"type": "text",
+				"type": "likert-text",
 				"name": "Textbox",
 				"title": "In a few sentences, why did you feel this way?",
 				"isRequired": true
