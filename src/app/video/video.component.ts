@@ -379,7 +379,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         'Lax'
         );
     }
-    this.vService.submit({ videoConfig: this.videoConfig, counter: this.counter }).subscribe(
+    this.vService.submit({ videoConfig: this.videoConfig, counter: this.counter, data }).subscribe(
       result => {
         this.decidePath();
       }
