@@ -44,14 +44,16 @@ export class GlobalService {
     } else if (type === 'video') {
       this.router.navigate(['video']).then(() => location.reload());
     } else if (type === 'complete') {
-      const userID = this.cookieService.get('user_id');
+      const userId = this.cookieService.get('user_id');
       this.cookieService.deleteAll('/');
       const file = pathArray[pathIndex]['file'];
-      this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
-        thankYouData => {
-          this.router.navigate(['complete', {userId: userID, ...thankYouData}]);
-        }
-      );
+      this.http.post(`${this.requestUrl}/submit`, {userId, complete: true}).subscribe(d => {
+        this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
+          thankYouData => {
+            this.router.navigate(['complete', {userId, ...thankYouData}]);
+          }
+        );
+      });
     } else if (type === 'qv') {
       return true;
     }
@@ -138,7 +140,7 @@ export class GlobalService {
     const submitData: submitPostSchema = this.generateSubmitPost(false);
     const pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
     const pathIndex = Number(this.getCookieById('user_current_path_index'));
-
+    const currentFileName = pathArray[pathIndex];
     if (nextQuestionIndex >= this.questionnaire.question_list.length) {
       nextQuestionIndex = 0;
       this.setCookieById('user_current_path_index', String(pathIndex + 1));
@@ -146,7 +148,7 @@ export class GlobalService {
       if (pathArray[pathIndex + 1]['type'] === 'donation') {
         submitData.complete_flag = true;
         return this.http.post(`${this.requestUrl}/submit`,
-        {submitData, finalQuestion: finalQuestionValue}).pipe(
+        {submitData, finalQuestion: finalQuestionValue, fileName: currentFileName}).pipe(
           catchError(this.handleError)
         ).subscribe(data => {
           this.router.navigate(['donation']);
@@ -157,7 +159,7 @@ export class GlobalService {
     if (pathArray[pathIndex + 1]['type'] === 'normal') {
       nextQuestionIndex = 0;
       this.setCookieById('user_current_question_index', String(nextQuestionIndex));
-      return this.http.post(`${this.requestUrl}/submit`, submitData).pipe(
+      return this.http.post(`${this.requestUrl}/submit`, {...submitData, fileName: currentFileName}).pipe(
         catchError(this.handleError)
       ).subscribe(data => {
         this.router.navigate(['likert']);
@@ -166,7 +168,7 @@ export class GlobalService {
       this.setCookieById('user_current_question_index', String(nextQuestionIndex));
       this.getQuestionnaire();
 
-      return this.http.post(`${this.requestUrl}/submit`, submitData).pipe(
+      return this.http.post(`${this.requestUrl}/submit`, {...submitData, fileName: currentFileName}).pipe(
         catchError(this.handleError)
       ).subscribe(data => {
       });

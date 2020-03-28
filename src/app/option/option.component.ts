@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { GlobalService } from '../services/global.service';
-import { User } from '../schema/user';
 import { Questionnaire } from '../schema/questionnaire'
-import { Question } from '../schema/question';
 import { Option } from '../schema/option';
 @Component({
   selector: 'app-option',

@@ -32,14 +32,16 @@ export class LikertComponent implements OnInit {
     } else if (type === 'video') {
       this.route.navigate(['video']).then(() => location.reload());
     } else if (type === 'complete') {
-      const userID = this.cookieService.get('user_id');
-      this.cookieService.deleteAll('/');
-      const file = pathArray[pathIndex]['file'];
-      this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
-        thankYouData => {
-          this.route.navigate(['complete', {userId: userID, ...thankYouData}]);
-        }
-      );
+      const userId = this.cookieService.get('user_id');
+      this.http.post(`${this.requestUrl}/submit`, {userId, complete: true}).subscribe(d => {
+        this.cookieService.deleteAll('/');
+        const file = pathArray[pathIndex]['file'];
+        this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
+          thankYouData => {
+            this.route.navigate(['complete', {userId, ...thankYouData}]);
+          }
+        );
+      });
     }
   }
 
@@ -63,7 +65,10 @@ export class LikertComponent implements OnInit {
     if (e) {
       e.target.disabled = true;
     }
-    this.liService.submit(data).subscribe(
+    const pathIndex = Number(this.cookieService.get('user_current_path_index'));
+    const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
+    const userId = this.cookieService.get('user_id');
+    this.liService.submit({...data, userId, jsonFile: pathArray[pathIndex]}).subscribe(
       result => {
         this.decidePath();
       }

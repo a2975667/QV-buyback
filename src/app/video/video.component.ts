@@ -323,14 +323,16 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     } else if (type === 'video') {
       this.route.navigate(['video']).then(() => location.reload());
     } else if (type === 'complete') {
-      const userID = this.cookieService.get('user_id');
+      const userId = this.cookieService.get('user_id');
       this.cookieService.deleteAll('/');
       const file = pathArray[pathIndex]['file'];
-      this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
-        thankYouData => {
-          this.route.navigate(['complete', { userId: userID, ...thankYouData }]);
-        }
-      );
+      this.http.post(`${this.requestUrl}/submit`, {userId, complete: true}).subscribe(d => {
+        this.http.get(`${this.requestUrl}/thank_you/${file}`).subscribe(
+          thankYouData => {
+            this.route.navigate(['complete', { userId, ...thankYouData }]);
+          }
+        );
+      });
     }
   }
 
@@ -348,13 +350,6 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // this.configurations = {
-    //   'Audio Quality': '0',
-    //   'Video Resolution': '0',
-    //   'Audio Stability': '0',
-    //   'Motion Smoothness': '0',
-    //   'Audio-Video Synchronization': '0',
-    // };
     this.videoElement = this.videoPlayer.nativeElement;
     this.audioElement = this.audioPlayer.nativeElement;
     this.videoOverlayElement = this.videoOverlay.nativeElement;
