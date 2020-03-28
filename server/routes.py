@@ -101,26 +101,12 @@ def disqualify():
 
     return jsonify({'ok': True}), 200
 
-
-# @app.route('/submit', methods=['POST'])
-# def submit():
-# 	"""generic submit json to db
-# 	the json needs to specify where this json needs to go
-# 	"""
-
-# 	print(request.json)
-# 	insert_data = request.json
-# 	insert_data['time'] = datetime.utcnow()
-# 	db.data.insert_one(insert_data)
-
-# 	return jsonify({'ok': True}), 200
-
 @app.route('/submit', methods=['POST'])
 def submit():
     """generic submit json to db
     the json needs to specify where this json needs to go
     """
-    print(request.json)
+    pprint(request.json)
     insert_data = request.json
     source = "data"
     try:
@@ -134,6 +120,9 @@ def submit():
                 source = "qv_test"
             if "vet" in source:
                 source = "ve_test"
+        elif "fileName" in insert_data:
+            if insert_data["fileName"]["type"] == 'qv':
+                source = "qv"
     except:
         print("source not identified")
 
@@ -182,6 +171,7 @@ def submit_demographic():
 def submit_video_setting():
     """submit video setting to db"""
 
+    print(request.json)
     insert_data = request.json
     insert_data['video_setting'] = datetime.utcnow()
     db.videoSetting.insert_one(insert_data)
