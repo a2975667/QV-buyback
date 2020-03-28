@@ -106,7 +106,7 @@ def submit():
     """generic submit json to db
     the json needs to specify where this json needs to go
     """
-    pprint(request.json)
+    print(request.json)
     insert_data = request.json
     source = "data"
     try:
