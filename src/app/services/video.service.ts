@@ -56,6 +56,7 @@ export class VideoService {
   }
 
   submit(data) {
+    const pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
     const pathIndex = Number(this.getCookieById('user_current_path_index'));
     const userId = this.cookieService.get('user_id');
     this.cookieService.set(
@@ -68,10 +69,11 @@ export class VideoService {
       'Lax'
       );
       return this.http.post(`${this.requestUrl}/submit-video-setting`,
-        {
-          data,
-          userId,
-        }
+      {
+        data,
+        userId,
+        fileName: pathArray[pathIndex],
+      }
     ).pipe(
       catchError(this.handleError)
     );

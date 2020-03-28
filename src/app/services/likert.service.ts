@@ -100,6 +100,7 @@ export class LikertService {
     const userId = this.cookieService.get('user_id');
     const gp = this.cookieService.get('user_gp');
     const pathId = this.cookieService.get('user_path_id');
+    const pathArray: Array<object> = JSON.parse(this.getCookieById('user_path'));
     if (this.isQVTestResultFailed(data)) {
       // fail the QVTest and delete all cookies
       this.http.post(`${this.requestUrl}/api/disqualify`, {
@@ -129,6 +130,7 @@ export class LikertService {
       {
         data,
         userId,
+        fileName: pathArray[pathIndex],
       }
     ).pipe(
       catchError(this.handleError)

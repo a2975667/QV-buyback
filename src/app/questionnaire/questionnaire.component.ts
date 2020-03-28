@@ -5,6 +5,8 @@ import { User } from '../schema/user';
 import { Questionnaire } from '../schema/questionnaire'
 import { Question } from '../schema/question';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-questionnaire',
   templateUrl: './questionnaire.component.html',
@@ -18,10 +20,12 @@ export class QuestionnaireComponent implements OnInit {
   numFile = 1;
   questionTitle: string;
   questionDes: string;
+  requestUrl: string = environment.apiUrl;
   constructor(
     private gService: GlobalService,
     private route: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private http: HttpClient,
   ) { }
 
   ngOnInit() {
@@ -46,9 +50,11 @@ export class QuestionnaireComponent implements OnInit {
     } else if (type === 'video') {
       this.route.navigate(['video']).then(() => location.reload());
     } else if (type === 'complete') {
-      const userID = this.cookieService.get('user_id');
-      this.cookieService.deleteAll('/');
-      this.route.navigate(['complete', {userId: userID, text: null, title: null }]);
+      const userId = this.cookieService.get('user_id');
+      this.http.post(`${this.requestUrl}/submit`, {userId, complete: true}).subscribe(d => {
+        this.cookieService.deleteAll('/');
+        this.route.navigate(['complete', {userId, text: null, title: null }]);
+      });
     }
   }
 }
