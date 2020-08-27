@@ -79,7 +79,7 @@ export class LikertService {
         data['vet5'] === '(B) It means how perfectly does the visual in the video match with the sound.',
         data['vet6'] === '(3) An Apple',
       ];
-      return this.decideWhetherPassTest(conditions, 2);
+      return this.decideWhetherPassTest(conditions, 1);
     } else {
       return false;
     }
