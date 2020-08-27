@@ -258,6 +258,16 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.refreshPlayback();
   }
 
+  onCheckboxClick(event, key) {
+    if (this.configurations[key] === '3') {
+      this.configurations[key] = '0';
+    } else {
+      this.configurations[key] = '3';
+    }
+    this.videoConfig = Object.values(this.configurations).map(a => Number(a));
+    this.refreshPlayback();
+  }
+
   playPause() {
     if (this.videoIsPlaying) {
       this.audioElement.pause();
