@@ -209,8 +209,10 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   reassignVideoSrc() {
     const time = Date.now();
     const userID = this.cookieService.get('user_id');
-    this.videoSrc = this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
-    this.audioSrc = this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
+    this.videoSrc =
+      this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
+    this.audioSrc =
+      this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
     const videoTempTime = this.videoElement.currentTime;
     const audioTempTime = this.audioElement.currentTime;
     this.videoElement.src = this.videoSrc;
