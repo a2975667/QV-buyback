@@ -1,0 +1,86 @@
+{
+	"filename": "test",
+	"Title":"Buy Back Quiz",
+	"Description":"<p>This is the final task.</p> <p> Now that you have completed your purchase, while the engineers at the online streaming company get to work, please complete the following questions. Again, if you can answer four of the five questions correctly, you will be able to enter a lottery.<br><br> The lottery has a probability of 1 in 60 winning whatever is left from your purchase. <br> The greyed out configurations are what you bought from the previous page. Note that you can watch the video as many times as you wanted.",
+	"settings":{
+		"control_panel_can_change": false,
+		"control_panel_has_price":false,
+		"control_panel_freeze":true,
+		"showDemoConfig": false,
+		"showFullConfig": true,
+		"apply":true,
+		"normal":{
+			"title": "",
+			"pages": [{
+				"title": "Please answer following questions.",
+				"questions": [{
+					"type": "dropdown",
+					"name": "vid_buy_demo1",
+					"title": "Where would the highest severe threat be?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) Northern Mississippi",
+						"b) Alabama",
+						"c) New Orleans",
+						"d) New York City"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo2",
+					"title": "What is the big stripe of dark blue mentioned in the clip?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) Severe threat",
+						"b) Tornados",
+						"c) 6-9 inches of snow",
+						"d) 9-12 inches of snow"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo3",
+					"title": "What will the temperature be in Caribou",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) 10",
+						"b) 20",
+						"c) 40",
+						"d) 50"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo4",
+					"title": "What is the weather like in Seattle?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) Rain",
+						"b) Sunny",
+						"c) Cloudy",
+						"d) Snowy"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo5",
+					"title": "According to the clip, what is the correct temperature for Pierre",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) 15",
+						"b) 25",
+						"c) 35",
+						"d) 45"
+					]
+				}, {
+					"type": "text",
+					"name": "Textbox",
+					"title": "Do you think you bought the right elements? If so, why? If not, what would you have changed?",
+					"isRequired": true
+				}
+			]
+			}]
+		}
+	}
+  }

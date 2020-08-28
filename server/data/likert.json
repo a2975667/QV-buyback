@@ -44,8 +44,8 @@
 					"text": "Audio-Video Syncronization: Audio and Video are in sync"
 				}]
 			}, {
-				"type": "likert-text",
-				"name": "Textbox",
+				"type": "comment",
+				"name": "likert-text",
 				"title": "In a few sentences, why did you feel this way?",
 				"isRequired": true
 			}]
