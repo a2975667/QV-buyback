@@ -9,6 +9,8 @@
 server/audio*
 server/video*
 # server/public/*
+*.m4a
+*.webm
 
 # Only exists if Bazel was run
 /bazel-out

@@ -154,15 +154,43 @@ def decide_path(gp):
 		"file":"video_playground"
 	}
 
+	video_checkbox = {
+		"type":"video",
+		"file":"video_checkbox"
+	}
+
+	video_checkbox_with_price = {
+		"type":"video",
+		"file":"video_checkbox_with_price"
+	}
+
+	preference_survey = {
+		"type":"normal",
+		"file":"preference"
+	}
+
 	## 3 path
 	# p1 = [video_element]
 	# p1 = [background_info, video_demo, thank_complete]
 	# p1 = [background_info, thank_complete]
-	p1 = [video_playground, thank_complete]
 	#p1 = [video_element, element_test, video_demo, likert, thank_short]
-	p2 = [video_element, element_test, qv_example, qv_test, video_element, element_test, video_demo, qv_108, thank_complete]
+
+	p1 = [background_info, pilot_demo, video_playground, video_checkbox, video_checkbox_with_price, thank_complete]
+
+	p1 = [qv_108, likert, preference_survey]
+
+
+	p2 = [video_element, element_test, qv_example, qv_test, background_info, pilot_demo, video_playground, qv_108, likert, preference_survey, video_checkbox, video_checkbox_with_price, thank_complete]
+
+
+
+	p3 = [video_element, element_test, qv_example, qv_test, background_info, pilot_demo, video_playground, likert, qv_108, preference_survey, video_checkbox, video_checkbox_with_price, thank_complete]
+
+
+
+	# p2 = [video_element, element_test, qv_example, qv_test, background_info, video_element, element_test, video_demo, qv_108, thank_complete]
 	# p3 = [video_buyback_demo, video_buyback, video_actual, video_test, thank_complete]
-	p3 = [video_buyback_demo, video_buyback, video_actual, thank_complete_buyback]
+	# p3 = [video_buyback_demo, video_buyback, video_actual, thank_complete_buyback]
 
 
 	# objectify paths to variable names

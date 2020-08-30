@@ -1,14 +1,13 @@
 {
 	"filename": "test",
-	"Title":"Buy Back Quiz",
-	"Description":"<p>This is the final task.</p> <p> Now that you have completed your purchase, while the engineers at the online streaming company get to work, please complete the following questions. Again, if you can answer four of the five questions correctly, you will be able to enter a lottery.<br><br> The lottery has a probability of 1 in 60 winning whatever is left from your purchase. <br> The greyed out configurations are what you bought from the previous page. Note that you can watch the video as many times as you wanted.",
+	"Title":"Playground -- Experiment Various Settings",
+	"Description":"<p>According to research, all five video elements introduced earlier impact an individual's video-watching experience. Now, we would like you to test out the video streaming prototype again, but with the control panel below the video player.</p><br><p>The control panel gives you the ability to configure the five video elements to various quality levels. Selecting a higher level for a video element improves its quality. <b>Please move the sliders to different levels and experiment</b> on how different combinations of improvements to the five video elements impact how well you <b>understand</b> the video's content. We will be asking how you feel about these five video elements on the next page. You can change the control levels while the video is playing, and the prototype will immediately apply the new setting. Feel free to replay the video as many times as you want. </p><br><p>Please answer the questions below the video correctly <b>based on the video content and your experience with different quality levels</b>. You will be disqualified from this experiment if you answer more than one multiple-choice question incorrectly.</p><br>",
 	"settings":{
-		"control_panel_can_change": false,
+		"control_panel_can_change": true,
 		"control_panel_has_price":false,
-		"control_panel_freeze":true,
+		"control_panel_freeze":false,
 		"showDemoConfig": false,
 		"showFullConfig": true,
-		"apply":true,
 		"normal":{
 			"title": "",
 			"pages": [{
@@ -16,43 +15,7 @@
 				"questions": [{
 					"type": "dropdown",
 					"name": "vid_buy_demo1",
-					"title": "Where would the highest severe threat be?",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) Northern Mississippi",
-						"b) Alabama",
-						"c) New Orleans",
-						"d) New York City"
-					]
-				}, {
-					"type": "dropdown",
-					"name": "vid_buy_demo2",
-					"title": "What is the big stripe of dark blue mentioned in the clip?",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) Severe threat",
-						"b) Tornados",
-						"c) 6-9 inches of snow",
-						"d) 9-12 inches of snow"
-					]
-				}, {
-					"type": "dropdown",
-					"name": "vid_buy_demo3",
-					"title": "What will the temperature be in Caribou",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) 10",
-						"b) 20",
-						"c) 40",
-						"d) 50"
-					]
-				}, {
-					"type": "dropdown",
-					"name": "vid_buy_demo4",
-					"title": "What is the weather like in Seattle?",
+					"title": "What will the weather be like in San Francisco?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
@@ -63,20 +26,30 @@
 					]
 				}, {
 					"type": "dropdown",
-					"name": "vid_buy_demo5",
-					"title": "According to the clip, what is the correct temperature for Pierre",
+					"name": "vid_buy_demo2",
+					"title": "Which level of audio stability does the video need to be at to have no jittering in sound?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"a) 15",
-						"b) 25",
-						"c) 35",
-						"d) 45"
+						"a) Level 1",
+						"b) Level 4",
+						"c) Level 2",
+						"d) Level 3"
+					]
+				}, {
+					"type": "dropdown",
+					"name": "vid_buy_demo3",
+					"title": "Does having a better audio-video synchronization improve the degree of motion smoothness?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"a) Yes",
+						"b) No"
 					]
 				}, {
 					"type": "text",
-					"name": "Textbox",
-					"title": "Do you think you bought the right elements? If so, why? If not, what would you have changed?",
+					"name": "vid_buy_demo4",
+					"title": "Describe your experience with trying out different settings. Please be specific about your feelings towards varying levels of the five video elements.",
 					"isRequired": true
 				}
 			]
@@ -84,3 +57,5 @@
 		}
 	}
   }
+
+
