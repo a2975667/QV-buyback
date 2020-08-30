@@ -177,7 +177,7 @@ def decide_path(gp):
 
 	p1 = [background_info, pilot_demo, video_playground, video_checkbox, video_checkbox_with_price, thank_complete]
 
-	p1 = [qv_108, likert, preference_survey]
+	# p1 = [qv_108, likert, preference_survey]
 
 
 	p2 = [video_element, element_test, qv_example, qv_test, background_info, pilot_demo, video_playground, qv_108, likert, preference_survey, video_checkbox, video_checkbox_with_price, thank_complete]
