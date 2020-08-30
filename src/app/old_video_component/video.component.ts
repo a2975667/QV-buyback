@@ -300,8 +300,8 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         this.title = data.Title;
         this.showCost = data.settings.control_panel_has_price;
         this.showConfig = data.settings.control_panel_can_change;
-        this.showDemoConfig = data.settings.control_panel_can_change;
-        this.showFullConfig = data.settings.control_panel_can_change;
+        this.showDemoConfig = data.settings.showDemoConfig;
+        this.showFullConfig = data.settings.showFullConfig;
         const time = Date.now().toString();
         this.videoSrc =
           this.videoFilePrefix + this.formJson['filename'] + '-vq' +

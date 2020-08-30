@@ -29,12 +29,14 @@
     </div>
 
    <p></p>
-    <div >
+    <div>
+	<h2 *ngIf="this.showFullConfig"> Configuration </h2>
+	<h2 *ngIf="this.showDemoConfig"> Configuration </h2>
 		<br>
 		<br>
-
         <div class="row" *ngIf="this.showPanel">
-		    <h2> Configuration </h2>
+
+			<br>
             <div class="col-sm wrap-content">
                 <table class="table">
                     <thead>
@@ -45,19 +47,19 @@
                       </tr>
                     </thead>
                     <tbody>
-						<ng-container *ngIf="showDemoConfig">
-                        <tr style="height: 100px;"*ngFor="let k of objectKeys(configurations)">
-                            <th colspan="1" scope="row">{{k}}</th>
-                            <td colspan="1">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" (click)="onCheckboxClick($event, k)">
-                                </div>
-                            </td>
-                        </tr>
+						<ng-container *ngIf="this.showDemoConfig">
+							<tr style="height: 100px;"*ngFor="let k of objectKeys(configurations)">
+								<th colspan="1" scope="row">{{k}}</th>
+								<td colspan="1">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" (click)="onCheckboxClick($event, k)">
+									</div>
+								</td>
+							</tr>
 						</ng-container>
 
 
-						<ng-container *ngIf="showDemoConfig">
+						<ng-container *ngIf="this.showFullConfig">
 						<tr style="height: 100px;"*ngFor="let k of objectKeys(configurations)">
                             <th colspan="1" scope="row">{{k}}</th>
 							<td colspan="1">
