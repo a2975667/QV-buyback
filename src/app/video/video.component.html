@@ -41,20 +41,35 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">Configuration Name</th>
-                        <th scope="col" colspan=5>Enhancement</th>
-                        <th *ngIf="showCost" scope="col" colspan=3>Cost</th>
+                        <th scope="col" colspan="1">Configuration Name</th>
+                        <th scope="col" colspan="1">Enhancement</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Your Price</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Why you price this way?</th>
+                        <th *ngIf="showCost" scope="col" colspan="1">Cost</th>
                       </tr>
                     </thead>
                     <tbody>
 						<ng-container *ngIf="this.showDemoConfig">
 							<tr style="height: 100px;"*ngFor="let k of objectKeys(configurations)">
-								<th colspan="1" scope="row">{{k}}</th>
-								<td colspan="1">
+								<td colspan="1" scope="row">{{k}}</td>
+								<td colspan="1" scope="row">
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" (click)="onCheckboxClick($event, k)">
+                                        <input
+                                            [disabled]="formJson['settings']['apply']"
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            [checked]="fetchCheckBoxStatus(k)" (click)="onCheckboxClick($event, k)">
 									</div>
-								</td>
+                                </td>
+                                <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
+                                    <ng5-slider
+                                        [(value)]="priceArray[k]"
+                                        [options]="priceSliderOptions"
+                                        (userChange)="onRadioCheck()"></ng5-slider>
+                                </td>
+                                <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
+                                    <input class="form-control"/>
+                                </td>
 							</tr>
 						</ng-container>
 

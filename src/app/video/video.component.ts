@@ -80,12 +80,29 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
       { value: 3, legend: 'Lv. 3' }
     ]
   };
+
+  priceSliderOptions: Options = {
+    showTicksValues: false,
+    animate: false,
+    floor: 0,
+    ceil: 4,
+    step: 0.01
+  };
+
   saveApply = {
     save: false,
     apply: false,
   };
+
+  priceArray = {
+    'Audio Quality': 0,
+    'Video Resolution': 0,
+    'Audio Stability': 0,
+    'Motion Smoothness': 0,
+    'Audio-Video Synchronization': 0,
+  };
   counter = 0;
-  completeFunc: Function;
+  completeFunc: () => boolean;
   requestUrl: string = environment.apiUrl;
   showPanel: boolean;
   constructor(
@@ -191,7 +208,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.unsubscribeSurvices();
     this.reassignVideoSrc();
     this.syncAudioWithVideo();
-    this.videoElement.addEventListener('loadeddata', function () {
+    this.videoElement.addEventListener('loadeddata', function() {
       if (that.counter !== 0) {
         that.videoElement.play();
         that.audioElement.play();
@@ -212,9 +229,10 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     const time = Date.now();
     const userID = this.cookieService.get('user_id');
     this.videoSrc =
-      this.videoFilePrefix + this.formJson['filename'] + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
+      this.videoFilePrefix +
+      this.formJson.filename + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
     this.audioSrc =
-      this.audioFilePrefix + this.formJson['filename'] + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
+      this.audioFilePrefix + this.formJson.filename + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
     const videoTempTime = this.videoElement.currentTime;
     const audioTempTime = this.audioElement.currentTime;
     this.videoElement.src = this.videoSrc;
@@ -234,7 +252,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   updateCanvas() {
     this.canvasElement = this.canvas.nativeElement;
-    const ctx = this.canvasElement.getContext("2d");
+    const ctx = this.canvasElement.getContext('2d');
     if (!this.videoIsJittering) {
       ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
     }
@@ -286,12 +304,12 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.vService.requestForm();
     this.vService.videoForm.subscribe((data: Video) => {
       if (data) {
-        console.log(data)
+        console.log(data);
         this.formJson = data;
         this.survey = {
           questions: data.settings.normal,
           showNav: false,
-        }
+        };
         this.saveApply = {
           save: data.settings.save,
           apply: data.settings.apply,
@@ -315,10 +333,10 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         this.showFullConfig = data.settings.showFullConfig;
         const time = Date.now().toString();
         this.videoSrc =
-          this.videoFilePrefix + this.formJson['filename'] + '-vq' +
+          this.videoFilePrefix + this.formJson.filename + '-vq' +
           this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
         this.audioSrc =
-          this.audioFilePrefix + this.formJson['filename'] + '-av' +
+          this.audioFilePrefix + this.formJson.filename + '-av' +
           this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
@@ -326,6 +344,11 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         this.refreshPlayback();
       }
     });
+  }
+
+  fetchCheckBoxStatus(key) {
+    console.log(key, this.configurations[key]);
+    return +this.configurations[key] > 0;
   }
 
   decidePath() {
@@ -395,7 +418,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         'Lax'
         );
     }
-    this.vService.submit({ videoConfig: this.videoConfig, counter: this.counter, data }).subscribe(
+    this.vService.submit({ videoConfig: this.videoConfig, counter: this.counter, data   }).subscribe(
       result => {
         this.decidePath();
       }
@@ -405,7 +428,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   // implementation based on https://stackoverflow.com/questions/38710125/how-do-i-display-a-video-using-html5-canvas-tag
   drawPayIcon() {
     this.canvasElement = this.canvas.nativeElement;
-    const ctx = this.canvasElement.getContext("2d");
+    const ctx = this.canvasElement.getContext('2d');
     const canvas = this.canvasElement;
     ctx.fillStyle = 'black';  // darken display
     ctx.globalAlpha = 0.5;
