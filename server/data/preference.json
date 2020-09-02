@@ -1,54 +1,76 @@
 {
 	"html": false,
 	"survey": {
-		"title": "How should video elements be prioritized under network constraints?",
+		"title": "Streaming Consumption Preference Survey",
 		"pages": [{
-			"title": "Researchers of the video streaming company would like to hear your opinions. <b>To what degree do you care about each video element for the purpose of understanding the video given limited bandwidth on a flight.</b> Please express your opinion for each of the five elements below.",
+			"title": "Please answer following questions.",
 			"questions": [{
-				"type": "matrix",
-				"name": "video_likert",
-				"isAllRowRequired": true,
-				"title": "Features",
-				"columns": [{
-					"value": 1,
-					"text": "Very Unimportant"
-				}, {
-					"value": 2,
-					"text": "Unimportant"
-				}, {
-					"value": 3,
-					"text": "Neutral"
-				}, {
-					"value": 4,
-					"text": "Important"
-				}, {
-					"value": 5,
-					"text": "Very important"
-				}],
-				"rows": [{
-					"value": "audio_quality",
+					"type": "dropdown",
+					"name": "car_ownership",
+					"title": "Do you own a car?",
 					"isRequired": true,
-					"text": "Audio Quality: The sound of the audio is clear and not muffled"
-				}, {
-					"value": "video_resolution",
+					"colCount": 0,
+					"choices": [
+						"(a) Yes",
+						"(b) No"
+					]
+				},
+				{
+					"type": "dropdown",
+					"name": "video_stream",
+					"title": "Which video streaming service do you use most often",
 					"isRequired": true,
-					"text": "Video Resolution: The image of the video is clear and not pixelated"
-				}, {
-					"value": "audio_stability",
-					"text": "Audio Stability: The audio is smooth and and does not stutter"
-				}, {
-					"value": "video_smoothness",
-					"text": "Motion Smoothness: The video visuals plays smoothly and does not jitter"
-				}, {
-					"value": "sync",
-					"text": "Audio-Video Syncronization: Audio and Video are in sync"
-				}]
-			}, {
-				"type": "comment",
-				"name": "likert-text",
-				"title": "In a few sentences, why did you feel this way?",
-				"isRequired": true
-			}]
+					"colCount": 0,
+					"choices": [
+						"(a) Netflix",
+						"(b) HBO Now",
+						"(c) Youtube",
+						"(d) Hulu",
+						"(e) I don't use any video steaming services",
+						"(f) Prefer not to disclose"
+					],
+					"hasOther": true
+				},
+				{
+					"type": "dropdown",
+					"name": "netflix_price",
+					"title": "If you were to use Netflix for video streaming, which of the following three subscription plans would you choose?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(a) $8.99/month: Stream with the standard definition on one device",
+						"(b) $12.99/month: Stream with high definition on two devices",
+						"(c) $15.99/month: Stream with 4K ultra HD on four devices",
+						"(d) I do not know what Netflix is"
+					]
+				},
+				{
+					"type": "dropdown",
+					"name": "siriusxm_price",
+					"title": "If you were to use SiriusXM for radio in a car, which of the following three subscription plans would you choose?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(a) $10.99/month: A sampling of music, news, and talk channels",
+						"(b) $16.99/month: Get ad-free music, plus sports, news, talk, entertainment, SiriusXM video, and more, anywhere you want",
+						"(c) $21.99/month: Enjoy the widest variety of entertainment, anytime, anywhere you want to hear it",
+						"(d) I do not know what SiriusXM is"
+					]
+				},
+				{
+					"type": "dropdown",
+					"name": "amc_movie_price",
+					"title": "If you were to watch a movie at AMC, and the standard version, 3D version, and iMAX version are all available. Which one would you choose?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(a) $13.69, standard definition",
+						"(b) $17.69, 3D version",
+						"(c) $19.69, iMAX version",
+						"(d) I do not know what these movies stands for"
+					]
+				}
+			]
 		}]
 	}
 }
