@@ -30,8 +30,8 @@
 
    <p></p>
     <div>
-	<h2 *ngIf="this.showFullConfig"> Configuration </h2>
-	<h2 *ngIf="this.showDemoConfig"> Configuration </h2>
+	<h2 *ngIf="this.showFullConfig"> <hr style="height:30pt; visibility:hidden;" /> Configuration </h2>
+	<h2 *ngIf="this.showDemoConfig"> <hr style="height:30pt; visibility:hidden;" /> Configuration </h2>
 		<br>
 		<br>
         <div class="row" *ngIf="this.showPanel">
@@ -44,7 +44,7 @@
                         <th scope="col" colspan="1">Configuration Name</th>
                         <th scope="col" colspan="1">Enhancement</th>
                         <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Your Price</th>
-                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Why you price this way?</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Why did you price this way?</th>
                         <th *ngIf="showCost" scope="col" colspan="1">Cost</th>
                       </tr>
                     </thead>
