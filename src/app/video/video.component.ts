@@ -278,15 +278,24 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.refreshPlayback();
   }
 
-  onCheckboxClick(event, key) {
-    if (this.configurations[key] === '3') {
-      this.configurations[key] = '0';
-    } else {
-      this.configurations[key] = '3';
+    onCheckboxClick(event, key) {
+        const table = {
+            'Audio Quality': [0, 3],
+            'Video Resolution': [0, 1],
+            'Audio Stability': [0, 2],
+            'Motion Smoothness': [0, 1],
+            'Audio-Video Synchronization': [0, 1],
+        }
+
+        if (this.configurations[key] === table[key][1]) {
+            this.configurations[key] = table[key][0];
+        } else {
+            this.configurations[key] = table[key][1];
+        }
+
+        this.videoConfig = Object.values(this.configurations).map(a => Number(a));
+        this.refreshPlayback();
     }
-    this.videoConfig = Object.values(this.configurations).map(a => Number(a));
-    this.refreshPlayback();
-  }
 
   playPause() {
     if (this.videoIsPlaying) {
