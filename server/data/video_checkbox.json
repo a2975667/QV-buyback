@@ -1,56 +1,14 @@
 {
 	"filename":"test",
 	"Title":"Task -- Help Us Design a Product",
-	"Description":"<p>As mentioned previously, Speedy Stream aims to offer an online video streaming service for cars via satellite internet, which works even in locations without mobile network. The satellite internet is currently expensive and has limited bandwidth. The company's goal is to offer <b>an affordable product</b> while meeting the needs of our customers. Based on our market research, many customers stated their need to <b>understand weather forecast videos</b>.</p> <p> Please help us design <b>a minimum-viable product</b> for a group of our customers. <b>These customers are similar to you</b>, based on the streaming consumption preference survey and demographic information. As the first step, we ask you to configure the quality levels of the product so that it is <b>just enough</b> for them to understand the weather forecast videos.</p> <p> On this page, you are given a video with the default settings. For each of the five video elements, <b>you decide whether you would like to enhance the video element's quality</b>. You can see how the video quality changes as you check or uncheck the \"Enhance\" box. The quality assurance team has designed three multiple-choice questions below to help you make these decisions. Your goal is to make sure that the finished product enables customers like you to answer the questions listed beneath the video after watching the weather forecast. Answer the questions to help make these decisions.</p> <p>Click \"Submit\" after you have finished your design.</p>",
+	"Description":"</p>As mentioned previously, Speedy Stream offers an online video streaming service for cars via satellite internet, which works even in locations without mobile networks. Satellite internet is currently expensive and has limited bandwidth. The company's goal is to offer an affordable product while meeting the needs of our customers. Based on our market research, many customers stated their need to understand weather forecast videos.<p><p>Based on the streaming consumption preference survey and demographic information, the system has identified a group of customers that are similar to you. Your task is to help us design a budget-friendly product for these customers. There are two steps to complete this task. The first step is to identify what is needed. And the second step is to figure out a price for this product. On this page, we will complete the first step.</p><p>Again, our goal is to ensure that the customers understand the content of the weather forecast video. We ask you to decide if the five video elements' current implementation is enough or that the elements require an additional enhancement to meet our goal. You can see how the video quality changes as you check or uncheck the \"Enhance\" box.</p><p>To help you make your decision and test out customers like you understand the video, our quality assurance team designed three multiple-choice questions. These questions are the following:<br>(1) Where in the states would there be several feet of snowfall in the next 36 to 48 hours?<br>(2) What is the temperature in South Texas?<br>(3) What is the west coast city NOT shown on the map?<br></p><p>Click \"Submit\" after you have finished your design.</p>",
 	"settings":{
 		"control_panel_can_change": true,
 		"control_panel_has_price":false,
 		"control_panel_freeze":false,
 		"showDemoConfig":true,
 		"showFullConfig": false,
-		"save": true,
-		"normal":{
-			"title": "",
-			"pages": [{
-				"title": "Please answer following questions.",
-				"questions": [{
-					"type": "dropdown",
-					"name": "vid_buy_demo1",
-					"title": "Where in the states would there be several feet of snowfall in the next 36 to 48 hours?",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) Rain",
-						"b) Sunny",
-						"c) Cloudy",
-						"d) Snowy"
-					]
-				}, {
-					"type": "dropdown",
-					"name": "vid_buy_demo2",
-					"title": "What is the temperature in South Texas?",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) Level 1",
-						"b) Level 4",
-						"c) Level 2",
-						"d) Level 3"
-					]
-				}, {
-					"type": "dropdown",
-					"name": "vid_buy_demo3",
-					"title": "What is the west coast city NOT shown on the map?",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) Yes",
-						"b) No"
-					]
-				}
-			]
-			}]
-		}
+		"save": true
 	}
   }
 

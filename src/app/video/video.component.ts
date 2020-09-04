@@ -313,7 +313,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.vService.requestForm();
     this.vService.videoForm.subscribe((data: Video) => {
       if (data) {
-        console.log(data);
+        // console.log(data);
         this.formJson = data;
         this.survey = {
           questions: data.settings.normal,
@@ -356,7 +356,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   fetchCheckBoxStatus(key) {
-    console.log(key, this.configurations[key]);
+    // console.log(key, this.configurations[key]);
     return +this.configurations[key] > 0;
   }
 

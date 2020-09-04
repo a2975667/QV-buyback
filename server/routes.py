@@ -17,7 +17,7 @@ from bson.objectid import ObjectId
 
 @app.route('/welcome/<string:gp>')
 def root(gp):
-	print("I'm here")
+	print("Welcome")
 	return app.send_static_file('index.html')
 
 
@@ -35,7 +35,7 @@ def welcome():
 	""" Once the user decides to move on, create a user and nsave to database.
 	return database object id as user id, flow.
 	"""
-
+	print("Welcome")
 	gp = request.json["gp"]
 
 	user = {
