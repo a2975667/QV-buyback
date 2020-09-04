@@ -32,6 +32,7 @@ export class WelcomeComponent implements OnInit {
     if (this.cookieService.check('user_id')) {
       const pathIndex = Number(this.cookieService.get('user_current_path_index'));
       const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
+      console.log(pathArray);
       const type: string = pathArray[pathIndex]['type'];
       if (type === 'normal') {
         this.router.navigate(['likert']);

@@ -42,7 +42,7 @@
                     <thead>
                       <tr>
                         <th scope="col" colspan="1">Configuration Name</th>
-                        <th scope="col" colspan="1">Enhancement</th>
+                        <th scope="col" colspan="1">No Enhancement/Enhancement</th>
                         <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Your Price</th>
                         <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Why did you price this way?</th>
                         <th *ngIf="showCost" scope="col" colspan="1">Cost</th>
@@ -64,8 +64,7 @@
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
                                     <ng5-slider
                                         [(value)]="priceArray[k]"
-                                        [options]="priceSliderOptions"
-                                        (userChange)="onRadioCheck()"></ng5-slider>
+                                        [options]="priceSliderOptions"></ng5-slider>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
                                     <input class="form-control"/>
@@ -94,7 +93,7 @@
                             <td colspan="7">
                             </td>
                             <td>
-                                Total: ${{sumUpCost(videoConfig)*2}}
+                                Total: ${{sumUpCost(priceArray)}}
                             </td>
                         </tr>
                     </tbody>

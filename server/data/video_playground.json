@@ -1,5 +1,5 @@
 {
-	"filename": "test",
+	"filename": "demo",
 	"Title":"Playground -- Experiment Various Settings",
 	"Description":"<p>According to research, all five video elements introduced earlier impact an individual's video-watching experience. Now, we would like you to test out the video streaming prototype again, but with the control panel below the video player.</p><br><p>The control panel gives you the ability to configure the five video elements to various quality levels. Selecting a higher level for a video element improves its quality. <b>Please move the sliders to different levels and experiment</b> on how different combinations of improvements to the five video elements impact how well you <b>understand</b> the video's content. We will be asking how you feel about these five video elements on the next page. You can change the control levels while the video is playing, and the prototype will immediately apply the new setting. Feel free to replay the video as many times as you want. </p><br><p>Please answer the questions below the video correctly <b>based on the video content and your experience with different quality levels</b>. You will be disqualified from this experiment if you answer more than one multiple-choice question incorrectly.</p><br>",
 	"settings":{
