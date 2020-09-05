@@ -112,8 +112,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     private route: Router,
   ) { }
 
-  sumUpCost = (arr) => arr.reduce((a, b) => a + b);
-
+  sumUpCost: (any) => number = (arr) => Number(Object.values(arr).reduce((a, b) => (Number(a) + Number(b))));
   getSurvey(survey: Survey.Model) {
     this.completeFunc = survey.completeLastPage.bind(survey);
   }
@@ -202,6 +201,14 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  renderTableTitle(num?) {
+    if (this.saveApply.save || this.saveApply.apply) {
+      return `Quality ${num}`;
+    } else {
+      return 'Levels of configuration';
+    }
+  }
+
   refreshPlayback() {
     const that = this;
     this.videoIsPlaying = true;
@@ -278,24 +285,22 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.refreshPlayback();
   }
 
-    onCheckboxClick(event, key) {
-        const table = {
-            'Audio Quality': [0, 3],
-            'Video Resolution': [0, 1],
-            'Audio Stability': [0, 2],
-            'Motion Smoothness': [0, 1],
-            'Audio-Video Synchronization': [0, 1],
-        }
-
-        if (this.configurations[key] === table[key][1]) {
-            this.configurations[key] = table[key][0];
-        } else {
-            this.configurations[key] = table[key][1];
-        }
-
-        this.videoConfig = Object.values(this.configurations).map(a => Number(a));
-        this.refreshPlayback();
-    }
+  onCheckboxClick(value, key) {
+      const table = {
+          'Audio Quality': [0, 3],
+          'Video Resolution': [0, 1],
+          'Audio Stability': [0, 2],
+          'Motion Smoothness': [0, 1],
+          'Audio-Video Synchronization': [0, 1],
+      };
+      if (value) {
+          this.configurations[key] = table[key][0];
+      } else {
+          this.configurations[key] = table[key][1];
+      }
+      this.videoConfig = Object.values(this.configurations).map(a => Number(a));
+      this.refreshPlayback();
+  }
 
   playPause() {
     if (this.videoIsPlaying) {
@@ -323,8 +328,10 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
           save: data.settings.save,
           apply: data.settings.apply,
         };
+        console.log(this.saveApply)
         if (this.saveApply.apply) {
           this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
+          console.log(this.videoConfig)
           this.configurations = {
             'Audio Quality': this.videoConfig[0],
             'Video Resolution': this.videoConfig[1],
