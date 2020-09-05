@@ -42,7 +42,9 @@
                     <thead>
                       <tr>
                         <th scope="col" colspan="1">Configuration Name</th>
-                        <th scope="col" colspan="1">No Enhancement/Enhancement</th>
+                        <th *ngIf="!(saveApply.save || saveApply.apply)" scope="col" colspan="1">{{renderTableTitle()}}</th>
+                        <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1">{{renderTableTitle(1)}}</th>
+                        <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1">{{renderTableTitle(2)}}</th>
                         <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Your Price</th>
                         <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Why did you price this way?</th>
                         <th *ngIf="showCost" scope="col" colspan="1">Cost</th>
@@ -52,23 +54,43 @@
 						<ng-container *ngIf="this.showDemoConfig">
 							<tr style="height: 100px;"*ngFor="let k of objectKeys(configurations)">
 								<td colspan="1" scope="row">{{k}}</td>
-								<td colspan="1" scope="row">
-									<div class="form-check">
-                                        <input
-                                            [disabled]="formJson['settings']['apply']"
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            [checked]="fetchCheckBoxStatus(k)" (click)="onCheckboxClick($event, k)">
-									</div>
+								<td colspan="1" scope="row" *ngIf="saveApply.save || saveApply.apply">
+                                        <div class="radio">
+                                            <input [disabled]="saveApply.apply" (click)="onCheckboxClick(true, k)" type="radio" [name]="k" [checked]="!fetchCheckBoxStatus(k)">
+                                        </div>
+                                </td>
+                                <td colspan="1" *ngIf="saveApply.save || saveApply.apply">
+                                    <div class="radio">
+                                        <input type="radio" [disabled]="saveApply.apply" [name]="k" (click)="onCheckboxClick(false, k)"  [checked]="fetchCheckBoxStatus(k)">
+                                    </div>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
                                     <ng5-slider
                                         [(value)]="priceArray[k]"
-                                        [options]="priceSliderOptions"></ng5-slider>
+                                        [options]="priceSliderOptions">
+                                    </ng5-slider>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <input class="form-control"/>
+                                    <input [(ngModel)]="priceArray[k]" class="form-control" required/>
+
                                 </td>
+                                <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
+                                    <input class="form-control" required/>
+                                </td>
+                            </tr>
+                            <tr style="height: 100px;" *ngIf="saveApply.apply">
+								<td colspan="1" scope="row"></td>
+								<td colspan="1" scope="row"></td>
+								<td colspan="1" scope="row"></td>
+								<td colspan="1" scope="row">Total Cost ${{sumUpCost(priceArray) | number}}</td>
+								<td colspan="1" scope="row"></td>
+                            </tr>
+                            <tr style="height: 100px;" *ngIf="saveApply.apply">
+								<td colspan="1" scope="row"></td>
+								<td colspan="1" scope="row"></td>
+								<td colspan="1" scope="row"></td>
+								<td colspan="1" scope="row">Your Commission ${{0.1 * sumUpCost(priceArray) | number}}</td>
+								<td colspan="1" scope="row"></td>
 							</tr>
 						</ng-container>
 
