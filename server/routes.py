@@ -184,6 +184,16 @@ def submit_video_setting():
 	db[source].insert_one(insert_data)
 	return jsonify({'ok': True}), 200
 
+@app.route('/submit-design', methods=['POST'])
+def submit_design():
+	"""submit video design"""
+
+	print(request.json)
+	insert_data = request.json
+	insert_data['time'] = datetime.utcnow()
+	db.design.insert_one(insert_data)
+	return jsonify({'ok': True}), 200
+
 # qv
 @app.route('/api/qv/<string:file_name>')
 def show_subpath(file_name):
