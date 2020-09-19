@@ -105,6 +105,8 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   completeFunc: () => boolean;
   requestUrl: string = environment.apiUrl;
   showPanel: boolean;
+
+  currentVideoRequestId: number;
   constructor(
     private http: HttpClient,
     private vService: VideoService,
@@ -216,6 +218,9 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.reassignVideoSrc();
     this.syncAudioWithVideo();
     this.videoElement.addEventListener('loadeddata', function() {
+      if (that.currentVideoRequestId) {
+        cancelAnimationFrame(that.currentVideoRequestId);
+      }
       if (that.counter !== 0) {
         that.videoElement.play();
         that.audioElement.play();
@@ -226,7 +231,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         ctx.canvas.width / this.videoWidth,
         ctx.canvas.height / this.videoHeight);
       that.videoContainer.ready = true;
-      requestAnimationFrame(that.updateCanvas.bind(that));
+      that.currentVideoRequestId = requestAnimationFrame(that.updateCanvas.bind(that));
     }, false);
     this.jitterAudio(Number(this.configurations['Audio Stability']));
     this.jitterVideo(Number(this.configurations['Motion Smoothness']));
@@ -237,9 +242,9 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     const userID = this.cookieService.get('user_id');
     this.videoSrc =
       this.videoFilePrefix +
-      this.formJson.filename + '-vq' + this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
+      this.formJson.filename + '-vq' + this.configurations['Video Resolution'] + '.webm';
     this.audioSrc =
-      this.audioFilePrefix + this.formJson.filename + '-aq' + this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
+      this.audioFilePrefix + this.formJson.filename + '-aq' + this.configurations['Audio Quality'] + '.m4a';
     const videoTempTime = this.videoElement.currentTime;
     const audioTempTime = this.audioElement.currentTime;
     this.videoElement.src = this.videoSrc;
@@ -277,7 +282,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       }
     }
-    requestAnimationFrame(this.updateCanvas.bind(this));
+    this.currentVideoRequestId = requestAnimationFrame(this.updateCanvas.bind(this));
   }
 
   onRadioCheck() {
@@ -350,10 +355,10 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         const time = Date.now().toString();
         this.videoSrc =
           this.videoFilePrefix + this.formJson.filename + '-vq' +
-          this.configurations['Video Resolution'] + '.webm?t=' + time + '&userId=' + userID;
+          this.configurations['Video Resolution'] + '.webm';
         this.audioSrc =
           this.audioFilePrefix + this.formJson.filename + '-av' +
-          this.configurations['Audio Quality'] + '.m4a?t=' + time + '&userId=' + userID;
+          this.configurations['Audio Quality'] + '.m4a';
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
         this.showPanel =  data.settings.control_panel_can_change;
