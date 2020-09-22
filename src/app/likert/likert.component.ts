@@ -13,6 +13,8 @@ export class LikertComponent implements OnInit {
   json: any = {questions: null};
   html: object | boolean = false;
   requestUrl: string = environment.apiUrl;
+  check = false;
+  errorMessage: string;
   constructor(
     private liService: LikertService,
     private route: Router,
@@ -62,16 +64,20 @@ export class LikertComponent implements OnInit {
   }
 
   submit(data, e?) {
-    if (e) {
-      e.target.disabled = true;
-    }
-    const pathIndex = Number(this.cookieService.get('user_current_path_index'));
-    const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
-    const userId = this.cookieService.get('user_id');
-    this.liService.submit({...data, userId, jsonFile: pathArray[pathIndex]}).subscribe(
-      result => {
-        this.decidePath();
+    if (this.check) {
+      if (e) {
+        e.target.disabled = true;
       }
-    );
+      const pathIndex = Number(this.cookieService.get('user_current_path_index'));
+      const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
+      const userId = this.cookieService.get('user_id');
+      this.liService.submit({...data, userId, jsonFile: pathArray[pathIndex]}).subscribe(
+        result => {
+          this.decidePath();
+        }
+      );
+    } else {
+      this.errorMessage = 'Please tick above checkbox to continue';
+    }
   }
 }

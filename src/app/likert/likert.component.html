@@ -4,7 +4,12 @@
 <app-survey *ngIf="json.questions && !html" [json]="json" (resultEmit)="submit($event)"></app-survey>
 <div *ngIf="html" class="container">
     <div [innerHTML]="html"></div>
+    <div class="form-check">
+        <input [(ngModel)]="check" type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">I have read all the instructions above.</label>
+    </div>    
     <button (click)="submit(null, $event)" type="submit" class="mr-2 btn btn-success">
         Submit
     </button>
+    <span *ngIf="errorMessage">{{errorMessage}}</span>
 </div>
