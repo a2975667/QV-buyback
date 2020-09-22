@@ -45,7 +45,7 @@
                         <th *ngIf="!(saveApply.save || saveApply.apply)" scope="col" colspan="1">{{renderTableTitle()}}</th>
                         <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1">{{renderTableTitle(1)}}</th>
                         <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1">{{renderTableTitle(2)}}</th>
-                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Your Price</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Price</th>
                         <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Why did you price this way?</th>
                         <th *ngIf="showCost" scope="col" colspan="1">Cost</th>
                       </tr>
@@ -65,17 +65,10 @@
                                     </div>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <ng5-slider
-                                        [(value)]="priceArray[k]"
-                                        [options]="priceSliderOptions">
-                                    </ng5-slider>
+                                    <input type="number" [(ngModel)]="priceArray[k]" class="form-control" required/>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <input [(ngModel)]="priceArray[k]" class="form-control" required/>
-
-                                </td>
-                                <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <input class="form-control" required/>
+                                    <textarea class="form-control" required></textarea>
                                 </td>
                             </tr>
                             <tr style="height: 100px;" *ngIf="saveApply.apply">

@@ -465,4 +465,13 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     ctx.fill();
     ctx.globalAlpha = 1; // restore alpha
   }
+
+  priceArrayChange(priceIndex: number, price: string) {
+    const numPrice = Number(price);
+    if (isNaN(numPrice)) {
+      this.priceArray[priceIndex] = 0;
+    } else if (numPrice < 0) {
+      this.priceArray[priceIndex] = 0;
+    }
+  }
 }
