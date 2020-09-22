@@ -14,7 +14,7 @@ export class SummaryComponent implements OnInit {
   totalCredits: number;
   percentage = 0;
   type: string;
-  submitForm = new FormControl('', [Validators.required, Validators.minLength(1)]);
+  submitForm = new FormControl('', [Validators.required, Validators.minLength(20)]);
   @ViewChild('confirmSubmit', {static: true}) confirmSubmitSwal: SwalComponent;
   @ViewChild('submitSuccess', {static: true}) submitSuccessSwal: SwalComponent;
   constructor(

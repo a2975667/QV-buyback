@@ -1,7 +1,7 @@
-<div *ngIf="!json.survey">
+<div *ngIf="!json.survey && !html">
 	<app-survey *ngIf="json.questions" [json]="json" (resultEmit)="submit($event)"></app-survey>
 </div>
-<app-survey *ngIf="json.questions" [json]="json" (resultEmit)="submit($event)"></app-survey>
+<app-survey *ngIf="json.questions && !html" [json]="json" (resultEmit)="submit($event)"></app-survey>
 <div *ngIf="html" class="container">
     <div [innerHTML]="html"></div>
     <button (click)="submit(null, $event)" type="submit" class="mr-2 btn btn-success">
