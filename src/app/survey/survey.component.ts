@@ -10,14 +10,14 @@ interface jsonInput {
   styleUrls: ['./survey.component.scss']
 })
 export class SurveyComponent implements OnInit {
-
+  @Output() resultEmit: EventEmitter<any> = new EventEmitter();
+  @Output() suveyModel: EventEmitter<Survey.Model> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
-  @Output() resultEmit: EventEmitter<any> = new EventEmitter();
-  @Output() suveyModel: EventEmitter<Survey.Model> = new EventEmitter();
+
 
   @Input()
   set json(value: jsonInput) {

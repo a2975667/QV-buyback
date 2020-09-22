@@ -23,7 +23,7 @@
         [formControl]="submitForm"
         autofocus
     ></textarea>
-    <label *ngIf="submitForm.invalid" [ngClass] = "'error'" > Your response required with min 1 character. </label>
+    <label *ngIf="submitForm.invalid" [ngClass] = "'error'" > Your response required with min 20 character. </label>
     <br/>
     <button
     (click)="submitFinalForm()"
