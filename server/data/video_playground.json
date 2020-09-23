@@ -11,47 +11,35 @@
 		"normal":{
 			"title": "",
 			"pages": [{
-				"title": "Please answer following questions.",
+				"title": "Please read the following questions carefully and answer them.",
 				"questions": [{
-					"type": "dropdown",
-					"name": "vid_buy_demo1",
-					"title": "What will the weather be like in San Francisco?",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) Rain",
-						"b) Sunny",
-						"c) Cloudy",
-						"d) Snowy"
-					]
+					"type": "comment",
+					"name": "aq-text",
+					"title": "In a few sentences, what were the impacts of the audio quality toggles? How does that impact your experience?",
+					"isRequired": true
 				}, {
-					"type": "dropdown",
-					"name": "vid_buy_demo2",
-					"title": "Which level of audio stability does the video need to be at to have no jittering in sound?",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) Level 1",
-						"b) Level 4",
-						"c) Level 2",
-						"d) Level 3"
-					]
-				}, {
-					"type": "dropdown",
-					"name": "vid_buy_demo3",
-					"title": "Does having a better audio-video synchronization improve the degree of motion smoothness?",
-					"isRequired": true,
-					"colCount": 0,
-					"choices": [
-						"a) Yes",
-						"b) No"
-					]
-				}, {
-					"type": "text",
-					"name": "vid_buy_demo4",
-					"title": "Describe your experience with trying out different settings. Please be specific about your feelings towards varying levels of the five video elements.",
+					"type": "comment",
+					"name": "vq-text",
+					"title": "In a few sentences, what were the impacts of the video resolution toggles? How does that impact your experience?",
+					"isRequired": true
+				},
+				{
+					"type": "comment",
+					"name": "as-text",
+					"title": "In a few sentences, what were the impacts of the audio stability toggles? How does that impact your experience?",
+					"isRequired": true
+				},{
+					"type": "comment",
+					"name": "vs-text",
+					"title": "In a few sentences, what were the impacts of the motion smoothness toggles? How does that impact your experience?",
+					"isRequired": true
+				},{
+					"type": "comment",
+					"name": "avs-text",
+					"title": "In a few sentences, what were the impacts of the audio-video synchronization toggles? How does that impact your experience?",
 					"isRequired": true
 				}
+
 			]
 			}]
 		}

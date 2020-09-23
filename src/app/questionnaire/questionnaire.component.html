@@ -17,9 +17,12 @@
 <div class="container">
 	<br>
 	<h1>{{questionTitle}}</h1>
-	<video *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'" controls><source src="/api/video/qv.webm"></video>
 
-	<h4 *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'">Please watch the video above and play around with the interface below. Once you are ready, click submit and answer a few questions to check your understanding of what QV is. <br></h4>
+	<h4 *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'">Please watch the video below and play with the QV interface below the video. Once you are ready, click submit and answer a few questions regarding the video and your understanding of what QV is. <br></h4>
+
+	<video *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'" controls style=" display: block; margin: 0 auto; width: -webkit-fill-available;"><source src="/api/video/qv.webm"></video>
+
+
 	<br>
 	<!--<br>
 
