@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col-sm wrap-content" [innerHTML]="description"></div>
     </div>
-
 	<br>
     <h2>
         Video
@@ -65,10 +64,19 @@
                                     </div>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <input type="number" min="0" max="4" [(ngModel)]="priceArray[k]" class="form-control" required/>
+                                    <input type="number" min="0" max="4"
+                                    [value]="priceArray[k]"
+                                    (input)="priceArrayChange(k, $event)"
+                                    class="form-control"
+                                    required/>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <textarea class="form-control" rows="4" required></textarea>
+                                    <textarea
+                                        [(ngModel)]="reasonArray[k]"
+                                        class="form-control"
+                                        rows="4"
+                                        required>
+                                    </textarea>
                                 </td>
                             </tr>
                             <tr style="height: 100px;" *ngIf="saveApply.apply">
@@ -135,8 +143,10 @@
         (resultEmit)="surveySubmit($event)">
     </app-survey>
 
-
     <button style="float: right;" [disabled]="clicked" (click)="submit($event)" type="submit" class="mr-2 btn btn-success">
         Submit
     </button>
+    <div style="float: left;">
+        <span style="color: red;" *ngIf="showHintForFillingReasons">Please ABCDEFG</span>
+    </div>
 </div>
