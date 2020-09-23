@@ -28,7 +28,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   videoElement: HTMLVideoElement;
   audioElement: HTMLAudioElement;
   videoContainer = {  // we will add properties as needed
-    video: this.videoElement,
+    video: null,
     ready: false,
     scale: null,
   };
@@ -41,7 +41,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   configurations = {
     'Audio Quality': '0',
     'Video Resolution': '0',
-    'Audio Stability': '0',
+    'Audio Stability': '0', 
     'Motion Smoothness': '0',
     'Audio-Video Synchronization': '0',
   };
@@ -107,6 +107,16 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   showPanel: boolean;
 
   currentVideoRequestId: number;
+
+  reasonArray = {};
+  showHintForFillingReasons = false;
+  noNeedToFillReasons = true;
+
+  get isAllReasonFilled() {
+    return Object.keys(this.reasonArray).length === 5
+      && Object.values(this.reasonArray).filter(v => v === null || v === undefined || String(v).length === 0).length === 0;
+  }
+
   constructor(
     private http: HttpClient,
     private vService: VideoService,
@@ -333,10 +343,9 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
           save: data.settings.save,
           apply: data.settings.apply,
         };
-        console.log(this.saveApply)
         if (this.saveApply.apply) {
+          this.noNeedToFillReasons = false;
           this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
-          console.log(this.videoConfig)
           this.configurations = {
             'Audio Quality': this.videoConfig[0],
             'Video Resolution': this.videoConfig[1],
@@ -426,24 +435,35 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   surveySubmit(data) {
-    this.clicked = true;
-    this.videoElement.pause();
-    if (this.saveApply.save) {
-      this.cookieService.set(
-        'video_config',
-        JSON.stringify(this.videoConfig),
-        undefined,
-        '/',
-        undefined,
-        false,
-        'Lax'
-        );
-    }
-    this.vService.submit({ videoConfig: this.videoConfig, counter: this.counter, data   }).subscribe(
-      result => {
-        this.decidePath();
+    if (this.isAllReasonFilled || this.noNeedToFillReasons) {
+      this.clicked = true;
+      this.videoElement.pause();
+      if (this.saveApply.save) {
+        this.cookieService.set(
+          'video_config',
+          JSON.stringify(this.videoConfig),
+          undefined,
+          '/',
+          undefined,
+          false,
+          'Lax'
+          );
       }
-    );
+      this.vService.submit({
+        videoConfig: this.videoConfig,
+        counter: this.counter,
+        data,
+        reasonArray:
+        this.reasonArray,
+        priceArray: this.priceArray}).subscribe(
+        result => {
+          this.decidePath();
+        }
+      );
+      this.showHintForFillingReasons = false;
+    } else {
+      this.showHintForFillingReasons = true;
+    }
   }
 
   // implementation based on https://stackoverflow.com/questions/38710125/how-do-i-display-a-video-using-html5-canvas-tag
@@ -466,12 +486,17 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     ctx.globalAlpha = 1; // restore alpha
   }
 
-  priceArrayChange(priceIndex: number, price: string) {
-    const numPrice = Number(price);
+  priceArrayChange(priceIndex: number, event: any) {
+    const numPrice = Number(event.data);
     if (isNaN(numPrice)) {
       this.priceArray[priceIndex] = 0;
     } else if (numPrice < 0) {
       this.priceArray[priceIndex] = 0;
+    } else if (numPrice > 4) {
+      this.priceArray[priceIndex] = 4;
+    } else {
+      this.priceArray[priceIndex] = numPrice;
     }
+    event.target.value = this.priceArray[priceIndex];
   }
 }
