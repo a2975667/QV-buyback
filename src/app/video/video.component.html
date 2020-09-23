@@ -42,11 +42,11 @@
                     <thead>
                       <tr>
                         <th scope="col" colspan="1">Configuration Name</th>
-                        <th *ngIf="!(saveApply.save || saveApply.apply)" scope="col" colspan="1">{{renderTableTitle()}}</th>
-                        <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1">{{renderTableTitle(1)}}</th>
-                        <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1">{{renderTableTitle(2)}}</th>
-                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Price</th>
-                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1">Why did you price this way?</th>
+                        <th *ngIf="!(saveApply.save || saveApply.apply)" scope="col" colspan="1" style="width: 15%;">{{renderTableTitle()}}</th>
+                        <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1" style="width: 10%; text-align: center;">{{renderTableTitle(1)}}</th>
+                        <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1" style="width: 10%; text-align: center;">{{renderTableTitle(2)}}</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 15%;">Price ($0~$4)</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 40%;">Why did you price the component this way?</th>
                         <th *ngIf="showCost" scope="col" colspan="1">Cost</th>
                       </tr>
                     </thead>
@@ -54,37 +54,38 @@
 						<ng-container *ngIf="this.showDemoConfig">
 							<tr style="height: 100px;"*ngFor="let k of objectKeys(configurations)">
 								<td colspan="1" scope="row">{{k}}</td>
-								<td colspan="1" scope="row" *ngIf="saveApply.save || saveApply.apply">
+								<td colspan="1" scope="row" *ngIf="saveApply.save || saveApply.apply" style="text-align: center;">
                                         <div class="radio">
                                             <input [disabled]="saveApply.apply" (click)="onCheckboxClick(true, k)" type="radio" [name]="k" [checked]="!fetchCheckBoxStatus(k)">
                                         </div>
                                 </td>
-                                <td colspan="1" *ngIf="saveApply.save || saveApply.apply">
+                                <td colspan="1" scope="row" *ngIf="saveApply.save || saveApply.apply" style="text-align: center;">
                                     <div class="radio">
                                         <input type="radio" [disabled]="saveApply.apply" [name]="k" (click)="onCheckboxClick(false, k)"  [checked]="fetchCheckBoxStatus(k)">
                                     </div>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <input type="number" [(ngModel)]="priceArray[k]" class="form-control" required/>
+                                    <input type="number" min="0" max="4" [(ngModel)]="priceArray[k]" class="form-control" required/>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <textarea class="form-control" required></textarea>
+                                    <textarea class="form-control" rows="4" required></textarea>
                                 </td>
                             </tr>
                             <tr style="height: 100px;" *ngIf="saveApply.apply">
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row"></td>
-								<td colspan="1" scope="row">Total Cost ${{sumUpCost(priceArray) | number}}</td>
-								<td colspan="1" scope="row"></td>
+								<td colspan="2" scope="row">If the buyer accepts your design, he/she will pays ${{sumUpCost(priceArray) | number}} and you will earn ${{0.1 * sumUpCost(priceArray) | number}} as your commission. </td>
+								<!--<td colspan="1" scope="row">The buyer pays ${{sumUpCost(priceArray) | number}}.</td>
+								<td colspan="1" scope="row">If the buyer accepts your design, you will recieve ${{0.1 * sumUpCost(priceArray) | number}}.</td>-->
                             </tr>
-                            <tr style="height: 100px;" *ngIf="saveApply.apply">
+                            <!--<tr style="height: 100px;" *ngIf="saveApply.apply">
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row">Your Commission ${{0.1 * sumUpCost(priceArray) | number}}</td>
 								<td colspan="1" scope="row"></td>
-							</tr>
+							</tr>-->
 						</ng-container>
 
 

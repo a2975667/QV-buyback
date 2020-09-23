@@ -15,7 +15,7 @@
 >
 <form *swalPortal="swalTargets.content" >
     <p>
-        In a few sentences, why did you choose to vote this way?
+        In a few sentences, please explain why you decide to allocate your votes the way you did?
     </p>
     <textarea
         class="swal2-textarea"
@@ -23,7 +23,7 @@
         [formControl]="submitForm"
         autofocus
     ></textarea>
-    <label *ngIf="submitForm.invalid" [ngClass] = "'error'" > Your response required with min 20 character. </label>
+    <label *ngIf="submitForm.invalid" [ngClass] = "'error'" > Your response requires a minimum of 20 characters. </label>
     <br/>
     <button
     (click)="submitFinalForm()"
