@@ -40,11 +40,11 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col" colspan="1">Configuration Name</th>
-                        <th *ngIf="!(saveApply.save || saveApply.apply)" scope="col" colspan="1" style="width: 15%;">{{renderTableTitle()}}</th>
+                        <th scope="col" colspan="1">Video Elements</th>
+                        <th *ngIf="!(saveApply.save || saveApply.apply)" scope="col" colspan="1">{{renderTableTitle()}}</th>
                         <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1" style="width: 10%; text-align: center;">{{renderTableTitle(1)}}</th>
                         <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1" style="width: 10%; text-align: center;">{{renderTableTitle(2)}}</th>
-                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 15%;">Price ($0~$4)</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 20%;">Price the elements ($0~$4)</th>
                         <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 40%;">Why did you price the component this way?</th>
                         <th *ngIf="showCost" scope="col" colspan="1">Cost</th>
                       </tr>
@@ -83,7 +83,7 @@
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row"></td>
-								<td colspan="2" scope="row">If the buyer accepts your design, he/she will pays ${{sumUpCost(priceArray) | number}} and you will earn ${{0.1 * sumUpCost(priceArray) | number}} as your commission. </td>
+								<td colspan="2" scope="row">The total price for your product is ${{sumUpCost(priceArray) | number}}. If the buyer is willing to purchase your product at ${{0.1 * sumUpCost(priceArray) | number}}, you will earn $Y as your bonus.</td>
 								<!--<td colspan="1" scope="row">The buyer pays ${{sumUpCost(priceArray) | number}}.</td>
 								<td colspan="1" scope="row">If the buyer accepts your design, you will recieve ${{0.1 * sumUpCost(priceArray) | number}}.</td>-->
                             </tr>
@@ -147,6 +147,6 @@
         Submit
     </button>
     <div style="float: left;">
-        <span style="color: red;" *ngIf="showHintForFillingReasons">Please ABCDEFG</span>
+        <span style="color: red;" *ngIf="showHintForFillingReasons">Please explain why you price each component the way you did.</span>
     </div>
 </div>
