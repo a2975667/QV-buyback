@@ -20,6 +20,7 @@ import { CompleteComponent } from './complete/complete.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { VideoComponent } from './video/video.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { Ng5SliderModule } from 'ng5-slider';
     FormsModule,
     SweetAlert2Module.forRoot(),
   ],
-  providers: [ CookieService ],
+  providers: [ CookieService, DecimalPipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
