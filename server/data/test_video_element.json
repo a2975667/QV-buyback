@@ -3,7 +3,7 @@
 	"survey": {
 		"title": "Testing your understanding of video elements",
 		"pages": [{
-			"title": "Please answer the following questions",
+			"title": "Please answer the following questions.",
 			"questions": [{
 					"type": "dropdown",
 					"name": "vet1",
@@ -12,10 +12,10 @@
 					"colCount": 0,
 					"choices": [
 						"(A) It means how much the visuals in a video stutters.",
-						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(B) It means how perfectly the visual in the video matches with the sound.",
 						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio."
+						"(E) This refers to how clear or crisp the audio sounds."
 					]
 				}, {
 					"type": "dropdown",
@@ -25,10 +25,10 @@
 					"colCount": 0,
 					"choices": [
 						"(A) It means how much the visuals in a video stutters.",
-						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(B) It means how perfectly the visual in the video matches with the sound.",
 						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio."
+						"(E) This refers to how clear or crisp the audio sounds."
 					]
 				}, {
 					"type": "dropdown",
@@ -38,10 +38,10 @@
 					"colCount": 0,
 					"choices": [
 						"(A) It means how much the visuals in a video stutters.",
-						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(B) It means how perfectly the visual in the video matches with the sound.",
 						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio."
+						"(E) This refers to how clear or crisp the audio sounds."
 					]
 				}, {
 					"type": "dropdown",
@@ -51,10 +51,10 @@
 					"colCount": 0,
 					"choices": [
 						"(A) It means how much the visuals in a video stutters.",
-						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(B) It means how perfectly the visual in the video matches with the sound.",
 						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio."
+						"(E) This refers to how clear or crisp the audio sounds."
 					]
 				},
 				{
@@ -65,16 +65,16 @@
 					"colCount": 0,
 					"choices": [
 						"(A) It means how much the visuals in a video stutters.",
-						"(B) It means how perfectly does the visual in the video match with the sound.",
+						"(B) It means how perfectly the visual in the video matches with the sound.",
 						"(C) It means whether the audio sounds choppy or fluent.",
 						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio."
+						"(E) This refers to how clear or crisp the audio sounds."
 					]
 				},
 				{
 					"type": "dropdown",
 					"name": "vet6",
-					"title": "What is the object that fell and hit the butterfly in the video?",
+					"title": "What is the object that fell and hit the butterfly in the example videos?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
