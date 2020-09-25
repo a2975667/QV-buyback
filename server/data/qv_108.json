@@ -6,7 +6,7 @@
 	  {
 		"qid":1.108,
 		"question":"How critical are the enhancements?",
-		"description":"<h4>With limited time and resources, Speedy Stream wants to improve part of the prototype first. To decide where to invest, we want to gather your feedback on the video elements that you think need the most enhancement for the current prototype you just experienced (before enhancing any of the five elements). How critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video?</h4>",
+		"description":"<h4>With limited time and resources, Speedy Stream wants to improve part of the prototype first. To decide what to prioritize, we want to gather your feedback on the video elements that you think need the most enhancement for the current prototype you just experienced (before enhancing any of the five elements). How critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video?</h4>",
 		"options":[
 		  {
 			  "o_id": "a_quality",
