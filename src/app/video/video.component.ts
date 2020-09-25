@@ -8,6 +8,7 @@ import { Video } from '../schema/video';
 import * as Survey from 'survey-angular';
 import { Options } from 'ng5-slider';
 import { HttpClient } from '@angular/common/http';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-video',
@@ -78,7 +79,8 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
       { value: 1, legend: 'Lv. 1' },
       { value: 2, legend: 'Lv. 2' },
       { value: 3, legend: 'Lv. 3' }
-    ]
+    ],
+    disabled: false,
   };
 
   priceSliderOptions: Options = {
@@ -112,6 +114,8 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   showHintForFillingReasons = false;
   noNeedToFillReasons = true;
 
+  isAudioLoaded = true;
+  isVideoLoaded = true;
   get isAllReasonFilled() {
     return Object.keys(this.reasonArray).length === 5
       && Object.values(this.reasonArray).filter(v => v === null || v === undefined || String(v).length === 0).length === 0;
@@ -121,6 +125,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     private http: HttpClient,
     private vService: VideoService,
     private cookieService: CookieService,
+    private numberPipe: DecimalPipe,
     private route: Router,
   ) { }
 
@@ -224,18 +229,33 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   refreshPlayback() {
     const that = this;
     this.videoIsPlaying = true;
-    this.unsubscribeSurvices();
+    this.unsubscribeServices();
     this.reassignVideoSrc();
     this.syncAudioWithVideo();
+    this.audioElement.addEventListener('loadeddata', () => {
+      this.isAudioLoaded = true;
+      if (this.isAudioLoaded && this.isVideoLoaded) {
+        this.sliderOptions = {...this.sliderOptions, disabled: false};
+        if (that.counter !== 0) {
+          that.videoElement.play();
+          that.audioElement.play();
+        }
+        that.counter++;
+      }
+    });
     this.videoElement.addEventListener('loadeddata', function() {
+      that.isVideoLoaded = true;
+      if (that.isAudioLoaded && that.isVideoLoaded) {
+        that.sliderOptions = {...that.sliderOptions, disabled: false};
+        if (that.counter !== 0) {
+          that.videoElement.play();
+          that.audioElement.play();
+        }
+        that.counter++;
+      }
       if (that.currentVideoRequestId) {
         cancelAnimationFrame(that.currentVideoRequestId);
       }
-      if (that.counter !== 0) {
-        that.videoElement.play();
-        that.audioElement.play();
-      }
-      that.counter++;
       const ctx = that.canvasElement.getContext('2d');
       that.videoContainer.scale = Math.min(
         ctx.canvas.width / this.videoWidth,
@@ -259,11 +279,14 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     const audioTempTime = this.audioElement.currentTime;
     this.videoElement.src = this.videoSrc;
     this.audioElement.src = this.audioSrc;
+    this.isVideoLoaded = false;
+    this.isAudioLoaded = false;
+    this.sliderOptions = {...this.sliderOptions, disabled: true};
     this.videoElement.currentTime = videoTempTime;
     this.audioElement.currentTime = audioTempTime;
   }
 
-  unsubscribeSurvices() {
+  unsubscribeServices() {
     if (this.audioTimerSubscription) {
       this.audioTimerSubscription.unsubscribe();
     }
@@ -333,7 +356,6 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.vService.requestForm();
     this.vService.videoForm.subscribe((data: Video) => {
       if (data) {
-        // console.log(data);
         this.formJson = data;
         this.survey = {
           questions: data.settings.normal,
@@ -370,6 +392,9 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
           this.configurations['Audio Quality'] + '.m4a';
         this.videoElement.src = this.videoSrc;
         this.audioElement.src = this.audioSrc;
+        this.isVideoLoaded = false;
+        this.isAudioLoaded = false;
+        this.sliderOptions = {...this.sliderOptions, disabled: true};
         this.showPanel =  data.settings.control_panel_can_change;
         this.refreshPlayback();
       }
@@ -377,7 +402,6 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   fetchCheckBoxStatus(key) {
-    // console.log(key, this.configurations[key]);
     return +this.configurations[key] > 0;
   }
 
@@ -412,7 +436,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.audioElement.src = this.audioSrc;
     this.audioElement.pause();
     this.videoElement.pause();
-    this.unsubscribeSurvices();
+    this.unsubscribeServices();
     this.videoElement.remove();
     this.audioElement.remove();
     this.videoIsPlaying = false;
@@ -487,16 +511,20 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   priceArrayChange(priceIndex: number, event: any) {
-    const numPrice = Number(event.data);
-    if (isNaN(numPrice)) {
-      this.priceArray[priceIndex] = 0;
-    } else if (numPrice < 0) {
-      this.priceArray[priceIndex] = 0;
-    } else if (numPrice > 4) {
-      this.priceArray[priceIndex] = 4;
+    const numValue = Number(event.target.value);
+    if ((event.target.value as string).toLowerCase().includes('e')) {
+      event.target.value = +this.numberPipe.transform(0, '1.2-2');
     } else {
-      this.priceArray[priceIndex] = numPrice;
+      if (numValue > 4) {
+        this.priceArray[priceIndex] = 4;
+        event.target.value = +this.numberPipe.transform(4, '1.2-2');
+      } else if (numValue < 0) {
+        this.priceArray[priceIndex] = 0;
+        event.target.value = +this.numberPipe.transform(0, '1.2-2');
+      } else {
+        event.target.value = +this.numberPipe.transform(event.target.value, '1.2-2');
+        this.priceArray[priceIndex] = +event.target.value;
+      }
     }
-    event.target.value = this.priceArray[priceIndex];
   }
 }
