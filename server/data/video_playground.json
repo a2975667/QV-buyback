@@ -1,7 +1,7 @@
 {
 	"filename": "demo",
 	"Title":"Playground -- Experiment Various Settings",
-	"Description":"<p>According to research, all five video elements introduced earlier impact an individual's video-watching experience. Now, we would like you to test out the video streaming prototype again, but with the control panel below the video player.</p><br><p>The control panel gives you the ability to configure the five video elements to various quality levels. Selecting a higher level for a video element improves its quality. <b>Please move the sliders to different levels and experiment</b> on how different combinations of improvements to the five video elements impact how well you <b>understand</b> the video's content. We will be asking how you feel about these five video elements on the next page. You can change the control levels while the video is playing, and the prototype will immediately apply the new setting. Feel free to replay the video as many times as you want. </p><br><p>Please answer the questions below the video correctly <b>based on the video content and your experience with different quality levels</b>. You will be disqualified from this experiment if you answer more than one multiple-choice question incorrectly.</p><br>",
+	"Description":"<p>According to research, all five video elements introduced earlier impact an individual's video-watching experience. Now, we would like you to test out the video streaming prototype again, but with the control panel below the video player.</p><br><p>The control panel gives you the ability to configure the five video elements to various quality levels. Selecting a higher level for a video element improves the quality for that element. <b>Please move the sliders to different levels and experiment</b> on how different combinations of improvements to the five video elements impact how well you <b>understand</b> the video's content. We will be asking how you feel about these five video elements on the next page. You can change the control levels while the video is playing, and the prototype will immediately apply the new setting. Feel free to replay the video as many times as you want. </p><br><p>Please answer the questions below the video <b>based on your experience with different quality levels</b>.</p><br>",
 	"settings":{
 		"control_panel_can_change": true,
 		"control_panel_has_price":false,
@@ -11,32 +11,32 @@
 		"normal":{
 			"title": "",
 			"pages": [{
-				"title": "Please read the following questions carefully and answer them.",
+				"title": "Please experiment with the control panel toggles carefully and answer the following questions.",
 				"questions": [{
 					"type": "comment",
 					"name": "aq-text",
-					"title": "In a few sentences, what were the impacts of the audio quality toggles? How does that impact your experience?",
+					"title": "In a few sentences, describe how the audio quality toggles impact your experience.",
 					"isRequired": true
 				}, {
 					"type": "comment",
 					"name": "vq-text",
-					"title": "In a few sentences, what were the impacts of the video resolution toggles? How does that impact your experience?",
+					"title": "In a few sentences, describe how the video resolution toggles impact your experience.",
 					"isRequired": true
 				},
 				{
 					"type": "comment",
 					"name": "as-text",
-					"title": "In a few sentences, what were the impacts of the audio stability toggles? How does that impact your experience?",
+					"title": "In a few sentences, describe how the audio stability toggles impact your experience.",
 					"isRequired": true
 				},{
 					"type": "comment",
 					"name": "vs-text",
-					"title": "In a few sentences, what were the impacts of the motion smoothness toggles? How does that impact your experience?",
+					"title": "In a few sentences, describe how the motion smoothness toggles impact your experience.",
 					"isRequired": true
 				},{
 					"type": "comment",
 					"name": "avs-text",
-					"title": "In a few sentences, what were the impacts of the audio-video synchronization toggles? How does that impact your experience?",
+					"title": "In a few sentences, describe how the audio-video synchronization toggles impact your experience.",
 					"isRequired": true
 				}
 
