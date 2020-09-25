@@ -3,12 +3,11 @@
 	"survey": {
 		"title": "How critical are the enhancements?",
 		"pages": [{
-			"html":"<h1>test></h1>",
 			"title": "",
 			"questions": [    {
 				"type": "html",
 				"name": "question1",
-				"html": "<p style=\"font-size: 16px;\">With limited time and resources, Speedy Stream wants to improve part of the prototype first. To decide where to invest, we want to gather your feedback on the video elements that you think need the most enhancement for the current prototype you just experienced (before enhancing any of the five elements). How critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video?</p>"
+				"html": "<p style=\"font-size: 16px;\">With limited time and resources, Speedy Stream wants to improve part of the prototype first. To decide where to invest, we want to gather your feedback on the video elements that you think need the most enhancement for the current prototype you just experienced (with five elements without any enhancements). How critical are the enhancements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video?</p>"
 			   },{
 				"type": "matrix",
 				"name": "video_likert",
@@ -47,11 +46,12 @@
 				}, {
 					"value": "sync",
 					"text": "Audio-Video Syncronization: Audio and Video are in sync"
-				}]
+				}],
+				"rowsOrder": "random"
 			}, {
 				"type": "comment",
 				"name": "likert-text",
-				"title": "In a few sentences, why did you feel this way?",
+				"title": "In a few sentences, tell us why you think some elements are more critical than others?",
 				"isRequired": true
 			}]
 		}]
