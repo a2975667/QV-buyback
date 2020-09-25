@@ -26,13 +26,14 @@
             src="">
         </audio>
     </div>
-    <div style="float: right;" *ngIf="!isVideoLoaded || !isAudioLoaded">
-        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+	<div style="float: right; margin-right:3em;" *ngIf="!isVideoLoaded || !isAudioLoaded">
+		Loading Changes...
+        <div class="lds-ring" style="float: left;margin-right:3px"><div></div><div></div><div></div><div></div></div>
     </div>
    <p></p>
     <div>
 	<h2 *ngIf="this.showFullConfig"> <hr style="height:30pt; visibility:hidden;" /> Configuration </h2>
-	<h2 *ngIf="this.showDemoConfig"> <hr style="height:30pt; visibility:hidden;" /> Configuration </h2>
+	<h2 *ngIf="this.showDemoConfig"> <hr style="height:30pt; visibility:hidden;" /> Design Your Video Player </h2>
 		<br>
 		<br>
         <div class="row" *ngIf="this.showPanel">
@@ -46,8 +47,8 @@
                         <th *ngIf="!(saveApply.save || saveApply.apply)" scope="col" colspan="1">{{renderTableTitle()}}</th>
                         <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1" style="width: 10%; text-align: center;">{{renderTableTitle(1)}}</th>
                         <th *ngIf="saveApply.save || saveApply.apply" scope="col" colspan="1" style="width: 10%; text-align: center;">{{renderTableTitle(2)}}</th>
-                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 20%;">Price the elements ($0~$4)</th>
-                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 40%;">Why did you price the component this way?</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 25%;">Price the elements ($0.00~$4.00)</th>
+                        <th *ngIf="formJson['settings']['apply']" scope="col" colspan="1" style="width: 35%;">Why did you price the component this way?</th>
                         <th *ngIf="showCost" scope="col" colspan="1">Cost</th>
                       </tr>
                     </thead>
@@ -66,13 +67,13 @@
                                     </div>
                                 </td>
                                 <td colspan="1" scope="row" *ngIf="formJson['settings']['apply']">
-                                    <input 
+                                    <input
                                         type="number"
-                                        step="0.01" 
+                                        step="0.01"
                                         (change)="priceArrayChange(k, $event)"
                                         (ngModelChange)="priceArray[k]=$event"
                                         [ngModelOptions]="{updateOn: 'blur'}"
-                                        [ngModel]="priceArray[k] | number:'1.2-2'" 
+                                        [ngModel]="priceArray[k] | number:'1.2-2'"
                                         lass="form-control"
                                         required
                                     />
@@ -90,7 +91,7 @@
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row"></td>
 								<td colspan="1" scope="row"></td>
-								<td colspan="2" scope="row">The total price for your product is ${{sumUpCost(priceArray) | number}}. If the buyer is willing to purchase your product at ${{0.1 * sumUpCost(priceArray) | number}}, you will earn $Y as your bonus.</td>
+								<td colspan="2" scope="row">The total price for your product is ${{sumUpCost(priceArray) | number}}. If the buyer is willing to purchase your product at ${{sumUpCost(priceArray) | number}}, you will earn ${{0.1 * sumUpCost(priceArray) | number}} as your bonus.</td>
 								<!--<td colspan="1" scope="row">The buyer pays ${{sumUpCost(priceArray) | number}}.</td>
 								<td colspan="1" scope="row">If the buyer accepts your design, you will recieve ${{0.1 * sumUpCost(priceArray) | number}}.</td>-->
                             </tr>

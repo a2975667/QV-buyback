@@ -19,7 +19,7 @@ export class CompleteComponent implements OnInit {
 
     setCookieExpire(id, val) {
         const date = new Date();
-        date.setTime(date.getTime() + (1000 * 1000));
+        date.setTime(date.getTime() + (1 * 1000));
         this.cookieService.set(
             id,
             val,
