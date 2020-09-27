@@ -3,7 +3,7 @@
 	"survey": {
 		"title": "Testing your understanding of QV",
 		"pages": [{
-			"title": "Please answer the following questions",
+			"title": "Please answer the following questions.",
 			"questions": [{
 					"type": "dropdown",
 					"name": "qvt1",
@@ -37,7 +37,7 @@
 				}, {
 					"type": "dropdown",
 					"name": "qvt4",
-					"title": "In a Quadratic Voting survey, you must use up all the voice credits available to you in the given budget.",
+					"title": "In a Quadratic Voting survey, you must use up all the voice credits available in the given budget.",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [

@@ -1,7 +1,7 @@
 {
 	"filename":"demo",
-	"Title": "Playground -- Experience the Prototype",
-	"Description": "<h4> Speedy Stream aims to offer live video streaming services for cars using satellite technology when the mobile network is not available. Given that satellite internet is expensive, there is a limited bandwidth to stream video content. Below is a prototype that showcases what video streaming may look like under limited internet bandwidth. Please play the video below and experience what it is like to stream a weather forecast video with this prototype. Click \"Submit\" after you have finished watching the video.</h4>",
+	"Title": "Playground -- Experience the Current Prototype",
+	"Description": "<h4> Speedy Stream aims to offer live video streaming services for cars using satellite technology when the mobile network is not available. Given that satellite internet is expensive, there is a limited bandwidth to stream video content. Below is the current prototype -- it showcases what video streaming may look like under limited internet bandwidth. Please play the video below and experience what it is like to stream a weather forecast video with this prototype. Click \"Submit\" after you have finished watching the video.</h4>",
 	"settings":{
 		"control_panel_can_change": false,
 		"control_panel_has_price":false,

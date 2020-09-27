@@ -56,3 +56,9 @@ ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 8k -vn test-aq0.m4a &&
 ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 11k -vn test-aq1.m4a &&
 ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 16k -vn test-aq2.m4a &&
 ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 48k -vn test-aq3.m4a
+
+
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 210x280 -ac 2 -threads 13 test-vq0.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 294x392 -ac 2 -threads 13 test-vq1.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 364x486 -ac 2 -threads 13 test-vq2.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 420x560 -ac 2 -threads 13 test-vq3.webm
