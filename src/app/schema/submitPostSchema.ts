@@ -3,5 +3,5 @@ export interface submitPostSchema {
     complete_flag: boolean; // change to true when last path is being submitted
     file_name: string;
     qid: number;
-    results: object;
+    results: any;
 }

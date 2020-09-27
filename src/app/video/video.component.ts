@@ -51,8 +51,6 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   objectKeys = Object.keys;
 
-  videoConfig = new Array(5).fill(0);
-  videoConfigLength = new Array(5).fill(0);
   formJson: any;
 
   blackTimer: Observable<number>;
@@ -319,7 +317,6 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onRadioCheck() {
-    this.videoConfig = Object.values(this.configurations).map(a => Number(a));
     this.refreshPlayback();
   }
 
@@ -336,7 +333,6 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
       } else {
           this.configurations[key] = table[key][1];
       }
-      this.videoConfig = Object.values(this.configurations).map(a => Number(a));
       this.refreshPlayback();
   }
 
@@ -367,14 +363,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
         };
         if (this.saveApply.apply) {
           this.noNeedToFillReasons = false;
-          this.videoConfig = JSON.parse(this.cookieService.get('video_config'));
-          this.configurations = {
-            'Audio Quality': this.videoConfig[0],
-            'Video Resolution': this.videoConfig[1],
-            'Audio Stability': this.videoConfig[2],
-            'Motion Smoothness': this.videoConfig[3],
-            'Audio-Video Synchronization': this.videoConfig[4]
-          };
+          this.configurations = JSON.parse(this.cookieService.get('video_config'));
         }
         const userID = this.cookieService.get('user_id');
         this.description = data.Description;
@@ -465,7 +454,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
       if (this.saveApply.save) {
         this.cookieService.set(
           'video_config',
-          JSON.stringify(this.videoConfig),
+          JSON.stringify(this.configurations),
           undefined,
           '/',
           undefined,
@@ -474,11 +463,10 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
           );
       }
       this.vService.submit({
-        videoConfig: this.videoConfig,
+        videoConfig: this.configurations,
         counter: this.counter,
         data,
-        reasonArray:
-        this.reasonArray,
+        reasonArray: this.reasonArray,
         priceArray: this.priceArray}).subscribe(
         result => {
           this.decidePath();
