@@ -18,9 +18,13 @@
 	<br>
 	<h1>{{questionTitle}}</h1>
 
-	<h4 *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'">Please watch the video below and play with the QV interface below the video. Once you are ready, click submit and answer a few questions regarding the video and your understanding of what QV is. <br></h4>
+	<h4 *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'">Please watch the video below and
+		play with the QV interface below the video. Once you are ready, click submit and move onto the next page -- you
+		will then need to answer a few questions about the video to show your level of understanding of QV. <br></h4>
 
-	<video *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'" controls style=" display: block; margin: 0 auto; width: -webkit-fill-available;"><source src="/api/video/qv.webm"></video>
+	<video *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'" controls
+		style=" display: block; margin: 0 auto; width: -webkit-fill-available;">
+		<source src="/api/video/qv.webm"></video>
 
 
 	<br>
@@ -28,19 +32,24 @@
 
 	<p *ngIf="questionTitle!='QV Dry Run: Understanding what is Quadratic Voting'"><!--People have different preferences in
 		how important different video elements are. Here we listed 5 different video elements. For each of the elements listed below, <b> how important do you think the video elements were to understanding the video given limited bandwidth on a flight?</b></p>-->
-	<p>
-		For this question, you will use a <b>Binary Quadratic Voting</b> that we introduced eariler to ask about your preferences.
-		The following description might help you recall how QV works.
-		<br><br>
+	<p *ngIf ="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'">
 		You will be given a budget of a certain number of <b> voice credits</b>. You will use the available credits to
-		cast votes. If you think a video element is more important, you can cast multiple
-		upvotes using the <b>+1 sign</b>. If you believe that an element is less important, you can cast a few downvotes using the <b> -1 sign</b>. If you are neutral about an element, you can choose to cast <b> no vote</b>.
-
-		<br><br>
-		<b> Based on the intensity of your opinion, you can cast one or more upvotes or downvotes for each video element</b>. The
+		cast votes. If you think a cusine is more favorable, you can cast multiple upvotes using the <b>+1
+			sign</b>. If you believe that a cusine is less favorable, you can cast a few downvotes using the <b> -1
+			sign</b>. If you are neutral about a cusine, you can choose to cast <b> no vote</b>.
+	</p>
+	<p *ngIf ="questionTitle!='QV Dry Run: Understanding what is Quadratic Voting'">
+		You will be given a budget of a certain number of <b> voice credits</b>. You will use the available credits to
+		cast votes. If you think a video element is more important, you can cast multiple upvotes using the <b>+1
+			sign</b>. If you believe that an element is less important, you can cast a few downvotes using the <b> -1
+			sign</b>. If you are neutral about an element, you can choose to cast <b> no vote</b>.
+	</p>
+	<p>
+		<b> Based on the intensity of your opinion, you can cast one or more upvotes or downvotes for each video
+			element</b>. The
 		stronger your opinion is, the more votes you can put on one option. At the same time, as the number of votes
-		increases, the voice credits it costs increase quadratically, i.e. <b> X votes will cost X<sup>2</sup> (square of X)
-			credits</b>. The cost of some common number of votes is specified in the table below:
+		increases, the voice credits it costs increase quadratically, i.e. <b> X votes will cost X<sup>2</sup> (square
+			of X) credits</b>. The cost of some common number of votes is specified in the table below:
 	</p>
 	<table align="center">
 		<tbody>
