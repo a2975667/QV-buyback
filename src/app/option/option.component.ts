@@ -14,14 +14,35 @@ export class OptionComponent implements OnInit {
   totalCredits: number;
   currentQuestionIndex: number;
   constructor(
-    private gService: GlobalService, 
+    private gService: GlobalService,
   ) { }
+
+  shuffle(array) {
+    let currentIndex = array.length;
+    let temporaryValue;
+    let randomIndex;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
 
   ngOnInit() {
     this.gService.questionSet.subscribe((data: Questionnaire) => {
       this.currentQuestionIndex = data.currentQuestion;
       const currentQuestion = data.question_list[this.currentQuestionIndex];
       this.currentOptions = currentQuestion.options;
+      this.currentOptions = this.shuffle(this.currentOptions);
       this.votes = new Array(this.currentOptions.length).fill(0);
       this.totalCredits = currentQuestion.totalCredits;
       this.gService.votes.subscribe(votes => {

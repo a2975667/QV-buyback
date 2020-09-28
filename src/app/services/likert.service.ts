@@ -78,6 +78,7 @@ export class LikertService {
         data['vet4'] === '(C) It means whether the audio sounds choppy or fluent.',
         data['vet5'] === '(B) It means how perfectly the visual in the video matches with the sound.',
         data['vet6'] === '(3) An Apple',
+        data['vet7'] === '(2) 0125'
       ];
       return this.decideWhetherPassTest(conditions, 1);
     } else {
