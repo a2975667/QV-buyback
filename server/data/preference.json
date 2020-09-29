@@ -18,7 +18,7 @@
 				{
 					"type": "dropdown",
 					"name": "video_stream",
-					"title": "Which video streaming service do you use most often",
+					"title": "Which video streaming service do you use most often?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [

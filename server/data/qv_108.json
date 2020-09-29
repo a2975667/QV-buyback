@@ -6,7 +6,7 @@
 	  {
 		"qid":1.108,
 		"question":"How critical are the enhancements?",
-		"description":"<h4>With limited time and resources, Speedy Stream wants to improve part of the prototype first. To decide what to prioritize, we want to gather your feedback on the video elements that you think need the most enhancement for the current prototype you just experienced (before enhancing any of the five elements). How critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video? Please answer this question using the Quadratic voting mechanism that we introduced earlier. You have 100 voice credits. </h4>",
+		"description":"<p>Speedy Stream wants to improve the current prototype. To decide what to prioritize, we want your feedback on the current prototype you saw on the previous page (before any improvement). Please use Quadratic voting with <u>100 voice credits</u> to answer the following question:</p> <p>How critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video? </p> <p> If you need a refresher on how QV works, please click on \"Remind me how QV works\" below to expand the instruction.</p>",
 		"options":[
 		  {
 			  "o_id": "a_quality",
@@ -15,19 +15,19 @@
 		  }, {
 			  "o_id": "v_quality",
 			  "option": "Video Resolution",
-			  "description": "The image of the video is clear and not pixelated"
+			  "description": "The visuals of the video are clear and not pixelated"
 		  }, {
 			  "o_id": "a_smooth",
 			  "option": "Audio Stability",
-			  "description": "The audio is smooth and and does not stutter"
+			  "description": "The audio is smooth and does not stutter"
 		  }, {
 			  "o_id": "v_smooth",
 			  "option": "Motion Smoothness",
-			  "description": "The video visuals plays smoothly and does not jitter"
+			  "description": "The video visuals play smoothly and do not jitter"
 		  }, {
 			  "o_id": "sync",
 			  "option": "Audio-Video Syncronization",
-			  "description": "Audio and Video are in sync"
+			  "description": "The audio and visuals are in sync"
 		  }
 		],
 		"totalCredits":100,
