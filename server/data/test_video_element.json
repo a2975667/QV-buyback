@@ -7,68 +7,68 @@
 			"questions": [{
 					"type": "dropdown",
 					"name": "vet1",
-					"title": "Which of the following is the correct definition for: Quality of the video imagery?",
+					"title": "Which of the following is the correct definition for: Video resolution?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It means how much the visual in a video stutters.",
-						"(B) It means how perfectly the visual in the video matches with the sound.",
-						"(C) It means whether the audio sounds choppy or fluent.",
-						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio sounds."
+						"(A) How much the visuals in a video stutter.",
+						"(B) How perfectly the visuals in the video match with the sound.",
+						"(C) Whether the audio sounds choppy or fluent.",
+						"(D) How clear or crisp the visuals are in the video.",
+						"(E) How clear or crisp the audio sounds."
 					]
 				}, {
 					"type": "dropdown",
 					"name": "vet2",
-					"title": "Which of the following is the correct definition for: Quality of the audio?",
+					"title": "Which of the following is the correct definition for: Audio quality?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It means how much the visual in a video stutters.",
-						"(B) It means how perfectly the visual in the video matches with the sound.",
-						"(C) It means whether the audio sounds choppy or fluent.",
-						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio sounds."
+						"(A) How much the visuals in a video stutter.",
+						"(B) How perfectly the visuals in the video match with the sound.",
+						"(C) Whether the audio sounds choppy or fluent.",
+						"(D) How clear or crisp the visuals are in the video.",
+						"(E) How clear or crisp the audio sounds."
 					]
 				}, {
 					"type": "dropdown",
 					"name": "vet3",
-					"title": "Which of the following is the correct definition for: Stability of the video imagery?",
+					"title": "Which of the following is the correct definition for: Motion smoothness?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It means how much the visual in a video stutters.",
-						"(B) It means how perfectly the visual in the video matches with the sound.",
-						"(C) It means whether the audio sounds choppy or fluent.",
-						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio sounds."
+						"(A) How much the visuals in a video stutter.",
+						"(B) How perfectly the visuals in the video match with the sound.",
+						"(C) Whether the audio sounds choppy or fluent.",
+						"(D) How clear or crisp the visuals are in the video.",
+						"(E) How clear or crisp the audio sounds."
 					]
 				}, {
 					"type": "dropdown",
 					"name": "vet4",
-					"title": "Which of the following is the correct definition for: Stability of the audio?",
+					"title": "Which of the following is the correct definition for: Audio stability?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It means how much the visual in a video stutters.",
-						"(B) It means how perfectly the visual in the video matches with the sound.",
-						"(C) It means whether the audio sounds choppy or fluent.",
-						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio sounds."
+						"(A) How much the visuals in a video stutter.",
+						"(B) How perfectly the visuals in the video match with the sound.",
+						"(C) Whether the audio sounds choppy or fluent.",
+						"(D) How clear or crisp the visuals are in the video.",
+						"(E) How clear or crisp the audio sounds."
 					]
 				},
 				{
 					"type": "dropdown",
 					"name": "vet5",
-					"title": "Which of the following is the correct definition for: Synchronization between the video imagery and the audio?",
+					"title": "Which of the following is the correct definition for: Audio-video synchronization?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) It means how much the visual in a video stutters.",
-						"(B) It means how perfectly the visual in the video matches with the sound.",
-						"(C) It means whether the audio sounds choppy or fluent.",
-						"(D) This refers to how clear or crisp the visual is in the video.",
-						"(E) This refers to how clear or crisp the audio sounds."
+						"(A) How much the visuals in a video stutter.",
+						"(B) How perfectly the visuals in the video match with the sound.",
+						"(C) Whether the audio sounds choppy or fluent.",
+						"(D) How clear or crisp the visuals are in the video.",
+						"(E) How clear or crisp the audio sounds."
 					]
 				},
 				{

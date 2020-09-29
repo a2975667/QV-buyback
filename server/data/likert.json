@@ -8,7 +8,7 @@
 			"questions": [    {
 				"type": "html",
 				"name": "question1",
-				"html": "<p style=\"font-size: 16px;\">With limited time and resources, Speedy Stream wants to improve part of the prototype first. To decide what to prioritize, we want to gather your feedback on the video elements that you think need the most enhancement for the current prototype you just experienced (before enhancing any of the five elements). How critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video?</p>"
+				"html": "<p style=\"font-size: 16px;\">Speedy Stream wants to improve the current prototype. To decide what to prioritize, we want your feedback on the current prototype you saw on the previous page (before any improvement). Please answer the following question: how critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video?</p>"
 			   },{
 				"type": "matrix",
 				"name": "video_likert",
@@ -37,21 +37,21 @@
 				}, {
 					"value": "video_resolution",
 					"isRequired": true,
-					"text": "Video Resolution: The image of the video is clear and not pixelated"
+					"text": "Video Resolution: The visuals of the video are clear and not pixelated"
 				}, {
 					"value": "audio_stability",
-					"text": "Audio Stability: The audio is smooth and and does not stutter"
+					"text": "Audio Stability: The audio is smooth and does not stutter"
 				}, {
 					"value": "video_smoothness",
-					"text": "Motion Smoothness: The video visuals plays smoothly and does not jitter"
+					"text": "Motion Smoothness: The video visuals play smoothly and do not jitter"
 				}, {
 					"value": "sync",
-					"text": "Audio-Video Syncronization: Audio and Video are in sync"
+					"text": "Audio-Video Syncronization: The audio and visuals are in sync"
 				}]
 			}, {
 				"type": "comment",
 				"name": "likert-text",
-				"title": "In a few sentences, why did you feel this way?",
+				"title": "In a few sentences, tell us why you think some elements are more critical than others?",
 				"isRequired": true
 			}]
 		}]

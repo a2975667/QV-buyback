@@ -1,7 +1,7 @@
 {
 	"filename": "demo",
 	"Title":"Playground -- Experiment with Various Video Element Settings",
-	"Description":"<p>As introduced earlier, all five video elements impact an individual's video-watching experience. Now, we would like you to test out the video streaming prototype again, but with the control panel below the video player.</p><br><p>The control panel gives you the ability to configure the five video elements to various quality levels. Selecting a higher level for a video element improves the quality for that element. <b>Please move the sliders to different levels and experiment</b> on how different combinations of improvements to the five video elements impact how well you <b>understand</b> the video's content. We will be asking how you feel about these five video elements on the next page. <b>You can change the control levels while the video is playing, but expect a wait of up to 3 seconds for the prototype to reflect the new setting.</b> Feel free to replay the video as many times as you want. </p><br><p>Please answer a few questions below the video <b>based on your experience with different quality levels</b>.</p><br>",
+	"Description":"<p>As introduced earlier, all five video elements impact an individual's video-watching experience. Now, we would like you to test out the video streaming prototype again, but with the control panel below the video player.</p><br><p>The control panel gives you the ability to configure the five video elements to various quality levels. Selecting a higher level for a video element will improve the quality for that element. <b>Please move the sliders to different levels and experiment</b> with how different combinations of the five video elements impact how well you <b>understand</b> the video's content. We will be asking how you feel about these five video elements on the next page. <b>You can change the control levels while the video is playing, but expect a wait of up to 3 seconds for the prototype to reflect the new setting.</b> Feel free to replay the video as many times as you want. </p><br><p>Please answer a few questions below the video <b>based on your experience with different quality levels</b>.</p><br>",
 	"settings":{
 		"control_panel_can_change": true,
 		"control_panel_has_price":false,
@@ -15,7 +15,7 @@
 				"questions": [{
 					"type": "comment",
 					"name": "aq-text",
-					"title": "In a few sentences, describe how the five video element toggles impact your video-watching experience.",
+					"title": "Choose two of the five video elements. In a few sentences, describe how changing the settings of the two video elements impacted your video-watching experience.",
 					"isRequired": true
 				}
 
