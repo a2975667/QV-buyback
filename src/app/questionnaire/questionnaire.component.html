@@ -18,90 +18,136 @@
 	<br>
 	<h1>{{questionTitle}}</h1>
 
-	<h4 *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'">Please watch the video below and
+	<p *ngIf="questionTitle=='Dry Run: What is Quadratic Voting (QV)'" style="font-size: 15pt;"> <b>Please watch the video below and
 		play with the QV interface below the video. Once you are ready, click submit and move onto the next page -- you
-		will then need to answer a few questions about the video to show your level of understanding of QV. <br></h4>
+		will then need to answer a few questions about the video to show your level of understanding of QV.</b></p>
 
-	<video *ngIf="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'" controls
-		style=" display: block; margin: 0 auto; width: -webkit-fill-available;">
+	<h4>Video</h4>
+
+	<video *ngIf="questionTitle=='Dry Run: What is Quadratic Voting (QV)'" controls
+		style="display: block; margin: 0 auto; width: -webkit-fill-available; border: 5px solid #a0a0a0;">
 		<source src="/api/video/qv.webm"></video>
-
-
 	<br>
-	<!--<br>
 
-	<p *ngIf="questionTitle!='QV Dry Run: Understanding what is Quadratic Voting'"><!--People have different preferences in
-		how important different video elements are. Here we listed 5 different video elements. For each of the elements listed below, <b> how important do you think the video elements were to understanding the video given limited bandwidth on a flight?</b></p>-->
-	<p *ngIf ="questionTitle=='QV Dry Run: Understanding what is Quadratic Voting'">
-		You will be given a budget of a certain number of <b> voice credits</b>. You will use the available credits to
+	<p *ngIf="questionTitle=='Dry Run: What is Quadratic Voting (QV)'">
+		<b>Summary of the introduction to QV Video Above</b>: You will be given a budget of a certain number of <b> voice credits</b>. You will use the available credits to
 		cast votes. If you think a cusine is more favorable, you can cast multiple upvotes using the <b>+1
 			sign</b>. If you believe that a cusine is less favorable, you can cast a few downvotes using the <b> -1
 			sign</b>. If you are neutral about a cusine, you can choose to cast <b> no vote</b>.
 	</p>
-	<p *ngIf ="questionTitle!='QV Dry Run: Understanding what is Quadratic Voting'">
+	<div *ngIf="questionTitle=='Dry Run: What is Quadratic Voting (QV)'">
+		<p>
+			<b> Based on the intensity of your opinion, you can cast one or more upvotes or downvotes for each video
+				element</b>. The
+			stronger your opinion is, the more votes you can put on one option. At the same time, as the number of votes
+			increases, the voice credits it costs increase quadratically, i.e. <b> X votes will cost X<sup>2</sup>
+				(square
+				of X) credits</b>. The cost of some common number of votes is specified in the table below:
+		</p>
+		<table align="center">
+			<tbody>
+				<tr align="center">
+					<th>Number of up or down votes</th>
+					<td align="center">1</td>
+					<td align="center">2</td>
+					<td align="center">3</td>
+					<td align="center">4</td>
+					<td align="center">5</td>
+					<td align="center">6</td>
+					<td align="center">7</td>
+					<td align="center">8</td>
+					<td align="center">9</td>
+					<td align="center">10</td>
+				</tr>
+				<tr align="right">
+					<th align="right">Cost in number of voice credits</th>
+					<td align="center">1</td>
+					<td align="center">4</td>
+					<td align="center">9</td>
+					<td align="center">16</td>
+					<td align="center">25</td>
+					<td align="center">36</td>
+					<td align="center">49</td>
+					<td align="center">64</td>
+					<td align="center">81</td>
+					<td align="center">100</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			<br>
+			<b>You cannot exceed the budget of given voice credits, but you do not have to use up all the available
+				credits
+				either. </b> You can see the total number of voice credits you have and the number of credits you have
+			spent
+			already in the "Summary" section below.
+		</p>
+		<hr>
+	</div>
+
+	<p *ngIf="questionTitle!='Dry Run: What is Quadratic Voting (QV)'">
 		You will be given a budget of a certain number of <b> voice credits</b>. You will use the available credits to
 		cast votes. If you think a video element is more important, you can cast multiple upvotes using the <b>+1
 			sign</b>. If you believe that an element is less important, you can cast a few downvotes using the <b> -1
 			sign</b>. If you are neutral about an element, you can choose to cast <b> no vote</b>.
 	</p>
-	<p>
-		<b> Based on the intensity of your opinion, you can cast one or more upvotes or downvotes for each video
-			element</b>. The
-		stronger your opinion is, the more votes you can put on one option. At the same time, as the number of votes
-		increases, the voice credits it costs increase quadratically, i.e. <b> X votes will cost X<sup>2</sup> (square
-			of X) credits</b>. The cost of some common number of votes is specified in the table below:
-	</p>
-	<table align="center">
-		<tbody>
-			<tr align="center">
-				<th>Number of up or down votes</th>
-				<td align="center">1</td>
-				<td align="center">2</td>
-				<td align="center">3</td>
-				<td align="center">4</td>
-				<td align="center">5</td>
-				<td align="center">6</td>
-				<td align="center">7</td>
-				<td align="center">8</td>
-				<td align="center">9</td>
-				<td align="center">10</td>
-			</tr>
-			<!-- <tr align="center">
-					<th align="center">&dArr;</th>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-					<td align="center">&dArr;</td>
-				</tr> -->
-			<tr align="right">
-				<th align="right">Cost in number of voice credits</th>
-				<td align="center">1</td>
-				<td align="center">4</td>
-				<td align="center">9</td>
-				<td align="center">16</td>
-				<td align="center">25</td>
-				<td align="center">36</td>
-				<td align="center">49</td>
-				<td align="center">64</td>
-				<td align="center">81</td>
-				<td align="center">100</td>
-			</tr>
-		</tbody>
-	</table>
-	<p>
-		<br>
-		<b>You cannot exceed the budget of given voice credits, but you do not have to use up all the available credits
-			either. </b> You can see the total number of voice credits you have and the number of credits you have spent
-		already in the “Summary” section below.
-	</p>
-	<hr>
+
 	<div [innerHTML]="questionDes"></div>
+
+	<p *ngIf="questionTitle!='Dry Run: What is Quadratic Voting (QV)'">
+		<button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			Remind me how QV works.
+		  </button>
+	</p>
+
+	<div *ngIf="questionTitle!='Dry Run: What is Quadratic Voting (QV)'" class="collapse" id="collapseExample">
+		<p>
+			<b> Based on the intensity of your opinion, you can cast one or more upvotes or downvotes for each video
+				element</b>. The
+			stronger your opinion is, the more votes you can put on one option. At the same time, as the number of votes
+			increases, the voice credits it costs increase quadratically, i.e. <b> X votes will cost X<sup>2</sup>
+				(square
+				of X) credits</b>. The cost of some common number of votes is specified in the table below:
+		</p>
+		<table align="center">
+			<tbody>
+				<tr align="center">
+					<th>Number of up or down votes</th>
+					<td align="center">1</td>
+					<td align="center">2</td>
+					<td align="center">3</td>
+					<td align="center">4</td>
+					<td align="center">5</td>
+					<td align="center">6</td>
+					<td align="center">7</td>
+					<td align="center">8</td>
+					<td align="center">9</td>
+					<td align="center">10</td>
+				</tr>
+				<tr align="right">
+					<th align="right">Cost in number of voice credits</th>
+					<td align="center">1</td>
+					<td align="center">4</td>
+					<td align="center">9</td>
+					<td align="center">16</td>
+					<td align="center">25</td>
+					<td align="center">36</td>
+					<td align="center">49</td>
+					<td align="center">64</td>
+					<td align="center">81</td>
+					<td align="center">100</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			<br>
+			<b>You cannot exceed the budget of given voice credits, but you do not have to use up all the available
+				credits
+				either. </b> You can see the total number of voice credits you have and the number of credits you have
+			spent
+			already in the "Summary" section below.
+		</p>
+	</div>
 </div>
 <br>
 

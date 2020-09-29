@@ -83,7 +83,25 @@
 						"(3) An Apple",
 						"(4) A Flower"
 					]
+				},
+				{
+					"type": "dropdown",
+					"name": "vet7",
+					"title": "What is the option mentioned in the audio below?",
+					"isRequired": true,
+					"colCount": 0,
+					"choices": [
+						"(1) 0748",
+						"(2) 0125",
+						"(3) 3876",
+						"(4) 9643"
+					]
+				},
+				{
+					"type": "html",
+					"html": "<audio src='/api/audio/audioCheck.ogg' controls></audio>"
 				}
+
 			]
 		}]
 	}

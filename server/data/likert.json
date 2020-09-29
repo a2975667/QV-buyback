@@ -3,7 +3,6 @@
 	"survey": {
 		"title": "How critical are the enhancements?",
 		"pages": [{
-			"html":"<h1>test></h1>",
 			"title": "",
 			"questions": [    {
 				"type": "html",
