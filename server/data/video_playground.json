@@ -13,12 +13,17 @@
 			"pages": [{
 				"title": "Please experiment with the control panel toggles carefully and answer the following question.",
 				"questions": [{
+					"type": "checkbox",
+					"name": "video-pg-check",
+					"title": "I have played with every video component and experienced their impact",
+					"choices": ["Yes"],
+					"isRequired": true
+				}, {
 					"type": "comment",
 					"name": "aq-text",
 					"title": "Choose two of the five video elements. In a few sentences, describe how changing the settings of the two video elements impacted your video-watching experience.",
 					"isRequired": true
 				}
-
 			]
 			}]
 		}

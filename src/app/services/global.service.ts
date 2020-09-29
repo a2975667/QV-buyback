@@ -95,7 +95,13 @@ export class GlobalService {
     submitPost.file_name = this.getCurrentPath();
     const currentQuestion = this.getCookieById('user_current_question_index');
     submitPost.qid = this.questionnaire.question_list[currentQuestion].qid;
-    submitPost.results = this.votesContent[this.getCookieById('user_current_question_index')];
+    submitPost.results = (this.votesContent[this.getCookieById('user_current_question_index')] as number[]).map((value, index) => {
+      return {
+        value,
+        option: this.questionnaire.question_list[+currentQuestion].options[index].option,
+      };
+    });
+
     submitPost.user_id = this.getCookieById('user_id');
     return submitPost;
   }
@@ -159,7 +165,9 @@ export class GlobalService {
     if (pathArray[pathIndex + 1]['type'] === 'normal') {
       nextQuestionIndex = 0;
       this.setCookieById('user_current_question_index', String(nextQuestionIndex));
-      return this.http.post(`${this.requestUrl}/submit`, {...submitData, fileName: currentFileName, finalQuestion: finalQuestionValue}).pipe(
+      return this.http.post(
+        `${this.requestUrl}/submit`, {...submitData, fileName: currentFileName, finalQuestion: finalQuestionValue}
+      ).pipe(
         catchError(this.handleError)
       ).subscribe(data => {
         this.router.navigate(['likert']);
@@ -168,7 +176,9 @@ export class GlobalService {
       this.setCookieById('user_current_question_index', String(nextQuestionIndex));
       this.getQuestionnaire();
 
-      return this.http.post(`${this.requestUrl}/submit`, {...submitData, fileName: currentFileName, finalQuestion: finalQuestionValue}).pipe(
+      return this.http.post(
+        `${this.requestUrl}/submit`, {...submitData, fileName: currentFileName, finalQuestion: finalQuestionValue}
+      ).pipe(
         catchError(this.handleError)
       ).subscribe(data => {
       });
