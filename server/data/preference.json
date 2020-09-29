@@ -3,7 +3,7 @@
 	"survey": {
 		"title": "Streaming Consumption Preference Survey",
 		"pages": [{
-			"title": "Please answer the following questions about your consumption preferences.",
+			"title": "Please answer the following questions about your consumption preferences. Your responses to this survey will play an important part in the next task with potential bonus.",
 			"questions": [{
 					"type": "dropdown",
 					"name": "car_ownership",
