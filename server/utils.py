@@ -169,9 +169,14 @@ def decide_path(gp):
 		"file":"preference"
 	}
 
-	task_intro_designer = {
+	task_intro_designer_p1 = {
 		"type":"normal",
-		"file":"task_intro_designer"
+		"file":"task_intro_designer_pt1"
+	}
+
+	task_intro_designer_p2 = {
+		"type":"normal",
+		"file":"task_intro_designer_pt2"
 	}
 
 	## 3 path
@@ -185,12 +190,12 @@ def decide_path(gp):
 
 
 
-	p1 = [video_element, element_test, qv_example, qv_test, background_info, pilot_demo, video_playground, qv_108, likert, preference_survey, task_intro_designer, video_checkbox, video_checkbox_with_price, thank_complete]
+	p1 = [video_element, element_test, qv_example, qv_test, background_info, pilot_demo, video_playground, qv_108, likert, preference_survey, task_intro_designer_p1, task_intro_designer_p2, video_checkbox, video_checkbox_with_price, thank_complete]
 
-	p2 = [video_element, element_test, qv_example, qv_test, background_info, pilot_demo, video_playground, likert, qv_108, preference_survey, task_intro_designer, video_checkbox, video_checkbox_with_price, thank_complete]
+	p2 = [video_element, element_test, qv_example, qv_test, background_info, pilot_demo, video_playground, likert, qv_108, preference_survey, task_intro_designer_p1, task_intro_designer_p2, video_checkbox, video_checkbox_with_price, thank_complete]
 
 	#p3 = [video_playground, video_checkbox, video_checkbox_with_price]
-	p3 = [qv_example, qv_108, thank_complete]
+	p3 = [video_element, qv_example, background_info, pilot_demo, video_playground, likert, qv_108, preference_survey, task_intro_designer_p1, task_intro_designer_p2, video_checkbox, video_checkbox_with_price, thank_complete]
 
 	# p2 = [video_element, element_test, qv_example, qv_test, background_info, video_element, element_test, video_demo, qv_108, thank_complete]
 	# p3 = [video_buyback_demo, video_buyback, video_actual, video_test, thank_complete]

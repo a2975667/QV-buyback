@@ -42,7 +42,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
   configurations = {
     'Audio Quality': '0',
     'Video Resolution': '0',
-    'Audio Stability': '0', 
+    'Audio Stability': '0',
     'Motion Smoothness': '0',
     'Audio-Video Synchronization': '0',
   };
@@ -139,24 +139,29 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     switch (jitterVal) {
       case 0:
         // play every 6 secs, pause 1.5 secs
-        this.blackTimer = timer(0, 6000);
+        // this.blackTimer = timer(0, 6000);
+        this.blackTimer = timer(0, 2836); // 22%
         break;
       case 1:
         // play every 16.5 secs, pause 1.5 secs
-        this.blackTimer = timer(0, 16500);
+        // this.blackTimer = timer(0, 16500);
+        this.blackTimer = timer(0, 9200); // 8% loss
         break;
       case 2:
         // play every 43.5 secs, pause 1.5 secs, stopping twice essentially
-        this.blackTimer = timer(0, 43500);
+        // this.blackTimer = timer(0, 1000000);
+        this.blackTimer = timer(0, 19200); // 4% loss
         break;
       case 3:
+        // this.blackTimer = timer(0, 1000000);
         this.blackTimer = timer(0, 1000000);
         break;
     }
     this.videoTimerSubscription = this.blackTimer.subscribe(val => {
       if (this.videoIsPlaying) {
         this.videoIsJittering = true;
-        const freshback = timer(1500);
+        const freshback = timer(800);
+        // const freshback = timer(1500);
         freshback.subscribe(d => {
           this.videoIsJittering = false;
         });
@@ -171,25 +176,28 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     switch (jitterVal) {
       case 0:
         // play every 6 secs, pause 1.5 secs
-        this.muteTimer = timer(0, 6000);
+        // this.muteTimer = timer(0, 6000);
+        this.muteTimer = timer(0, 3200); // 20%
         break;
       case 1:
         // play every 13.5 secs, pause 1.5 secs
-        this.muteTimer = timer(0, 13500);
+        // this.muteTimer = timer(0, 13500);
+        this.muteTimer = timer(0, 7200); // 10% loss
         break;
       case 2:
         // play every 28.5 secs, pause 1.5 secs, stopping 3 times essentially
-        this.muteTimer = timer(0, 28500);
+        // this.muteTimer = timer(0, 28500);
+        this.muteTimer = timer(0, 15200); // 5% loss
         break;
       case 3:
-        this.muteTimer = timer(0, 1000000);
+        this.muteTimer = timer(0, 10000000); // 0% loss
         break;
     }
     this.audioTimerSubscription = this.muteTimer.subscribe(val => {
       if (this.videoIsPlaying) {
-        this.audioElement.volume = 0;
-        const freshback = timer(1500);
-        freshback.subscribe(d => {
+          this.audioElement.volume = 0;
+          const freshback = timer(800);
+          freshback.subscribe(d => {
           if (this.videoIsPlaying) {
             this.audioElement.volume = 1;
           }
@@ -202,13 +210,13 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
     const syncAudioWithVideoValue = Number(this.configurations['Audio-Video Synchronization']);
     switch (syncAudioWithVideoValue) {
       case 0:
-        this.audioElement.currentTime = this.videoElement.currentTime - 1.850;
+        this.audioElement.currentTime = this.videoElement.currentTime - 2;
         break;
       case 1:
-        this.audioElement.currentTime = this.videoElement.currentTime - 1.615;
+        this.audioElement.currentTime = this.videoElement.currentTime - 1.250;
         break;
       case 2:
-        this.audioElement.currentTime = this.videoElement.currentTime - 1.050;
+        this.audioElement.currentTime = this.videoElement.currentTime - 0.750;
         break;
       case 3:
         this.audioElement.currentTime = this.videoElement.currentTime;
@@ -262,7 +270,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
       that.currentVideoRequestId = requestAnimationFrame(that.updateCanvas.bind(that));
     }, false);
     this.jitterAudio(Number(this.configurations['Audio Stability']));
-    this.jitterVideo(Number(this.configurations['Motion Smoothness']));
+	this.jitterVideo(Number(this.configurations['Motion Smoothness']));
   }
 
   reassignVideoSrc() {
@@ -322,11 +330,11 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onCheckboxClick(value, key) {
       const table = {
-          'Audio Quality': [0, 3],
-          'Video Resolution': [0, 1],
-          'Audio Stability': [0, 2],
+          'Audio Quality': [0, 1],
+          'Video Resolution': [0, 2],
+          'Audio Stability': [0, 1],
           'Motion Smoothness': [0, 1],
-          'Audio-Video Synchronization': [0, 1],
+          'Audio-Video Synchronization': [0, 3],
       };
       if (value) {
           this.configurations[key] = table[key][0];
