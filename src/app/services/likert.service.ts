@@ -72,11 +72,11 @@ export class LikertService {
       return this.decideWhetherPassTest(conditions, 2);
     } else if (currentFile === 'test_video_element') {
       const conditions = [
-        data['vet1'] === '(D) This refers to how clear or crisp the visual is in the video.',
-        data['vet2'] === '(E) This refers to how clear or crisp the audio sounds.',
-        data['vet3'] === '(A) It means how much the visuals in a video stutters.',
-        data['vet4'] === '(C) It means whether the audio sounds choppy or fluent.',
-        data['vet5'] === '(B) It means how perfectly the visual in the video matches with the sound.',
+        data['vet1'] === '(D) How clear or crisp the visuals are in the video.',
+        data['vet2'] === '(E) How clear or crisp the audio sounds.',
+        data['vet3'] === '(A) How much the visuals in a video stutter.',
+        data['vet4'] === '(C) Whether the audio sounds choppy or fluent.',
+        data['vet5'] === '(B) How perfectly the visuals in the video match with the sound.',
         data['vet6'] === '(3) An Apple',
         data['vet7'] === '(2) 0125'
       ];

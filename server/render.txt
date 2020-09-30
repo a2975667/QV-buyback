@@ -56,9 +56,86 @@ ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 8k -vn test-aq0.m4a &&
 ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 11k -vn test-aq1.m4a &&
 ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 16k -vn test-aq2.m4a &&
 ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 48k -vn test-aq3.m4a
+===================================================================================================
+ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 8k -vn demo-aq-0.m4a && (1)
+ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 16k -vn demo-aq0.m4a && (2)
+ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 24k -vn demo-aq1.m4a &&
+ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 32k -vn demo-aq2.m4a
+
+ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 8k -vn demo-aq0.m4a &&
+ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 16k -vn demo-aq1.m4a &&
+ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 24k -vn demo-aq2.m4a &&
+ffmpeg -y -i demo_audio.mp3 -c:a aac -b:a 32k -vn demo-aq3.m4a &&
+ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 8k -vn test-aq0.m4a &&
+ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 16k -vn test-aq1.m4a &&
+ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 24k -vn test-aq2.m4a &&
+ffmpeg -y -i test_audio.mp3 -c:a aac -b:a 32k -vn test-aq3.m4a
 
 
-ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 210x280 -ac 2 -threads 13 test-vq0.webm &&
-ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 294x392 -ac 2 -threads 13 test-vq1.webm &&
-ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 364x486 -ac 2 -threads 13 test-vq2.webm &&
-ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 420x560 -ac 2 -threads 13 test-vq3.webm
+===================================================================================================
+
+----------------------------------------------------------------------------------------------------
+---literature---
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 120x90 -ac 2 -threads 13 test-vq000.webm && (1)
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 64K -s 168x126 -ac 2 -threads 13 test-vq010.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 240x180 -ac 2 -threads 13 test-vq020.webm && (2)
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 240x180 -ac 2 -threads 13 test-vq020.webm &&
+
+ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 120x90 -ac 2 -threads 13 demo-vq0.webm &&
+ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 64K -s 168x126 -ac 2 -threads 13 demo-vq1.webm &&
+ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 240x180 -ac 2 -threads 13 demo-vq2.webm &&
+ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 128K -s 294x392 -ac 2 -threads 13 demo-vq3.webm
+
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 120x90 -ac 2 -threads 13 test-vq0.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 64K -s 168x126 -ac 2 -threads 13 test-vq1.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 240x180 -ac 2 -threads 13 test-vq2.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 128K -s 294x392 -ac 2 -threads 13 test-vq3.webm
+
+---my experience--
+ffmpeg -i demo_video.mpeg -f mp4 -vcodec h264 -b:v 128K -s 294x392 -ac 2 -threads 13 demo-vq3.webm
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 128K -s 294x392 -ac 2 -threads 13 test-vq030.webm
+
+----------------------------------------------------------------------------------------------------
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 294x392 -ac 2 -threads 13 test-vq10.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 294x392 -ac 2 -threads 13 test-vq11.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 294x392 -ac 2 -threads 13 test-vq12.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 294x392 -ac 2 -threads 13 test-vq13.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 364x486 -ac 2 -threads 13 test-vq20.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 364x486 -ac 2 -threads 13 test-vq21.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 364x486 -ac 2 -threads 13 test-vq22.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 294x392 -ac 2 -threads 13 test-vq23.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 420x560 -ac 2 -threads 13 test-vq30.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 420x560 -ac 2 -threads 13 test-vq31.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 420x560 -ac 2 -threads 13 test-vq32.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 420x560 -ac 2 -threads 13 test-vq33.webm
+
+240*320
+
+
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 210x280 -ac 2 -threads 13 test-vq00.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 210x280 -ac 2 -threads 13 test-vq01.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 210x280 -ac 2 -threads 13 test-vq02.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 210x280 -ac 2 -threads 13 test-vq03.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 294x392 -ac 2 -threads 13 test-vq10.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 294x392 -ac 2 -threads 13 test-vq11.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 294x392 -ac 2 -threads 13 test-vq12.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 294x392 -ac 2 -threads 13 test-vq13.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 364x486 -ac 2 -threads 13 test-vq20.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 364x486 -ac 2 -threads 13 test-vq21.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 364x486 -ac 2 -threads 13 test-vq22.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 294x392 -ac 2 -threads 13 test-vq23.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 32K -s 420x560 -ac 2 -threads 13 test-vq30.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 96K -s 420x560 -ac 2 -threads 13 test-vq31.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 160K -s 420x560 -ac 2 -threads 13 test-vq32.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 224K -s 420x560 -ac 2 -threads 13 test-vq33.webm
+
+
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 30K -s 210x280 -ac 2 -threads 13 test-vq0.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 30K -s 294x392 -ac 2 -threads 13 test-vq1.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 30K -s 364x486 -ac 2 -threads 13 test-vq2.webm &&
+ffmpeg -i test_video.mpeg -f mp4 -vcodec h264 -b:v 30K -s 420x560 -ac 2 -threads 13 test-vq3.webm
+
+
+
+
+

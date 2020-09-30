@@ -22,7 +22,7 @@
 		play with the QV interface below the video. Once you are ready, click submit and move onto the next page -- you
 		will then need to answer a few questions about the video to show your level of understanding of QV.</b></p>
 
-	<h4>Video</h4>
+	<!-- <h4>Video</h4> -->
 
 	<video *ngIf="questionTitle=='Dry Run: What is Quadratic Voting (QV)'" controls
 		style="display: block; margin: 0 auto; width: -webkit-fill-available; border: 5px solid #a0a0a0;">
@@ -37,9 +37,8 @@
 	</p>
 	<div *ngIf="questionTitle=='Dry Run: What is Quadratic Voting (QV)'">
 		<p>
-			<b> Based on the intensity of your opinion, you can cast one or more upvotes or downvotes for each video
-				element</b>. The
-			stronger your opinion is, the more votes you can put on one option. At the same time, as the number of votes
+			<b> Based on the intensity of your opinion, you can cast one or more upvotes or downvotes for each cusine
+				element</b>. The stronger your opinion is, the more votes you can put on one option. At the same time, as the number of votes
 			increases, the voice credits it costs increase quadratically, i.e. <b> X votes will cost X<sup>2</sup>
 				(square
 				of X) credits</b>. The cost of some common number of votes is specified in the table below:
@@ -85,13 +84,6 @@
 		<hr>
 	</div>
 
-	<p *ngIf="questionTitle!='Dry Run: What is Quadratic Voting (QV)'">
-		You will be given a budget of a certain number of <b> voice credits</b>. You will use the available credits to
-		cast votes. If you think a video element is more important, you can cast multiple upvotes using the <b>+1
-			sign</b>. If you believe that an element is less important, you can cast a few downvotes using the <b> -1
-			sign</b>. If you are neutral about an element, you can choose to cast <b> no vote</b>.
-	</p>
-
 	<div [innerHTML]="questionDes"></div>
 
 	<p *ngIf="questionTitle!='Dry Run: What is Quadratic Voting (QV)'">
@@ -101,10 +93,14 @@
 	</p>
 
 	<div *ngIf="questionTitle!='Dry Run: What is Quadratic Voting (QV)'" class="collapse" id="collapseExample">
-		<p>
+		<p *ngIf="questionTitle!='Dry Run: What is Quadratic Voting (QV)'">
+			You will be given a budget of a certain number of <b> voice credits</b>. You will use the available credits to
+			cast votes. If you think a video element is more important, you can cast multiple upvotes using the <b>+1
+				sign</b>. If you believe that an element is less important, you can cast a few downvotes using the <b> -1
+				sign</b>. If you are neutral about an element, you can choose to cast <b> no vote</b>.<br>
+
 			<b> Based on the intensity of your opinion, you can cast one or more upvotes or downvotes for each video
-				element</b>. The
-			stronger your opinion is, the more votes you can put on one option. At the same time, as the number of votes
+				element</b>. The stronger your opinion is, the more votes you can put on one option. At the same time, as the number of votes
 			increases, the voice credits it costs increase quadratically, i.e. <b> X votes will cost X<sup>2</sup>
 				(square
 				of X) credits</b>. The cost of some common number of votes is specified in the table below:

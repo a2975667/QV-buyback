@@ -96,7 +96,7 @@ export class GlobalService {
     const currentQuestion = this.getCookieById('user_current_question_index');
     submitPost.qid = this.questionnaire.question_list[currentQuestion].qid;
     submitPost.results = (this.votesContent[this.getCookieById('user_current_question_index')] as number[]).map((value, index) => {
-      return {
+        return {
         value,
         option: this.questionnaire.question_list[+currentQuestion].options[index].option,
       };
