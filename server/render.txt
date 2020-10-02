@@ -160,6 +160,10 @@ ffmpeg -i test_video.mpeg -vcodec wmv2 -b:v 64K -s 168x126 -filter:v fps=fps=25 
 ffmpeg -i test_video.mpeg -vcodec wmv2 -b:v 96K -s 240x180 -filter:v fps=fps=25 -ac 2 -threads 13 test-vq2-f3.wmv &&
 ffmpeg -i test_video.mpeg -vcodec wmv2 -b:v 224K -s 240x180 -filter:v fps=fps=25 -ac 2 -threads 13 test-vq3-f3.wmv
 
+
+
+ffmpeg -i bbb-perfect.webm -filter:v fps=fps=2 -ac 2 -threads 13 bbb-vid_sutt.webm
+
 ffmpeg -i demo-vq0-f0.wmv demo-vq0-f0.webm &&
 ffmpeg -i demo-vq1-f0.wmv demo-vq1-f0.webm &&
 ffmpeg -i demo-vq2-f0.wmv demo-vq2-f0.webm &&
