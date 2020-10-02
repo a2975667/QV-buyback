@@ -343,7 +343,7 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewInit {
           'Video Resolution': [0, 2],
           'Audio Stability': [0, 1],
           'Motion Smoothness': [0, 1],
-          'Audio-Video Synchronization': [0, 3],
+          'Audio-Video Synchronization': [0, 2],
       };
       if (value) {
           this.configurations[key] = table[key][0];

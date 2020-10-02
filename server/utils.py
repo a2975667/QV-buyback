@@ -197,6 +197,8 @@ def decide_path(gp):
 	#p3 = [video_playground, video_checkbox, video_checkbox_with_price]
 	p3 = [video_element, qv_example, background_info, pilot_demo, video_playground, likert, qv_108, preference_survey, task_intro_designer_p1, task_intro_designer_p2, video_checkbox, video_checkbox_with_price, thank_complete]
 
+	p3 = [video_playground, video_checkbox, thank_complete]
+
 	# p2 = [video_element, element_test, qv_example, qv_test, background_info, video_element, element_test, video_demo, qv_108, thank_complete]
 	# p3 = [video_buyback_demo, video_buyback, video_actual, video_test, thank_complete]
 	# p3 = [video_buyback_demo, video_buyback, video_actual, thank_complete_buyback]
