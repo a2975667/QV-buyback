@@ -69,14 +69,14 @@ export class LikertService {
         data['qvt5'] === '(4) 20993',
         data['qvt6'] === '(4) 12345',
       ];
-      return this.decideWhetherPassTest(conditions, 2);
+      return this.decideWhetherPassTest(conditions, 1);
     } else if (currentFile === 'test_video_element') {
       const conditions = [
         data['vet1'] === '(D) How clear or crisp the visuals are in the video.',
         data['vet2'] === '(E) How clear or crisp the audio sounds.',
-        data['vet3'] === '(A) How much the visuals in a video stutter.',
+        data['vet3'] === '(A) How smooth the visuals in a video are.',
         data['vet4'] === '(C) Whether the audio sounds choppy or fluent.',
-        data['vet5'] === '(B) How perfectly the visuals in the video match with the sound.',
+        data['vet5'] === '(B) How well the visuals in the video match with the sound.',
         data['vet6'] === '(3) An Apple',
         data['vet7'] === '(2) 0125'
       ];

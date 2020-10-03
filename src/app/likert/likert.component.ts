@@ -15,6 +15,7 @@ export class LikertComponent implements OnInit {
   requestUrl: string = environment.apiUrl;
   check = false;
   errorMessage: string;
+  isSubmitDisabled = false;
   constructor(
     private liService: LikertService,
     private route: Router,
@@ -60,18 +61,19 @@ export class LikertComponent implements OnInit {
       if (data['html']) {
         this.html = data['html'];
       }
+      this.check = false;
+      this.isSubmitDisabled = false;
     });
   }
 
   submit(data, e?) {
     if (this.check || data) {
       if (e) {
-        e.target.disabled = true;
+        this.isSubmitDisabled = true;
       }
       const pathIndex = Number(this.cookieService.get('user_current_path_index'));
       const pathArray: Array<object> = JSON.parse(this.cookieService.get('user_path'));
       const userId = this.cookieService.get('user_id');
-
       this.liService.submit({...data, userId, jsonFile: pathArray[pathIndex]}).subscribe(
         result => {
           this.decidePath();

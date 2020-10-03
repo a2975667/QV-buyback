@@ -11,8 +11,14 @@
 		"normal":{
 			"title": "",
 			"pages": [{
-				"title": "Please experiment with the control panel toggles carefully and answer the following question.",
-				"questions": [{
+				"title": "",
+				"questions": [
+				{
+					"type": "html",
+					"name": "title",
+					"html": "<b>Please experiment with the control panel toggles carefully and answer the following question.</b>"
+				},
+				{
 					"type": "checkbox",
 					"name": "video-pg-check",
 					"title": "I have played with every video component and experienced their impact",
