@@ -3,7 +3,7 @@
 	"survey": {
 		"title": "Testing your understanding of QV",
 		"pages": [{
-			"title": "Please answer the following questions.",
+			"title": "Please answer the following questions. You will be disqualified from the study if you get more than one questions wrong.",
 			"questions": [{
 					"type": "dropdown",
 					"name": "qvt1",

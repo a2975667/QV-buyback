@@ -7,7 +7,7 @@
 			"questions": [    {
 				"type": "html",
 				"name": "question1",
-				"html": "<p style=\"font-size: 16px;\">Speedy Stream wants to improve the current prototype. To decide what to prioritize, we want your feedback on the current prototype you saw on the previous page (before any improvement). Please answer the following question: how critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video?</p>"
+				"html": "<p style=\"font-size: 16px;\">Speedy Stream wants to improve the current prototype of the in-car video player. To decide what to prioritize, we want your feedback on the current prototype you saw on the previous page (before any improvement). Please answer the following question: how critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video?</p>"
 			   },{
 				"type": "matrix",
 				"name": "video_likert",
