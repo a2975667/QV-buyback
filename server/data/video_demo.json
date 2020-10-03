@@ -9,8 +9,14 @@
 		"normal":{
 
 			"pages": [{
-				"title": "Please answer following questions.",
-				"questions": [{
+				"title": "",
+				"questions": [
+					{
+						"type": "html",
+						"name": "title",
+						"html": "<b>Please answer following questions.</b>"
+					},
+					{
 					"type": "dropdown",
 					"name": "vid_buy_demo1",
 					"title": "How is the snow is likely to fall in the northeast area in the finger lake region?",
