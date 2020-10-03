@@ -9,7 +9,7 @@
         <label class="form-check-label" for="exampleCheck1">I have read all the text above.</label>
 		<br><br>
     </div>
-    <button (click)="submit(null, $event)" type="submit" class="mr-2 btn btn-success">
+    <button [disabled]="isSubmitDisabled" (click)="submit(null, $event)" type="submit" class="mr-2 btn btn-success">
         Submit
     </button>
     <span *ngIf="errorMessage">{{errorMessage}}</span>
