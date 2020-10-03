@@ -60,7 +60,7 @@ export class CompleteComponent implements OnInit {
             this.cookieService.deleteAll('/', 'localhost');
             this.cookieService.deleteAll('/', 'qv-video.herokuapp.com');
             this.title = 'Thank you';
-            this.code = 'We received enough responses from your demographic group. Thank you for participating. Do not paste anything to the original hit page.';
+            this.code = 'We have received enough responses from your demographic group. Thank you for participating. Do not paste anything to the original hit page.';
             this.text = '';
             this.url = '';
         }
