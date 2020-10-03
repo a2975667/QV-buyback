@@ -39,11 +39,10 @@
 					"colCount": 0,
 					"choices": [
 						"(a) 18-24",
-						"(b) 25-34",
-						"(c) 35-44",
-						"(d) 45-54",
-						"(e) 55 or above",
-						"(f) Prefer not to disclose"
+						"(b) 25-39",
+						"(c) 40-54",
+						"(d) 55 or above",
+						"(e) Prefer not to disclose"
 					]
 				},
 				{
@@ -115,11 +114,9 @@
 					"choices": [
 						"(a) Less than 12th grade with or without diploma",
 						"(b) High school graduate (includes equivalency)",
-						"(c) Some college, no degree",
-						"(d) Associate's degree",
-						"(e) Bachelor's degree",
-						"(f) Graduate or professional degree",
-						"(g) Prefer not to disclose"
+						"(c) Some college or associate's degree",
+						"(d) Bachelor's degree or above",
+						"(e) Prefer not to disclose"
 					]
 				},
 				{
