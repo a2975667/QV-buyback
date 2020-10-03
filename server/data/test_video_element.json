@@ -3,7 +3,7 @@
 	"survey": {
 		"title": "Testing your understanding of video elements",
 		"pages": [{
-			"title": "Please answer the following questions.",
+			"title": "Please answer the following questions. You will be disqualified from the study if you get more than one questions wrong.",
 			"questions": [{
 					"type": "dropdown",
 					"name": "vet1",
@@ -11,8 +11,8 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) How much the visuals in a video stutter.",
-						"(B) How perfectly the visuals in the video match with the sound.",
+						"(A) How smooth the visuals in a video are.",
+						"(B) How well the visuals in the video match with the sound.",
 						"(C) Whether the audio sounds choppy or fluent.",
 						"(D) How clear or crisp the visuals are in the video.",
 						"(E) How clear or crisp the audio sounds."
@@ -24,8 +24,8 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) How much the visuals in a video stutter.",
-						"(B) How perfectly the visuals in the video match with the sound.",
+						"(A) How smooth the visuals in a video are.",
+						"(B) How well the visuals in the video match with the sound.",
 						"(C) Whether the audio sounds choppy or fluent.",
 						"(D) How clear or crisp the visuals are in the video.",
 						"(E) How clear or crisp the audio sounds."
@@ -37,8 +37,8 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) How much the visuals in a video stutter.",
-						"(B) How perfectly the visuals in the video match with the sound.",
+						"(A) How smooth the visuals in a video are.",
+						"(B) How well the visuals in the video match with the sound.",
 						"(C) Whether the audio sounds choppy or fluent.",
 						"(D) How clear or crisp the visuals are in the video.",
 						"(E) How clear or crisp the audio sounds."
@@ -50,8 +50,8 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) How much the visuals in a video stutter.",
-						"(B) How perfectly the visuals in the video match with the sound.",
+						"(A) How smooth the visuals in a video are.",
+						"(B) How well the visuals in the video match with the sound.",
 						"(C) Whether the audio sounds choppy or fluent.",
 						"(D) How clear or crisp the visuals are in the video.",
 						"(E) How clear or crisp the audio sounds."
@@ -64,8 +64,8 @@
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
-						"(A) How much the visuals in a video stutter.",
-						"(B) How perfectly the visuals in the video match with the sound.",
+						"(A) How smooth the visuals in a video are.",
+						"(B) How well the visuals in the video match with the sound.",
 						"(C) Whether the audio sounds choppy or fluent.",
 						"(D) How clear or crisp the visuals are in the video.",
 						"(E) How clear or crisp the audio sounds."
@@ -87,7 +87,7 @@
 				{
 					"type": "dropdown",
 					"name": "vet7",
-					"title": "What is the option mentioned in the audio below?",
+					"title": "Play the audio below the question. Which option is mentioned in the audio below?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [

@@ -41,7 +41,8 @@
 						"(a) $8.99/month: Stream with the standard definition on one device",
 						"(b) $12.99/month: Stream with high definition on two devices",
 						"(c) $15.99/month: Stream with 4K ultra HD on four devices",
-						"(d) I do not know what Netflix is"
+						"(d) I would not subscribe to any of the plans above",
+						"(e) I do not know what Netflix is"
 					]
 				},
 				{
@@ -54,20 +55,22 @@
 						"(a) $10.99/month: A sampling of music, news, and talk channels",
 						"(b) $16.99/month: Get ad-free music, plus sports, news, talk, entertainment, SiriusXM video, and more, anywhere you want",
 						"(c) $21.99/month: Enjoy the widest variety of entertainment, anytime, anywhere you want to hear it",
-						"(d) I do not know what SiriusXM is"
+						"(d) I would not subscribe to any of the plans above",
+						"(e) I do not know what SiriusXM is"
 					]
 				},
 				{
 					"type": "dropdown",
 					"name": "amc_movie_price",
-					"title": "If you were to watch a movie at AMC, and the standard version, 3D version, and iMAX version are all available. Which one would you choose?",
+					"title": "If you were to watch a movie at AMC, and the standard version, 3D version, and iMAX version are all available, which version would you choose?",
 					"isRequired": true,
 					"colCount": 0,
 					"choices": [
 						"(a) $13.69, standard definition",
 						"(b) $17.69, 3D version",
 						"(c) $19.69, iMAX version",
-						"(d) I do not know what these movies stands for"
+						"(d) I would not watch any of these versions",
+						"(e) I do not know what these movie versions stand for"
 					]
 				}
 			]

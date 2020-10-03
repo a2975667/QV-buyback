@@ -6,7 +6,7 @@
 	  {
 		"qid":1.108,
 		"question":"How critical are the enhancements?",
-		"description":"<p>Speedy Stream wants to improve the current prototype. To decide what to prioritize, we want your feedback on the current prototype you saw on the previous page (before any improvement). Please use Quadratic voting with <u>100 voice credits</u> to answer the following question:</p> <p>How critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video? </p> <p> If you need a refresher on how QV works, please click on \"Remind me how QV works\" below to expand the instruction.</p>",
+		"description":"<p>Speedy Stream wants to improve the current prototype of the in-car video player. To decide what to prioritize, we want your feedback on the current prototype you saw on the previous page (before any improvement). Please use Quadratic voting with <u>100 voice credits</u> to answer the following question:</p> <p>How critical are the improvements on each video element in the current prototype for you to <b>understand the content</b> in a weather forecast video? </p> <p> If you need a refresher on how QV works, please click on \"Remind me how QV works\" below to expand the instruction.</p>",
 		"options":[
 		  {
 			  "o_id": "a_quality",
