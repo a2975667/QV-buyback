@@ -42,7 +42,7 @@
 					"text": "Audio Stability: The audio is smooth and does not stutter"
 				}, {
 					"value": "video_smoothness",
-					"text": "Motion Smoothness: The video visuals play smoothly and do not jitter"
+					"text": "Motion Smoothness: The video visuals play smoothly and are not jerky"
 				}, {
 					"value": "sync",
 					"text": "Audio-Video Syncronization: The audio and visuals are in sync"

@@ -23,7 +23,7 @@
 		  }, {
 			  "o_id": "v_smooth",
 			  "option": "Motion Smoothness",
-			  "description": "The video visuals play smoothly and do not jitter"
+			  "description": "The video visuals play smoothly and are not jerky"
 		  }, {
 			  "o_id": "sync",
 			  "option": "Audio-Video Syncronization",

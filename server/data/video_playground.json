@@ -1,7 +1,7 @@
 {
 	"filename": "test",
 	"Title":"Playground -- Experiment with Various Video Element Settings",
-	"Description":"<p>Now, we would like you to test out the video streaming prototype again, but with the control panel below the video player.</p><br><p>The control panel gives you the ability to configure the five video elements to various quality levels. Selecting a higher level for a video element will improve the quality for that element. <b>Please move the sliders to different levels and experiment</b> with how different combinations of the five video elements impact how well you <b>understand</b> the video's content. We will be asking how you feel about these five video elements on the next page. </p><br><p><b>You can change the control levels while the video is playing, but expect a wait of up to 3 seconds for the prototype to reflect the new setting.</b> Feel free to replay the video as many times as you want. </p><br><p>Please answer the questions below the video <b>based on your experience with different quality levels</b>.</p><br>",
+	"Description":"<p>Now, we would like you to test out the video streaming prototype again, but with the control panel below the video player.</p><p>The control panel gives you the ability to configure the five video elements to various quality levels. Selecting a higher level for a video element will improve the quality for that element. <b>Please move the sliders to different levels and experiment</b> with how different combinations of the five video elements impact how well you <b>understand</b> the video's content. We will be asking how you feel about these five video elements on the next page. </p><p><b>You can change the control levels while the video is playing, but expect a wait of up to 3 seconds for the prototype to reflect the new setting.</b> Feel free to replay the video as many times as you want. </p><p>Please answer the questions below the video <b>based on your experience with different quality levels</b>.</p><br>",
 	"settings":{
 		"control_panel_can_change": true,
 		"control_panel_has_price":false,
@@ -16,7 +16,7 @@
 				{
 					"type": "html",
 					"name": "title",
-					"html": "<b>Please experiment with the control panel toggles carefully and answer the following question.</b>"
+					"html": "<b>Please experiment with the control panel toggles carefully and answer the following questions.</b>"
 				},
 				{
 					"type": "checkbox",
