@@ -262,20 +262,27 @@ def setup_route_db():
 	db["gp_status"].drop()
 	db["user"].drop()
 	db["demographic"].drop()
-	db["videoSetting"].drop()
-	db["data"].drop()
-	db["control"].drop()
+	db["video_playground"].drop()
+	db["video_checkbox_with_price"].drop()
+	db["video_checkbox"].drop()
 	db["likert"].drop()
 	db["example"].drop()
 	db["pr-freeform"].drop()
-	db["qv"].drop()
+	db["task_intro_designer_pt1"].drop()
+	db["task_intro_designer_pt2"].drop()
 	db["qv_test"].drop()
+	db["test_qv"].drop()
 	db["ve_test"].drop()
 	db["video_likert"].drop()
 	db["test_video_element"].drop()
 	db["video_element"].drop()
+	db["background"].drop()
+	db["pilot_demo"].drop()
+	db["preference"].drop()
+	db["qv_108"].drop()
+	db["task_into_designer"].drop()
 
-	list_of_path = ["p1", "p2", "p3"]
+	list_of_path = ["p1", "p2"]
 
 	gp_max = {
 		"gp1": 1,
