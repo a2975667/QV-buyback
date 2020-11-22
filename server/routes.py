@@ -144,6 +144,19 @@ def submit():
 	except:
 		print("source not identified")
 
+	if "complete" in insert_data and len(insert_data) == 2:
+		result = db.user.find_one( {"userid": ObjectId(insert_data['userId']) } )
+		original_time = result['create_time']
+		complete_time = datetime.utcnow()
+		duration = (complete_time - original_time).total_seconds()
+		db.user.find_one_and_update(
+			{"userid": ObjectId(insert_data['userId'])},
+			{'$set': {
+				"complete_flag": True,
+				"duration_in_ms": duration,
+				"complete_time": complete_time
+			}})
+
 	insert_data['time'] = datetime.utcnow()
 	db[source].insert_one(insert_data)
 
